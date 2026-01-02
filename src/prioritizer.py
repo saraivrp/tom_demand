@@ -1,0 +1,256 @@
+"""
+Main prioritization module for TOM Demand Management System.
+
+This module coordinates the execution of prioritization algorithms
+at both Level 2 (by Revenue Stream) and Level 3 (Global).
+"""
+
+from typing import Dict, List, Optional
+import pandas as pd
+from algorithms.sainte_lague import sainte_lague_allocate
+from algorithms.dhondt import dhondt_allocate
+from algorithms.wsjf import wsjf_prioritize, calculate_wsjf
+
+
+class Prioritizer:
+    """Execute prioritization algorithms at different levels."""
+
+    def __init__(self):
+        """Initialize the prioritizer."""
+        pass
+
+    def prioritize_level2(
+        self,
+        ideas: pd.DataFrame,
+        ra_weights: pd.DataFrame,
+        method: str = 'sainte-lague'
+    ) -> pd.DataFrame:
+        """
+        Prioritize IDEAs by Revenue Stream using specified method.
+
+        Args:
+            ideas: DataFrame with IDEAs
+            ra_weights: DataFrame with RA weights
+            method: Prioritization method ('sainte-lague', 'dhondt', 'wsjf')
+
+        Returns:
+            DataFrame with prioritized IDEAs per RS and method
+        """
+        method = method.lower()
+        if method not in ['sainte-lague', 'dhondt', 'wsjf']:
+            raise ValueError(f"Invalid method: {method}. Must be 'sainte-lague', 'dhondt', or 'wsjf'")
+
+        # Calculate WSJF scores for all IDEAs
+        ideas_copy = ideas.copy()
+        ideas_copy['WSJF_Score'] = ideas_copy.apply(
+            lambda row: calculate_wsjf(row.to_dict()),
+            axis=1
+        )
+
+        all_results = []
+
+        # Process each Revenue Stream separately
+        for rs in ideas_copy['RevenueStream'].unique():
+            rs_ideas = ideas_copy[ideas_copy['RevenueStream'] == rs].copy()
+
+            # Get RA weights for this RS
+            rs_weights_df = ra_weights[ra_weights['RevenueStream'] == rs]
+
+            # Create weights dictionary
+            ra_weight_dict = {}
+            for _, row in rs_weights_df.iterrows():
+                ra = row['RequestingArea']
+                if ra in ra_weight_dict:
+                    ra_weight_dict[ra] += row['Weight']
+                else:
+                    ra_weight_dict[ra] = row['Weight']
+
+            # Get list of unique RAs in this RS
+            entities = list(ra_weight_dict.keys())
+
+            # Skip this RS if no weights are defined
+            if not entities:
+                print(f"    ⚠ Warning: No RA weights defined for Revenue Stream '{rs}' - skipping {len(rs_ideas)} IDEAs")
+                continue
+
+            # Filter out IDEAs from RAs that don't have weights
+            rs_ideas_filtered = rs_ideas[rs_ideas['RequestingArea'].isin(entities)].copy()
+
+            # Check if any IDEAs were excluded
+            excluded_count = len(rs_ideas) - len(rs_ideas_filtered)
+            if excluded_count > 0:
+                excluded_ras = rs_ideas[~rs_ideas['RequestingArea'].isin(entities)]['RequestingArea'].unique()
+                print(f"    ⚠ Warning: {excluded_count} IDEAs excluded from '{rs}' (no weights for RAs: {', '.join(excluded_ras)})")
+
+            # Skip if no valid IDEAs remain after filtering
+            if len(rs_ideas_filtered) == 0:
+                print(f"    ⚠ Warning: No valid IDEAs for Revenue Stream '{rs}' after filtering - skipping")
+                continue
+
+            # Convert ideas to list of dicts
+            items = rs_ideas_filtered.to_dict('records')
+
+            # Apply the selected method
+            if method == 'wsjf':
+                ranked_items = wsjf_prioritize(rs_ideas_filtered, ra_weight_dict, level='RS')
+            elif method == 'sainte-lague':
+                ranked_items = sainte_lague_allocate(entities, ra_weight_dict, items, level='RS')
+            else:  # dhondt
+                ranked_items = dhondt_allocate(entities, ra_weight_dict, items, level='RS')
+
+            # Store RS-level rank for Level 3 processing
+            for item in ranked_items:
+                item['Rank_RS'] = item['Rank']
+
+            all_results.extend(ranked_items)
+
+        # Convert back to DataFrame
+        result_df = pd.DataFrame(all_results)
+
+        return result_df
+
+    def prioritize_level3(
+        self,
+        rs_prioritized: pd.DataFrame,
+        rs_weights: pd.DataFrame,
+        method: str = 'sainte-lague'
+    ) -> pd.DataFrame:
+        """
+        Prioritize IDEAs globally using specified method.
+
+        Args:
+            rs_prioritized: DataFrame from Level 2 with Rank_RS column
+            rs_weights: DataFrame with RS weights
+            method: Prioritization method ('sainte-lague', 'dhondt', 'wsjf')
+
+        Returns:
+            DataFrame with global prioritization
+        """
+        method = method.lower()
+        if method not in ['sainte-lague', 'dhondt', 'wsjf']:
+            raise ValueError(f"Invalid method: {method}. Must be 'sainte-lague', 'dhondt', or 'wsjf'")
+
+        # Create RS weights dictionary
+        rs_weight_dict = dict(zip(rs_weights['RevenueStream'], rs_weights['Weight']))
+
+        # Get list of Revenue Streams
+        entities = rs_weights['RevenueStream'].tolist()
+
+        # Convert to list of dicts
+        items = rs_prioritized.to_dict('records')
+
+        # Apply the selected method
+        if method == 'wsjf':
+            ranked_items = wsjf_prioritize(rs_prioritized, rs_weight_dict, level='Global')
+        elif method == 'sainte-lague':
+            ranked_items = sainte_lague_allocate(entities, rs_weight_dict, items, level='Global')
+        else:  # dhondt
+            ranked_items = dhondt_allocate(entities, rs_weight_dict, items, level='Global')
+
+        # Convert to DataFrame
+        result_df = pd.DataFrame(ranked_items)
+
+        # Rename Rank to GlobalRank for clarity
+        result_df['GlobalRank'] = result_df['Rank']
+        result_df.drop('Rank', axis=1, inplace=True, errors='ignore')
+
+        return result_df
+
+    def prioritize_all_methods(
+        self,
+        ideas: pd.DataFrame,
+        ra_weights: pd.DataFrame,
+        rs_weights: pd.DataFrame
+    ) -> Dict[str, pd.DataFrame]:
+        """
+        Execute all three prioritization methods.
+
+        Args:
+            ideas: DataFrame with IDEAs
+            ra_weights: DataFrame with RA weights
+            rs_weights: DataFrame with RS weights
+
+        Returns:
+            Dictionary with results from all methods
+            {
+                'sainte-lague': DataFrame,
+                'dhondt': DataFrame,
+                'wsjf': DataFrame
+            }
+        """
+        results = {}
+
+        for method in ['sainte-lague', 'dhondt', 'wsjf']:
+            print(f"  → Executing {method.replace('-', ' ').title()} method...")
+
+            # Level 2: By Revenue Stream
+            level2_result = self.prioritize_level2(ideas, ra_weights, method)
+
+            # Level 3: Global
+            level3_result = self.prioritize_level3(level2_result, rs_weights, method)
+
+            results[method] = {
+                'level2': level2_result,
+                'level3': level3_result
+            }
+
+            print(f"    ✓ {method.replace('-', ' ').title()}: {len(level3_result)} IDEAs prioritized")
+
+        return results
+
+    def compare_methods(
+        self,
+        results: Dict[str, Dict[str, pd.DataFrame]],
+        top_n: Optional[int] = None
+    ) -> pd.DataFrame:
+        """
+        Compare results from different methods.
+
+        Args:
+            results: Dictionary with results from all methods
+            top_n: Optional limit to top N results
+
+        Returns:
+            DataFrame comparing ranks across methods
+        """
+        comparison_data = []
+
+        # Get all unique IDEA IDs
+        idea_ids = set()
+        for method_results in results.values():
+            idea_ids.update(method_results['level3']['ID'].tolist())
+
+        for idea_id in idea_ids:
+            row = {'ID': idea_id}
+
+            for method, method_results in results.items():
+                level3_df = method_results['level3']
+                idea_row = level3_df[level3_df['ID'] == idea_id]
+
+                if not idea_row.empty:
+                    rank = idea_row.iloc[0]['GlobalRank']
+                    row[f'{method}_rank'] = rank
+
+                    # Add IDEA details from first method
+                    if 'Name' not in row:
+                        row['Name'] = idea_row.iloc[0]['Name']
+                        row['RevenueStream'] = idea_row.iloc[0]['RevenueStream']
+                        row['RequestingArea'] = idea_row.iloc[0]['RequestingArea']
+                        row['WSJF_Score'] = idea_row.iloc[0].get('WSJF_Score', 0)
+
+        comparison_df = pd.DataFrame(comparison_data)
+
+        # Calculate rank variance
+        rank_columns = [col for col in comparison_df.columns if col.endswith('_rank')]
+        if rank_columns:
+            comparison_df['rank_variance'] = comparison_df[rank_columns].std(axis=1)
+
+        # Sort by average rank
+        if rank_columns:
+            comparison_df['avg_rank'] = comparison_df[rank_columns].mean(axis=1)
+            comparison_df.sort_values('avg_rank', inplace=True)
+
+        if top_n:
+            comparison_df = comparison_df.head(top_n)
+
+        return comparison_df

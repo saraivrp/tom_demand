@@ -1,0 +1,64 @@
+# TOM Demand Management System Configuration
+
+# Organizational Structure
+revenue_streams:
+  - eCommerce
+  - Mail
+  - Fulfilment
+  - Business Solutions
+  - Payments
+  - Retail & Financial Services
+  - Banco CTT
+
+budget_groups:
+  - Commercial
+  - Operations
+  - Corporate
+  - CISO
+  - Data&AI
+  - Technology
+
+# Default values for optional IDEA attributes
+defaults:
+  value: 1
+  urgency: 1
+  risk: 1
+  size: 100
+
+# Validation ranges
+validation:
+  value_range: [1, 10]
+  urgency_range: [1, 10]
+  risk_range: [1, 10]
+  size_min: 1
+
+# Prioritization settings
+prioritization:
+  default_method: sainte-lague  # sainte-lague | dhondt | wsjf
+  auto_normalize_weights: true
+  tie_breaker: priority_ra  # priority_ra | wsjf_score | alphabetical
+
+# Output settings
+output:
+  include_metadata: true
+  decimal_precision: 3
+  date_format: "%Y-%m-%d %H:%M:%S"
+
+# Locale settings (European/Iberia format)
+locale:
+  csv_delimiter: ";"          # Semicolon for European CSV format
+  decimal_separator: ","      # Comma for decimal separator (e.g., 1,23)
+  thousands_separator: "."    # Dot for thousands separator (e.g., 1.000,45)
+
+# Logging
+logging:
+  level: INFO  # DEBUG | INFO | WARNING | ERROR
+  file: tom_demand.log
+  console_output: true
+  log_rotation: true
+  max_log_size_mb: 10
+
+# Performance
+performance:
+  parallel_processing: false
+  chunk_size: 1000

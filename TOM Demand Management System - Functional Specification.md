@@ -2,7 +2,7 @@
   
 # TOM Demand Management System - Functional Specification  
 ## Document Information  
-**Document**: TOM Demand Management System - Functional Specification **Version**: 3.0 **Date**: January 02, 2026 **Author**: Lean Portfolio Management Specialist **Status**: Final - Approved for Implementation  
+**Document**: TOM Demand Management System - Functional Specification**Version**: 3.0**Date**: January 02, 2026**Author**: Lean Portfolio Management Specialist**Status**: Final - Approved for Implementation  
   
 ## Table of Contents  
 1. ++[System Overview](https://claude.ai/chat/c7c29ce8-e8f6-400e-8429-1ad7d1c89a63?setup_intent=seti_1Sl8nIBjIQrRQnuxmM5MY7td&setup_intent_client_secret=seti_1Sl8nIBjIQrRQnuxmM5MY7td_secret_TiZx3ISyMFXuJfMv4rVKfhHXmT8O1nV&source_type=card#1-system-overview)++  
@@ -1023,7 +1023,7 @@ performance:
     * weights_rs_balanced.csv (current: eCommerce 25%)  
     * weights_rs_ecommerce_focus.csv (eCommerce 35%)  
     * weights_rs_mail_focus.csv (Mail 30%)  
-2. Execute for each scenario: for scenario in balanced ecommerce_focus mail_focus; do  
+2. Execute for each scenario:for scenario in balanced ecommerce_focus mail_focus; do  
 3.   python tom_demand.py prioritize \  
 4.     --ideas ideias.csv \  
 5.     --ra-weights weights_ra.csv \  
@@ -1088,14 +1088,14 @@ I4,Analytics,RA2,eCommerce,2,6,5,4,80
 1. Update weights_ra.csv:  
     * Increase Data&AI weight from ~15% to ~35% per RS  
     * Rebalance other BG weights proportionally  
-2. Execute prioritization: python tom_demand.py prioritize \  
+2. Execute prioritization:python tom_demand.py prioritize \  
 3.   --ideas ideias.csv \  
 4.   --ra-weights weights_ra_datai_focus.csv \  
 5.   --rs-weights weights_rs.csv \  
 6.   --method sainte-lague \  
 7.   --output-dir ./output/datai_initiative  
 8.   
-9. Compare with previous prioritization: python tom_demand.py compare \  
+9. Compare with previous prioritization:python tom_demand.py compare \  
 10.   --ideas ideias.csv \  
 11.   --ra-weights weights_ra_previous.csv \  
 12.   --rs-weights weights_rs.csv \  

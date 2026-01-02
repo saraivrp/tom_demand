@@ -1,0 +1,40 @@
+RevenueStream;BudgetGroup;RequestingArea;Weight
+Business Solutions;Commercial;GP B2B;40
+Business Solutions;Data&AI;DAI;9
+Business Solutions;Operations;EDO;1
+Business Solutions;Technology;SI;20
+Business Solutions;CISO;CISO;10
+Business Solutions;Corporate;CF;20
+eCommerce;Commercial;GP ECL;35
+eCommerce;Data&AI;DAI;10
+eCommerce;Operations;EDO;20
+eCommerce;Technology;SI;20
+eCommerce;CISO;CISO;5
+eCommerce;Corporate;CF;10
+Fulfilment;Commercial;GP ECL;35
+Fulfilment;Data&AI;DAI;10
+Fulfilment;Operations;EDO;20
+Fulfilment;Technology;SI;20
+Fulfilment;CISO;CISO;5
+Fulfilment;Corporate;CF;10
+Mail;Commercial;GP B2B;35
+Mail;Data&AI;DAI;10
+Mail;Operations;EDO;10
+Mail;Operations;SEO;10
+Mail;Technology;SI;20
+Mail;CISO;CISO;5
+Mail;Corporate;CF;8
+Mail;Corporate;BCTT;1
+Mail;Corporate;GRH;1
+Payments;Commercial;GPG;35
+Payments;Data&AI;DAI;10
+Payments;Operations;EDO;20
+Payments;Technology;SI;20
+Payments;CISO;CISO;5
+Payments;Corporate;CF;10
+Retail & Financial Services;Commercial;GP B2C;35
+Retail & Financial Services;Data&AI;DAI;10
+Retail & Financial Services;Operations;EDO;20
+Retail & Financial Services;Technology;SI;20
+Retail & Financial Services;CISO;CISO;5
+Retail & Financial Services;Corporate;CF;10
