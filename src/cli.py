@@ -49,40 +49,59 @@ def prioritize(ideas, ra_weights, rs_weights, method, all_methods, output_dir, c
 
     try:
         click.echo("=" * 60)
-        click.echo("TOM Demand Management System - Prioritization")
+        click.echo("TOM Demand Management System - Queue-Based Prioritization")
         click.echo("=" * 60)
         click.echo()
 
         # Initialize components
         loader = Loader(config)
-        prioritizer = Prioritizer()
+        prioritizer = Prioritizer(config)
         exporter = Exporter(config)
 
         # Load data
         ideas_df, ra_weights_df, rs_weights_df = loader.load_all(ideas, ra_weights, rs_weights)
 
+        # Display summary with queue distribution
         click.echo(f"Summary:")
         click.echo(f"  - Total IDEAs: {len(ideas_df)}")
         click.echo(f"  - Requesting Areas: {ideas_df['RequestingArea'].nunique()}")
         click.echo(f"  - Revenue Streams: {ideas_df['RevenueStream'].nunique()}")
         click.echo()
 
+        # Display queue distribution if Queue column exists
+        if 'Queue' in ideas_df.columns:
+            click.echo(f"Queue Distribution:")
+            for queue_name in ['NOW', 'NEXT', 'PRODUCTION']:
+                count = len(ideas_df[ideas_df['Queue'] == queue_name])
+                if count > 0:
+                    click.echo(f"  - {queue_name}: {count} IDEAs")
+            click.echo()
+
         # Execute prioritization
-        click.echo("Starting prioritization process...")
+        click.echo("Starting queue-based prioritization process...")
 
         if all_methods:
             click.echo("  → Executing all methods (Sainte-Laguë, D'Hondt, WSJF)")
-            results = prioritizer.prioritize_all_methods(ideas_df, ra_weights_df, rs_weights_df)
+            results = prioritizer.prioritize_all_methods_with_queues(ideas_df, ra_weights_df, rs_weights_df)
         else:
             click.echo(f"  → Executing {method.replace('-', ' ').title()} method")
-            level2_result = prioritizer.prioritize_level2(ideas_df, ra_weights_df, method)
-            level3_result = prioritizer.prioritize_level3(level2_result, rs_weights_df, method)
-            results = {method: {'level2': level2_result, 'level3': level3_result}}
+            combined_result = prioritizer.prioritize_with_queues(ideas_df, ra_weights_df, rs_weights_df, method)
+            results = {
+                method: {
+                    'level2': combined_result[combined_result['Queue'] != 'PRODUCTION'].copy(),
+                    'level3': combined_result
+                }
+            }
 
         click.echo("✓ Prioritization complete")
         click.echo()
 
         # Export results
+        queue_stats = {}
+        if 'Queue' in ideas_df.columns:
+            for queue_name in ['NOW', 'NEXT', 'PRODUCTION']:
+                queue_stats[f'{queue_name.lower()}_queue'] = len(ideas_df[ideas_df['Queue'] == queue_name])
+
         execution_params = {
             'input_files': {
                 'ideas': ideas,
@@ -91,10 +110,12 @@ def prioritize(ideas, ra_weights, rs_weights, method, all_methods, output_dir, c
             },
             'output_directory': output_dir,
             'methods_executed': list(results.keys()),
+            'queue_mode': 'sequential',
             'statistics': {
                 'total_ideas': len(ideas_df),
                 'total_requesting_areas': ideas_df['RequestingArea'].nunique(),
-                'total_revenue_streams': ideas_df['RevenueStream'].nunique()
+                'total_revenue_streams': ideas_df['RevenueStream'].nunique(),
+                **queue_stats
             }
         }
 

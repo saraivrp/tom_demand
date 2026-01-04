@@ -24,6 +24,7 @@ defaults:
   urgency: 1
   risk: 1
   size: 100
+  micro_phase: Backlog  # Default phase if not specified
 
 # Validation ranges
 validation:
@@ -31,12 +32,66 @@ validation:
   urgency_range: [1, 10]
   risk_range: [1, 10]
   size_min: 1
+  valid_micro_phases:
+    # Need phase
+    - Backlog
+    - In Definition
+    - Pitch
+    - Ready for Solution
+    # Solution phase
+    - High Level Design
+    - Ready for Approval
+    - In Approval
+    - Ready for Execution
+    # Development phase
+    - In Development
+    - Ready for Acceptance
+    - In Acceptance
+    - Selected for Production
+    # Production phase
+    - In Rollout
+    - In Production
+
+# Queue definitions for phase-based separation
+queues:
+  NOW:
+    description: "IDEAs in development phase (highest priority)"
+    micro_phases:
+      - In Development
+      - Ready for Acceptance
+      - In Acceptance
+      - Selected for Production
+    prioritize: true
+    rank_offset: 0  # NOW starts at rank 1 (most important)
+
+  NEXT:
+    description: "IDEAs in planning phases (Need + Solution)"
+    micro_phases:
+      - Backlog
+      - In Definition
+      - Pitch
+      - Ready for Solution
+      - High Level Design
+      - Ready for Approval
+      - In Approval
+      - Ready for Execution
+    prioritize: true
+    rank_offset: auto  # NEXT ranks continue after NOW (NOW_max + 1)
+
+  PRODUCTION:
+    description: "IDEAs already in production"
+    micro_phases:
+      - In Rollout
+      - In Production
+    prioritize: false  # No ranking for production items
+    rank_value: null
 
 # Prioritization settings
 prioritization:
   default_method: sainte-lague  # sainte-lague | dhondt | wsjf
   auto_normalize_weights: true
   tie_breaker: priority_ra  # priority_ra | wsjf_score | alphabetical
+  queue_mode: sequential  # sequential: NOW ranks 1-N (highest priority), NEXT ranks N+1-M, PRODUCTION unranked
 
 # Output settings
 output:

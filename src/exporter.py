@@ -53,8 +53,8 @@ class Exporter:
         """
         # Select and order columns for output
         output_columns = [
-            'RevenueStream', 'Method', 'Rank_RS', 'ID', 'Name',
-            'RequestingArea', 'BudgetGroup', 'WSJF_Score',
+            'Queue', 'RevenueStream', 'Method', 'Rank_RS', 'ID', 'Name',
+            'RequestingArea', 'BudgetGroup', 'MicroPhase', 'WSJF_Score',
             'Value', 'Urgency', 'Risk', 'Size'
         ]
 
@@ -94,9 +94,9 @@ class Exporter:
         """
         # Select and order columns for output
         output_columns = [
-            'Method', 'GlobalRank', 'ID', 'Name',
+            'Queue', 'Method', 'GlobalRank', 'ID', 'Name',
             'RequestingArea', 'RevenueStream', 'BudgetGroup',
-            'PriorityRA', 'WSJF_Score',
+            'MicroPhase', 'PriorityRA', 'WSJF_Score',
             'Value', 'Urgency', 'Risk', 'Size'
         ]
 
@@ -110,8 +110,19 @@ class Exporter:
         if 'WSJF_Score' in output_df.columns:
             output_df['WSJF_Score'] = output_df['WSJF_Score'].round(precision)
 
-        # Sort by Method and GlobalRank
-        output_df.sort_values(['Method', 'GlobalRank'], inplace=True)
+        # Sort by Queue order (NOW, NEXT, PRODUCTION) then Method and GlobalRank
+        if 'Queue' in output_df.columns:
+            queue_order = {'NOW': 0, 'NEXT': 1, 'PRODUCTION': 2}
+            output_df['_queue_sort'] = output_df['Queue'].map(queue_order)
+            output_df.sort_values(
+                ['Method', '_queue_sort', 'GlobalRank'],
+                na_position='last',
+                inplace=True
+            )
+            output_df.drop('_queue_sort', axis=1, inplace=True)
+        else:
+            # Fallback to original sorting
+            output_df.sort_values(['Method', 'GlobalRank'], inplace=True)
 
         # Ensure output directory exists
         os.makedirs(os.path.dirname(filepath), exist_ok=True)

@@ -1,8 +1,13 @@
   
   
-# TOM Demand Management System - Functional Specification  
-## Document Information  
-**Document**: TOM Demand Management System - Functional Specification**Version**: 3.0**Date**: January 02, 2026**Author**: Lean Portfolio Management Specialist**Status**: Final - Approved for Implementation  
+# TOM Demand Management System - Functional Specification
+## Document Information
+**Document**: TOM Demand Management System - Functional Specification
+**Version**: 3.1
+**Date**: January 04, 2026
+**Author**: Lean Portfolio Management Specialist
+**Status**: Final - Approved for Implementation
+**Change Log**: v3.1 - Added Queue-Based Sequential Prioritization (NOW/NEXT/PRODUCTION)  
   
 ## Table of Contents  
 1. ++[System Overview](https://claude.ai/chat/c7c29ce8-e8f6-400e-8429-1ad7d1c89a63?setup_intent=seti_1Sl8nIBjIQrRQnuxmM5MY7td&setup_intent_client_secret=seti_1Sl8nIBjIQrRQnuxmM5MY7td_secret_TiZx3ISyMFXuJfMv4rVKfhHXmT8O1nV&source_type=card#1-system-overview)++  
@@ -27,12 +32,14 @@ Implement a demand prioritization system for CTT (Portuguese Post) based on thre
 * **Transparency**: Clear visibility of prioritization criteria at all levels  
 * **Decentralization with alignment**: Area autonomy with strategic alignment  
 * **Value-driven**: Focus on business value delivered  
-## 1.3 Key Features  
-* Multi-level prioritization (Requesting Area → Revenue Stream → Global)  
-* Three distinct allocation algorithms with different characteristics  
-* CSV-based input/output for easy integration  
-* Automated weight normalization  
-* Comprehensive validation engine  
+## 1.3 Key Features
+* Multi-level prioritization (Requesting Area → Revenue Stream → Global)
+* Three distinct allocation algorithms with different characteristics
+* **Queue-based sequential prioritization** (NOW → NEXT → PRODUCTION)
+* **Integration with BusinessMap lifecycle phases**
+* CSV-based input/output for easy integration
+* Automated weight normalization
+* Comprehensive validation engine
 * Audit trail and logging  
   
 ## 2. Target Operating Model (TOM) Structure  
@@ -85,13 +92,85 @@ All Revenue Streams share the same 6 Budget Groups:
 | Solution | In Definition → High Level Design → Ready for Approval → In Approval → Ready for Execution |
 | Development | In Development → Ready for Acceptance → In Acceptance → Selected for Production |
 | Production | In Rollout → In Production |
-  
-**Note**: IDEAs are created in **Backlog** phase and progress through quality gates.  
-  
+
+**Note**: IDEAs are created in **Backlog** phase and progress through quality gates.
+
+## 2.5 Queue-Based Prioritization (v3.1)
+
+The system implements **sequential queue-based prioritization** that separates IDEAs by their lifecycle stage, ensuring development work is prioritized over planning work.
+
+### 2.5.1 Queue Definitions
+
+**Queue Priority Order** (highest to lowest priority):
+
+1. **NOW Queue** (Development Phase)
+   - **Priority**: Highest (Ranks 1 to N)
+   - **Purpose**: Active development work that must be completed
+   - **Micro Phases**:
+     - In Development
+     - Ready for Acceptance
+     - In Acceptance
+     - Selected for Production
+   - **Rationale**: Work-in-progress should be finished before starting new initiatives (Lean WIP limits)
+
+2. **NEXT Queue** (Planning Phases - Need + Solution)
+   - **Priority**: Lower (Ranks N+1 to M)
+   - **Purpose**: Future work being defined and designed
+   - **Micro Phases**:
+     - Backlog
+     - In Definition (Need)
+     - Pitch
+     - Ready for Solution
+     - High Level Design
+     - Ready for Approval
+     - In Approval
+     - Ready for Execution
+   - **Rationale**: Planning work is important but secondary to completing active development
+
+3. **PRODUCTION Queue**
+   - **Priority**: No ranking (null rank)
+   - **Purpose**: Tracking deployed solutions
+   - **Micro Phases**:
+     - In Rollout
+     - In Production
+   - **Rationale**: Already delivered, no prioritization needed
+
+### 2.5.2 Sequential Ranking Logic
+
+The system applies sequential ranking across queues:
+
+```
+Example with 8 NOW items and 10 NEXT items:
+
+NOW Queue:
+  Rank 1: IDEA002 - Checkout Optimization (In Development)
+  Rank 2: IDEA003 - Mail Sorting Automation (In Acceptance)
+  ...
+  Rank 8: IDEA005 - Mobile Payment System (In Development)
+
+NEXT Queue:
+  Rank 9: IDEA006 - Customer Portal Enhancement (Backlog)
+  Rank 10: IDEA009 - Mail API Integration (High Level Design)
+  ...
+  Rank 18: IDEA019 - Retail Customer Experience (Pitch)
+
+PRODUCTION Queue:
+  (No Rank): IDEA001 - New eCommerce Portal (In Production)
+  (No Rank): IDEA012 - Banco CTT Mobile App (In Rollout)
+```
+
+### 2.5.3 Benefits
+
+* **Finish Before Starting**: Encourages completion of active work before new initiatives
+* **Clear Priorities**: Teams know development work takes precedence
+* **Lean Compliance**: Limits Work-In-Progress (WIP) by prioritizing completion
+* **Visibility**: Clear separation between active development and future planning
+* **Alignment with BusinessMap**: Direct integration with portfolio tool lifecycle
+
 ## 3. Data Model  
-## 3.1 Entity: IDEA  
-An IDEA represents a development request created by a Requesting Area.  
-**Mandatory Attributes**  
+## 3.1 Entity: IDEA
+An IDEA represents a development request created by a Requesting Area.
+**Mandatory Attributes**
 
 | Attribute      | Type   | Description                          |
 | -------------- | ------ | ------------------------------------ |
@@ -100,28 +179,35 @@ An IDEA represents a development request created by a Requesting Area.
 | RequestingArea | string | Requesting direction/department (RA) |
 | RevenueStream  | string | Target Revenue Stream                |
 | BudgetGroup    | string | Associated Budget Group              |
-  
-**Optional Attributes with Defaults**  
 
-| Attribute | Type | Default | Range | Description |
-| --------- | ------- | ------- | ----- | -------------------------------------- |
-| Value | float | 1 | 1-10 | Expected business value |
-| Urgency | float | 1 | 1-10 | Time criticality |
-| Risk | float | 1 | 1-10 | Risk reduction/compliance |
-| Size | integer | 100 | > 0 | Estimated size (story points or hours) |
-  
-**Calculated Attributes**  
+**Optional Attributes with Defaults**
 
-| Attribute | Type | Description |
-| --------------------------- | ------- | -------------------------------------------- |
-| PriorityRA | integer | Priority within Requesting Area (1 to N) |
-| WSJF_Score | float | WSJF score = (Value + Urgency + Risk) / Size |
-| Priority_SainteLague_RS | integer | Sainte-Laguë rank within Revenue Stream |
-| Priority_DHondt_RS | integer | D'Hondt rank within Revenue Stream |
-| Priority_WSJF_RS | integer | WSJF rank within Revenue Stream |
-| Priority_SainteLague_Global | integer | Sainte-Laguë global rank |
-| Priority_DHondt_Global | integer | D'Hondt global rank |
-| Priority_WSJF_Global | integer | WSJF global rank |
+| Attribute  | Type    | Default  | Range           | Description                                |
+| ---------- | ------- | -------- | --------------- | ------------------------------------------ |
+| Value      | float   | 1        | 1-10            | Expected business value                    |
+| Urgency    | float   | 1        | 1-10            | Time criticality                           |
+| Risk       | float   | 1        | 1-10            | Risk reduction/compliance                  |
+| Size       | integer | 100      | > 0             | Estimated size (story points or hours)     |
+| MicroPhase | string  | Backlog  | See section 2.4 | Current micro phase from BusinessMap       |
+
+**Auto-Generated Attributes (v3.1)**
+
+| Attribute | Type   | Description                                                     |
+| --------- | ------ | --------------------------------------------------------------- |
+| Queue     | string | Auto-assigned queue (NOW/NEXT/PRODUCTION) based on MicroPhase  |
+  
+**Calculated Attributes**
+
+| Attribute                   | Type    | Description                                                                 |
+| --------------------------- | ------- | --------------------------------------------------------------------------- |
+| PriorityRA                  | integer | Priority within Requesting Area (1 to N)                                   |
+| WSJF_Score                  | float   | WSJF score = (Value + Urgency + Risk) / Size                               |
+| Priority_SainteLague_RS     | integer | Sainte-Laguë rank within Revenue Stream                                    |
+| Priority_DHondt_RS          | integer | D'Hondt rank within Revenue Stream                                         |
+| Priority_WSJF_RS            | integer | WSJF rank within Revenue Stream                                            |
+| Priority_SainteLague_Global | integer | Sainte-Laguë global rank (sequential: NOW 1-N, NEXT N+1-M, PRODUCTION null)|
+| Priority_DHondt_Global      | integer | D'Hondt global rank (sequential: NOW 1-N, NEXT N+1-M, PRODUCTION null)     |
+| Priority_WSJF_Global        | integer | WSJF global rank (sequential: NOW 1-N, NEXT N+1-M, PRODUCTION null)        |
   
 ****3.2 Weight Structures****  
 **Requesting Area Weights (Level 2)**  
@@ -288,25 +374,26 @@ Each direction (Requesting Area) individually.
     * Execution capacity  
 2. Assigns sequential priority: 1, 2, 3, ..., N  
 3. Defines values for Value, Urgency, Risk, Size (optional)  
-**Output**  
-**File**: ideias.csv  
+**Output**
+**File**: ideias.csv
 ```
-ID,Name,RequestingArea,RevenueStream,BudgetGroup,PriorityRA,Value,Urgency,Risk,Size
-IDEA001,New eCommerce Portal,DIR_eCommerce_Commercial,eCommerce,Commercial,1,9,8,5,250
-IDEA002,Checkout Optimization,DIR_eCommerce_Commercial,eCommerce,Commercial,2,7,9,3,100
-IDEA003,Mail Sorting Automation,DIR_Mail_Operations,Mail,Operations,1,8,10,7,300
-IDEA004,ML Recommendations,DIR_DataAI,eCommerce,Data&AI,1,8,7,6,140
-IDEA005,Mobile Payment System,DIR_Payments_Tech,Payments,Technology,1,7,9,6,180
+ID;Name;RequestingArea;RevenueStream;BudgetGroup;MicroPhase;PriorityRA;Value;Urgency;Risk;Size
+IDEA001;New eCommerce Portal;DIR_eCommerce_Commercial;eCommerce;Commercial;In Production;1;9;8;5;250
+IDEA002;Checkout Optimization;DIR_eCommerce_Commercial;eCommerce;Commercial;In Development;2;7;9;3;100
+IDEA003;Mail Sorting Automation;DIR_Mail_Operations;Mail;Operations;In Acceptance;1;8;10;7;300
+IDEA004;ML Recommendations;DIR_DataAI;eCommerce;Data&AI;Ready for Execution;1;8;7;6;140
+IDEA005;Mobile Payment System;DIR_Payments_Tech;Payments;Technology;In Development;1;7;9;6;180
 ...
 
 ```
-**Validations**  
-* All mandatory fields filled  
-* PriorityRA sequential within each RA (no gaps)  
-* Value, Urgency, Risk between 1-10  
-* Size > 0  
-* RevenueStream valid (one of 7 defined)  
-* BudgetGroup valid (one of 6 defined)  
+**Validations**
+* All mandatory fields filled
+* PriorityRA sequential within each RA (no gaps)
+* Value, Urgency, Risk between 1-10
+* Size > 0
+* RevenueStream valid (one of 7 defined)
+* BudgetGroup valid (one of 6 defined)
+* **MicroPhase valid** (v3.1) - one of 18 defined phases (see section 2.4)  
 **Notes**  
 * This level is performed **outside the system** to be built  
 * The system receives ideias.csv as input  
@@ -343,42 +430,51 @@ Mail,SainteLague,1,IDEA003,Mail Sorting Automation,DIR_Mail_Operations,Operation
 * All IDEAs from the RS represented  
 * Sequential rankings without gaps  
 * Weights of RAs sum to 100 per RS (or normalize automatically)  
-## 5.3 Level 3: Global CTT Prioritization  
-**Inputs**  
-* prioritization_rs.csv (from Level 2)  
-* weights_rs.csv (Revenue Stream weights)  
-**Process**  
-1. Load RS prioritization and RS weights  
-2. For each method (Sainte-Laguë, D'Hondt, WSJF):  
-    * Apply algorithm using RS as "parties" with their weights  
-    * Generate single global ranking  
-3. Consolidate results  
-**Output**  
-**File**: demand.csv  
+## 5.3 Level 3: Global CTT Prioritization (with Queue-Based Ranking v3.1)
+**Inputs**
+* prioritization_rs.csv (from Level 2)
+* weights_rs.csv (Revenue Stream weights)
+**Process**
+1. Load RS prioritization and RS weights
+2. **Determine Queue** for each IDEA based on MicroPhase (v3.1):
+   * NOW queue: Development phases (In Development, Ready for Acceptance, In Acceptance, Selected for Production)
+   * NEXT queue: Planning phases (Need + Solution phases)
+   * PRODUCTION queue: Production phases (In Rollout, In Production)
+3. For each method (Sainte-Laguë, D'Hondt, WSJF):
+   * **Process NOW queue first** → Ranks 1 to N (highest priority)
+   * **Process NEXT queue second** → Ranks N+1 to M (lower priority)
+   * **Process PRODUCTION queue** → No ranking (null)
+4. Consolidate results with sequential global ranking
+
+**Output**
+**File**: demand.csv
 ```
-Method,GlobalRank,ID,Name,RequestingArea,RevenueStream,BudgetGroup,PriorityRA,WSJF_Score,Value,Urgency,Risk,Size
-SainteLague,1,IDEA001,New eCommerce Portal,DIR_eCommerce_Commercial,eCommerce,Commercial,1,0.088,9,8,5,250
-SainteLague,2,IDEA003,Mail Sorting Automation,DIR_Mail_Operations,Mail,Operations,1,0.083,8,10,7,300
-SainteLague,3,IDEA005,Mobile Payment System,DIR_Payments_Tech,Payments,Technology,1,0.122,7,9,6,180
-SainteLague,4,IDEA004,ML Recommendations,DIR_DataAI,eCommerce,Data&AI,1,0.150,8,7,6,140
-SainteLague,5,IDEA002,Checkout Optimization,DIR_eCommerce_Commercial,eCommerce,Commercial,2,0.190,7,9,3,100
-DHondt,1,IDEA001,New eCommerce Portal,DIR_eCommerce_Commercial,eCommerce,Commercial,1,0.088,9,8,5,250
-DHondt,2,IDEA002,Checkout Optimization,DIR_eCommerce_Commercial,eCommerce,Commercial,2,0.190,7,9,3,100
-DHondt,3,IDEA003,Mail Sorting Automation,DIR_Mail_Operations,Mail,Operations,1,0.083,8,10,7,300
-DHondt,4,IDEA004,ML Recommendations,DIR_DataAI,eCommerce,Data&AI,1,0.150,8,7,6,140
-DHondt,5,IDEA005,Mobile Payment System,DIR_Payments_Tech,Payments,Technology,1,0.122,7,9,6,180
-WSJF,1,IDEA002,Checkout Optimization,DIR_eCommerce_Commercial,eCommerce,Commercial,2,0.190,7,9,3,100
-WSJF,2,IDEA004,ML Recommendations,DIR_DataAI,eCommerce,Data&AI,1,0.150,8,7,6,140
-WSJF,3,IDEA005,Mobile Payment System,DIR_Payments_Tech,Payments,Technology,1,0.122,7,9,6,180
-WSJF,4,IDEA001,New eCommerce Portal,DIR_eCommerce_Commercial,eCommerce,Commercial,1,0.088,9,8,5,250
-WSJF,5,IDEA003,Mail Sorting Automation,DIR_Mail_Operations,Mail,Operations,1,0.083,8,10,7,300
+Queue;Method;GlobalRank;ID;Name;RequestingArea;RevenueStream;BudgetGroup;MicroPhase;PriorityRA;WSJF_Score;Value;Urgency;Risk;Size
+NOW;SainteLague;1;IDEA002;Checkout Optimization;DIR_eCommerce_Commercial;eCommerce;Commercial;In Development;2;0,190;7;9;3;100
+NOW;SainteLague;2;IDEA003;Mail Sorting Automation;DIR_Mail_Operations;Mail;Operations;In Acceptance;1;0,083;8;10;7;300
+NOW;SainteLague;3;IDEA005;Mobile Payment System;DIR_Payments_Tech;Payments;Technology;In Development;1;0,122;7;9;6;180
+...
+NOW;SainteLague;8;IDEA007;Fulfilment Tracking;DIR_Fulfilment_Ops;Fulfilment;Operations;Ready for Acceptance;1;0,115;8;8;7;200
+NEXT;SainteLague;9;IDEA004;ML Recommendations;DIR_DataAI;eCommerce;Data&AI;Ready for Execution;1;0,150;8;7;6;140
+NEXT;SainteLague;10;IDEA006;Customer Portal;DIR_eCommerce_Commercial;eCommerce;Commercial;Backlog;3;0,142;6;7;4;120
+...
+NEXT;SainteLague;18;IDEA019;Retail Customer Experience;DIR_Retail_Commercial;Retail & Financial Services;Commercial;Pitch;1;0,111;7;8;5;180
+PRODUCTION;sainte-lague;;IDEA001;New eCommerce Portal;DIR_eCommerce_Commercial;eCommerce;Commercial;In Production;1;;9;8;5;250
+PRODUCTION;sainte-lague;;IDEA012;Banco CTT Mobile App;DIR_Banco_Tech;Banco CTT;Technology;In Rollout;1;;8;9;7;280
 ...
 
 ```
-**Validations**  
-* Global rankings sequential (1 to N) per method  
-* All IDEAs represented in each method  
-* Weights of RS sum to 100 (or normalize automatically)  
+**Validations**
+* NOW queue: Global rankings sequential (1 to N) per method
+* NEXT queue: Global rankings sequential (N+1 to M) per method
+* PRODUCTION queue: No ranking (GlobalRank is null)
+* All IDEAs represented in each method
+* Weights of RS sum to 100 (or normalize automatically)
+
+**Sequential Ranking Logic (v3.1)**
+* Development work (NOW) always ranks higher than planning work (NEXT)
+* Within each queue, standard prioritization algorithms apply
+* PRODUCTION items are tracked but not prioritized  
   
 ## 6. Functional Specification  
 ## 6.1 System Architecture  
@@ -1464,10 +1560,15 @@ def prioritize_level2(
 | Quality Gate | Decision point between delivery phases |
 | Quotient | Calculated value for determining proportional allocation |
 | Seat | Metaphor for priority position in allocation algorithms |
-| **Cost of Delay |  |
-  
-  
-(CoD)** | Economic impact of delaying work | | **Story Point (SP)** | Unit of effort estimation | | **PI (Program Increment)** | Fixed timebox in SAFe (typically 8-12 weeks) |  
+| **MicroPhase (v3.1)** | Specific lifecycle stage from BusinessMap (e.g., "In Development", "Backlog") |
+| **Queue (v3.1)** | Category for sequential prioritization (NOW, NEXT, or PRODUCTION) |
+| **NOW Queue (v3.1)** | Highest priority queue containing IDEAs in Development phase (ranks 1-N) |
+| **NEXT Queue (v3.1)** | Lower priority queue containing IDEAs in Planning phases (ranks N+1-M) |
+| **PRODUCTION Queue (v3.1)** | No-priority queue for deployed IDEAs (no ranking) |
+| **Sequential Ranking (v3.1)** | Ranking system where NOW items rank before NEXT items, enforcing "finish before start" |
+| **Cost of Delay (CoD)** | Economic impact of delaying work |
+| **Story Point (SP)** | Unit of effort estimation |
+| **PI (Program Increment)** | Fixed timebox in SAFe (typically 8-12 weeks) |  
   
 ## 12. Appendices  
 ## Appendix A: Mathematical Formulas  

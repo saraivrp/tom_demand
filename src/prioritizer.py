@@ -7,6 +7,8 @@ at both Level 2 (by Revenue Stream) and Level 3 (Global).
 
 from typing import Dict, List, Optional
 import pandas as pd
+import yaml
+import os
 from algorithms.sainte_lague import sainte_lague_allocate
 from algorithms.dhondt import dhondt_allocate
 from algorithms.wsjf import wsjf_prioritize, calculate_wsjf
@@ -15,9 +17,22 @@ from algorithms.wsjf import wsjf_prioritize, calculate_wsjf
 class Prioritizer:
     """Execute prioritization algorithms at different levels."""
 
-    def __init__(self):
-        """Initialize the prioritizer."""
-        pass
+    def __init__(self, config_path: Optional[str] = None):
+        """
+        Initialize the prioritizer.
+
+        Args:
+            config_path: Path to config.yaml file. If None, uses default config.
+        """
+        if config_path is None:
+            # Use default config path
+            base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            config_path = os.path.join(base_dir, 'config', 'config.yaml')
+
+        with open(config_path, 'r') as f:
+            self.config = yaml.safe_load(f)
+
+        self.queues = self.config.get('queues', {})
 
     def prioritize_level2(
         self,
@@ -254,3 +269,118 @@ class Prioritizer:
             comparison_df = comparison_df.head(top_n)
 
         return comparison_df
+
+    def prioritize_with_queues(
+        self,
+        ideas: pd.DataFrame,
+        ra_weights: pd.DataFrame,
+        rs_weights: pd.DataFrame,
+        method: str = 'sainte-lague'
+    ) -> pd.DataFrame:
+        """
+        Prioritize IDEAs with queue-based sequential ranking.
+
+        - NOW queue: ranks 1 to N (highest priority - development work)
+        - NEXT queue: ranks N+1 to M (lower priority - planning work)
+        - PRODUCTION: no ranking (null)
+
+        Args:
+            ideas: DataFrame with all IDEAs (including Queue column)
+            ra_weights: RA weights
+            rs_weights: RS weights
+            method: Prioritization method
+
+        Returns:
+            Combined DataFrame with sequential global ranking
+        """
+        all_results = []
+        current_rank_offset = 0
+
+        # Process queues in order: NOW → NEXT → PRODUCTION
+        queue_order = ['NOW', 'NEXT', 'PRODUCTION']
+
+        for queue_name in queue_order:
+            if queue_name not in self.queues:
+                continue
+
+            queue_config = self.queues[queue_name]
+
+            # Filter IDEAs for this queue
+            queue_ideas = ideas[ideas['Queue'] == queue_name].copy()
+
+            if len(queue_ideas) == 0:
+                print(f"  ⚠ No IDEAs in {queue_name} queue")
+                continue
+
+            print(f"  → Processing {queue_name} queue: {len(queue_ideas)} IDEAs")
+
+            # Check if this queue should be prioritized
+            if not queue_config.get('prioritize', True):
+                # PRODUCTION: No ranking
+                queue_ideas['GlobalRank'] = None
+                queue_ideas['Rank_RS'] = None
+                queue_ideas['Method'] = method
+                all_results.append(queue_ideas)
+                print(f"    ✓ {queue_name}: No ranking (production items)")
+                continue
+
+            # Execute prioritization
+            level2_result = self.prioritize_level2(queue_ideas, ra_weights, method)
+            level3_result = self.prioritize_level3(level2_result, rs_weights, method)
+
+            # Apply rank offset for sequential ranking
+            if current_rank_offset > 0:
+                level3_result['GlobalRank'] = level3_result['GlobalRank'] + current_rank_offset
+
+            # Update offset for next queue
+            current_rank_offset = level3_result['GlobalRank'].max()
+
+            all_results.append(level3_result)
+            print(f"    ✓ {queue_name}: Ranks {int(level3_result['GlobalRank'].min())}-{int(level3_result['GlobalRank'].max())}")
+
+        # Combine all results
+        if not all_results:
+            raise ValueError("No IDEAs to prioritize across all queues")
+
+        combined_df = pd.concat(all_results, ignore_index=True)
+
+        # Sort by GlobalRank (nulls last)
+        combined_df.sort_values('GlobalRank', na_position='last', inplace=True)
+
+        return combined_df
+
+    def prioritize_all_methods_with_queues(
+        self,
+        ideas: pd.DataFrame,
+        ra_weights: pd.DataFrame,
+        rs_weights: pd.DataFrame
+    ) -> Dict[str, Dict[str, pd.DataFrame]]:
+        """
+        Execute all three methods with queue-based ranking.
+
+        Args:
+            ideas: DataFrame with all IDEAs (including Queue column)
+            ra_weights: RA weights
+            rs_weights: RS weights
+
+        Returns:
+            Dictionary with results from all methods
+        """
+        results = {}
+
+        for method in ['sainte-lague', 'dhondt', 'wsjf']:
+            print(f"  → Executing {method.replace('-', ' ').title()} method...")
+
+            combined_result = self.prioritize_with_queues(
+                ideas, ra_weights, rs_weights, method
+            )
+
+            # Split back into level2 and level3 for export compatibility
+            results[method] = {
+                'level2': combined_result[combined_result['Queue'] != 'PRODUCTION'].copy(),
+                'level3': combined_result
+            }
+
+            print(f"    ✓ {method.replace('-', ' ').title()}: {len(combined_result)} IDEAs processed")
+
+        return results

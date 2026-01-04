@@ -36,11 +36,27 @@ class Loader:
 
         self.validator = Validator(config_path)
         self.defaults = self.config['defaults']
+        self.queues = self.config.get('queues', {})
 
         # Get locale settings for European CSV format
         self.locale = self.config.get('locale', {})
         self.csv_delimiter = self.locale.get('csv_delimiter', ';')
         self.decimal_separator = self.locale.get('decimal_separator', ',')
+
+    def _determine_queue(self, micro_phase: str) -> str:
+        """
+        Determine queue (NEXT/NOW/PRODUCTION) based on micro phase.
+
+        Args:
+            micro_phase: The micro phase of the IDEA
+
+        Returns:
+            Queue name (NEXT, NOW, or PRODUCTION)
+        """
+        for queue_name, queue_config in self.queues.items():
+            if micro_phase in queue_config.get('micro_phases', []):
+                return queue_name
+        return 'UNKNOWN'  # Will be caught by validation
 
     def load_ideas(self, filepath: str) -> pd.DataFrame:
         """
@@ -84,6 +100,15 @@ class Loader:
             df['Size'] = self.defaults['size']
         elif df['Size'].isna().any():
             df['Size'] = df['Size'].fillna(self.defaults['size'])
+
+        # Add default MicroPhase if not present
+        if 'MicroPhase' not in df.columns:
+            df['MicroPhase'] = self.defaults.get('micro_phase', 'Backlog')
+        elif df['MicroPhase'].isna().any():
+            df['MicroPhase'] = df['MicroPhase'].fillna(self.defaults.get('micro_phase', 'Backlog'))
+
+        # Determine Queue based on MicroPhase
+        df['Queue'] = df['MicroPhase'].apply(self._determine_queue)
 
         # Validate the dataframe
         validation_result = self.validator.validate_ideas(df)

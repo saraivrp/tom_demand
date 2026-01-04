@@ -149,6 +149,20 @@ class Validator:
                         f"IDEA {row['ID']}: Size={row['Size']} must be >= {size_min}"
                     )
 
+        # Validate MicroPhase field
+        if 'MicroPhase' not in df.columns:
+            warnings.append("MicroPhase column missing - will use default 'Backlog'")
+        else:
+            valid_phases = self.validation_config.get('valid_micro_phases', [])
+            if valid_phases:
+                invalid_phases_mask = ~df['MicroPhase'].isin(valid_phases)
+                if invalid_phases_mask.any():
+                    invalid_phase_values = df[invalid_phases_mask]['MicroPhase'].unique().tolist()
+                    errors.append(
+                        f"Invalid MicroPhase values found: {', '.join(map(str, invalid_phase_values))}. "
+                        f"Valid phases: {', '.join(valid_phases)}"
+                    )
+
         # Check referential integrity with RA weights if provided
         if ra_weights is not None:
             valid_ras = ra_weights['RequestingArea'].unique()
