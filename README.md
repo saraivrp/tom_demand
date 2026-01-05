@@ -47,7 +47,7 @@ ID;Name;RevenueStream;WSJF_Score
 IDEA001;New eCommerce Portal;eCommerce;0,088
 ```
 
-The European format is configured in [config/config.yaml](config/config.yaml) and can be modified if needed. See [EUROPEAN_FORMAT.md](EUROPEAN_FORMAT.md) for detailed information.
+The European format is configured in [config/config.yaml](config/config.yaml) and can be modified if needed. See [docs/EUROPEAN_FORMAT.md](docs/EUROPEAN_FORMAT.md) for detailed information.
 
 ## Installation
 
@@ -123,7 +123,9 @@ tom_demand/
 ## Documentation
 
 - [USAGE_GUIDE.md](USAGE_GUIDE.md) - Detailed usage instructions
-- [TOM Demand Management System - Functional Specification.md](TOM%20Demand%20Management%20System%20-%20Functional%20Specification.md) - Complete specification
+- [docs/TOM Demand Management System - Functional Specification.md](docs/TOM%20Demand%20Management%20System%20-%20Functional%20Specification.md) - Complete specification
+- [docs/PROJECT_SUMMARY.md](docs/PROJECT_SUMMARY.md) - Implementation status and features
+- [docs/EUROPEAN_FORMAT.md](docs/EUROPEAN_FORMAT.md) - European format details
 
 ## Example Output
 
@@ -168,4 +170,6 @@ Copyright © 2026 CTT - Correios de Portugal
 
 ## Version
 
-Version 3.0.0 - January 2026
+Version 3.2.0 - January 2026
+
+**Latest Update (v3.2)**: Three-queue prioritization system (NOW → NEXT → LATER → PRODUCTION) separates execution-ready items from planning work for better resource allocation.

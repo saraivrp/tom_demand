@@ -246,6 +246,29 @@ pip install -r requirements.txt
 
 See the `data/input/` directory for example files that demonstrate proper formatting.
 
+## Queue-Based Prioritization
+
+The system uses a four-queue structure for sequential prioritization (v3.2):
+
+1. **NOW Queue** (Highest Priority): Active development work
+   - Ranks 1 to N
+   - Micro Phases: In Development, Ready for Acceptance, In Acceptance, Selected for Production
+
+2. **NEXT Queue** (Ready for Execution): Solution-complete items
+   - Ranks N+1 to M
+   - Micro Phase: Ready for Execution
+   - Items with complete solutions ready to be picked up by development teams
+
+3. **LATER Queue** (Planning Work): Items still being defined
+   - Ranks M+1 to P
+   - Micro Phases: Backlog, In Definition, Pitch, Ready for Solution, High Level Design, Ready for Approval, In Approval
+
+4. **PRODUCTION Queue** (No Ranking): Deployed items
+   - No rank (null)
+   - Micro Phases: In Rollout, In Production
+
+This separation ensures development work is prioritized first, followed by execution-ready items, then planning work.
+
 ## Support
 
-For detailed information, see the [Functional Specification](TOM%20Demand%20Management%20System%20-%20Functional%20Specification.md).
+For detailed information, see the [Functional Specification](docs/TOM%20Demand%20Management%20System%20-%20Functional%20Specification.md).

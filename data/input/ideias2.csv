@@ -1,15 +1,15 @@
 ID;Name;RequestingArea;RevenueStream;BudgetGroup;MicroPhase;PriorityRA;Value;Urgency;Risk;Size
 IDEA001;New eCommerce Portal;GP ECL;eCommerce;Commercial;Backlog;4;;;;
-IDEA002;Checkout Optimization;GP B2B;Mail;Commercial;In Development;1;;;;
+IDEA002;Checkout Optimization;GP B2B;eCommerce;Commercial;In Development;1;;;;
 IDEA003;Mail Sorting Automation;EDO;Mail;Operations;In Acceptance;1;;;;
 IDEA004;ML Recommendations;DAI;eCommerce;Data&AI;Ready for Execution;1;;;;
 IDEA005;Mobile Payment System;GPG;Payments;Commercial;In Development;1;;;;
 IDEA006;Customer Portal Enhancement;GP ECL;eCommerce;Commercial;Backlog;3;;;;
 IDEA007;Fulfilment Tracking System;GP ECL;Fulfilment;Operations;Ready for Acceptance;1;;;;
 IDEA008;Business Analytics Dashboard;DAI;Business Solutions;Data&AI;Pitch;2;;;;
-IDEA009;Mail API Integration;SI;Mail;Technology;Ready for Execution;2;;;;
+IDEA009;Mail API Integration;SI;Mail;Technology;High Level Design;2;;;;
 IDEA010;Retail POS Upgrade;GP B2C;Retail & Financial Services;Commercial;In Approval;1;;;;
-IDEA011;Security Compliance Update;CISO;eCommerce;CISO;Ready for Execution;1;;;;
+IDEA011;Security Compliance Update;CISO;eCommerce;CISO;Selected for Production;1;;;;
 IDEA012;Banco CTT Mobile App;BCTT;Mail;Corporate;In Rollout;1;;;;
 IDEA013;Corporate HR System;GRH;Mail;Corporate;Backlog;1;;;;
 IDEA014;Payment Gateway Update;GPG;Payments;Commercial;In Definition;2;;;;

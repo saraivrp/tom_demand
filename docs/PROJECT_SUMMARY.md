@@ -95,8 +95,8 @@ Complete set of example files:
 
 ### 5. Documentation ✅
 
-- [README.md](README.md) - Project overview and quick start
-- [USAGE_GUIDE.md](USAGE_GUIDE.md) - Detailed usage instructions
+- [README.md](../README.md) - Project overview and quick start
+- [USAGE_GUIDE.md](../USAGE_GUIDE.md) - Detailed usage instructions
 - [TOM Demand Management System - Functional Specification.md](TOM%20Demand%20Management%20System%20-%20Functional%20Specification.md) - Complete specification
 
 ## Testing & Validation
@@ -217,12 +217,15 @@ tom_demand/
 │       └── metadata.json
 ├── tests/
 │   └── __init__.py
+├── docs/
+│   ├── PROJECT_SUMMARY.md
+│   ├── EUROPEAN_FORMAT.md
+│   └── TOM Demand Management System - Functional Specification.md
 ├── tom_demand.py                 (Main entry point)
 ├── requirements.txt
 ├── .gitignore
 ├── README.md
-├── USAGE_GUIDE.md
-└── PROJECT_SUMMARY.md
+└── USAGE_GUIDE.md
 ```
 
 ## How to Use
@@ -282,6 +285,7 @@ The system is ready for use in CTT's portfolio management process.
 
 ---
 
-**Version**: 3.0.0
-**Date**: January 2, 2026
+**Version**: 3.2.0
+**Date**: January 5, 2026
 **Status**: Production Ready
+**Latest Update**: Three-queue system (NOW → NEXT → LATER → PRODUCTION) for improved prioritization of execution-ready items

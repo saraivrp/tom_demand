@@ -35,7 +35,7 @@ Implement a demand prioritization system for CTT (Portuguese Post) based on thre
 ## 1.3 Key Features
 * Multi-level prioritization (Requesting Area → Revenue Stream → Global)
 * Three distinct allocation algorithms with different characteristics
-* **Queue-based sequential prioritization** (NOW → NEXT → PRODUCTION)
+* **Queue-based sequential prioritization** (NOW → NEXT → LATER → PRODUCTION)
 * **Integration with BusinessMap lifecycle phases**
 * CSV-based input/output for easy integration
 * Automated weight normalization
@@ -95,9 +95,9 @@ All Revenue Streams share the same 6 Budget Groups:
 
 **Note**: IDEAs are created in **Backlog** phase and progress through quality gates.
 
-## 2.5 Queue-Based Prioritization (v3.1)
+## 2.5 Queue-Based Prioritization (v3.2)
 
-The system implements **sequential queue-based prioritization** that separates IDEAs by their lifecycle stage, ensuring development work is prioritized over planning work.
+The system implements **sequential queue-based prioritization** that separates IDEAs by their lifecycle stage, ensuring development work is prioritized over execution-ready work, which is prioritized over planning work.
 
 ### 2.5.1 Queue Definitions
 
@@ -113,21 +113,27 @@ The system implements **sequential queue-based prioritization** that separates I
      - Selected for Production
    - **Rationale**: Work-in-progress should be finished before starting new initiatives (Lean WIP limits)
 
-2. **NEXT Queue** (Planning Phases - Need + Solution)
-   - **Priority**: Lower (Ranks N+1 to M)
+2. **NEXT Queue** (Ready for Execution)
+   - **Priority**: High (Ranks N+1 to M)
+   - **Purpose**: Solution fully defined and approved, ready to start development
+   - **Micro Phases**:
+     - Ready for Execution
+   - **Rationale**: Solution is complete with correct weights; these items are ready to be picked up by development teams when capacity is available
+
+3. **LATER Queue** (Planning Phases - Need + Solution Definition)
+   - **Priority**: Lower (Ranks M+1 to P)
    - **Purpose**: Future work being defined and designed
    - **Micro Phases**:
-     - Backlog
+     - Backlog (Need)
      - In Definition (Need)
      - Pitch
      - Ready for Solution
-     - High Level Design
-     - Ready for Approval
-     - In Approval
-     - Ready for Execution
-   - **Rationale**: Planning work is important but secondary to completing active development
+     - High Level Design (Solution)
+     - Ready for Approval (Solution)
+     - In Approval (Solution)
+   - **Rationale**: Planning work is important but secondary to execution-ready and active development work
 
-3. **PRODUCTION Queue**
+4. **PRODUCTION Queue**
    - **Priority**: No ranking (null rank)
    - **Purpose**: Tracking deployed solutions
    - **Micro Phases**:
@@ -140,17 +146,20 @@ The system implements **sequential queue-based prioritization** that separates I
 The system applies sequential ranking across queues:
 
 ```
-Example with 8 NOW items and 10 NEXT items:
+Example with 8 NOW items, 1 NEXT item, and 9 LATER items:
 
-NOW Queue:
+NOW Queue (Development):
   Rank 1: IDEA002 - Checkout Optimization (In Development)
   Rank 2: IDEA003 - Mail Sorting Automation (In Acceptance)
   ...
   Rank 8: IDEA005 - Mobile Payment System (In Development)
 
-NEXT Queue:
-  Rank 9: IDEA006 - Customer Portal Enhancement (Backlog)
-  Rank 10: IDEA009 - Mail API Integration (High Level Design)
+NEXT Queue (Ready for Execution):
+  Rank 9: IDEA004 - ML Recommendations (Ready for Execution)
+
+LATER Queue (Planning):
+  Rank 10: IDEA006 - Customer Portal Enhancement (Backlog)
+  Rank 11: IDEA009 - Mail API Integration (High Level Design)
   ...
   Rank 18: IDEA019 - Retail Customer Experience (Pitch)
 
@@ -163,8 +172,10 @@ PRODUCTION Queue:
 
 * **Finish Before Starting**: Encourages completion of active work before new initiatives
 * **Clear Priorities**: Teams know development work takes precedence
+* **Execution-Ready Visibility**: Items with complete solutions are prioritized separately from early planning
+* **Better Resource Planning**: Teams can see which items are ready to start vs. still being defined
 * **Lean Compliance**: Limits Work-In-Progress (WIP) by prioritizing completion
-* **Visibility**: Clear separation between active development and future planning
+* **Visibility**: Clear separation between active development, execution-ready work, and future planning
 * **Alignment with BusinessMap**: Direct integration with portfolio tool lifecycle
 
 ## 3. Data Model  
