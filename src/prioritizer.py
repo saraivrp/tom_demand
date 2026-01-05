@@ -281,7 +281,8 @@ class Prioritizer:
         Prioritize IDEAs with queue-based sequential ranking.
 
         - NOW queue: ranks 1 to N (highest priority - development work)
-        - NEXT queue: ranks N+1 to M (lower priority - planning work)
+        - NEXT queue: ranks N+1 to M (ready for execution - solution defined)
+        - LATER queue: ranks M+1 to P (lower priority - planning work)
         - PRODUCTION: no ranking (null)
 
         Args:
@@ -296,8 +297,8 @@ class Prioritizer:
         all_results = []
         current_rank_offset = 0
 
-        # Process queues in order: NOW → NEXT → PRODUCTION
-        queue_order = ['NOW', 'NEXT', 'PRODUCTION']
+        # Process queues in order: NOW → NEXT → LATER → PRODUCTION
+        queue_order = ['NOW', 'NEXT', 'LATER', 'PRODUCTION']
 
         for queue_name in queue_order:
             if queue_name not in self.queues:

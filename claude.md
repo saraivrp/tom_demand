@@ -15,7 +15,7 @@ This is the **TOM Demand Management System v3.0** - a production-ready demand pr
 - **Metric System**: All measurements in metric units
 - **Date Format**: DD/MM/YYYY or ISO 8601
 
-⚠️ **CRITICAL**: When reading or writing CSV files, always use European format as configured in [config/config.yaml](config/config.yaml). See [EUROPEAN_FORMAT.md](EUROPEAN_FORMAT.md) for details.
+⚠️ **CRITICAL**: When reading or writing CSV files, always use European format as configured in [config/config.yaml](config/config.yaml). See [docs/EUROPEAN_FORMAT.md](docs/EUROPEAN_FORMAT.md) for details.
 
 ### 2. Codebase Architecture
 
@@ -32,7 +32,7 @@ src/
 
 **Total**: ~1,735 lines of well-structured, modular Python code
 
-### 3. Queue-Based Prioritization (v3.1)
+### 3. Queue-Based Prioritization (v3.2)
 
 The system now supports **sequential queue-based ranking** that separates IDEAs by their lifecycle phase:
 
@@ -41,19 +41,24 @@ The system now supports **sequential queue-based ranking** that separates IDEAs 
    - In Development → Ready for Acceptance → In Acceptance → Selected for Production
    - These are active development items that should be prioritized first
 
-2. **NEXT Queue** (Planning phases) → **Ranks N+1-M** (lower priority)
-   - Need: Backlog → In Definition → Pitch → Ready for Solution
-   - Solution: High Level Design → Ready for Approval → In Approval → Ready for Execution
-   - These are future items in planning/design stages
+2. **NEXT Queue** (Ready for Execution) → **Ranks N+1-M** (next in line)
+   - Ready for Execution
+   - Solution is fully defined and approved, ready to start development
 
-3. **PRODUCTION Queue** → **No ranking** (already deployed)
+3. **LATER Queue** (Planning phases) → **Ranks M+1-P** (future work)
+   - Need: Backlog → In Definition → Pitch → Ready for Solution
+   - Solution: High Level Design → Ready for Approval → In Approval
+   - These are items still in planning/design stages
+
+4. **PRODUCTION Queue** → **No ranking** (already deployed)
    - In Rollout → In Production
    - No prioritization needed, just tracked
 
 **How It Works:**
 - IDEAs are automatically assigned to queues based on their `MicroPhase` field
-- NOW items get ranks 1-8, NEXT items get ranks 9-18, PRODUCTION items have null rank
-- Sequential ranking ensures development work is always prioritized over planning work
+- NOW items get ranks 1-8, NEXT items get ranks 9-9, LATER items get ranks 10-18, PRODUCTION items have null rank
+- Sequential ranking ensures: development > execution-ready > planning > production (tracking only)
+- This allows prioritization of solution-defined work separately from early planning work
 
 ### 4. Core Modules
 
@@ -177,9 +182,9 @@ When referencing code locations in responses, use this format:
 
 - [README.md](README.md) - Quick start and overview
 - [USAGE_GUIDE.md](USAGE_GUIDE.md) - Detailed usage instructions
-- [PROJECT_SUMMARY.md](PROJECT_SUMMARY.md) - Implementation status and features
-- [EUROPEAN_FORMAT.md](EUROPEAN_FORMAT.md) - European format details
-- [TOM Demand Management System - Functional Specification.md](TOM%20Demand%20Management%20System%20-%20Functional%20Specification.md) - Complete specification v3.0
+- [docs/PROJECT_SUMMARY.md](docs/PROJECT_SUMMARY.md) - Implementation status and features
+- [docs/EUROPEAN_FORMAT.md](docs/EUROPEAN_FORMAT.md) - European format details
+- [docs/TOM Demand Management System - Functional Specification.md](docs/TOM%20Demand%20Management%20System%20-%20Functional%20Specification.md) - Complete specification v3.0
 
 ## What NOT to Do
 

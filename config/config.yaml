@@ -65,18 +65,26 @@ queues:
     rank_offset: 0  # NOW starts at rank 1 (most important)
 
   NEXT:
-    description: "IDEAs in planning phases (Need + Solution)"
+    description: "IDEAs ready for execution (solution defined and approved)"
     micro_phases:
+      - Ready for Execution
+    prioritize: true
+    rank_offset: auto  # NEXT ranks continue after NOW (NOW_max + 1)
+
+  LATER:
+    description: "IDEAs in planning phases (Need + Solution definition)"
+    micro_phases:
+      # Need phase
       - Backlog
       - In Definition
       - Pitch
       - Ready for Solution
+      # Solution phase
       - High Level Design
       - Ready for Approval
       - In Approval
-      - Ready for Execution
     prioritize: true
-    rank_offset: auto  # NEXT ranks continue after NOW (NOW_max + 1)
+    rank_offset: auto  # LATER ranks continue after NEXT (NEXT_max + 1)
 
   PRODUCTION:
     description: "IDEAs already in production"
@@ -91,7 +99,7 @@ prioritization:
   default_method: sainte-lague  # sainte-lague | dhondt | wsjf
   auto_normalize_weights: true
   tie_breaker: priority_ra  # priority_ra | wsjf_score | alphabetical
-  queue_mode: sequential  # sequential: NOW ranks 1-N (highest priority), NEXT ranks N+1-M, PRODUCTION unranked
+  queue_mode: sequential  # sequential: NOW ranks 1-N, NEXT ranks N+1-M, LATER ranks M+1-P, PRODUCTION unranked
 
 # Output settings
 output:
