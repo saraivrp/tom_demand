@@ -36,9 +36,12 @@ def cli():
 @click.option('--rs-weights', required=True, type=click.Path(exists=True), help='Path to weights_rs.csv')
 @click.option('--method', default='sainte-lague', type=click.Choice(['sainte-lague', 'dhondt', 'wsjf'], case_sensitive=False), help='Prioritization method')
 @click.option('--all-methods', is_flag=True, help='Execute all 3 methods')
+@click.option('--now-method', type=click.Choice(['sainte-lague', 'dhondt', 'wsjf'], case_sensitive=False), help='Prioritization method for NOW queue')
+@click.option('--next-method', type=click.Choice(['sainte-lague', 'dhondt', 'wsjf'], case_sensitive=False), help='Prioritization method for NEXT queue')
+@click.option('--later-method', type=click.Choice(['sainte-lague', 'dhondt', 'wsjf'], case_sensitive=False), help='Prioritization method for LATER queue')
 @click.option('--output-dir', default='./data/output', help='Output directory')
 @click.option('--config', type=click.Path(exists=True), help='Configuration file path')
-def prioritize(ideas, ra_weights, rs_weights, method, all_methods, output_dir, config):
+def prioritize(ideas, ra_weights, rs_weights, method, all_methods, now_method, next_method, later_method, output_dir, config):
     """
     Execute complete prioritization (Levels 2 and 3).
 
@@ -57,6 +60,26 @@ def prioritize(ideas, ra_weights, rs_weights, method, all_methods, output_dir, c
         loader = Loader(config)
         prioritizer = Prioritizer(config)
         exporter = Exporter(config)
+
+        # Validate: per-queue methods are incompatible with --all-methods
+        queue_method_flags = [now_method, next_method, later_method]
+        if all_methods and any(queue_method_flags):
+            raise click.UsageError(
+                "Per-queue method flags (--now-method, --next-method, --later-method) "
+                "cannot be used with --all-methods. Please use one or the other."
+            )
+
+        # Build per-queue method configuration
+        queue_methods = {}
+        if now_method:
+            queue_methods['NOW'] = now_method.lower()
+        if next_method:
+            queue_methods['NEXT'] = next_method.lower()
+        if later_method:
+            queue_methods['LATER'] = later_method.lower()
+
+        # Default method for unconfigured queues
+        default_method = method.lower() if method else 'sainte-lague'
 
         # Load data
         ideas_df, ra_weights_df, rs_weights_df = loader.load_all(ideas, ra_weights, rs_weights)
@@ -81,13 +104,34 @@ def prioritize(ideas, ra_weights, rs_weights, method, all_methods, output_dir, c
         click.echo("Starting queue-based prioritization process...")
 
         if all_methods:
+            # Original --all-methods logic (unchanged)
             click.echo("  → Executing all methods (Sainte-Laguë, D'Hondt, WSJF)")
             results = prioritizer.prioritize_all_methods_with_queues(ideas_df, ra_weights_df, rs_weights_df)
         else:
-            click.echo(f"  → Executing {method.replace('-', ' ').title()} method")
-            combined_result = prioritizer.prioritize_with_queues(ideas_df, ra_weights_df, rs_weights_df, method)
+            # Per-queue methods or single method
+            if queue_methods:
+                click.echo("  → Using per-queue methods:")
+                for queue, queue_method in queue_methods.items():
+                    click.echo(f"     • {queue}: {queue_method.replace('-', ' ').title()}")
+                if len(queue_methods) < 3:
+                    click.echo(f"     • Other queues: {default_method.replace('-', ' ').title()}")
+            else:
+                click.echo(f"  → Executing {default_method.replace('-', ' ').title()} method")
+
+            combined_result = prioritizer.prioritize_with_queues(
+                ideas_df, ra_weights_df, rs_weights_df,
+                queue_methods=queue_methods,
+                default_method=default_method
+            )
+
+            # Determine result name
+            if queue_methods:
+                result_name = 'mixed'
+            else:
+                result_name = default_method
+
             results = {
-                method: {
+                result_name: {
                     'level2': combined_result[combined_result['Queue'] != 'PRODUCTION'].copy(),
                     'level3': combined_result
                 }
@@ -111,6 +155,8 @@ def prioritize(ideas, ra_weights, rs_weights, method, all_methods, output_dir, c
             'output_directory': output_dir,
             'methods_executed': list(results.keys()),
             'queue_mode': 'sequential',
+            'queue_methods': queue_methods if queue_methods else None,
+            'default_method': default_method,
             'statistics': {
                 'total_ideas': len(ideas_df),
                 'total_requesting_areas': ideas_df['RequestingArea'].nunique(),
@@ -127,6 +173,9 @@ def prioritize(ideas, ra_weights, rs_weights, method, all_methods, output_dir, c
         click.echo()
         click.echo("=" * 60)
 
+    except click.UsageError as e:
+        click.echo(f"❌ Usage Error: {str(e)}", err=True)
+        sys.exit(1)
     except (FileNotFoundError, DataLoadError) as e:
         click.echo(f"❌ Error: {str(e)}", err=True)
         sys.exit(1)

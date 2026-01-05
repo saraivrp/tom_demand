@@ -275,10 +275,13 @@ class Prioritizer:
         ideas: pd.DataFrame,
         ra_weights: pd.DataFrame,
         rs_weights: pd.DataFrame,
-        method: str = 'sainte-lague'
+        queue_methods: Optional[Dict[str, str]] = None,
+        default_method: str = 'sainte-lague'
     ) -> pd.DataFrame:
         """
         Prioritize IDEAs with queue-based sequential ranking.
+
+        Each queue can use a different prioritization method at both Level 2 and Level 3.
 
         - NOW queue: ranks 1 to N (highest priority - development work)
         - NEXT queue: ranks N+1 to M (ready for execution - solution defined)
@@ -289,11 +292,19 @@ class Prioritizer:
             ideas: DataFrame with all IDEAs (including Queue column)
             ra_weights: RA weights
             rs_weights: RS weights
-            method: Prioritization method
+            queue_methods: Optional dict mapping queue names to methods (e.g., {'NOW': 'wsjf', 'NEXT': 'dhondt'})
+            default_method: Method to use for queues not in queue_methods
 
         Returns:
             Combined DataFrame with sequential global ranking
         """
+        # Helper function to resolve method for each queue
+        def get_queue_method(queue_name: str) -> str:
+            """Get the method to use for a specific queue."""
+            if queue_methods and queue_name in queue_methods:
+                return queue_methods[queue_name]
+            return default_method
+
         all_results = []
         current_rank_offset = 0
 
@@ -315,19 +326,22 @@ class Prioritizer:
 
             print(f"  → Processing {queue_name} queue: {len(queue_ideas)} IDEAs")
 
+            # Determine method for this queue
+            queue_method = get_queue_method(queue_name)
+
             # Check if this queue should be prioritized
             if not queue_config.get('prioritize', True):
                 # PRODUCTION: No ranking
                 queue_ideas['GlobalRank'] = None
                 queue_ideas['Rank_RS'] = None
-                queue_ideas['Method'] = method
+                queue_ideas['Method'] = queue_method
                 all_results.append(queue_ideas)
                 print(f"    ✓ {queue_name}: No ranking (production items)")
                 continue
 
-            # Execute prioritization
-            level2_result = self.prioritize_level2(queue_ideas, ra_weights, method)
-            level3_result = self.prioritize_level3(level2_result, rs_weights, method)
+            # Execute prioritization with queue-specific method
+            level2_result = self.prioritize_level2(queue_ideas, ra_weights, queue_method)
+            level3_result = self.prioritize_level3(level2_result, rs_weights, queue_method)
 
             # Apply rank offset for sequential ranking
             if current_rank_offset > 0:
@@ -337,7 +351,7 @@ class Prioritizer:
             current_rank_offset = level3_result['GlobalRank'].max()
 
             all_results.append(level3_result)
-            print(f"    ✓ {queue_name}: Ranks {int(level3_result['GlobalRank'].min())}-{int(level3_result['GlobalRank'].max())}")
+            print(f"    ✓ {queue_name}: Ranks {int(level3_result['GlobalRank'].min())}-{int(level3_result['GlobalRank'].max())} ({queue_method})")
 
         # Combine all results
         if not all_results:
