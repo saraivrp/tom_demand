@@ -109,6 +109,28 @@ python3 tom_demand.py prioritize \
   --output-dir data/output
 ```
 
+Run with different methods per queue (v3.3+):
+
+```bash
+# Use WSJF for NOW queue, Sainte-Laguë for others
+python3 tom_demand.py prioritize \
+  --ideas data/input/ideias.csv \
+  --ra-weights data/input/weights_ra.csv \
+  --rs-weights data/input/weights_rs.csv \
+  --now-method wsjf \
+  --output-dir data/output
+
+# Specify different methods for each queue
+python3 tom_demand.py prioritize \
+  --ideas data/input/ideias.csv \
+  --ra-weights data/input/weights_ra.csv \
+  --rs-weights data/input/weights_rs.csv \
+  --now-method wsjf \
+  --next-method wsjf \
+  --later-method sainte-lague \
+  --output-dir data/output
+```
+
 ### 4. Output Files
 
 After execution, you'll find these files in the output directory:
@@ -152,8 +174,13 @@ Execute complete prioritization (Levels 2 and 3).
 - `--rs-weights`: Path to weights_rs.csv (required)
 - `--method`: Method to use: `sainte-lague`, `dhondt`, or `wsjf` (default: sainte-lague)
 - `--all-methods`: Execute all 3 methods (flag)
+- `--now-method`: Method for NOW queue: `sainte-lague`, `dhondt`, or `wsjf` (v3.3+)
+- `--next-method`: Method for NEXT queue: `sainte-lague`, `dhondt`, or `wsjf` (v3.3+)
+- `--later-method`: Method for LATER queue: `sainte-lague`, `dhondt`, or `wsjf` (v3.3+)
 - `--output-dir`: Output directory (default: ./data/output)
 - `--config`: Custom configuration file path
+
+**Note**: Per-queue method flags (`--now-method`, `--next-method`, `--later-method`) cannot be used with `--all-methods`.
 
 ### prioritize-rs
 Execute Level 2 prioritization only (by Revenue Stream).
@@ -268,6 +295,37 @@ The system uses a four-queue structure for sequential prioritization (v3.2):
    - Micro Phases: In Rollout, In Production
 
 This separation ensures development work is prioritized first, followed by execution-ready items, then planning work.
+
+### Per-Queue Prioritization Methods (v3.3)
+
+Starting in version 3.3, you can apply different prioritization methods to each queue:
+
+```bash
+# Example: Use WSJF for active development (NOW), Sainte-Laguë for planning (LATER)
+python3 tom_demand.py prioritize \
+  --ideas data/input/ideias.csv \
+  --ra-weights data/input/weights_ra.csv \
+  --rs-weights data/input/weights_rs.csv \
+  --now-method wsjf \
+  --next-method wsjf \
+  --later-method sainte-lague \
+  --output-dir data/output
+```
+
+**Benefits:**
+- **NOW queue with WSJF**: Prioritize high-value, quick-win development work
+- **NEXT queue with WSJF**: Focus on ROI for execution-ready items
+- **LATER queue with Sainte-Laguë**: Balanced planning across all areas
+
+**Precedence:**
+1. Per-queue flags (`--now-method`, `--next-method`, `--later-method`) take highest priority
+2. Global `--method` flag applies to queues without specific methods
+3. Default (`sainte-lague`) used if neither specified
+
+**Output:**
+- Results are saved with `mixed` naming: `demand_mixed.csv`, `prioritization_rs_mixed.csv`
+- Metadata JSON includes `queue_methods` and `default_method` fields
+- CSV output includes the method used for each IDEA in the Method column
 
 ## Support
 

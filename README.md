@@ -14,6 +14,7 @@ This system implements a multi-level prioritization framework that aligns organi
 
 ✓ **Multi-level prioritization** (Requesting Area → Revenue Stream → Global)
 ✓ **Three allocation algorithms** with different characteristics
+✓ **Per-queue prioritization methods** - different methods for NOW, NEXT, LATER queues
 ✓ **CSV-based input/output** for easy integration
 ✓ **European format support** (semicolon delimiter, comma decimal separator)
 ✓ **Metric system** and EU standards compliance
@@ -86,6 +87,16 @@ python3 tom_demand.py prioritize \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
   --all-methods \
+  --output-dir data/output
+
+# Use different methods per queue (v3.3+)
+python3 tom_demand.py prioritize \
+  --ideas data/input/ideias.csv \
+  --ra-weights data/input/weights_ra.csv \
+  --rs-weights data/input/weights_rs.csv \
+  --now-method wsjf \
+  --next-method wsjf \
+  --later-method sainte-lague \
   --output-dir data/output
 ```
 
@@ -170,6 +181,8 @@ Copyright © 2026 CTT - Correios de Portugal
 
 ## Version
 
-Version 3.2.0 - January 2026
+Version 3.3.0 - January 2026
 
-**Latest Update (v3.2)**: Three-queue prioritization system (NOW → NEXT → LATER → PRODUCTION) separates execution-ready items from planning work for better resource allocation.
+**Latest Updates**:
+- **v3.3**: Per-queue prioritization methods - configure different algorithms (WSJF, Sainte-Laguë, D'Hondt) for each queue via CLI flags (`--now-method`, `--next-method`, `--later-method`)
+- **v3.2**: Three-queue prioritization system (NOW → NEXT → LATER → PRODUCTION) separates execution-ready items from planning work for better resource allocation

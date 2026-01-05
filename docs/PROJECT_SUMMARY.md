@@ -163,6 +163,8 @@ All output files generated successfully:
 ✅ Example data for testing
 ✅ Detailed usage documentation
 ✅ Cross-validation between input files
+✅ Per-queue prioritization methods (v3.3)
+✅ Queue-based sequential ranking (v3.2)
 
 ## Architecture Highlights
 
@@ -272,7 +274,7 @@ While the core system is complete, these enhancements from Phase 4 could be adde
 
 ## Conclusion
 
-The TOM Demand Management System v3.0 has been successfully implemented according to the functional specification. The system is:
+The TOM Demand Management System v3.3 has been successfully implemented according to the functional specification. The system is:
 
 - ✅ **Fully functional** - All core features working
 - ✅ **Well-tested** - Validated with example data
@@ -285,7 +287,9 @@ The system is ready for use in CTT's portfolio management process.
 
 ---
 
-**Version**: 3.2.0
+**Version**: 3.3.0
 **Date**: January 5, 2026
 **Status**: Production Ready
-**Latest Update**: Three-queue system (NOW → NEXT → LATER → PRODUCTION) for improved prioritization of execution-ready items
+**Latest Updates**:
+- **v3.3**: Per-queue prioritization methods - different algorithms for NOW, NEXT, LATER queues via CLI flags
+- **v3.2**: Three-queue system (NOW → NEXT → LATER → PRODUCTION) for improved prioritization of execution-ready items

@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This is the **TOM Demand Management System v3.0** - a production-ready demand prioritization system for CTT (Portuguese Post) that implements three proportional allocation algorithms: Sainte-Laguë, D'Hondt, and WSJF.
+This is the **TOM Demand Management System v3.3** - a production-ready demand prioritization system for CTT (Portuguese Post) that implements three proportional allocation algorithms: Sainte-Laguë, D'Hondt, and WSJF.
 
 **Status**: ✅ Production Ready (January 2026)
 
@@ -34,7 +34,7 @@ src/
 
 ### 3. Queue-Based Prioritization (v3.2)
 
-The system now supports **sequential queue-based ranking** that separates IDEAs by their lifecycle phase:
+The system supports **sequential queue-based ranking** that separates IDEAs by their lifecycle phase:
 
 **Queue Priority Order** (most important to least important):
 1. **NOW Queue** (Development phase) → **Ranks 1-N** (highest priority)
@@ -60,7 +60,35 @@ The system now supports **sequential queue-based ranking** that separates IDEAs 
 - Sequential ranking ensures: development > execution-ready > planning > production (tracking only)
 - This allows prioritization of solution-defined work separately from early planning work
 
-### 4. Core Modules
+### 4. Per-Queue Prioritization Methods (v3.3)
+
+**NEW**: Each queue can now use a different prioritization method:
+
+**CLI Flags**:
+- `--now-method [sainte-lague|dhondt|wsjf]` - Method for NOW queue
+- `--next-method [sainte-lague|dhondt|wsjf]` - Method for NEXT queue
+- `--later-method [sainte-lague|dhondt|wsjf]` - Method for LATER queue
+
+**Precedence**:
+1. Per-queue flags override global `--method`
+2. Global `--method` applies to unconfigured queues
+3. Default `sainte-lague` used if neither specified
+
+**Example**:
+```bash
+python3 tom_demand.py prioritize \
+  --ideas data/input/ideias.csv \
+  --ra-weights data/input/weights_ra.csv \
+  --rs-weights data/input/weights_rs.csv \
+  --now-method wsjf \
+  --next-method wsjf \
+  --later-method sainte-lague \
+  --output-dir data/output
+```
+
+**Important**: Per-queue flags cannot be used with `--all-methods` (will raise UsageError)
+
+### 5. Core Modules
 
 #### Validation ([src/validator.py](src/validator.py))
 - Validates IDEAS with required/optional attributes including MicroPhase

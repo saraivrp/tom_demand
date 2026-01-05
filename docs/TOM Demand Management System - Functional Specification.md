@@ -3,11 +3,14 @@
 # TOM Demand Management System - Functional Specification
 ## Document Information
 **Document**: TOM Demand Management System - Functional Specification
-**Version**: 3.1
-**Date**: January 04, 2026
+**Version**: 3.3
+**Date**: January 05, 2026
 **Author**: Lean Portfolio Management Specialist
 **Status**: Final - Approved for Implementation
-**Change Log**: v3.1 - Added Queue-Based Sequential Prioritization (NOW/NEXT/PRODUCTION)  
+**Change Log**:
+- v3.3 - Added Per-Queue Prioritization Methods (different algorithms per queue)
+- v3.2 - Added Queue-Based Sequential Prioritization (NOW/NEXT/LATER/PRODUCTION)
+- v3.1 - Initial queue implementation  
   
 ## Table of Contents  
 1. ++[System Overview](https://claude.ai/chat/c7c29ce8-e8f6-400e-8429-1ad7d1c89a63?setup_intent=seti_1Sl8nIBjIQrRQnuxmM5MY7td&setup_intent_client_secret=seti_1Sl8nIBjIQrRQnuxmM5MY7td_secret_TiZx3ISyMFXuJfMv4rVKfhHXmT8O1nV&source_type=card#1-system-overview)++  
@@ -36,6 +39,7 @@ Implement a demand prioritization system for CTT (Portuguese Post) based on thre
 * Multi-level prioritization (Requesting Area → Revenue Stream → Global)
 * Three distinct allocation algorithms with different characteristics
 * **Queue-based sequential prioritization** (NOW → NEXT → LATER → PRODUCTION)
+* **Per-queue prioritization methods** (v3.3) - different algorithms for each queue
 * **Integration with BusinessMap lifecycle phases**
 * CSV-based input/output for easy integration
 * Automated weight normalization
@@ -177,6 +181,52 @@ PRODUCTION Queue:
 * **Lean Compliance**: Limits Work-In-Progress (WIP) by prioritizing completion
 * **Visibility**: Clear separation between active development, execution-ready work, and future planning
 * **Alignment with BusinessMap**: Direct integration with portfolio tool lifecycle
+
+### 2.5.4 Per-Queue Prioritization Methods (v3.3)
+
+Starting in version 3.3, the system supports applying **different prioritization methods** to each queue, enabling queue-appropriate optimization strategies.
+
+**Feature Overview**:
+* Each queue (NOW, NEXT, LATER) can use a different prioritization algorithm
+* Applies to both Level 2 (Revenue Stream) and Level 3 (Global) prioritization
+* Configured via CLI flags: `--now-method`, `--next-method`, `--later-method`
+
+**Configuration Options**:
+
+| Queue  | Purpose                    | Recommended Method | Rationale                                          |
+| ------ | -------------------------- | ------------------ | -------------------------------------------------- |
+| NOW    | Active Development         | WSJF               | Optimize ROI on work-in-progress                   |
+| NEXT   | Ready for Execution        | WSJF or D'Hondt    | Economic optimization or strategic focus           |
+| LATER  | Planning/Design            | Sainte-Laguë       | Balanced planning across all areas                 |
+
+**Example Usage**:
+
+```bash
+# Use WSJF for development queues, balanced approach for planning
+python3 tom_demand.py prioritize \
+  --ideas ideias.csv \
+  --ra-weights weights_ra.csv \
+  --rs-weights weights_rs.csv \
+  --now-method wsjf \
+  --next-method wsjf \
+  --later-method sainte-lague \
+  --output-dir output/
+```
+
+**Precedence Rules**:
+1. Per-queue flags (`--now-method`, etc.) take highest priority
+2. Global `--method` flag applies to queues without specific configuration
+3. System default (`sainte-lague`) used if neither specified
+
+**Benefits**:
+* **Strategic Flexibility**: Different optimization strategies per queue
+* **Context-Appropriate**: Match method to queue purpose (economic for development, balanced for planning)
+* **Granular Control**: Override methods at queue level while maintaining global defaults
+* **Backward Compatible**: Optional feature, existing commands work unchanged
+
+**Restrictions**:
+* Per-queue flags cannot be combined with `--all-methods` flag (prevents exponential combinations)
+* PRODUCTION queue never receives a method (no prioritization)
 
 ## 3. Data Model  
 ## 3.1 Entity: IDEA
