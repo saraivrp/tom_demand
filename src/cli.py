@@ -31,9 +31,9 @@ def cli():
 
 
 @cli.command()
-@click.option('--ideas', required=True, type=click.Path(exists=True), help='Path to ideias.csv')
-@click.option('--ra-weights', required=True, type=click.Path(exists=True), help='Path to weights_ra.csv')
-@click.option('--rs-weights', required=True, type=click.Path(exists=True), help='Path to weights_rs.csv')
+@click.option('--ideas', type=click.Path(exists=True), help='Path to ideias.csv')
+@click.option('--ra-weights', type=click.Path(exists=True), help='Path to weights_ra.csv')
+@click.option('--rs-weights', type=click.Path(exists=True), help='Path to weights_rs.csv')
 @click.option('--method', default='sainte-lague', type=click.Choice(['sainte-lague', 'dhondt', 'wsjf'], case_sensitive=False), help='Prioritization method')
 @click.option('--all-methods', is_flag=True, help='Execute all 3 methods')
 @click.option('--now-method', type=click.Choice(['sainte-lague', 'dhondt', 'wsjf'], case_sensitive=False), help='Prioritization method for NOW queue')
@@ -54,6 +54,16 @@ def prioritize(ideas, ra_weights, rs_weights, method, all_methods, now_method, n
         click.echo("=" * 60)
         click.echo("TOM Demand Management System - Queue-Based Prioritization")
         click.echo("=" * 60)
+        click.echo()
+
+        # If paths not provided via CLI, prompt user interactively
+        if not ideas:
+            ideas = click.prompt("Caminho para o ficheiro de IDEIAs (ideias.csv)", type=click.Path(exists=True))
+        if not ra_weights:
+            ra_weights = click.prompt("Caminho para o ficheiro de pesos RA (weights_ra.csv)", type=click.Path(exists=True))
+        if not rs_weights:
+            rs_weights = click.prompt("Caminho para o ficheiro de pesos RS (weights_rs.csv)", type=click.Path(exists=True))
+
         click.echo()
 
         # Initialize components
