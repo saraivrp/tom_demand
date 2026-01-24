@@ -69,6 +69,13 @@ python3 tom_demand.py validate \
   --ideas data/input/ideias.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv
+
+# With custom configuration file
+python3 tom_demand.py validate \
+  --ideas data/input/ideias.csv \
+  --ra-weights data/input/weights_ra.csv \
+  --rs-weights data/input/weights_rs.csv \
+  --config path/to/custom_config.yaml
 ```
 
 ### 2. Run Prioritization
@@ -79,6 +86,14 @@ python3 tom_demand.py prioritize \
   --ideas data/input/ideias.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
+  --output-dir data/output
+
+# With custom configuration file
+python3 tom_demand.py prioritize \
+  --ideas data/input/ideias.csv \
+  --ra-weights data/input/weights_ra.csv \
+  --rs-weights data/input/weights_rs.csv \
+  --config path/to/custom_config.yaml \
   --output-dir data/output
 
 # Run all three methods

@@ -64,6 +64,19 @@ Mail,20
 
 ### 3. Run Prioritization
 
+#### Configuration File (Optional)
+
+By default, the system uses `config/config.yaml` for configuration. You can specify a custom configuration file using the `--config` parameter:
+
+```bash
+python3 tom_demand.py prioritize \
+  --ideas data/input/ideias.csv \
+  --ra-weights data/input/weights_ra.csv \
+  --rs-weights data/input/weights_rs.csv \
+  --config path/to/custom_config.yaml \
+  --output-dir data/output
+```
+
 #### Validate Input Files
 
 Before running prioritization, validate your input files:
@@ -73,6 +86,13 @@ python3 tom_demand.py validate \
   --ideas data/input/ideias.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv
+
+# With custom config
+python3 tom_demand.py validate \
+  --ideas data/input/ideias.csv \
+  --ra-weights data/input/weights_ra.csv \
+  --rs-weights data/input/weights_rs.csv \
+  --config path/to/custom_config.yaml
 ```
 
 #### Execute Complete Prioritization
@@ -162,7 +182,8 @@ Validate input files without executing prioritization.
 python3 tom_demand.py validate \
   --ideas <path> \
   --ra-weights <path> \
-  --rs-weights <path>
+  --rs-weights <path> \
+  [--config <path>]
 ```
 
 ### prioritize
@@ -178,7 +199,7 @@ Execute complete prioritization (Levels 2 and 3).
 - `--next-method`: Method for NEXT queue: `sainte-lague`, `dhondt`, or `wsjf` (v3.3+)
 - `--later-method`: Method for LATER queue: `sainte-lague`, `dhondt`, or `wsjf` (v3.3+)
 - `--output-dir`: Output directory (default: ./data/output)
-- `--config`: Custom configuration file path
+- `--config`: Custom configuration file path (optional, default: config/config.yaml)
 
 **Note**: Per-queue method flags (`--now-method`, `--next-method`, `--later-method`) cannot be used with `--all-methods`.
 
@@ -190,7 +211,8 @@ python3 tom_demand.py prioritize-rs \
   --ideas data/input/ideias.csv \
   --ra-weights data/input/weights_ra.csv \
   --method sainte-lague \
-  --output prioritization_rs.csv
+  --output prioritization_rs.csv \
+  [--config <path>]
 ```
 
 ### prioritize-global
@@ -201,7 +223,8 @@ python3 tom_demand.py prioritize-global \
   --rs-prioritized prioritization_rs.csv \
   --rs-weights data/input/weights_rs.csv \
   --method sainte-lague \
-  --output demand.csv
+  --output demand.csv \
+  [--config <path>]
 ```
 
 ### compare
@@ -213,7 +236,8 @@ python3 tom_demand.py compare \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
   --output comparison.csv \
-  --top-n 50
+  --top-n 50 \
+  [--config <path>]
 ```
 
 ## Understanding the Methods

@@ -66,7 +66,7 @@ def prioritize(ideas, ra_weights, rs_weights, method, all_methods, now_method, n
 
         click.echo()
 
-        # Initialize components
+        # Initialize components with config file
         loader = Loader(config)
         prioritizer = Prioritizer(config)
         exporter = Exporter(config)
@@ -210,7 +210,7 @@ def prioritize_rs(ideas, ra_weights, method, output, config):
         click.echo("Executing Level 2 prioritization...")
 
         loader = Loader(config)
-        prioritizer = Prioritizer()
+        prioritizer = Prioritizer(config)
         exporter = Exporter(config)
 
         # Load data
@@ -244,7 +244,7 @@ def prioritize_global(rs_prioritized, rs_weights, method, output, config):
         click.echo("Executing Level 3 prioritization...")
 
         loader = Loader(config)
-        prioritizer = Prioritizer()
+        prioritizer = Prioritizer(config)
         exporter = Exporter(config)
 
         # Load data
@@ -296,7 +296,7 @@ def compare(ideas, ra_weights, rs_weights, output, top_n, config):
         click.echo("Comparing all 3 prioritization methods...")
 
         loader = Loader(config)
-        prioritizer = Prioritizer()
+        prioritizer = Prioritizer(config)
         exporter = Exporter(config)
 
         # Load data

@@ -84,20 +84,20 @@ class Validator:
         # Check ID uniqueness
         if df['ID'].duplicated().any():
             duplicates = df[df['ID'].duplicated()]['ID'].tolist()
-            errors.append(f"Duplicate IDs found: {', '.join(map(str, duplicates[:5]))}")
+            errors.append(f"Duplicate IDs found: {', '.join(str(d) for d in duplicates[:5])}")
 
         # Validate RevenueStream values
         invalid_rs = df[~df['RevenueStream'].isin(self.revenue_streams)]
         if not invalid_rs.empty:
             invalid_values = invalid_rs['RevenueStream'].unique().tolist()
-            errors.append(f"Invalid Revenue Stream values: {', '.join(invalid_values)}")
+            errors.append(f"Invalid Revenue Stream values: {', '.join(str(v) for v in invalid_values)}")
             errors.append(f"Valid values are: {', '.join(self.revenue_streams)}")
 
         # Validate BudgetGroup values
         invalid_bg = df[~df['BudgetGroup'].isin(self.budget_groups)]
         if not invalid_bg.empty:
             invalid_values = invalid_bg['BudgetGroup'].unique().tolist()
-            errors.append(f"Invalid Budget Group values: {', '.join(invalid_values)}")
+            errors.append(f"Invalid Budget Group values: {', '.join(str(v) for v in invalid_values)}")
             errors.append(f"Valid values are: {', '.join(self.budget_groups)}")
 
         # Validate PriorityRA sequencing within each RA
@@ -159,7 +159,7 @@ class Validator:
                 if invalid_phases_mask.any():
                     invalid_phase_values = df[invalid_phases_mask]['MicroPhase'].unique().tolist()
                     errors.append(
-                        f"Invalid MicroPhase values found: {', '.join(map(str, invalid_phase_values))}. "
+                        f"Invalid MicroPhase values found: {', '.join(str(v) for v in invalid_phase_values)}. "
                         f"Valid phases: {', '.join(valid_phases)}"
                     )
 
@@ -170,7 +170,7 @@ class Validator:
             if not invalid_ras.empty:
                 missing_ras = invalid_ras['RequestingArea'].unique().tolist()
                 errors.append(
-                    f"Requesting Areas not found in weights: {', '.join(missing_ras)}"
+                    f"Requesting Areas not found in weights: {', '.join(str(v) for v in missing_ras)}"
                 )
 
         is_valid = len(errors) == 0
@@ -213,13 +213,13 @@ class Validator:
         invalid_rs = df[~df['RevenueStream'].isin(self.revenue_streams)]
         if not invalid_rs.empty:
             invalid_values = invalid_rs['RevenueStream'].unique().tolist()
-            errors.append(f"Invalid Revenue Stream values: {', '.join(invalid_values)}")
+            errors.append(f"Invalid Revenue Stream values: {', '.join(str(v) for v in invalid_values)}")
 
         # Validate BudgetGroup values
         invalid_bg = df[~df['BudgetGroup'].isin(self.budget_groups)]
         if not invalid_bg.empty:
             invalid_values = invalid_bg['BudgetGroup'].unique().tolist()
-            errors.append(f"Invalid Budget Group values: {', '.join(invalid_values)}")
+            errors.append(f"Invalid Budget Group values: {', '.join(str(v) for v in invalid_values)}")
 
         # Check if weights sum to 100 per RS (warning only)
         for rs in df['RevenueStream'].unique():
@@ -257,7 +257,7 @@ class Validator:
         # Check for duplicates
         if df['RevenueStream'].duplicated().any():
             duplicates = df[df['RevenueStream'].duplicated()]['RevenueStream'].tolist()
-            errors.append(f"Duplicate Revenue Streams: {', '.join(duplicates)}")
+            errors.append(f"Duplicate Revenue Streams: {', '.join(str(v) for v in duplicates)}")
 
         # Validate weights are positive
         if (df['Weight'] <= 0).any():
@@ -268,7 +268,7 @@ class Validator:
         invalid_rs = df[~df['RevenueStream'].isin(self.revenue_streams)]
         if not invalid_rs.empty:
             invalid_values = invalid_rs['RevenueStream'].unique().tolist()
-            errors.append(f"Invalid Revenue Stream values: {', '.join(invalid_values)}")
+            errors.append(f"Invalid Revenue Stream values: {', '.join(str(v) for v in invalid_values)}")
 
         # Check if weights sum to 100 (warning only)
         total_weight = df['Weight'].sum()

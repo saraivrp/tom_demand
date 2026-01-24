@@ -80,6 +80,58 @@ class Loader:
         except Exception as e:
             raise DataLoadError(f"Failed to read CSV file: {str(e)}")
 
+        # Normalize column names - map common variations to standard names
+        column_mapping = {
+            'Revenue': 'RevenueStream',
+            'Requesting': 'RequestingArea',
+            'St Budget': 'BudgetGroup',
+            'Gro Micro': 'MicroPhase',
+            'Phas Priority': 'PriorityRA',
+            'RA Value': 'Value',
+            'RA_Value': 'Value'
+        }
+        
+        # Apply column mapping
+        for old_name, new_name in column_mapping.items():
+            if old_name in df.columns and new_name not in df.columns:
+                df.rename(columns={old_name: new_name}, inplace=True)
+
+        # Convert all text columns to string to avoid float issues with empty cells
+        text_columns = ['ID', 'Name', 'RequestingArea', 'RevenueStream', 'BudgetGroup', 'MicroPhase']
+        for col in text_columns:
+            if col in df.columns:
+                df[col] = df[col].astype(str)
+                # Replace 'nan' string with pandas NaN for proper handling
+                df[col] = df[col].replace('nan', pd.NA)
+                # Also handle empty strings
+                df[col] = df[col].replace('', pd.NA)
+
+        # Check for required columns with null/empty values and provide clear error
+        required_cols = ['ID', 'Name', 'RequestingArea', 'RevenueStream', 'BudgetGroup', 'PriorityRA']
+        missing_data_errors = []
+        for col in required_cols:
+            if col in df.columns:
+                null_mask = df[col].isna()
+                if null_mask.any():
+                    null_indices = df[null_mask].index.tolist()
+                    # Show first few problematic rows
+                    if len(null_indices) <= 3:
+                        missing_data_errors.append(
+                            f"Column '{col}' has empty/null values in row(s): {null_indices}"
+                        )
+                    else:
+                        missing_data_errors.append(
+                            f"Column '{col}' has {len(null_indices)} empty/null values "
+                            f"(first rows: {null_indices[:3]})"
+                        )
+        
+        if missing_data_errors:
+            error_msg = "Required columns have empty/null values:\n"
+            error_msg += "\n".join([f"  - {err}" for err in missing_data_errors])
+            error_msg += "\n\nPlease ensure all required columns (ID, Name, RequestingArea, "
+            error_msg += "RevenueStream, BudgetGroup, PriorityRA) have values for all rows."
+            raise DataLoadError(error_msg)
+
         # Add default values for optional columns
         if 'Value' not in df.columns:
             df['Value'] = self.defaults['value']
@@ -148,6 +200,13 @@ class Loader:
         except Exception as e:
             raise DataLoadError(f"Failed to read CSV file: {str(e)}")
 
+        # Convert text columns to string to avoid float issues
+        text_columns = ['RevenueStream', 'BudgetGroup', 'RequestingArea']
+        for col in text_columns:
+            if col in df.columns:
+                df[col] = df[col].astype(str)
+                df[col] = df[col].replace('nan', '')
+
         # Validate the dataframe
         validation_result = self.validator.validate_ra_weights(df)
 
@@ -190,6 +249,11 @@ class Loader:
             df = pd.read_csv(filepath, sep=self.csv_delimiter, decimal=self.decimal_separator)
         except Exception as e:
             raise DataLoadError(f"Failed to read CSV file: {str(e)}")
+
+        # Convert text columns to string to avoid float issues
+        if 'RevenueStream' in df.columns:
+            df['RevenueStream'] = df['RevenueStream'].astype(str)
+            df['RevenueStream'] = df['RevenueStream'].replace('nan', '')
 
         # Validate the dataframe
         validation_result = self.validator.validate_rs_weights(df)
