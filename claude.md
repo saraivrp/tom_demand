@@ -22,15 +22,18 @@ This is the **TOM Demand Management System v3.3** - a production-ready demand pr
 ```
 src/
 ├── algorithms/          # Prioritization algorithms (Sainte-Laguë, D'Hondt, WSJF)
-├── validator.py        # Centralized validation logic (320 lines)
-├── loader.py           # Data ingestion with validation (175 lines)
-├── prioritizer.py      # Orchestration and coordination (220 lines)
-├── exporter.py         # Result formatting and output (185 lines)
-├── cli.py              # Command-line interface (340 lines)
-└── utils.py            # Shared utilities (40 lines)
+│   ├── sainte_lague.py  # Odd divisor allocation (157 lines)
+│   ├── dhondt.py        # Natural divisor allocation (152 lines)
+│   └── wsjf.py          # Economic optimization (104 lines)
+├── validator.py        # Centralized validation logic (311 lines)
+├── loader.py           # Data ingestion with validation (318 lines)
+├── prioritizer.py      # Orchestration and coordination (401 lines)
+├── exporter.py         # Result formatting and output (231 lines)
+├── cli.py              # Command-line interface (364 lines)
+└── utils.py            # Shared utilities (48 lines)
 ```
 
-**Total**: ~1,735 lines of well-structured, modular Python code
+**Total**: 2,104 lines of well-structured, modular Python code
 
 ### 3. Queue-Based Prioritization (v3.2)
 
@@ -56,7 +59,7 @@ The system supports **sequential queue-based ranking** that separates IDEAs by t
 
 **How It Works:**
 - IDEAs are automatically assigned to queues based on their `MicroPhase` field
-- NOW items get ranks 1-8, NEXT items get ranks 9-9, LATER items get ranks 10-18, PRODUCTION items have null rank
+- NOW items get ranks 1 to N, NEXT items get ranks N+1 to M, LATER items get ranks M+1 to P, PRODUCTION items have null rank
 - Sequential ranking ensures: development > execution-ready > planning > production (tracking only)
 - This allows prioritization of solution-defined work separately from early planning work
 
@@ -210,6 +213,8 @@ When referencing code locations in responses, use this format:
 
 - [README.md](README.md) - Quick start and overview
 - [USAGE_GUIDE.md](USAGE_GUIDE.md) - Detailed usage instructions
+- [EXEMPLOS_USO.md](EXEMPLOS_USO.md) - Usage examples in Portuguese (for Windows executable)
+- [CHANGELOG_v3.3.md](CHANGELOG_v3.3.md) - Version 3.3 release notes
 - [docs/PROJECT_SUMMARY.md](docs/PROJECT_SUMMARY.md) - Implementation status and features
 - [docs/EUROPEAN_FORMAT.md](docs/EUROPEAN_FORMAT.md) - European format details
 - [docs/TOM Demand Management System - Functional Specification.md](docs/TOM%20Demand%20Management%20System%20-%20Functional%20Specification.md) - Complete specification v3.0
@@ -231,6 +236,7 @@ Current dependencies (see [requirements.txt](requirements.txt)):
 - numpy >= 1.21.0
 - pyyaml >= 5.4.0
 - click >= 8.0.0
+- pytest >= 6.2.5 (for testing)
 
 ## Git Workflow
 
@@ -275,6 +281,6 @@ Code changes should:
 
 ---
 
-**Version**: 3.0.0
-**Last Updated**: January 4, 2026
+**Version**: 3.3.0
+**Last Updated**: January 25, 2026
 **Status**: Production System - Handle with Care

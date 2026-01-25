@@ -13,10 +13,10 @@ A complete demand prioritization system for CTT implementing three proportional 
 - WSJF (Weighted Shortest Job First)
 
 ### Code Statistics
-- **13 Python modules** totaling **~1,735 lines of code**
+- **11 Python modules** totaling **2,104 lines of code**
 - Well-structured, modular architecture
 - Comprehensive validation and error handling
-- Full CLI interface with multiple commands
+- Full CLI interface with 5 commands
 
 ## Implemented Components
 
@@ -97,7 +97,10 @@ Complete set of example files:
 
 - [README.md](../README.md) - Project overview and quick start
 - [USAGE_GUIDE.md](../USAGE_GUIDE.md) - Detailed usage instructions
+- [EXEMPLOS_USO.md](../EXEMPLOS_USO.md) - Portuguese usage examples for Windows executable
+- [CHANGELOG_v3.3.md](../CHANGELOG_v3.3.md) - Version 3.3 release notes
 - [TOM Demand Management System - Functional Specification.md](TOM%20Demand%20Management%20System%20-%20Functional%20Specification.md) - Complete specification
+- [EUROPEAN_FORMAT.md](EUROPEAN_FORMAT.md) - European CSV format details
 
 ## Testing & Validation
 
@@ -194,19 +197,19 @@ All output files generated successfully:
 tom_demand/
 ├── src/
 │   ├── algorithms/
-│   │   ├── __init__.py
-│   │   ├── sainte_lague.py      (145 lines)
-│   │   ├── dhondt.py             (143 lines)
-│   │   └── wsjf.py               (95 lines)
-│   ├── __init__.py
-│   ├── validator.py              (320 lines)
-│   ├── loader.py                 (175 lines)
-│   ├── prioritizer.py            (220 lines)
-│   ├── exporter.py               (185 lines)
-│   ├── utils.py                  (40 lines)
-│   └── cli.py                    (340 lines)
+│   │   ├── __init__.py           (9 lines)
+│   │   ├── sainte_lague.py       (157 lines)
+│   │   ├── dhondt.py             (152 lines)
+│   │   └── wsjf.py               (104 lines)
+│   ├── __init__.py               (9 lines)
+│   ├── validator.py              (311 lines)
+│   ├── loader.py                 (318 lines)
+│   ├── prioritizer.py            (401 lines)
+│   ├── exporter.py               (231 lines)
+│   ├── utils.py                  (48 lines)
+│   └── cli.py                    (364 lines)
 ├── config/
-│   └── config.yaml
+│   └── config.yaml               (128 lines)
 ├── data/
 │   ├── input/
 │   │   ├── ideias.csv
@@ -223,11 +226,14 @@ tom_demand/
 │   ├── PROJECT_SUMMARY.md
 │   ├── EUROPEAN_FORMAT.md
 │   └── TOM Demand Management System - Functional Specification.md
-├── tom_demand.py                 (Main entry point)
+├── tom_demand.py                 (Main entry point, 16 lines)
+├── build_windows.bat             (Windows executable build script)
 ├── requirements.txt
 ├── .gitignore
 ├── README.md
-└── USAGE_GUIDE.md
+├── USAGE_GUIDE.md
+├── EXEMPLOS_USO.md               (Portuguese usage examples)
+└── CHANGELOG_v3.3.md             (Version 3.3 release notes)
 ```
 
 ## How to Use
@@ -288,7 +294,7 @@ The system is ready for use in CTT's portfolio management process.
 ---
 
 **Version**: 3.3.0
-**Date**: January 5, 2026
+**Date**: January 25, 2026
 **Status**: Production Ready
 **Latest Updates**:
 - **v3.3**: Per-queue prioritization methods - different algorithms for NOW, NEXT, LATER queues via CLI flags

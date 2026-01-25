@@ -17,9 +17,11 @@ You need three CSV files:
 Contains the IDEAs (development requests) with required and optional attributes.
 
 ```csv
-ID,Name,RequestingArea,RevenueStream,BudgetGroup,PriorityRA,Value,Urgency,Risk,Size
-IDEA001,New eCommerce Portal,DIR_eCommerce_Commercial,eCommerce,Commercial,1,9,8,5,250
+ID;Name;RequestingArea;RevenueStream;BudgetGroup;MicroPhase;PriorityRA;Value;Urgency;Risk;Size
+IDEA001;New eCommerce Portal;DIR_eCommerce_Commercial;eCommerce;Commercial;In Development;1;9;8;5;250
 ```
+
+> **Note**: CSV files use European format with semicolon (`;`) delimiter.
 
 **Required columns:**
 - ID: Unique identifier
@@ -30,6 +32,8 @@ IDEA001,New eCommerce Portal,DIR_eCommerce_Commercial,eCommerce,Commercial,1,9,8
 - PriorityRA: Priority within Requesting Area (sequential: 1, 2, 3, ...)
 
 **Optional columns (with defaults):**
+- MicroPhase: Lifecycle phase (determines Queue assignment, default: Backlog)
+  - Valid values: Backlog, In Definition, Pitch, Ready for Solution, High Level Design, Ready for Approval, In Approval, Ready for Execution, In Development, Ready for Acceptance, In Acceptance, Selected for Production, In Rollout, In Production
 - Value: Business value (1-10, default: 1)
 - Urgency: Time criticality (1-10, default: 1)
 - Risk: Risk reduction (1-10, default: 1)
@@ -39,8 +43,8 @@ IDEA001,New eCommerce Portal,DIR_eCommerce_Commercial,eCommerce,Commercial,1,9,8
 Contains weights for Requesting Areas within each Revenue Stream.
 
 ```csv
-RevenueStream,BudgetGroup,RequestingArea,Weight
-eCommerce,Commercial,DIR_eCommerce_Commercial,30
+RevenueStream;BudgetGroup;RequestingArea;Weight
+eCommerce;Commercial;DIR_eCommerce_Commercial;30
 ```
 
 **Columns:**
@@ -53,9 +57,9 @@ eCommerce,Commercial,DIR_eCommerce_Commercial,30
 Contains strategic weights for Revenue Streams.
 
 ```csv
-RevenueStream,Weight
-eCommerce,25
-Mail,20
+RevenueStream;Weight
+eCommerce;25
+Mail;20
 ```
 
 **Columns:**
