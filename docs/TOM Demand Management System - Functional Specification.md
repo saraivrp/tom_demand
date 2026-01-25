@@ -3,29 +3,30 @@
 # TOM Demand Management System - Functional Specification
 ## Document Information
 **Document**: TOM Demand Management System - Functional Specification
-**Version**: 3.3
-**Date**: January 05, 2026
+**Version**: 3.3.0
+**Date**: January 25, 2026
 **Author**: Lean Portfolio Management Specialist
-**Status**: Final - Approved for Implementation
+**Status**: Final - Production System
 **Change Log**:
-- v3.3 - Added Per-Queue Prioritization Methods (different algorithms per queue)
-- v3.2 - Added Queue-Based Sequential Prioritization (NOW/NEXT/LATER/PRODUCTION)
-- v3.1 - Initial queue implementation  
+- v3.3.0 (January 2026) - Added Per-Queue Prioritization Methods (different algorithms per queue via CLI flags)
+- v3.2.0 (January 2026) - Added Queue-Based Sequential Prioritization (NOW/NEXT/LATER/PRODUCTION)
+- v3.1.0 (January 2026) - Initial queue implementation with MicroPhase integration
+- v3.0.0 (January 2026) - Initial production release with three prioritization methods  
   
-## Table of Contents  
-1. ++[System Overview](https://claude.ai/chat/c7c29ce8-e8f6-400e-8429-1ad7d1c89a63?setup_intent=seti_1Sl8nIBjIQrRQnuxmM5MY7td&setup_intent_client_secret=seti_1Sl8nIBjIQrRQnuxmM5MY7td_secret_TiZx3ISyMFXuJfMv4rVKfhHXmT8O1nV&source_type=card#1-system-overview)++  
-2. ++[Target Operating Model (TOM) Structure](https://claude.ai/chat/c7c29ce8-e8f6-400e-8429-1ad7d1c89a63?setup_intent=seti_1Sl8nIBjIQrRQnuxmM5MY7td&setup_intent_client_secret=seti_1Sl8nIBjIQrRQnuxmM5MY7td_secret_TiZx3ISyMFXuJfMv4rVKfhHXmT8O1nV&source_type=card#2-target-operating-model-tom-structure)++  
-3. ++[Data Model](https://claude.ai/chat/c7c29ce8-e8f6-400e-8429-1ad7d1c89a63?setup_intent=seti_1Sl8nIBjIQrRQnuxmM5MY7td&setup_intent_client_secret=seti_1Sl8nIBjIQrRQnuxmM5MY7td_secret_TiZx3ISyMFXuJfMv4rVKfhHXmT8O1nV&source_type=card#3-data-model)++  
-4. ++[Prioritization Methods](https://claude.ai/chat/c7c29ce8-e8f6-400e-8429-1ad7d1c89a63?setup_intent=seti_1Sl8nIBjIQrRQnuxmM5MY7td&setup_intent_client_secret=seti_1Sl8nIBjIQrRQnuxmM5MY7td_secret_TiZx3ISyMFXuJfMv4rVKfhHXmT8O1nV&source_type=card#4-prioritization-methods)++  
-5. ++[Prioritization Levels](https://claude.ai/chat/c7c29ce8-e8f6-400e-8429-1ad7d1c89a63?setup_intent=seti_1Sl8nIBjIQrRQnuxmM5MY7td&setup_intent_client_secret=seti_1Sl8nIBjIQrRQnuxmM5MY7td_secret_TiZx3ISyMFXuJfMv4rVKfhHXmT8O1nV&source_type=card#5-prioritization-levels)++  
-6. ++[Functional Specification](https://claude.ai/chat/c7c29ce8-e8f6-400e-8429-1ad7d1c89a63?setup_intent=seti_1Sl8nIBjIQrRQnuxmM5MY7td&setup_intent_client_secret=seti_1Sl8nIBjIQrRQnuxmM5MY7td_secret_TiZx3ISyMFXuJfMv4rVKfhHXmT8O1nV&source_type=card#6-functional-specification)++  
-7. ++[Use Cases and Examples](https://claude.ai/chat/c7c29ce8-e8f6-400e-8429-1ad7d1c89a63?setup_intent=seti_1Sl8nIBjIQrRQnuxmM5MY7td&setup_intent_client_secret=seti_1Sl8nIBjIQrRQnuxmM5MY7td_secret_TiZx3ISyMFXuJfMv4rVKfhHXmT8O1nV&source_type=card#7-use-cases-and-examples)++  
-8. ++[Integration with TOM Delivery Model](https://claude.ai/chat/c7c29ce8-e8f6-400e-8429-1ad7d1c89a63?setup_intent=seti_1Sl8nIBjIQrRQnuxmM5MY7td&setup_intent_client_secret=seti_1Sl8nIBjIQrRQnuxmM5MY7td_secret_TiZx3ISyMFXuJfMv4rVKfhHXmT8O1nV&source_type=card#8-integration-with-tom-delivery-model)++  
-9. ++[Non-Functional Requirements](https://claude.ai/chat/c7c29ce8-e8f6-400e-8429-1ad7d1c89a63?setup_intent=seti_1Sl8nIBjIQrRQnuxmM5MY7td&setup_intent_client_secret=seti_1Sl8nIBjIQrRQnuxmM5MY7td_secret_TiZx3ISyMFXuJfMv4rVKfhHXmT8O1nV&source_type=card#9-non-functional-requirements)++  
-10. ++[Implementation Roadmap](https://claude.ai/chat/c7c29ce8-e8f6-400e-8429-1ad7d1c89a63?setup_intent=seti_1Sl8nIBjIQrRQnuxmM5MY7td&setup_intent_client_secret=seti_1Sl8nIBjIQrRQnuxmM5MY7td_secret_TiZx3ISyMFXuJfMv4rVKfhHXmT8O1nV&source_type=card#10-implementation-roadmap)++  
-11. ++[Glossary](https://claude.ai/chat/c7c29ce8-e8f6-400e-8429-1ad7d1c89a63?setup_intent=seti_1Sl8nIBjIQrRQnuxmM5MY7td&setup_intent_client_secret=seti_1Sl8nIBjIQrRQnuxmM5MY7td_secret_TiZx3ISyMFXuJfMv4rVKfhHXmT8O1nV&source_type=card#11-glossary)++  
-12. ++[Appendices](https://claude.ai/chat/c7c29ce8-e8f6-400e-8429-1ad7d1c89a63?setup_intent=seti_1Sl8nIBjIQrRQnuxmM5MY7td&setup_intent_client_secret=seti_1Sl8nIBjIQrRQnuxmM5MY7td_secret_TiZx3ISyMFXuJfMv4rVKfhHXmT8O1nV&source_type=card#12-appendices)++  
-13. ++[References](https://claude.ai/chat/c7c29ce8-e8f6-400e-8429-1ad7d1c89a63?setup_intent=seti_1Sl8nIBjIQrRQnuxmM5MY7td&setup_intent_client_secret=seti_1Sl8nIBjIQrRQnuxmM5MY7td_secret_TiZx3ISyMFXuJfMv4rVKfhHXmT8O1nV&source_type=card#13-references)++  
+## Table of Contents
+1. [System Overview](#1-system-overview)
+2. [Target Operating Model (TOM) Structure](#2-target-operating-model-tom-structure)
+3. [Data Model](#3-data-model)
+4. [Prioritization Methods](#4-prioritization-methods)
+5. [Prioritization Levels](#5-prioritization-levels)
+6. [Functional Specification](#6-functional-specification)
+7. [Use Cases and Examples](#7-use-cases-and-examples)
+8. [Integration with TOM Delivery Model](#8-integration-with-tom-delivery-model)
+9. [Non-Functional Requirements](#9-non-functional-requirements)
+10. [Implementation Roadmap](#10-implementation-roadmap)
+11. [Glossary](#11-glossary)
+12. [Appendices](#12-appendices)
+13. [References](#13-references)  
   
 ## 1. System Overview  
 ## 1.1 Objective  
@@ -251,11 +252,11 @@ An IDEA represents a development request created by a Requesting Area.
 | Size       | integer | 100      | > 0             | Estimated size (story points or hours)     |
 | MicroPhase | string  | Backlog  | See section 2.4 | Current micro phase from BusinessMap       |
 
-**Auto-Generated Attributes (v3.1)**
+**Auto-Generated Attributes (v3.2)**
 
-| Attribute | Type   | Description                                                     |
-| --------- | ------ | --------------------------------------------------------------- |
-| Queue     | string | Auto-assigned queue (NOW/NEXT/PRODUCTION) based on MicroPhase  |
+| Attribute | Type   | Description                                                           |
+| --------- | ------ | --------------------------------------------------------------------- |
+| Queue     | string | Auto-assigned queue (NOW/NEXT/LATER/PRODUCTION) based on MicroPhase   |
   
 **Calculated Attributes**
 
@@ -272,33 +273,35 @@ An IDEA represents a development request created by a Requesting Area.
   
 ****3.2 Weight Structures****  
 **Requesting Area Weights (Level 2)**  
-**File**: weights_ra.csv  
-```
-RevenueStream,BudgetGroup,RequestingArea,Weight
-eCommerce,Commercial,DIR_eCommerce_Commercial,30
-eCommerce,Technology,DIR_Technology,25
-eCommerce,Data&AI,DIR_DataAI,20
-Mail,Operations,DIR_Mail_Operations,35
+**File**: weights_ra.csv
+```csv
+RevenueStream;BudgetGroup;RequestingArea;Weight
+eCommerce;Commercial;DIR_eCommerce_Commercial;30
+eCommerce;Technology;DIR_Technology;25
+eCommerce;Data&AI;DIR_DataAI;20
+Mail;Operations;DIR_Mail_Operations;35
 ...
-
 ```
-**Columns**:  
-* RevenueStream: Revenue Stream name  
-* BudgetGroup: Budget Group name  
-* RequestingArea: Requesting Area identifier  
-* Weight: Relative weight (should sum to 100 per RS, or will be normalized)  
-**Revenue Stream Weights (Level 3)**  
-**File**: weights_rs.csv  
-```
-RevenueStream,Weight
-eCommerce,25
-Mail,20
-Fulfilment,15
-Business Solutions,12
-Payments,10
-Retail & Financial Services,10
-Banco CTT,8
 
+> **Note**: CSV files use European format with semicolon (`;`) delimiter. See [EUROPEAN_FORMAT.md](EUROPEAN_FORMAT.md) for details.
+
+**Columns**:
+* RevenueStream: Revenue Stream name
+* BudgetGroup: Budget Group name
+* RequestingArea: Requesting Area identifier
+* Weight: Relative weight (should sum to 100 per RS, or will be normalized)
+
+**Revenue Stream Weights (Level 3)**
+**File**: weights_rs.csv
+```csv
+RevenueStream;Weight
+eCommerce;25
+Mail;20
+Fulfilment;15
+Business Solutions;12
+Payments;10
+Retail & Financial Services;10
+Banco CTT;8
 ```
 **Columns**:  
 * RevenueStream: Revenue Stream name  
@@ -946,11 +949,11 @@ def export_metadata(
 
 ```
 **Output Formats**: As specified in sections 5.2 and 5.3  
-**Metadata Structure** (metadata.json):  
-```
+**Metadata Structure** (metadata.json):
+```json
 {
-  "execution_timestamp": "2026-01-02T10:30:00Z",
-  "system_version": "3.0",
+  "execution_timestamp": "2026-01-25T10:30:00Z",
+  "system_version": "3.3.0",
   "input_files": {
     "ideas": "ideias_q1_2026.csv",
     "ra_weights": "weights_ra_q1.csv",
@@ -963,9 +966,21 @@ def export_metadata(
   "statistics": {
     "total_ideas": 247,
     "total_requesting_areas": 18,
-    "total_revenue_streams": 7
+    "total_revenue_streams": 7,
+    "queue_counts": {
+      "NOW": 45,
+      "NEXT": 12,
+      "LATER": 180,
+      "PRODUCTION": 10
+    }
   },
-  "methods_executed": ["SainteLague", "DHondt", "WSJF"],
+  "methods_executed": ["sainte-lague", "dhondt", "wsjf"],
+  "queue_methods": {
+    "NOW": "wsjf",
+    "NEXT": "wsjf",
+    "LATER": "sainte-lague"
+  },
+  "default_method": "sainte-lague",
   "weights_normalized": true
 }
 
@@ -996,7 +1011,17 @@ python tom_demand.py prioritize \
   --all-methods \
   --output-dir ./output
 
+# Execute with per-queue methods (v3.3)
+python tom_demand.py prioritize \
+  --ideas ideias.csv \
+  --ra-weights weights_ra.csv \
+  --rs-weights weights_rs.csv \
+  --now-method wsjf \
+  --next-method wsjf \
+  --later-method sainte-lague \
+  --output-dir ./output
 ```
+
 **Level 2 Only**  
 ```
 # Execute Level 2 only
@@ -1037,21 +1062,26 @@ python tom_demand.py validate \
   --rs-weights weights_rs.csv
 
 ```
-**CLI Parameters**  
+**CLI Parameters**
 
 | Parameter | Type | Default | Description |
 | ------------------- | ------- | ------------ | -------------------------------------------------- |
 | --ideas | string | Required | Path to ideias.csv |
 | --ra-weights | string | Required | Path to weights_ra.csv |
 | --rs-weights | string | Required | Path to weights_rs.csv |
-| --method | string | sainte-lague | Prioritization method (sainte-lague, dhondt, wsjf) |
+| --method | string | sainte-lague | Global prioritization method (sainte-lague, dhondt, wsjf) |
 | --all-methods | flag | False | Execute all 3 methods |
+| --now-method | string | None | Method for NOW queue (v3.3) - overrides --method |
+| --next-method | string | None | Method for NEXT queue (v3.3) - overrides --method |
+| --later-method | string | None | Method for LATER queue (v3.3) - overrides --method |
 | --output-dir | string | ./output | Output directory |
 | --output | string | Auto | Specific output file path |
 | --normalize-weights | flag | True | Auto-normalize weights to sum 100 |
 | --top-n | integer | None | Show only top N results |
 | --verbose | string | INFO | Logging level (DEBUG, INFO, WARNING, ERROR) |
 | --config | string | config.yaml | Configuration file path |
+
+**Note (v3.3)**: Per-queue method flags (`--now-method`, `--next-method`, `--later-method`) cannot be used with `--all-methods`.
   
 **CLI Output Examples**  
 **Validation Success**:  
@@ -1551,58 +1581,52 @@ def prioritize_level2(
 * Parallel processing for multiple RSs  
 * Database backend (optional)  
   
-## 10. Implementation Roadmap  
-## Phase 1: MVP (4 weeks)  
-**Objectives**: Core functionality with Sainte-Laguë method  
-**Deliverables**:  
-* ✅ Data structures and validation  
-* ✅ Sainte-Laguë algorithm (Level 2 and 3)  
-* ✅ Basic CLI  
-* ✅ CSV export for demand.csv  
-* ✅ Unit tests (>70% coverage)  
-* ✅ Basic documentation  
-**Milestones**:  
-* Week 1: Data model and validation  
-* Week 2: Sainte-Laguë implementation  
-* Week 3: CLI and integration  
-* Week 4: Testing and documentation  
-## Phase 2: Alternative Methods (2 weeks)  
-**Objectives**: Add D'Hondt and WSJF methods  
-**Deliverables**:  
-* ✅ D'Hondt algorithm  
-* ✅ WSJF algorithm  
-* ✅ Method comparison functionality  
-* ✅ Enhanced CLI with method selection  
-* ✅ Comparison report export  
-**Milestones**:  
-* Week 5: D'Hondt implementation  
-* Week 6: WSJF implementation and comparison  
-## Phase 3: Usability Enhancements (2 weeks)  
-**Objectives**: Improve user experience and validation  
-**Deliverables**:  
-* ✅ Advanced validation with clear error messages  
-* ✅ Automatic weight normalization  
-* ✅ Progress indicators  
-* ✅ Enhanced logging  
-* ✅ Configuration file support  
-**Milestones**:  
-* Week 7: Validation enhancements  
-* Week 8: UX improvements  
-## Phase 4: Integration and Analytics (3 weeks)  
-**Objectives**: External integrations and reporting  
-**Deliverables**:  
-* 🔄 REST API for integration  
-* 🔄 Webhook support for automated triggers  
-* 🔄 Jira/Azure DevOps integration  
-* 🔄 Dashboard for visualization (optional)  
-* 🔄 Capacity planning report  
-* 🔄 Historical trend analysis  
-**Milestones**:  
-* Week 9: API development  
-* Week 10: Integration connectors  
-* Week 11: Reporting and analytics  
-**Legend**:  
-* ✅ Included in v3.0  
+## 10. Implementation Roadmap
+
+## Phase 1: MVP (4 weeks) - ✅ COMPLETE
+**Objectives**: Core functionality with Sainte-Laguë method
+**Deliverables**:
+* ✅ Data structures and validation
+* ✅ Sainte-Laguë algorithm (Level 2 and 3)
+* ✅ Basic CLI
+* ✅ CSV export for demand.csv
+* ✅ Unit tests (>70% coverage)
+* ✅ Basic documentation
+
+## Phase 2: Alternative Methods (2 weeks) - ✅ COMPLETE
+**Objectives**: Add D'Hondt and WSJF methods
+**Deliverables**:
+* ✅ D'Hondt algorithm
+* ✅ WSJF algorithm
+* ✅ Method comparison functionality
+* ✅ Enhanced CLI with method selection
+* ✅ Comparison report export
+
+## Phase 3: Usability Enhancements (2 weeks) - ✅ COMPLETE
+**Objectives**: Improve user experience and validation
+**Deliverables**:
+* ✅ Advanced validation with clear error messages
+* ✅ Automatic weight normalization
+* ✅ Progress indicators
+* ✅ Enhanced logging
+* ✅ Configuration file support
+* ✅ Queue-based prioritization (v3.2)
+* ✅ Per-queue prioritization methods (v3.3)
+* ✅ Windows executable build script
+* ✅ Interactive CLI prompts
+
+## Phase 4: Integration and Analytics (Future)
+**Objectives**: External integrations and reporting
+**Deliverables**:
+* 🔄 REST API for integration
+* 🔄 Webhook support for automated triggers
+* 🔄 Jira/Azure DevOps integration
+* 🔄 Dashboard for visualization (optional)
+* 🔄 Capacity planning report
+* 🔄 Historical trend analysis
+
+**Legend**:
+* ✅ Included in v3.3.0
 * 🔄 Planned for v4.0  
   
 ## 11. Glossary  
@@ -1621,12 +1645,14 @@ def prioritize_level2(
 | Quality Gate | Decision point between delivery phases |
 | Quotient | Calculated value for determining proportional allocation |
 | Seat | Metaphor for priority position in allocation algorithms |
-| **MicroPhase (v3.1)** | Specific lifecycle stage from BusinessMap (e.g., "In Development", "Backlog") |
-| **Queue (v3.1)** | Category for sequential prioritization (NOW, NEXT, or PRODUCTION) |
-| **NOW Queue (v3.1)** | Highest priority queue containing IDEAs in Development phase (ranks 1-N) |
-| **NEXT Queue (v3.1)** | Lower priority queue containing IDEAs in Planning phases (ranks N+1-M) |
-| **PRODUCTION Queue (v3.1)** | No-priority queue for deployed IDEAs (no ranking) |
-| **Sequential Ranking (v3.1)** | Ranking system where NOW items rank before NEXT items, enforcing "finish before start" |
+| **MicroPhase (v3.2)** | Specific lifecycle stage from BusinessMap (e.g., "In Development", "Backlog") |
+| **Queue (v3.2)** | Category for sequential prioritization (NOW, NEXT, LATER, or PRODUCTION) |
+| **NOW Queue (v3.2)** | Highest priority queue containing IDEAs in Development phase (ranks 1-N) |
+| **NEXT Queue (v3.2)** | High priority queue containing IDEAs Ready for Execution (ranks N+1-M) |
+| **LATER Queue (v3.2)** | Lower priority queue containing IDEAs in Planning phases - Need and Solution (ranks M+1-P) |
+| **PRODUCTION Queue (v3.2)** | No-priority queue for deployed IDEAs (no ranking) |
+| **Sequential Ranking (v3.2)** | Ranking system where NOW → NEXT → LATER, enforcing "finish before start" |
+| **Per-Queue Methods (v3.3)** | Feature allowing different prioritization algorithms for each queue |
 | **Cost of Delay (CoD)** | Economic impact of delaying work |
 | **Story Point (SP)** | Unit of effort estimation |
 | **PI (Program Increment)** | Fixed timebox in SAFe (typically 8-12 weeks) |  
@@ -1754,95 +1780,73 @@ WSJF,5,I1,Portal,RA1,RS1,0.088
 WSJF,6,I4,Sorting,RA3,RS2,0.083
 
 ```
-## Appendix C: Project Structure  
+## Appendix C: Project Structure
 ```
-tom_demand_system/
-├── src/
-│   ├── __init__.py
-│   ├── loader.py                 # Data loading functions
-│   ├── validator.py              # Validation engine
-│   ├── prioritizer.py            # Main prioritization logic
+tom_demand/
+├── src/                              # Source code (2,104 lines total)
+│   ├── __init__.py                   (9 lines)
+│   ├── loader.py                     (318 lines) - Data loading and validation
+│   ├── validator.py                  (311 lines) - Centralized validation engine
+│   ├── prioritizer.py                (401 lines) - Main prioritization logic
 │   ├── algorithms/
-│   │   ├── __init__.py
-│   │   ├── sainte_lague.py      # Sainte-Laguë implementation
-│   │   ├── dhondt.py            # D'Hondt implementation
-│   │   └── wsjf.py              # WSJF implementation
-│   ├── exporter.py              # CSV export functions
-│   ├── cli.py                   # Command-line interface
-│   └── utils.py                 # Helper functions
+│   │   ├── __init__.py               (9 lines)
+│   │   ├── sainte_lague.py           (157 lines) - Sainte-Laguë implementation
+│   │   ├── dhondt.py                 (152 lines) - D'Hondt implementation
+│   │   └── wsjf.py                   (104 lines) - WSJF implementation
+│   ├── exporter.py                   (231 lines) - CSV/JSON export functions
+│   ├── cli.py                        (364 lines) - Command-line interface
+│   └── utils.py                      (48 lines) - Helper functions
 │
 ├── tests/
-│   ├── __init__.py
-│   ├── test_loader.py           # Loader tests
-│   ├── test_validator.py        # Validation tests
-│   ├── test_algorithms.py       # Algorithm tests
-│   ├── test_prioritizer.py      # Integration tests
-│   ├── test_exporter.py         # Export tests
-│   ├── test_cli.py              # CLI tests
-│   └── fixtures/                # Test data
-│       ├── ideias_test.csv
-│       ├── weights_ra_test.csv
-│       └── weights_rs_test.csv
+│   └── __init__.py
 │
 ├── config/
-│   ├── config.yaml              # Default configuration
-│   └── config.example.yaml      # Example configuration
+│   └── config.yaml                   (128 lines) - Configuration settings
 │
 ├── data/
-│   ├── input/                   # Input files directory
+│   ├── input/                        # Input files directory
 │   │   ├── ideias.csv
 │   │   ├── weights_ra.csv
 │   │   └── weights_rs.csv
-│   └── output/                  # Output files directory
-│       ├── prioritization_rs.csv
+│   └── output/                       # Output files directory
 │       ├── demand.csv
+│       ├── demand_*.csv
+│       ├── prioritization_rs_*.csv
 │       └── metadata.json
 │
 ├── docs/
-│   ├── tom_demand.md            # This document
-│   ├── api_reference.md         # API documentation
-│   ├── user_guide.md            # User guide
-│   └── examples/                # Example scenarios
-│       └── quarterly_prioritization.md
+│   ├── TOM Demand Management System - Functional Specification.md
+│   ├── PROJECT_SUMMARY.md
+│   └── EUROPEAN_FORMAT.md
 │
-├── scripts/
-│   ├── setup.sh                 # Setup script
-│   └── run_example.sh           # Run example scenario
-│
-├── .gitignore
-├── requirements.txt             # Python dependencies
-├── setup.py                     # Package setup
-├── README.md                    # Project README
-└── LICENSE                      # License file
-
+├── tom_demand.py                     (16 lines) - Main entry point
+├── build_windows.bat                 # Windows executable build script
+├── requirements.txt                  # Python dependencies
+├── README.md                         # Project overview
+├── USAGE_GUIDE.md                    # Detailed usage instructions
+├── EXEMPLOS_USO.md                   # Portuguese usage examples
+├── CHANGELOG_v3.3.md                 # Version 3.3 release notes
+├── CLAUDE.md                         # Development guidelines
+└── .gitignore
 ```
-## Appendix D: Sample requirements.txt  
+## Appendix D: Sample requirements.txt
 ```
 # Core dependencies
 pandas>=1.3.0
 numpy>=1.21.0
 pyyaml>=5.4.0
-
-# CLI enhancements
 click>=8.0.0
-colorama>=0.4.4
-tqdm>=4.62.0
 
 # Testing
 pytest>=6.2.5
-pytest-cov>=3.0.0
-pytest-mock>=3.6.1
 
-# Code quality
+# Optional: Code quality
 black>=21.9b0
 flake8>=4.0.1
 mypy>=0.910
-
-# Documentation
-sphinx>=4.2.0
-sphinx-rtd-theme>=1.0.0
-
 ```
+
+**Note**: The core system requires only pandas, numpy, pyyaml, and click. Testing and code quality tools are optional for development.
   
 ## 13. References  
 ## 13.1 Electoral Methods  
@@ -1869,13 +1873,17 @@ sphinx-rtd-theme>=1.0.0
   
 **End of Document**  
   
-## Document Control  
+## Document Control
 
-| Version | Date | Author | Changes |
-| ------- | ---------- | -------------- | ----------------------------------------------------------- |
-| 1.0 | 2025-12-15 | LPM Specialist | Initial draft |
-| 2.0 | 2026-01-01 | LPM Specialist | Added WSJF method |
-| 3.0 | 2026-01-02 | LPM Specialist | Final version - English translation, complete specification |
+| Version | Date       | Author         | Changes                                                          |
+| ------- | ---------- | -------------- | ---------------------------------------------------------------- |
+| 1.0     | 2025-12-15 | LPM Specialist | Initial draft                                                    |
+| 2.0     | 2026-01-01 | LPM Specialist | Added WSJF method                                                |
+| 3.0     | 2026-01-02 | LPM Specialist | Final version - English translation, complete specification      |
+| 3.1     | 2026-01-04 | LPM Specialist | Added queue-based prioritization with MicroPhase integration     |
+| 3.2     | 2026-01-05 | LPM Specialist | Added four-queue system (NOW/NEXT/LATER/PRODUCTION)              |
+| 3.3     | 2026-01-05 | LPM Specialist | Added per-queue prioritization methods (CLI flags per queue)     |
+| 3.3.0   | 2026-01-25 | LPM Specialist | Documentation update - aligned with production codebase v3.3.0   |
   
 **Approval**:  
 * Portfolio Manager: _________________ Date: _______  
