@@ -91,6 +91,14 @@ class Prioritizer:
             # Filter out IDEAs from RAs that don't have weights
             rs_ideas_filtered = rs_ideas[rs_ideas['RequestingArea'].isin(entities)].copy()
 
+            # Filter out IDEAs from RAs that have weights equals to 999 
+            # (SARAIVA - IGNORAR IDEAS DE RAs COM PESO 999, POIS SÃO USADOS pelas RAs QUE NÃO DEVEM SER CONSIDERADAS NA PRIORITIZAÇÃO)
+            print(f"    ⚠ Filtering out IDEAs from RAs with weight 999 for Revenue Stream '{rs}'") 
+            #ideas_999 = rs_ideas_filtered[rs_ideas_filtered['PriorityRA'] == 999].copy()
+            #print(f"      Ideas with weight 999: {len(ideas_999)} of total {len(rs_ideas)} in this RS")
+
+            rs_ideas_filtered = rs_ideas_filtered[rs_ideas_filtered['PriorityRA'] != 999]
+
             # Check if any IDEAs were excluded
             excluded_count = len(rs_ideas) - len(rs_ideas_filtered)
             if excluded_count > 0:
