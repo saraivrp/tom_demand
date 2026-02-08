@@ -101,13 +101,17 @@ class Validator:
             errors.append(f"Valid values are: {', '.join(self.budget_groups)}")
 
         # Validate PriorityRA sequencing within each RA
+        # SARAIVA - IGNORAR PRIO 999, POIS É USADO PARA IDEAS QUE NÃO DEVEM SER CONSIDERADAS NA PRIORITIZAÇÃO (EX: IDEAS DE BAIXA PRIORIDADE OU IDEAS QUE FORAM REJEITADAS)
         for ra in df['RequestingArea'].unique():
-            ra_data = df[df['RequestingArea'] == ra].sort_values('PriorityRA')
+            ra_data = df[df['RequestingArea'] == ra]
+            # Filter out rows with PriorityRA = 999
+            ra_data = ra_data[ra_data['PriorityRA'] != 999].sort_values('PriorityRA')
             priorities = ra_data['PriorityRA'].tolist()
             expected = list(range(1, len(priorities) + 1))
 
             if priorities != expected:
-                errors.append(
+                #errors.append(                    
+                warnings.append(
                     f"RequestingArea '{ra}': PriorityRA not sequential. "
                     f"Expected 1-{len(priorities)}, got {priorities}"
                 )

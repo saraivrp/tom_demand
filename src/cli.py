@@ -51,6 +51,7 @@ def prioritize(ideas, ra_weights, rs_weights, method, all_methods, now_method, n
     start_time = time.time()
 
     try:
+        click.clear()
         click.echo("=" * 60)
         click.echo("TOM Demand Management System - Queue-Based Prioritization")
         click.echo("=" * 60)

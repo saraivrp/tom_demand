@@ -15,7 +15,7 @@ budget_groups:
   - Operations
   - Corporate
   - CISO
-  - Data&AI
+  - Data & AI
   - Technology
 
 # Default values for optional IDEA attributes
@@ -42,7 +42,7 @@ validation:
     - High Level Design
     - Ready for Approval
     - In Approval
-    - Ready for Execution
+    - Ready for Development #Execution
     # Development phase
     - In Development
     - Ready for Acceptance
