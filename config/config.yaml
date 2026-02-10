@@ -67,7 +67,7 @@ queues:
   NEXT:
     description: "IDEAs ready for execution (solution defined and approved)"
     micro_phases:
-      - Ready for Execution
+      - Ready for Development #Execution
     prioritize: true
     rank_offset: auto  # NEXT ranks continue after NOW (NOW_max + 1)
 
@@ -80,6 +80,7 @@ queues:
       - Pitch
       - Ready for Solution
       # Solution phase
+      - In Solution
       - High Level Design
       - Ready for Approval
       - In Approval

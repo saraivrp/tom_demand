@@ -262,7 +262,7 @@
 67870;BCTT - disponibilização de logs via SFTP;BCTT;Mail;Technology;Backlog;5;;;;
 67561;SAPSF Evolução Integrações Sistemas a montante (Teleponto + AD + IOS);GRH;Mail;Corporate;Backlog;7;;;;
 66475;Auditoria a Payroll Processos PAS – Fase 1.1;GRH;Mail;Corporate;Backlog;6;;;;
-66136;CTTExpress - Mitigação de risco (Wave 3 - Fev25);CTTE;eCommerce;Commercial;In Definition;999;;;;
+66136;CTTExpress - Mitigação de risco (Wave 3 - Fev25);CTTE;eCommerce;Commercial;#N/A;999;;;;
 65646;Internacional SIMTEM - BG relativo ao ambito de notificações;SEO;Mail;Operations;In Definition;999;;;;
 65266;Desagregar a Intranet de Outsystems ( Acção Post Mortem - INC1002170);SI;Mail;Technology;Backlog;999;;;;
 65058;El corte Inglês - Relatorios de Conciliação forma automatica;GS;Mail;Commercial;In Definition;29;;;;
@@ -437,7 +437,7 @@
 181384;PAY - Instrumento Transferências - Alteração Requisitos - Fev;CSI;Mail;Commercial;In Definition;1;;;;
 180676;IOP | ClearPass - alargar cobertura da solução de Network Access Control;SI;Mail;Technology;Backlog;57;;;;
 180673;IOP | Segregação da Rede Privada;SI;Mail;Technology;Backlog;31;;;;
-180670;INT | IBM Sterling File Gateway - implementar balanceamento;SI;Mail;Technology;In Definition;6;;;;
+180670;INT | IBM Sterling File Gateway - implementar balanceamento;SI;Mail;Technology;#N/A;6;;;;
 178627;GPECL/DIS - Notificações Sábado e Domingo // alteração do processo de indicação da data de entrega;GP ECL;eCommerce;Commercial;Backlog;23;;;;
 177967;Taxa Efetividade - Serviço Especial Ponto de Entrega;SEO;Mail;Operations;Backlog;999;;;;
 177539;Evolução tecnológica do PIAO;SI-PRD;Business Solutions;Technology;Backlog;15;;;;
