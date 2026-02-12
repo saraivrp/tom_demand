@@ -39,6 +39,7 @@ validation:
     - Pitch
     - Ready for Solution
     # Solution phase
+    - In Solution
     - High Level Design
     - Ready for Approval
     - In Approval
