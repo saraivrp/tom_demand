@@ -32,3 +32,12 @@ python3 tom_demand.py prioritize \
   --ideas data/input/ideias.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv
+
+
+EXECUTE DETAIL
+python3 tom_demand.py prioritize \
+  --ideas data/input/ideas202602.csv \
+  --ra-weights data/input/weights_ra.csv \
+  --rs-weights data/input/weights_rs.csv \
+  --next-method sainte-lague \
+  --later-method dhondt

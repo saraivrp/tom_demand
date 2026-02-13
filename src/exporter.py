@@ -220,6 +220,10 @@ class Exporter:
             all_demand.append(method_results['level3'])
 
         combined_demand = pd.concat(all_demand, ignore_index=True)
+        
+        combined_demand = combined_demand.sort_values(['GlobalRank', 'Queue'], ascending=True, na_position='last', ignore_index=True)
+        print(combined_demand.head(10))
+
         combined_path = os.path.join(output_dir, 'demand.csv')
         self.export_demand(combined_demand, combined_path)
 
@@ -229,3 +233,6 @@ class Exporter:
             self.export_metadata(execution_params, metadata_path)
 
         print("✓ All results exported successfully\n")
+
+        print("top 10 rows of combined demand file:")
+        print(combined_demand.head(10))
