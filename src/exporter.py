@@ -222,7 +222,7 @@ class Exporter:
         combined_demand = pd.concat(all_demand, ignore_index=True)
         
         combined_demand = combined_demand.sort_values(['GlobalRank', 'Queue'], ascending=True, na_position='last', ignore_index=True)
-        print(combined_demand.head(10))
+        #print(combined_demand.head(10))
 
         combined_path = os.path.join(output_dir, 'demand.csv')
         self.export_demand(combined_demand, combined_path)
