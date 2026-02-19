@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    ports:
+      - "8000:8000"
+    environment:
+      AUTH_ENABLED: "true"
+      API_KEY: "change-me"
+      AUDIT_LOG_PATH: "/app/data/output/api_audit.jsonl"
+    volumes:
+      - ./data:/app/data
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_BASE_URL: "http://localhost:8000"
+      VITE_API_KEY: "change-me"
+      VITE_API_ROLE: "admin"
+    depends_on:
+      - api

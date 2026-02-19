@@ -63,7 +63,7 @@ class Loader:
         Load and validate ideas from CSV file.
 
         Args:
-            filepath: Path to ideias.csv
+            filepath: Path to ideas.csv
 
         Returns:
             DataFrame with validated IDEAs
@@ -281,7 +281,7 @@ class Loader:
         Load all required input files.
 
         Args:
-            ideas_path: Path to ideias.csv
+            ideas_path: Path to ideas.csv
             ra_weights_path: Path to weights_ra.csv
             rs_weights_path: Path to weights_rs.csv
 

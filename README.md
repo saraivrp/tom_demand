@@ -66,13 +66,13 @@ pip install -r requirements.txt
 
 ```bash
 python3 tom_demand.py validate \
-  --ideas data/input/ideias.csv \
+  --ideas data/input/ideas.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv
 
 # With custom configuration file
 python3 tom_demand.py validate \
-  --ideas data/input/ideias.csv \
+  --ideas data/input/ideas.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
   --config path/to/custom_config.yaml
@@ -83,14 +83,14 @@ python3 tom_demand.py validate \
 ```bash
 # Run with default method (Sainte-Laguë)
 python3 tom_demand.py prioritize \
-  --ideas data/input/ideias.csv \
+  --ideas data/input/ideas.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
   --output-dir data/output
 
 # With custom configuration file
 python3 tom_demand.py prioritize \
-  --ideas data/input/ideias.csv \
+  --ideas data/input/ideas.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
   --config path/to/custom_config.yaml \
@@ -98,7 +98,7 @@ python3 tom_demand.py prioritize \
 
 # Run all three methods
 python3 tom_demand.py prioritize \
-  --ideas data/input/ideias.csv \
+  --ideas data/input/ideas.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
   --all-methods \
@@ -106,7 +106,7 @@ python3 tom_demand.py prioritize \
 
 # Use different methods per queue (v3.3+)
 python3 tom_demand.py prioritize \
-  --ideas data/input/ideias.csv \
+  --ideas data/input/ideas.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
   --now-method wsjf \
@@ -122,6 +122,67 @@ Results are saved in the output directory:
 - `demand_[method].csv` - Results for specific method
 - `prioritization_rs_[method].csv` - Revenue Stream level results
 - `metadata.json` - Execution metadata
+
+### 4. Run API (FastAPI)
+
+```bash
+uvicorn src.api.main:app --reload
+```
+
+Base endpoints:
+- `GET /api/v1/health`
+- `GET /api/v1/version`
+- API docs: `GET /docs`
+
+Workflow endpoints:
+- `POST /api/v1/workflows/validate`
+- `POST /api/v1/workflows/prioritize`
+- `POST /api/v1/workflows/prioritize-rs`
+- `POST /api/v1/workflows/prioritize-global`
+- `POST /api/v1/workflows/compare`
+
+Reference data endpoints:
+- `GET /api/v1/reference-data/ideas`
+- `GET /api/v1/reference-data/ra-weights`
+- `GET /api/v1/reference-data/rs-weights`
+- `POST /api/v1/reference-data/upsert`
+- `POST /api/v1/reference-data/delete`
+- `POST /api/v1/reference-data/requesting-areas/list`
+- `POST /api/v1/reference-data/requesting-areas/rename`
+- `POST /api/v1/reference-data/revenue-streams/list`
+- `POST /api/v1/reference-data/revenue-streams/rename`
+
+Async jobs:
+- `POST /api/v1/jobs/workflows/prioritize`
+- `POST /api/v1/jobs/workflows/compare`
+- `POST /api/v1/jobs/workflows/validate`
+- `GET /api/v1/jobs`
+- `GET /api/v1/jobs/{job_id}`
+
+Security headers (when `AUTH_ENABLED=true`):
+- `X-API-Key: <key>`
+- `X-Role: viewer|editor|executor|admin`
+
+### 5. Run React Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Open `http://localhost:5173`
+
+Environment variables (optional):
+- `VITE_API_BASE_URL` (default: `http://127.0.0.1:8000`)
+- `VITE_API_KEY`
+- `VITE_API_ROLE` (default: `admin`)
+
+### 6. Docker Compose (API + Frontend)
+
+```bash
+docker compose up --build
+```
 
 ## Project Structure
 

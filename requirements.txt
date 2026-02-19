@@ -8,6 +8,11 @@ click>=8.0.0
 colorama>=0.4.4
 tqdm>=4.62.0
 
+# API
+fastapi>=0.110.0
+uvicorn>=0.27.0
+python-multipart>=0.0.9
+
 # Testing
 pytest>=6.2.5
 pytest-cov>=3.0.0

@@ -261,6 +261,8 @@ class Prioritizer:
                         row['RequestingArea'] = idea_row.iloc[0]['RequestingArea']
                         row['WSJF_Score'] = idea_row.iloc[0].get('WSJF_Score', 0)
 
+            comparison_data.append(row)
+
         comparison_df = pd.DataFrame(comparison_data)
 
         # Calculate rank variance
@@ -395,7 +397,10 @@ class Prioritizer:
             print(f"  → Executing {method.replace('-', ' ').title()} method...")
 
             combined_result = self.prioritize_with_queues(
-                ideas, ra_weights, rs_weights, method
+                ideas,
+                ra_weights,
+                rs_weights,
+                default_method=method,
             )
 
             # Split back into level2 and level3 for export compatibility

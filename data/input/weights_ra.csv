@@ -1,14 +1,14 @@
-﻿RequestingArea;RevenueStream;BudgetGroup;Weight
-CISO;Business Solutions;CISO;5
-CSI;Business Solutions;Commercial;4
-CTTE;Business Solutions;Commercial;4
-DNI;Business Solutions;Commercial;4
-ECM;Business Solutions;Commercial;4
-GP B2B;Business Solutions;Commercial;8
-GP B2C;Business Solutions;Commercial;4
-GP ECL;Business Solutions;Commercial;4
-GPG;Business Solutions;Commercial;4
-GS;Business Solutions;Commercial;4
+RequestingArea;RevenueStream;BudgetGroup;Weight
+CISO;Business Solutions;CISO;5,0
+CSI;Business Solutions;Commercial;4,0
+CTTE;Business Solutions;Commercial;4,0
+DNI;Business Solutions;Commercial;4,0
+ECM;Business Solutions;Commercial;4,0
+GP B2B;Business Solutions;Commercial;8,0
+GP B2C;Business Solutions;Commercial;4,0
+GP ECL;Business Solutions;Commercial;4,0
+GPG;Business Solutions;Commercial;4,0
+GS;Business Solutions;Commercial;4,0
 ACR;Business Solutions;Corporate;1,428571429
 AVC;Business Solutions;Corporate;1,428571429
 CF;Business Solutions;Corporate;2,857142857
@@ -25,12 +25,12 @@ TF;Business Solutions;Corporate;1,428571429
 EDO;Business Solutions;Operations;3,333333333
 EM;Business Solutions;Operations;3,333333333
 SEO;Business Solutions;Operations;3,333333333
-BCTT;Business Solutions;Technology;4
-SI;Business Solutions;Technology;4
-SI-CRP;Business Solutions;Technology;4
-SI-OPS;Business Solutions;Technology;4
-SI-PRD;Business Solutions;Technology;4
-CISO;eCommerce;CISO;5
+BCTT;Business Solutions;Technology;4,0
+SI;Business Solutions;Technology;4,0
+SI-CRP;Business Solutions;Technology;4,0
+SI-OPS;Business Solutions;Technology;4,0
+SI-PRD;Business Solutions;Technology;4,0
+CISO;eCommerce;CISO;5,0
 CCO;eCommerce;Commercial;2,941176471
 CMO;eCommerce;Commercial;2,941176471
 CSI;eCommerce;Commercial;1,470588235
@@ -71,16 +71,16 @@ SI;eCommerce;Technology;3,75
 SI-CRP;eCommerce;Technology;1,875
 SI-OPS;eCommerce;Technology;1,875
 SI-PRD;eCommerce;Technology;1,875
-CISO;Fulfilment;CISO;5
-CSI;Fulfilment;Commercial;3
-CTTE;Fulfilment;Commercial;3
-DNI;Fulfilment;Commercial;3
-ECM;Fulfilment;Commercial;3
-GP B2B;Fulfilment;Commercial;3
-GP B2C;Fulfilment;Commercial;3
-GP ECL;Fulfilment;Commercial;6
-GPG;Fulfilment;Commercial;3
-GS;Fulfilment;Commercial;3
+CISO;Fulfilment;CISO;5,0
+CSI;Fulfilment;Commercial;3,0
+CTTE;Fulfilment;Commercial;3,0
+DNI;Fulfilment;Commercial;3,0
+ECM;Fulfilment;Commercial;3,0
+GP B2B;Fulfilment;Commercial;3,0
+GP B2C;Fulfilment;Commercial;3,0
+GP ECL;Fulfilment;Commercial;6,0
+GPG;Fulfilment;Commercial;3,0
+GS;Fulfilment;Commercial;3,0
 ACR;Fulfilment;Corporate;1,428571429
 AVC;Fulfilment;Corporate;1,428571429
 CF;Fulfilment;Corporate;2,857142857
@@ -94,15 +94,15 @@ PC;Fulfilment;Corporate;1,428571429
 RS;Fulfilment;Corporate;1,428571429
 ST;Fulfilment;Corporate;1,428571429
 TF;Fulfilment;Corporate;1,428571429
-EDO;Fulfilment;Operations;10
-EM;Fulfilment;Operations;10
-SEO;Fulfilment;Operations;10
+EDO;Fulfilment;Operations;10,0
+EM;Fulfilment;Operations;10,0
+SEO;Fulfilment;Operations;10,0
 BCTT;Fulfilment;Technology;1,666666667
 SI;Fulfilment;Technology;3,333333333
 SI-CRP;Fulfilment;Technology;1,666666667
 SI-OPS;Fulfilment;Technology;1,666666667
 SI-PRD;Fulfilment;Technology;1,666666667
-CISO;Mail;CISO;5
+CISO;Mail;CISO;5,0
 CSI;Mail;Commercial;2,727272727
 CTTE;Mail;Commercial;2,727272727
 DNI;Mail;Commercial;2,727272727
@@ -125,15 +125,15 @@ PC;Mail;Corporate;1,428571429
 RS;Mail;Corporate;1,428571429
 ST;Mail;Corporate;1,428571429
 TF;Mail;Corporate;1,428571429
-EDO;Mail;Operations;8
-EM;Mail;Operations;4
-SEO;Mail;Operations;8
+EDO;Mail;Operations;8,0
+EM;Mail;Operations;4,0
+SEO;Mail;Operations;8,0
 BCTT;Mail;Technology;3,333333333
 SI;Mail;Technology;6,666666667
 SI-CRP;Mail;Technology;3,333333333
 SI-OPS;Mail;Technology;3,333333333
 SI-PRD;Mail;Technology;3,333333333
-CISO;Payments;CISO;5
+CISO;Payments;CISO;5,0
 CSI;Payments;Commercial;2,727272727
 CTTE;Payments;Commercial;2,727272727
 DNI;Payments;Commercial;2,727272727
@@ -164,7 +164,7 @@ SI;Payments;Technology;8,333333333
 SI-CRP;Payments;Technology;4,166666667
 SI-OPS;Payments;Technology;4,166666667
 SI-PRD;Payments;Technology;4,166666667
-CISO;Retail & Financial Services;CISO;5
+CISO;Retail & Financial Services;CISO;5,0
 CSI;Retail & Financial Services;Commercial;2,727272727
 CTTE;Retail & Financial Services;Commercial;2,727272727
 DNI;Retail & Financial Services;Commercial;2,727272727
@@ -195,9 +195,9 @@ SI;Retail & Financial Services;Technology;6,666666667
 SI-CRP;Retail & Financial Services;Technology;3,333333333
 SI-OPS;Retail & Financial Services;Technology;3,333333333
 SI-PRD;Retail & Financial Services;Technology;3,333333333
-IAD;Business Solutions;Data & AI;5
-IAD;eCommerce;Data & AI;10
-IAD;Fulfilment;Data & AI;5
-IAD;Mail;Data & AI;5
-IAD;Payments;Data & AI;5
-IAD;Retail & Financial Services;Data & AI;5
+IAD;Business Solutions;Data & AI;5,0
+IAD;eCommerce;Data & AI;10,0
+IAD;Fulfilment;Data & AI;5,0
+IAD;Mail;Data & AI;5,0
+IAD;Payments;Data & AI;5,0
+IAD;Retail & Financial Services;Data & AI;5,0
