@@ -44,13 +44,13 @@ The system supports **sequential queue-based ranking** that separates IDEAs by t
    - In Development → Ready for Acceptance → In Acceptance → Selected for Production
    - These are active development items that should be prioritized first
 
-2. **NEXT Queue** (Ready for Execution) → **Ranks N+1-M** (next in line)
-   - Ready for Execution
+2. **NEXT Queue** (Ready for Development) → **Ranks N+1-M** (next in line)
+   - Ready for Development
    - Solution is fully defined and approved, ready to start development
 
 3. **LATER Queue** (Planning phases) → **Ranks M+1-P** (future work)
    - Need: Backlog → In Definition → Pitch → Ready for Solution
-   - Solution: High Level Design → Ready for Approval → In Approval
+   - Solution: In Solution → High Level Design → Ready for Approval → In Approval
    - These are items still in planning/design stages
 
 4. **PRODUCTION Queue** → **No ranking** (already deployed)
@@ -150,13 +150,13 @@ Always test changes with the example data:
 ```bash
 # Validation
 python3 tom_demand.py validate \
-  --ideas data/input/ideias.csv \
+  --ideas data/input/ideas.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv
 
 # Full prioritization
 python3 tom_demand.py prioritize \
-  --ideas data/input/ideias.csv \
+  --ideas data/input/ideas.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
   --all-methods \
