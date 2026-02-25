@@ -1,8 +1,18 @@
 Executar o TOM Demand
 
+#QUICK APPROACH
+python3 tom_demand.py prioritize \
+  --ideas data/input/ideas202602.csv \
+  --ra-weights data/input/weights_ra.csv \
+  --rs-weights data/input/weights_rs.csv \
+  --next-method wsjf \
+  --later-method sainte-lague
+
+#DETAIL
+
+
 No terminal, estando já em .../ctt/tom_demand, crie (opcional) e ative um venv:
-python3 -m venv .venv
-source .venv/bin/activate   # Windows: .venv\Scripts\activate
+python3 -m venv .venv source .venv/bin/activate   # Windows: .venv\Scripts\activate
 
 Instale as dependências:
 pip install -r requirements.txt

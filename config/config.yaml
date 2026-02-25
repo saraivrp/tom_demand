@@ -50,8 +50,11 @@ validation:
     - In Acceptance
     - Selected for Production
     # Production phase
-    - In Rollout
+    - In Rollout/Warranty
     - In Production
+    - Closed
+    - Descoped
+    - Discarded
 
 # Queue definitions for phase-based separation
 queues:
