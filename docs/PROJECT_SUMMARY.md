@@ -13,10 +13,14 @@ A complete demand prioritization system for CTT implementing three proportional 
 - WSJF (Weighted Shortest Job First)
 
 ### Code Statistics
-- **11 Python modules** totaling **2,104 lines of code**
+- **Core CLI/algorithm modules**: ~2,100 lines (11 modules)
+- **API + service layer**: ~1,200+ additional lines
+- **Total Python codebase**: ~3,300+ lines
 - Well-structured, modular architecture
 - Comprehensive validation and error handling
 - Full CLI interface with 5 commands
+- FastAPI REST API with async job support
+- React 19 + Vite frontend (early stage)
 
 ## Implemented Components
 
@@ -76,7 +80,30 @@ Full CLI with 5 commands ([src/cli.py](src/cli.py)):
 4. **prioritize-global** - Level 3 only
 5. **compare** - Compare all methods
 
-### 3. Configuration ✅
+### 3. REST API ✅
+
+FastAPI-based REST layer ([src/api/](../src/api/)):
+- Workflow endpoints: validate, prioritize, compare
+- Reference data CRUD (IDEAS, RA weights, RS weights)
+- Async job management for long-running operations
+- Optional API key + role-based authentication (`AUTH_ENABLED` env var)
+- Audit logging to `data/output/api_audit.jsonl`
+- OpenAPI docs at `/docs`
+
+### 4. Service Layer ✅
+
+Orchestration layer ([src/services/](../src/services/)):
+- `demand_service.py` — shared pipeline used by both CLI and API
+- `reference_data_service.py` — file-based IDEAS/weight management for the API
+
+### 5. Frontend ✅ (Early Stage)
+
+React 19 + Vite SPA ([frontend/](../frontend/)):
+- Connects to the FastAPI backend
+- `npm run dev` → `http://localhost:5173`
+- Environment: `VITE_API_BASE_URL`, `VITE_API_KEY`, `VITE_API_ROLE`
+
+### 6. Configuration ✅
 
 Comprehensive YAML configuration ([config/config.yaml](config/config.yaml)):
 - Revenue Streams and Budget Groups definitions
@@ -86,14 +113,14 @@ Comprehensive YAML configuration ([config/config.yaml](config/config.yaml)):
 - Output formatting
 - Logging configuration
 
-### 4. Example Data ✅
+### 7. Example Data ✅
 
-Complete set of example files:
-- [data/input/ideias.csv](data/input/ideias.csv) - 20 sample IDEAs
-- [data/input/weights_ra.csv](data/input/weights_ra.csv) - 30 RA weights across 7 RSs
-- [data/input/weights_rs.csv](data/input/weights_rs.csv) - 7 RS strategic weights
+Input files (naming convention: `ideas<YYYYMM>.csv`):
+- `data/input/ideas202602.csv` - 50+ sample IDEAs
+- `data/input/weights_ra.csv` - RA weights across 7 RSs
+- `data/input/weights_rs.csv` - 7 RS strategic weights
 
-### 5. Documentation ✅
+### 8. Documentation ✅
 
 - [README.md](../README.md) - Project overview and quick start
 - [USAGE_GUIDE.md](../USAGE_GUIDE.md) - Detailed usage instructions
@@ -101,6 +128,7 @@ Complete set of example files:
 - [CHANGELOG_v3.3.md](../CHANGELOG_v3.3.md) - Version 3.3 release notes
 - [TOM Demand Management System - Functional Specification.md](TOM%20Demand%20Management%20System%20-%20Functional%20Specification.md) - Complete specification
 - [EUROPEAN_FORMAT.md](EUROPEAN_FORMAT.md) - European CSV format details
+- [RUNBOOK.md](RUNBOOK.md) - API/web operations runbook
 
 ## Testing & Validation
 
@@ -168,6 +196,10 @@ All output files generated successfully:
 ✅ Cross-validation between input files
 ✅ Per-queue prioritization methods (v3.3)
 ✅ Queue-based sequential ranking (v3.2)
+✅ REST API with async job support (v3.3)
+✅ Role-based access control (viewer/editor/executor/admin)
+✅ Audit logging
+✅ Docker Compose for API + frontend deployment
 
 ## Architecture Highlights
 
@@ -177,7 +209,9 @@ All output files generated successfully:
 - **Algorithms**: Pure algorithm implementations
 - **Prioritizer**: Orchestration and coordination
 - **Exporter**: Result formatting and output
-- **CLI**: User interface
+- **Services**: Shared pipeline (CLI + API)
+- **API**: REST interface (FastAPI)
+- **CLI**: Command-line interface
 
 ### Extensibility
 - Easy to add new prioritization methods
@@ -195,45 +229,56 @@ All output files generated successfully:
 
 ```
 tom_demand/
+├── tom_demand.py                 (Main entry point, 16 lines)
+├── requirements.txt
+├── config/
+│   └── config.yaml               (128 lines)
 ├── src/
 │   ├── algorithms/
-│   │   ├── __init__.py           (9 lines)
 │   │   ├── sainte_lague.py       (157 lines)
 │   │   ├── dhondt.py             (152 lines)
 │   │   └── wsjf.py               (104 lines)
-│   ├── __init__.py               (9 lines)
+│   ├── api/                      (FastAPI REST layer)
+│   │   ├── main.py
+│   │   ├── auth.py
+│   │   ├── audit.py
+│   │   ├── jobs.py
+│   │   ├── errors.py
+│   │   ├── routers/
+│   │   └── models/
+│   ├── services/
+│   │   ├── demand_service.py
+│   │   └── reference_data_service.py
 │   ├── validator.py              (311 lines)
 │   ├── loader.py                 (318 lines)
 │   ├── prioritizer.py            (401 lines)
 │   ├── exporter.py               (231 lines)
 │   ├── utils.py                  (48 lines)
 │   └── cli.py                    (364 lines)
-├── config/
-│   └── config.yaml               (128 lines)
+├── frontend/                     (React 19 + Vite SPA)
+├── tests/
+│   └── test_api_endpoints.py
 ├── data/
 │   ├── input/
-│   │   ├── ideias.csv
+│   │   ├── ideas<YYYYMM>.csv     (e.g. ideas202602.csv)
 │   │   ├── weights_ra.csv
 │   │   └── weights_rs.csv
 │   └── output/
 │       ├── demand.csv
-│       ├── demand_*.csv (x3)
-│       ├── prioritization_rs_*.csv (x3)
-│       └── metadata.json
-├── tests/
-│   └── __init__.py
+│       ├── demand_*.csv
+│       ├── prioritization_rs_*.csv
+│       ├── metadata.json
+│       └── api_audit.jsonl       (API audit log)
 ├── docs/
 │   ├── PROJECT_SUMMARY.md
 │   ├── EUROPEAN_FORMAT.md
+│   ├── RUNBOOK.md
 │   └── TOM Demand Management System - Functional Specification.md
-├── tom_demand.py                 (Main entry point, 16 lines)
 ├── build_windows.bat             (Windows executable build script)
-├── requirements.txt
-├── .gitignore
 ├── README.md
 ├── USAGE_GUIDE.md
 ├── EXEMPLOS_USO.md               (Portuguese usage examples)
-└── CHANGELOG_v3.3.md             (Version 3.3 release notes)
+└── CHANGELOG_v3.3.md
 ```
 
 ## How to Use
@@ -268,13 +313,13 @@ python3 tom_demand.py prioritize \
 
 ## Next Steps (Optional Enhancements)
 
-While the core system is complete, these enhancements from Phase 4 could be added:
+Core system and API are complete. Remaining optional enhancements:
 
-⬜ Unit tests (pytest suite)
-⬜ REST API for integration
+✅ REST API for integration (done)
+✅ Web dashboard — frontend in progress
+⬜ Unit tests for algorithms (pytest suite)
 ⬜ Webhook support
 ⬜ Jira/Azure DevOps integration
-⬜ Web dashboard for visualization
 ⬜ Capacity planning reports
 ⬜ Historical trend analysis
 
@@ -294,8 +339,8 @@ The system is ready for use in CTT's portfolio management process.
 ---
 
 **Version**: 3.3.0
-**Date**: January 25, 2026
+**Date**: February 24, 2026
 **Status**: Production Ready
 **Latest Updates**:
-- **v3.3**: Per-queue prioritization methods - different algorithms for NOW, NEXT, LATER queues via CLI flags
+- **v3.3**: Per-queue prioritization methods, FastAPI REST layer, async jobs, role-based auth, audit logging, React frontend
 - **v3.2**: Three-queue system (NOW → NEXT → LATER → PRODUCTION) for improved prioritization of execution-ready items

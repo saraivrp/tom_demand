@@ -4,7 +4,7 @@
 
 This is the **TOM Demand Management System v3.3** - a production-ready demand prioritization system for CTT (Portuguese Post) that implements three proportional allocation algorithms: Sainte-Laguë, D'Hondt, and WSJF.
 
-**Status**: ✅ Production Ready (January 2026)
+**Status**: ✅ Production Ready (February 2026)
 
 ## Key Project Characteristics
 
@@ -20,20 +20,50 @@ This is the **TOM Demand Management System v3.3** - a production-ready demand pr
 ### 2. Codebase Architecture
 
 ```
+tom_demand.py                    # Entry point — adds src/ to path, invokes CLI
+requirements.txt                 # All Python dependencies
+config/
+└── config.yaml                  # Centralized configuration
 src/
-├── algorithms/          # Prioritization algorithms (Sainte-Laguë, D'Hondt, WSJF)
-│   ├── sainte_lague.py  # Odd divisor allocation (157 lines)
-│   ├── dhondt.py        # Natural divisor allocation (152 lines)
-│   └── wsjf.py          # Economic optimization (104 lines)
-├── validator.py        # Centralized validation logic (311 lines)
-├── loader.py           # Data ingestion with validation (318 lines)
-├── prioritizer.py      # Orchestration and coordination (401 lines)
-├── exporter.py         # Result formatting and output (231 lines)
-├── cli.py              # Command-line interface (364 lines)
-└── utils.py            # Shared utilities (48 lines)
+├── algorithms/                  # Prioritization algorithms
+│   ├── sainte_lague.py          # Odd divisor allocation (157 lines)
+│   ├── dhondt.py                # Natural divisor allocation (152 lines)
+│   └── wsjf.py                  # Economic optimization (104 lines)
+├── api/                         # FastAPI REST layer
+│   ├── main.py                  # App factory, middleware, router registration
+│   ├── auth.py                  # API key + role-based authentication
+│   ├── audit.py                 # Audit logging middleware
+│   ├── jobs.py                  # Async job management
+│   ├── errors.py                # Custom exception handlers
+│   ├── routers/                 # Endpoint groups
+│   │   ├── workflows.py         # validate / prioritize / compare endpoints
+│   │   ├── reference_data.py    # IDEAS and weights CRUD
+│   │   ├── system.py            # Health checks, version info
+│   │   └── jobs.py              # Job status endpoints
+│   └── models/                  # Pydantic request/response schemas
+├── services/                    # Service orchestration layer
+│   ├── demand_service.py        # Coordinates loader → prioritizer → exporter
+│   └── reference_data_service.py
+├── validator.py                 # Centralized validation logic (311 lines)
+├── loader.py                    # Data ingestion with validation (318 lines)
+├── prioritizer.py               # Orchestration and coordination (401 lines)
+├── exporter.py                  # Result formatting and output (231 lines)
+├── cli.py                       # Command-line interface (364 lines)
+└── utils.py                     # Shared utilities (48 lines)
+frontend/                        # React 19 + Vite SPA (early stage)
+├── package.json
+└── src/
+tests/
+└── test_api_endpoints.py        # API integration tests
 ```
 
-**Total**: 2,104 lines of well-structured, modular Python code
+**Core Python**: ~2,100 lines (CLI + algorithms + loader/validator/exporter)
+**Full codebase**: ~3,300+ lines including API and service layers
+
+**Interfaces**:
+- **CLI**: `python3 tom_demand.py <command>` — primary production interface
+- **REST API**: `uvicorn src.api.main:app` — programmatic/integration access
+- **Frontend**: `cd frontend && npm run dev` — web UI (early stage)
 
 ### 3. Queue-Based Prioritization (v3.2)
 
@@ -65,7 +95,7 @@ The system supports **sequential queue-based ranking** that separates IDEAs by t
 
 ### 4. Per-Queue Prioritization Methods (v3.3)
 
-**NEW**: Each queue can now use a different prioritization method:
+Each queue can use a different prioritization method:
 
 **CLI Flags**:
 - `--now-method [sainte-lague|dhondt|wsjf]` - Method for NOW queue
@@ -115,12 +145,23 @@ python3 tom_demand.py prioritize \
 - Coordinates Level 2 (Revenue Stream) prioritization
 - Coordinates Level 3 (Global) prioritization
 - Executes multiple methods for comparison
+- **Note**: IDEAs with `PriorityRA == 999` are silently filtered out (treated as "disabled"). IDEAs from RAs with `Weight == 999` in weights_ra.csv are also excluded.
 
 #### Exporter ([src/exporter.py](src/exporter.py))
 - Exports Level 2 results: `prioritization_rs.csv`
 - Exports Level 3 results: `demand.csv`
 - Exports comparison reports
 - Exports execution metadata (JSON)
+
+#### Service Layer ([src/services/](src/services/))
+- `demand_service.py` — orchestrates loader → prioritizer → exporter pipeline; used by both CLI and API
+- `reference_data_service.py` — manages IDEAS and weight file access for the API layer
+
+#### API Layer ([src/api/](src/api/))
+- FastAPI app with CORS, audit logging, optional authentication (`AUTH_ENABLED` env var)
+- Async job support for long-running prioritizations
+- OpenAPI docs available at `/docs` when running
+- Authentication is **disabled by default** — set `AUTH_ENABLED=true` to enable
 
 ## Development Guidelines
 
@@ -146,21 +187,24 @@ python3 tom_demand.py prioritize \
 
 ### Testing & Validation
 
-Always test changes with the example data:
+Always test changes with the example data. The current ideas file follows the naming pattern `ideas<YYYYMM>.csv`:
 ```bash
 # Validation
 python3 tom_demand.py validate \
-  --ideas data/input/ideas.csv \
+  --ideas data/input/ideas202602.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv
 
 # Full prioritization
 python3 tom_demand.py prioritize \
-  --ideas data/input/ideas.csv \
+  --ideas data/input/ideas202602.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
   --all-methods \
   --output-dir data/output
+
+# Run API tests
+pytest tests/
 ```
 
 ## Configuration
@@ -217,6 +261,7 @@ When referencing code locations in responses, use this format:
 - [CHANGELOG_v3.3.md](CHANGELOG_v3.3.md) - Version 3.3 release notes
 - [docs/PROJECT_SUMMARY.md](docs/PROJECT_SUMMARY.md) - Implementation status and features
 - [docs/EUROPEAN_FORMAT.md](docs/EUROPEAN_FORMAT.md) - European format details
+- [docs/RUNBOOK.md](docs/RUNBOOK.md) - Operations runbook
 - [docs/TOM Demand Management System - Functional Specification.md](docs/TOM%20Demand%20Management%20System%20-%20Functional%20Specification.md) - Complete specification v3.0
 
 ## What NOT to Do
@@ -228,15 +273,33 @@ When referencing code locations in responses, use this format:
 - ❌ Don't skip validation when loading data
 - ❌ Don't add features from "Next Steps" section without explicit request
 - ❌ Don't create new documentation files unless explicitly requested
+- ❌ Don't enable API authentication without explicit instruction (`AUTH_ENABLED` defaults to false)
+- ❌ Don't replace `print()` output with logging silently — existing CLI UX depends on it
 
 ## Dependencies
 
 Current dependencies (see [requirements.txt](requirements.txt)):
+
+**Core**:
 - pandas >= 1.3.0
 - numpy >= 1.21.0
 - pyyaml >= 5.4.0
 - click >= 8.0.0
-- pytest >= 6.2.5 (for testing)
+- colorama >= 0.4.4
+- tqdm >= 4.62.0
+
+**API**:
+- fastapi >= 0.110.0
+- uvicorn >= 0.27.0
+- python-multipart >= 0.0.9
+
+**Testing & Quality**:
+- pytest >= 6.2.5
+- pytest-cov >= 3.0.0
+- pytest-mock >= 3.6.1
+- black >= 21.9b0
+- flake8 >= 4.0.1
+- mypy >= 0.910
 
 ## Git Workflow
 
@@ -279,8 +342,16 @@ Code changes should:
 ✓ Be tested with actual prioritization runs
 ✓ Preserve backward compatibility (unless explicitly approved)
 
+## Known Behaviors
+
+- **PriorityRA == 999**: IDEAs with this value are filtered out by the prioritizer (treated as disabled). This is intentional but not configurable via config.yaml.
+- **Weight == 999**: RAs with this weight in weights_ra.csv are excluded from prioritization entirely. Their IDEAs are skipped with a warning.
+- **Ideas file naming**: Input ideas files follow the pattern `ideas<YYYYMM>.csv` (e.g., `ideas202602.csv`). The filename is passed explicitly at runtime — no hardcoded default.
+- **Import path handling**: Modules use try/except import fallbacks to support both CLI invocation (`python3 tom_demand.py`) and API import (`from src.xxx import ...`). This is intentional but fragile — don't restructure imports without testing both modes.
+- **No logging framework**: Output uses `print()` throughout. This is intentional for CLI UX. The API layer may add structured logging separately.
+
 ---
 
 **Version**: 3.3.0
-**Last Updated**: January 25, 2026
+**Last Updated**: February 24, 2026
 **Status**: Production System - Handle with Care

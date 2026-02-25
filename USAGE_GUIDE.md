@@ -311,7 +311,7 @@ The system uses a four-queue structure for sequential prioritization (v3.2):
 
 2. **NEXT Queue** (Ready for Execution): Solution-complete items
    - Ranks N+1 to M
-   - Micro Phase: Ready for Execution
+   - Micro Phase: Ready for Development
    - Items with complete solutions ready to be picked up by development teams
 
 3. **LATER Queue** (Planning Work): Items still being defined

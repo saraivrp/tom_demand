@@ -64,15 +64,17 @@ pip install -r requirements.txt
 
 ### 1. Validate Your Input Files
 
+> **Note**: Ideas files follow the naming convention `ideas<YYYYMM>.csv` (e.g., `ideas202602.csv`).
+
 ```bash
 python3 tom_demand.py validate \
-  --ideas data/input/ideas.csv \
+  --ideas data/input/ideas202602.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv
 
 # With custom configuration file
 python3 tom_demand.py validate \
-  --ideas data/input/ideas.csv \
+  --ideas data/input/ideas202602.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
   --config path/to/custom_config.yaml
@@ -83,22 +85,14 @@ python3 tom_demand.py validate \
 ```bash
 # Run with default method (Sainte-Laguë)
 python3 tom_demand.py prioritize \
-  --ideas data/input/ideas.csv \
+  --ideas data/input/ideas202602.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
-  --output-dir data/output
-
-# With custom configuration file
-python3 tom_demand.py prioritize \
-  --ideas data/input/ideas.csv \
-  --ra-weights data/input/weights_ra.csv \
-  --rs-weights data/input/weights_rs.csv \
-  --config path/to/custom_config.yaml \
   --output-dir data/output
 
 # Run all three methods
 python3 tom_demand.py prioritize \
-  --ideas data/input/ideas.csv \
+  --ideas data/input/ideas202602.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
   --all-methods \
@@ -106,7 +100,7 @@ python3 tom_demand.py prioritize \
 
 # Use different methods per queue (v3.3+)
 python3 tom_demand.py prioritize \
-  --ideas data/input/ideas.csv \
+  --ideas data/input/ideas202602.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
   --now-method wsjf \
@@ -188,23 +182,39 @@ docker compose up --build
 
 ```
 tom_demand/
+├── tom_demand.py            # Main entry point
+├── requirements.txt
+├── config/
+│   └── config.yaml          # Centralized configuration
 ├── src/
 │   ├── algorithms/          # Prioritization algorithms
 │   │   ├── sainte_lague.py
 │   │   ├── dhondt.py
 │   │   └── wsjf.py
+│   ├── api/                 # FastAPI REST layer
+│   │   ├── main.py
+│   │   ├── auth.py
+│   │   ├── audit.py
+│   │   ├── jobs.py
+│   │   ├── errors.py
+│   │   ├── routers/         # Endpoint groups
+│   │   └── models/          # Pydantic schemas
+│   ├── services/            # Service orchestration
+│   │   ├── demand_service.py
+│   │   └── reference_data_service.py
 │   ├── loader.py            # Data loading
 │   ├── validator.py         # Data validation
 │   ├── prioritizer.py       # Main prioritization logic
 │   ├── exporter.py          # Result export
-│   └── cli.py               # Command-line interface
-├── config/
-│   └── config.yaml          # Configuration
+│   ├── cli.py               # Command-line interface
+│   └── utils.py             # Shared utilities
+├── frontend/                # React 19 + Vite SPA
+├── tests/
+│   └── test_api_endpoints.py
 ├── data/
-│   ├── input/               # Example input files
+│   ├── input/               # Input files (ideas<YYYYMM>.csv, weights_*.csv)
 │   └── output/              # Generated results
-├── tom_demand.py            # Main entry point
-└── README.md
+└── docs/
 ```
 
 ## Documentation
@@ -213,6 +223,7 @@ tom_demand/
 - [docs/TOM Demand Management System - Functional Specification.md](docs/TOM%20Demand%20Management%20System%20-%20Functional%20Specification.md) - Complete specification
 - [docs/PROJECT_SUMMARY.md](docs/PROJECT_SUMMARY.md) - Implementation status and features
 - [docs/EUROPEAN_FORMAT.md](docs/EUROPEAN_FORMAT.md) - European format details
+- [docs/RUNBOOK.md](docs/RUNBOOK.md) - API/web operations runbook
 
 ## Example Output
 
@@ -246,10 +257,12 @@ Execution time: 0.04 seconds
 ## Requirements
 
 - Python 3.9+
-- pandas >= 1.3.0
-- numpy >= 1.21.0
-- pyyaml >= 5.4.0
-- click >= 8.0.0
+- pandas, numpy, pyyaml, click
+- fastapi, uvicorn, python-multipart (for API)
+- colorama, tqdm (for CLI UX)
+- pytest, black, flake8, mypy (for development)
+
+See [requirements.txt](requirements.txt) for pinned versions.
 
 ## License
 
@@ -257,7 +270,7 @@ Copyright © 2026 CTT - Correios de Portugal
 
 ## Version
 
-Version 3.3.0 - January 2026
+Version 3.3.0 - February 2026
 
 **Latest Updates**:
 - **v3.3**: Per-queue prioritization methods - configure different algorithms (WSJF, Sainte-Laguë, D'Hondt) for each queue via CLI flags (`--now-method`, `--next-method`, `--later-method`)
