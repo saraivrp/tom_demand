@@ -114,7 +114,7 @@ def prioritize(ideas, ra_weights, rs_weights, method, all_methods, now_method, n
 
         if run_result['queue_counts']:
             click.echo("Queue Distribution:")
-            for queue_name in ['NOW', 'NEXT', 'PRODUCTION']:
+            for queue_name in ['NOW', 'NEXT', 'LATER', 'PRODUCTION']:
                 key = f"{queue_name.lower()}_queue"
                 if run_result['queue_counts'].get(key, 0) > 0:
                     click.echo(f"  - {queue_name}: {run_result['queue_counts'][key]} IDEAs")
