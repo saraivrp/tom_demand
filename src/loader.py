@@ -223,7 +223,57 @@ class Loader:
 
             # Auto-normalize if configured
             if self.config['prioritization']['auto_normalize_weights']:
-                print("  → Auto-normalizing weights to sum to 100 per Revenue Stream")
+                print("  → Auto-normalizing weights to sum to 100 per Revenue Stream and Budget Group")
+                df = self.validator.normalize_weights(df, group_by=['RevenueStream', 'BudgetGroup'])
+
+        return df
+
+    def load_bg_rs_weights(self, filepath: str) -> pd.DataFrame:
+        """
+        Load Budget Group weights by Revenue Stream from CSV file.
+
+        Args:
+            filepath: Path to weights_bg_rs.csv
+
+        Returns:
+            DataFrame with validated BG/RS weights
+
+        Raises:
+            FileNotFoundError: If file doesn't exist
+            DataLoadError: If data validation fails
+        """
+        if not os.path.exists(filepath):
+            raise FileNotFoundError(f"File not found: {filepath}")
+
+        try:
+            df = pd.read_csv(filepath, sep=self.csv_delimiter, decimal=self.decimal_separator)
+        except Exception as e:
+            raise DataLoadError(f"Failed to read CSV file: {str(e)}")
+
+        # Convert text columns to string to avoid float issues
+        text_columns = ['RevenueStream', 'BudgetGroup']
+        for col in text_columns:
+            if col in df.columns:
+                df[col] = df[col].astype(str)
+                df[col] = df[col].replace('nan', '')
+
+        # Validate the dataframe
+        validation_result = self.validator.validate_bg_rs_weights(df)
+
+        if not validation_result.is_valid:
+            error_msg = "BG/RS weights validation failed:\n"
+            error_msg += "\n".join([f"  - {err}" for err in validation_result.errors])
+            raise DataLoadError(error_msg)
+
+        # Handle warnings
+        if validation_result.warnings:
+            print("⚠ Warnings during BG/RS weights loading:")
+            for warning in validation_result.warnings:
+                print(f"  - {warning}")
+
+            # Auto-normalize if configured
+            if self.config['prioritization']['auto_normalize_weights']:
+                print("  → Auto-normalizing BG/RS weights to sum to 100 per Revenue Stream")
                 df = self.validator.normalize_weights(df, group_by=['RevenueStream'])
 
         return df
@@ -276,7 +326,13 @@ class Loader:
 
         return df
 
-    def load_all(self, ideas_path: str, ra_weights_path: str, rs_weights_path: str) -> tuple:
+    def load_all(
+        self,
+        ideas_path: str,
+        ra_weights_path: str,
+        rs_weights_path: str,
+        bg_rs_weights_path: str,
+    ) -> tuple:
         """
         Load all required input files.
 
@@ -284,9 +340,10 @@ class Loader:
             ideas_path: Path to ideas.csv
             ra_weights_path: Path to weights_ra.csv
             rs_weights_path: Path to weights_rs.csv
+            bg_rs_weights_path: Path to weights_bg_rs.csv
 
         Returns:
-            Tuple of (ideas_df, ra_weights_df, rs_weights_df)
+            Tuple of (ideas_df, ra_weights_df, rs_weights_df, bg_rs_weights_df)
 
         Raises:
             FileNotFoundError: If any file doesn't exist
@@ -306,6 +363,10 @@ class Loader:
         rs_weights = self.load_rs_weights(rs_weights_path)
         print(f"    ✓ {len(rs_weights)} Revenue Stream weights loaded")
 
+        print(f"  → Loading BG/RS weights from {bg_rs_weights_path}")
+        bg_rs_weights = self.load_bg_rs_weights(bg_rs_weights_path)
+        print(f"    ✓ {len(bg_rs_weights)} Budget Group by Revenue Stream weights loaded")
+
         # Cross-validate IDEAS with RA weights
         validation_result = self.validator.validate_ideas(ideas, ra_weights)
         if not validation_result.is_valid:
@@ -315,4 +376,4 @@ class Loader:
 
         print("✓ All files loaded and validated successfully\n")
 
-        return ideas, ra_weights, rs_weights
+        return ideas, ra_weights, rs_weights, bg_rs_weights

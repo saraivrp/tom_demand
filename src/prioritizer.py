@@ -179,11 +179,91 @@ class Prioritizer:
 
         return result_df
 
+    def prioritize_level2_budget_groups(
+        self,
+        rs_prioritized: pd.DataFrame,
+        bg_rs_weights: pd.DataFrame,
+        method: str = 'sainte-lague'
+    ) -> pd.DataFrame:
+        """
+        Re-prioritize IDEAs within each Revenue Stream by Budget Group.
+
+        For WSJF, this step intentionally keeps existing behavior and does not
+        apply Budget Group weights (items remain ordered by Rank_RS from RA step).
+
+        Args:
+            rs_prioritized: DataFrame from RA prioritization with Rank_RS
+            bg_rs_weights: DataFrame with BudgetGroup weights per RevenueStream
+            method: Prioritization method ('sainte-lague', 'dhondt', 'wsjf')
+
+        Returns:
+            DataFrame with Rank_RS updated after BG step
+        """
+        method = method.lower()
+        if method not in ['sainte-lague', 'dhondt', 'wsjf']:
+            raise ValueError(f"Invalid method: {method}. Must be 'sainte-lague', 'dhondt', or 'wsjf'")
+
+        if rs_prioritized.empty:
+            return rs_prioritized.copy()
+
+        all_results = []
+
+        for rs in rs_prioritized['RevenueStream'].unique():
+            rs_items_df = rs_prioritized[rs_prioritized['RevenueStream'] == rs].copy()
+            rs_items_df = rs_items_df.sort_values('Rank_RS')
+
+            if method == 'wsjf':
+                # Keep current WSJF behavior: no BG weighting step.
+                rs_items_df['Rank_RS_RA'] = rs_items_df['Rank_RS']
+                all_results.extend(rs_items_df.to_dict('records'))
+                continue
+
+            rs_bg_weights_df = bg_rs_weights[bg_rs_weights['RevenueStream'] == rs]
+            bg_weight_dict = dict(zip(rs_bg_weights_df['BudgetGroup'], rs_bg_weights_df['Weight']))
+            entities = rs_bg_weights_df['BudgetGroup'].tolist()
+
+            if not entities:
+                print(f"    ⚠ Warning: No BG weights defined for Revenue Stream '{rs}' - keeping RA ranking")
+                rs_items_df['Rank_RS_RA'] = rs_items_df['Rank_RS']
+                all_results.extend(rs_items_df.to_dict('records'))
+                continue
+
+            rs_items_filtered = rs_items_df[rs_items_df['BudgetGroup'].isin(entities)].copy()
+            excluded_count = len(rs_items_df) - len(rs_items_filtered)
+            if excluded_count > 0:
+                excluded_bgs = rs_items_df[~rs_items_df['BudgetGroup'].isin(entities)]['BudgetGroup'].unique()
+                print(
+                    f"    ⚠ Warning: {excluded_count} IDEAs excluded from '{rs}' "
+                    f"(no BG weights for: {', '.join(excluded_bgs)})"
+                )
+
+            if rs_items_filtered.empty:
+                print(f"    ⚠ Warning: No valid IDEAs for Revenue Stream '{rs}' after BG filtering - skipping")
+                continue
+
+            items = rs_items_filtered.to_dict('records')
+            for item in items:
+                item['Rank_RS_RA'] = item.get('Rank_RS')
+
+            if method == 'sainte-lague':
+                ranked_items = sainte_lague_allocate(entities, bg_weight_dict, items, level='BudgetGroup')
+            else:  # dhondt
+                ranked_items = dhondt_allocate(entities, bg_weight_dict, items, level='BudgetGroup')
+
+            for item in ranked_items:
+                item['Rank_RS'] = item['Rank']
+                item.pop('Rank', None)
+
+            all_results.extend(ranked_items)
+
+        return pd.DataFrame(all_results)
+
     def prioritize_all_methods(
         self,
         ideas: pd.DataFrame,
         ra_weights: pd.DataFrame,
-        rs_weights: pd.DataFrame
+        rs_weights: pd.DataFrame,
+        bg_rs_weights: pd.DataFrame
     ) -> Dict[str, pd.DataFrame]:
         """
         Execute all three prioritization methods.
@@ -192,6 +272,7 @@ class Prioritizer:
             ideas: DataFrame with IDEAs
             ra_weights: DataFrame with RA weights
             rs_weights: DataFrame with RS weights
+            bg_rs_weights: DataFrame with BG/RS weights
 
         Returns:
             Dictionary with results from all methods
@@ -208,12 +289,13 @@ class Prioritizer:
 
             # Level 2: By Revenue Stream
             level2_result = self.prioritize_level2(ideas, ra_weights, method)
+            level2_bg_result = self.prioritize_level2_budget_groups(level2_result, bg_rs_weights, method)
 
             # Level 3: Global
-            level3_result = self.prioritize_level3(level2_result, rs_weights, method)
+            level3_result = self.prioritize_level3(level2_bg_result, rs_weights, method)
 
             results[method] = {
-                'level2': level2_result,
+                'level2': level2_bg_result,
                 'level3': level3_result
             }
 
@@ -285,6 +367,7 @@ class Prioritizer:
         ideas: pd.DataFrame,
         ra_weights: pd.DataFrame,
         rs_weights: pd.DataFrame,
+        bg_rs_weights: pd.DataFrame,
         queue_methods: Optional[Dict[str, str]] = None,
         default_method: str = 'sainte-lague'
     ) -> pd.DataFrame:
@@ -302,6 +385,7 @@ class Prioritizer:
             ideas: DataFrame with all IDEAs (including Queue column)
             ra_weights: RA weights
             rs_weights: RS weights
+            bg_rs_weights: BG/RS weights
             queue_methods: Optional dict mapping queue names to methods (e.g., {'NOW': 'wsjf', 'NEXT': 'dhondt'})
             default_method: Method to use for queues not in queue_methods
 
@@ -351,7 +435,8 @@ class Prioritizer:
 
             # Execute prioritization with queue-specific method
             level2_result = self.prioritize_level2(queue_ideas, ra_weights, queue_method)
-            level3_result = self.prioritize_level3(level2_result, rs_weights, queue_method)
+            level2_bg_result = self.prioritize_level2_budget_groups(level2_result, bg_rs_weights, queue_method)
+            level3_result = self.prioritize_level3(level2_bg_result, rs_weights, queue_method)
 
             # Apply rank offset for sequential ranking
             if current_rank_offset > 0:
@@ -378,7 +463,8 @@ class Prioritizer:
         self,
         ideas: pd.DataFrame,
         ra_weights: pd.DataFrame,
-        rs_weights: pd.DataFrame
+        rs_weights: pd.DataFrame,
+        bg_rs_weights: pd.DataFrame
     ) -> Dict[str, Dict[str, pd.DataFrame]]:
         """
         Execute all three methods with queue-based ranking.
@@ -400,6 +486,7 @@ class Prioritizer:
                 ideas,
                 ra_weights,
                 rs_weights,
+                bg_rs_weights,
                 default_method=method,
             )
 

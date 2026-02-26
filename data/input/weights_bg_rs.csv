@@ -1,0 +1,49 @@
+RevenueStream;BudgetGroup;Weight
+eCommerce;Commercial;20
+eCommerce;Operations;20
+eCommerce;Corporate;20
+eCommerce;CISO;10
+eCommerce;Data & AI;10
+eCommerce;Technology;20
+Mail;Commercial;20
+Mail;Operations;20
+Mail;Corporate;20
+Mail;CISO;10
+Mail;Data & AI;10
+Mail;Technology;20
+Fulfilment;Commercial;20
+Fulfilment;Operations;20
+Fulfilment;Corporate;20
+Fulfilment;CISO;10
+Fulfilment;Data & AI;10
+Fulfilment;Technology;20
+Business Solutions;Commercial;20
+Business Solutions;Operations;20
+Business Solutions;Corporate;20
+Business Solutions;CISO;10
+Business Solutions;Data & AI;10
+Business Solutions;Technology;20
+Payments;Commercial;20
+Payments;Operations;20
+Payments;Corporate;20
+Payments;CISO;10
+Payments;Data & AI;10
+Payments;Technology;20
+Retail & Financial Services;Commercial;20
+Retail & Financial Services;Operations;20
+Retail & Financial Services;Corporate;20
+Retail & Financial Services;CISO;10
+Retail & Financial Services;Data & AI;10
+Retail & Financial Services;Technology;20
+Banco CTT;Commercial;20
+Banco CTT;Operations;20
+Banco CTT;Corporate;20
+Banco CTT;CISO;10
+Banco CTT;Data & AI;10
+Banco CTT;Technology;20
+Mail & Services;Commercial;20
+Mail & Services;Operations;20
+Mail & Services;Corporate;20
+Mail & Services;CISO;10
+Mail & Services;Data & AI;10
+Mail & Services;Technology;20

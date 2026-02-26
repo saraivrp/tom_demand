@@ -11,7 +11,7 @@ pip install -r requirements.txt
 
 ### 2. Prepare Input Files
 
-You need three CSV files:
+You need four CSV files:
 
 #### ideias.csv
 Contains the IDEAs (development requests) with required and optional attributes.
@@ -40,7 +40,7 @@ IDEA001;New eCommerce Portal;DIR_eCommerce_Commercial;eCommerce;Commercial;In De
 - Size: Estimated size in story points (>0, default: 100)
 
 #### weights_ra.csv
-Contains weights for Requesting Areas within each Revenue Stream.
+Contains weights for Requesting Areas within each Revenue Stream and Budget Group.
 
 ```csv
 RevenueStream;BudgetGroup;RequestingArea;Weight
@@ -51,6 +51,20 @@ eCommerce;Commercial;DIR_eCommerce_Commercial;30
 - RevenueStream: Revenue Stream name
 - BudgetGroup: Budget Group name
 - RequestingArea: Requesting Area identifier
+- Weight: Relative weight (will be normalized to sum 100 per RS+BudgetGroup)
+
+#### weights_bg_rs.csv
+Contains Budget Group weights within each Revenue Stream.
+
+```csv
+RevenueStream;BudgetGroup;Weight
+eCommerce;Commercial;20
+eCommerce;Technology;20
+```
+
+**Columns:**
+- RevenueStream: Revenue Stream name
+- BudgetGroup: Budget Group name
 - Weight: Relative weight (will be normalized to sum 100 per RS)
 
 #### weights_rs.csv
@@ -77,6 +91,7 @@ python3 tom_demand.py prioritize \
   --ideas data/input/ideias.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
+  --bg-rs-weights data/input/weights_bg_rs.csv \
   --config path/to/custom_config.yaml \
   --output-dir data/output
 ```
@@ -89,13 +104,15 @@ Before running prioritization, validate your input files:
 python3 tom_demand.py validate \
   --ideas data/input/ideias.csv \
   --ra-weights data/input/weights_ra.csv \
-  --rs-weights data/input/weights_rs.csv
+  --rs-weights data/input/weights_rs.csv \
+  --bg-rs-weights data/input/weights_bg_rs.csv
 
 # With custom config
 python3 tom_demand.py validate \
   --ideas data/input/ideias.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
+  --bg-rs-weights data/input/weights_bg_rs.csv \
   --config path/to/custom_config.yaml
 ```
 
@@ -108,6 +125,7 @@ python3 tom_demand.py prioritize \
   --ideas data/input/ideias.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
+  --bg-rs-weights data/input/weights_bg_rs.csv \
   --output-dir data/output
 ```
 
@@ -118,6 +136,7 @@ python3 tom_demand.py prioritize \
   --ideas data/input/ideias.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
+  --bg-rs-weights data/input/weights_bg_rs.csv \
   --method dhondt \
   --output-dir data/output
 ```
@@ -129,6 +148,7 @@ python3 tom_demand.py prioritize \
   --ideas data/input/ideias.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
+  --bg-rs-weights data/input/weights_bg_rs.csv \
   --all-methods \
   --output-dir data/output
 ```
@@ -141,6 +161,7 @@ python3 tom_demand.py prioritize \
   --ideas data/input/ideias.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
+  --bg-rs-weights data/input/weights_bg_rs.csv \
   --now-method wsjf \
   --output-dir data/output
 
@@ -149,6 +170,7 @@ python3 tom_demand.py prioritize \
   --ideas data/input/ideias.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
+  --bg-rs-weights data/input/weights_bg_rs.csv \
   --now-method wsjf \
   --next-method wsjf \
   --later-method sainte-lague \
@@ -173,6 +195,7 @@ python3 tom_demand.py compare \
   --ideas data/input/ideias.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
+  --bg-rs-weights data/input/weights_bg_rs.csv \
   --output comparison_report.csv \
   --top-n 50
 ```
@@ -187,16 +210,18 @@ python3 tom_demand.py validate \
   --ideas <path> \
   --ra-weights <path> \
   --rs-weights <path> \
+  --bg-rs-weights <path> \
   [--config <path>]
 ```
 
 ### prioritize
-Execute complete prioritization (Levels 2 and 3).
+Execute complete prioritization (Levels 2A, 2B, and 3).
 
 **Options:**
 - `--ideas`: Path to ideias.csv (required)
 - `--ra-weights`: Path to weights_ra.csv (required)
 - `--rs-weights`: Path to weights_rs.csv (required)
+- `--bg-rs-weights`: Path to weights_bg_rs.csv (required)
 - `--method`: Method to use: `sainte-lague`, `dhondt`, or `wsjf` (default: sainte-lague)
 - `--all-methods`: Execute all 3 methods (flag)
 - `--now-method`: Method for NOW queue: `sainte-lague`, `dhondt`, or `wsjf` (v3.3+)
@@ -239,6 +264,7 @@ python3 tom_demand.py compare \
   --ideas data/input/ideias.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
+  --bg-rs-weights data/input/weights_bg_rs.csv \
   --output comparison.csv \
   --top-n 50 \
   [--config <path>]

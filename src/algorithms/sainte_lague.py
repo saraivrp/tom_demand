@@ -83,13 +83,19 @@ def _group_items_by_entity(items: List[Dict], level: str) -> Dict[str, List[Dict
 
     Args:
         items: List of items to group
-        level: 'RS' (group by RequestingArea) or 'Global' (group by RevenueStream)
+        level: 'RS' (group by RequestingArea), 'BudgetGroup' (group by BudgetGroup),
+            or 'Global' (group by RevenueStream)
 
     Returns:
         Dictionary mapping entity to sorted list of items
     """
     grouped = {}
-    entity_key = 'RequestingArea' if level == 'RS' else 'RevenueStream'
+    if level == 'RS':
+        entity_key = 'RequestingArea'
+    elif level == 'BudgetGroup':
+        entity_key = 'BudgetGroup'
+    else:
+        entity_key = 'RevenueStream'
 
     for item in items:
         entity = item[entity_key]
@@ -103,7 +109,7 @@ def _group_items_by_entity(items: List[Dict], level: str) -> Dict[str, List[Dict
         for entity in grouped:
             grouped[entity].sort(key=lambda x: x['PriorityRA'])
     else:
-        # Sort by RS-level rank
+        # Sort by RS-level rank (used by BudgetGroup and Global steps)
         for entity in grouped:
             grouped[entity].sort(key=lambda x: x['Rank_RS'])
 

@@ -53,6 +53,13 @@ eCommerce;25
 Mail;20
 ```
 
+**weights_bg_rs.csv**:
+```csv
+RevenueStream;BudgetGroup;Weight
+eCommerce;Commercial;20
+eCommerce;Technology;20
+```
+
 ### Output Files (European Format)
 
 **demand_sainte_lague.csv** (v3.2+ with Queue column):
@@ -137,6 +144,7 @@ python3 tom_demand.py prioritize \
   --ideas data/input/ideias.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
+  --bg-rs-weights data/input/weights_bg_rs.csv \
   --method sainte-lague \
   --output-dir data/output
 

@@ -28,6 +28,7 @@ def cli():
 @click.option('--ideas', type=click.Path(exists=True), help='Path to ideas.csv')
 @click.option('--ra-weights', type=click.Path(exists=True), help='Path to weights_ra.csv')
 @click.option('--rs-weights', type=click.Path(exists=True), help='Path to weights_rs.csv')
+@click.option('--bg-rs-weights', type=click.Path(exists=True), help='Path to weights_bg_rs.csv')
 @click.option('--method', default='sainte-lague', type=click.Choice(['sainte-lague', 'dhondt', 'wsjf'], case_sensitive=False), help='Prioritization method')
 @click.option('--all-methods', is_flag=True, help='Execute all 3 methods')
 @click.option('--now-method', type=click.Choice(['sainte-lague', 'dhondt', 'wsjf'], case_sensitive=False), help='Prioritization method for NOW queue')
@@ -35,7 +36,7 @@ def cli():
 @click.option('--later-method', type=click.Choice(['sainte-lague', 'dhondt', 'wsjf'], case_sensitive=False), help='Prioritization method for LATER queue')
 @click.option('--output-dir', default='./data/output', help='Output directory')
 @click.option('--config', type=click.Path(exists=True), help='Configuration file path')
-def prioritize(ideas, ra_weights, rs_weights, method, all_methods, now_method, next_method, later_method, output_dir, config):
+def prioritize(ideas, ra_weights, rs_weights, bg_rs_weights, method, all_methods, now_method, next_method, later_method, output_dir, config):
     """
     Execute complete prioritization (Levels 2 and 3).
 
@@ -56,6 +57,8 @@ def prioritize(ideas, ra_weights, rs_weights, method, all_methods, now_method, n
             ra_weights = click.prompt("Caminho para o ficheiro de pesos RA (weights_ra.csv)", type=click.Path(exists=True))
         if not rs_weights:
             rs_weights = click.prompt("Caminho para o ficheiro de pesos RS (weights_rs.csv)", type=click.Path(exists=True))
+        if not bg_rs_weights:
+            bg_rs_weights = click.prompt("Caminho para o ficheiro de pesos BG por RS (weights_bg_rs.csv)", type=click.Path(exists=True))
 
         # Validate: per-queue methods are incompatible with --all-methods
         queue_method_flags = [now_method, next_method, later_method]
@@ -95,6 +98,7 @@ def prioritize(ideas, ra_weights, rs_weights, method, all_methods, now_method, n
             ideas=ideas,
             ra_weights=ra_weights,
             rs_weights=rs_weights,
+            bg_rs_weights=bg_rs_weights,
             output_dir=output_dir,
             method=method,
             all_methods=all_methods,
@@ -114,7 +118,7 @@ def prioritize(ideas, ra_weights, rs_weights, method, all_methods, now_method, n
 
         if run_result['queue_counts']:
             click.echo("Queue Distribution:")
-            for queue_name in ['NOW', 'NEXT', 'PRODUCTION']:
+            for queue_name in ['NOW', 'NEXT', 'LATER', 'PRODUCTION']:
                 key = f"{queue_name.lower()}_queue"
                 if run_result['queue_counts'].get(key, 0) > 0:
                     click.echo(f"  - {queue_name}: {run_result['queue_counts'][key]} IDEAs")
@@ -192,10 +196,11 @@ def prioritize_global(rs_prioritized, rs_weights, method, output, config):
 @click.option('--ideas', required=True, type=click.Path(exists=True), help='Path to ideas.csv')
 @click.option('--ra-weights', required=True, type=click.Path(exists=True), help='Path to weights_ra.csv')
 @click.option('--rs-weights', required=True, type=click.Path(exists=True), help='Path to weights_rs.csv')
+@click.option('--bg-rs-weights', required=True, type=click.Path(exists=True), help='Path to weights_bg_rs.csv')
 @click.option('--output', required=True, help='Output file path')
 @click.option('--top-n', type=int, default=None, help='Show only top N results')
 @click.option('--config', type=click.Path(exists=True), help='Configuration file path')
-def compare(ideas, ra_weights, rs_weights, output, top_n, config):
+def compare(ideas, ra_weights, rs_weights, bg_rs_weights, output, top_n, config):
     """
     Compare all 3 prioritization methods.
 
@@ -210,6 +215,7 @@ def compare(ideas, ra_weights, rs_weights, output, top_n, config):
             ideas=ideas,
             ra_weights=ra_weights,
             rs_weights=rs_weights,
+            bg_rs_weights=bg_rs_weights,
             output=output,
             top_n=top_n,
         )
@@ -230,8 +236,9 @@ def compare(ideas, ra_weights, rs_weights, output, top_n, config):
 @click.option('--ideas', required=True, type=click.Path(exists=True), help='Path to ideas.csv')
 @click.option('--ra-weights', required=True, type=click.Path(exists=True), help='Path to weights_ra.csv')
 @click.option('--rs-weights', required=True, type=click.Path(exists=True), help='Path to weights_rs.csv')
+@click.option('--bg-rs-weights', required=True, type=click.Path(exists=True), help='Path to weights_bg_rs.csv')
 @click.option('--config', type=click.Path(exists=True), help='Configuration file path')
-def validate(ideas, ra_weights, rs_weights, config):
+def validate(ideas, ra_weights, rs_weights, bg_rs_weights, config):
     """
     Validate input files without executing prioritization.
 
@@ -242,7 +249,7 @@ def validate(ideas, ra_weights, rs_weights, config):
         click.echo()
 
         service = DemandService(config)
-        summary = service.validate(ideas, ra_weights, rs_weights)
+        summary = service.validate(ideas, ra_weights, rs_weights, bg_rs_weights)
 
         click.echo("✓ All validations passed")
         click.echo()

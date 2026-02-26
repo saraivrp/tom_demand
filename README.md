@@ -7,12 +7,13 @@ A demand prioritization system for CTT (Portuguese Post) based on three proporti
 This system implements a multi-level prioritization framework that aligns organizational demand with strategic priorities:
 
 - **Level 1**: Each Requesting Area prioritizes their own IDEAs
-- **Level 2**: IDEAs are prioritized within each Revenue Stream using RA weights
+- **Level 2A**: IDEAs are prioritized by Requesting Area within each Revenue Stream
+- **Level 2B**: IDEAs are reprioritized by Budget Group within each Revenue Stream
 - **Level 3**: Global prioritization across all Revenue Streams using RS weights
 
 ## Features
 
-✓ **Multi-level prioritization** (Requesting Area → Revenue Stream → Global)
+✓ **Multi-level prioritization** (Requesting Area → Budget Group → Revenue Stream → Global)
 ✓ **Three allocation algorithms** with different characteristics
 ✓ **Per-queue prioritization methods** - different methods for NOW, NEXT, LATER queues
 ✓ **CSV-based input/output** for easy integration
@@ -70,13 +71,15 @@ pip install -r requirements.txt
 python3 tom_demand.py validate \
   --ideas data/input/ideas202602.csv \
   --ra-weights data/input/weights_ra.csv \
-  --rs-weights data/input/weights_rs.csv
+  --rs-weights data/input/weights_rs.csv \
+  --bg-rs-weights data/input/weights_bg_rs.csv
 
 # With custom configuration file
 python3 tom_demand.py validate \
   --ideas data/input/ideas202602.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
+  --bg-rs-weights data/input/weights_bg_rs.csv \
   --config path/to/custom_config.yaml
 ```
 
@@ -88,6 +91,7 @@ python3 tom_demand.py prioritize \
   --ideas data/input/ideas202602.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
+  --bg-rs-weights data/input/weights_bg_rs.csv \
   --output-dir data/output
 
 # Run all three methods
@@ -95,6 +99,7 @@ python3 tom_demand.py prioritize \
   --ideas data/input/ideas202602.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
+  --bg-rs-weights data/input/weights_bg_rs.csv \
   --all-methods \
   --output-dir data/output
 
@@ -103,6 +108,7 @@ python3 tom_demand.py prioritize \
   --ideas data/input/ideas202602.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
+  --bg-rs-weights data/input/weights_bg_rs.csv \
   --now-method wsjf \
   --next-method wsjf \
   --later-method sainte-lague \
@@ -235,6 +241,7 @@ TOM Demand Management System - Prioritization
 Loading input files...
   ✓ 20 IDEAs loaded successfully
   ✓ 30 Requesting Area weights loaded
+  ✓ 42 Budget Group by Revenue Stream weights loaded
   ✓ 7 Revenue Stream weights loaded
 
 Summary:
