@@ -1,0 +1,204 @@
+﻿RequestingArea;RevenueStream;BudgetGroup;Weight
+GP B2B;Business Solutions;Commercial;0,1
+SEO;Business Solutions;Operations;0,333333333
+CF;Business Solutions;Corporate;0,076923077
+SI;Business Solutions;Technology;0,2
+CISO;Business Solutions;CISO;1
+IAD;Business Solutions;Data & AI;1
+GS;Business Solutions;Commercial;0,1
+ACR;Business Solutions;Corporate;0,076923077
+EDO;Business Solutions;Operations;0,333333333
+SI-OPS;Business Solutions;Technology;0,2
+DNI;Business Solutions;Commercial;0,1
+AVC;Business Solutions;Corporate;0,076923077
+EM;Business Solutions;Operations;0,333333333
+SI-PRD;Business Solutions;Technology;0,2
+CSI;Business Solutions;Commercial;0,1
+GT;Business Solutions;Corporate;0,076923077
+BCTT;Business Solutions;Technology;0,2
+GP B2C;Business Solutions;Commercial;0,1
+GRH;Business Solutions;Corporate;0,076923077
+SI-CRP;Business Solutions;Technology;0,2
+GP ECL;Business Solutions;Commercial;0,1
+PC;Business Solutions;Corporate;0,076923077
+GPG;Business Solutions;Commercial;0,1
+RS;Business Solutions;Corporate;0,076923077
+ECM;Business Solutions;Commercial;0,1
+CL;Business Solutions;Corporate;0,076923077
+CTTE;Business Solutions;Commercial;0,1
+DPO;Business Solutions;Corporate;0,076923077
+CMP;Business Solutions;Corporate;0,076923077
+ST;Business Solutions;Corporate;0,076923077
+FL;Business Solutions;Corporate;0,076923077
+TF;Business Solutions;Corporate;0,076923077
+NSP;Business Solutions;Commercial;0,1
+COO;eCommerce;Operations;20
+CMO;eCommerce;Commercial;12
+ATC;eCommerce;Corporate;12
+CCO;eCommerce;Commercial;8
+IDC;eCommerce;Commercial;8
+CFO;eCommerce;Corporate;12
+CIO;eCommerce;Technology;15
+PRO;eCommerce;Corporate;7
+CHR;eCommerce;Corporate;3
+COM;eCommerce;Corporate;3
+GP ECL;Fulfilment;Commercial;0,111111111
+SEO;Fulfilment;Operations;0,333333333
+CF;Fulfilment;Corporate;0,076923077
+SI;Fulfilment;Technology;0,2
+CISO;Fulfilment;CISO;1
+IAD;Fulfilment;Data & AI;1
+GS;Fulfilment;Commercial;0,111111111
+ACR;Fulfilment;Corporate;0,076923077
+EDO;Fulfilment;Operations;0,333333333
+SI-OPS;Fulfilment;Technology;0,2
+DNI;Fulfilment;Commercial;0,111111111
+AVC;Fulfilment;Corporate;0,076923077
+EM;Fulfilment;Operations;0,333333333
+SI-PRD;Fulfilment;Technology;0,2
+CSI;Fulfilment;Commercial;0,111111111
+GT;Fulfilment;Corporate;0,076923077
+BCTT;Fulfilment;Technology;0,2
+GP B2C;Fulfilment;Commercial;0,111111111
+GRH;Fulfilment;Corporate;0,076923077
+SI-CRP;Fulfilment;Technology;0,2
+GP B2B;Fulfilment;Commercial;0,111111111
+PC;Fulfilment;Corporate;0,076923077
+GPG;Fulfilment;Commercial;0,111111111
+RS;Fulfilment;Corporate;0,076923077
+ECM;Fulfilment;Commercial;0,111111111
+CL;Fulfilment;Corporate;0,076923077
+CTTE;Fulfilment;Commercial;0,111111111
+DPO;Fulfilment;Corporate;0,076923077
+CMP;Fulfilment;Corporate;0,076923077
+ST;Fulfilment;Corporate;0,076923077
+FL;Fulfilment;Corporate;0,076923077
+TF;Fulfilment;Corporate;0,076923077
+GP B2B;Mail;Commercial;0,111111111
+SEO;Mail;Operations;0,333333333
+CF;Mail;Corporate;0,076923077
+SI;Mail;Technology;0,2
+CISO;Mail;CISO;1
+IAD;Mail;Data & AI;1
+GS;Mail;Commercial;0,111111111
+ACR;Mail;Corporate;0,076923077
+EDO;Mail;Operations;0,333333333
+SI-OPS;Mail;Technology;0,2
+DNI;Mail;Commercial;0,111111111
+AVC;Mail;Corporate;0,076923077
+EM;Mail;Operations;0,333333333
+SI-PRD;Mail;Technology;0,2
+CSI;Mail;Commercial;0,111111111
+GT;Mail;Corporate;0,076923077
+BCTT;Mail;Technology;0,2
+GP B2C;Mail;Commercial;0,111111111
+GRH;Mail;Corporate;0,076923077
+SI-CRP;Mail;Technology;0,2
+GP ECL;Mail;Commercial;0,111111111
+PC;Mail;Corporate;0,076923077
+GPG;Mail;Commercial;0,111111111
+RS;Mail;Corporate;0,076923077
+ECM;Mail;Commercial;0,111111111
+CL;Mail;Corporate;0,076923077
+CTTE;Mail;Commercial;0,111111111
+DPO;Mail;Corporate;0,076923077
+CMP;Mail;Corporate;0,076923077
+ST;Mail;Corporate;0,076923077
+FL;Mail;Corporate;0,076923077
+TF;Mail;Corporate;0,076923077
+GPG;Payments;Commercial;0,111111111
+SEO;Payments;Operations;0,333333333
+CF;Payments;Corporate;0,076923077
+SI;Payments;Technology;0,2
+CISO;Payments;CISO;1
+IAD;Payments;Data & AI;1
+GS;Payments;Commercial;0,111111111
+ACR;Payments;Corporate;0,076923077
+EDO;Payments;Operations;0,333333333
+SI-OPS;Payments;Technology;0,2
+DNI;Payments;Commercial;0,111111111
+AVC;Payments;Corporate;0,076923077
+EM;Payments;Operations;0,333333333
+SI-PRD;Payments;Technology;0,2
+CSI;Payments;Commercial;0,111111111
+GT;Payments;Corporate;0,076923077
+BCTT;Payments;Technology;0,2
+GP B2C;Payments;Commercial;0,111111111
+GRH;Payments;Corporate;0,076923077
+SI-CRP;Payments;Technology;0,2
+GP ECL;Payments;Commercial;0,111111111
+PC;Payments;Corporate;0,076923077
+GP B2B;Payments;Commercial;0,111111111
+RS;Payments;Corporate;0,076923077
+ECM;Payments;Commercial;0,111111111
+CL;Payments;Corporate;0,076923077
+CTTE;Payments;Commercial;0,111111111
+DPO;Payments;Corporate;0,076923077
+CMP;Payments;Corporate;0,076923077
+ST;Payments;Corporate;0,076923077
+FL;Payments;Corporate;0,076923077
+TF;Payments;Corporate;0,076923077
+GP B2C;Retail & Financial Services;Commercial;0,125
+SEO;Retail & Financial Services;Operations;0,333333333
+CF;Retail & Financial Services;Corporate;0,125
+SI;Retail & Financial Services;Technology;0,2
+CISO;Retail & Financial Services;CISO;1
+IAD;Retail & Financial Services;Data & AI;0,142857143
+GS;Retail & Financial Services;Commercial;0,125
+ACR;Retail & Financial Services;Corporate;0,125
+EDO;Retail & Financial Services;Operations;0,333333333
+SI-OPS;Retail & Financial Services;Technology;0,2
+DNI;Retail & Financial Services;Commercial;0,125
+AVC;Retail & Financial Services;Corporate;0,125
+EM;Retail & Financial Services;Operations;0,333333333
+SI-PRD;Retail & Financial Services;Technology;0,2
+CSI;Retail & Financial Services;Commercial;0,125
+GT;Retail & Financial Services;Corporate;0,125
+BCTT;Retail & Financial Services;Technology;0,2
+GP B2B;Retail & Financial Services;Commercial;0,125
+GRH;Retail & Financial Services;Corporate;0,125
+SI-CRP;Retail & Financial Services;Technology;0,2
+GP ECL;Retail & Financial Services;Commercial;0,125
+PC;Retail & Financial Services;Corporate;0,125
+GPG;Retail & Financial Services;Commercial;0,125
+RS;Retail & Financial Services;Corporate;0,125
+ECM;Retail & Financial Services;Commercial;0,125
+CL;Retail & Financial Services;Corporate;0,125
+CTTE;Retail & Financial Services;Data & AI;0,142857143
+DPO;Retail & Financial Services;Data & AI;0,142857143
+CMP;Retail & Financial Services;Data & AI;0,142857143
+ST;Retail & Financial Services;Data & AI;0,142857143
+FL;Retail & Financial Services;Data & AI;0,142857143
+TF;Retail & Financial Services;Data & AI;0,142857143
+GP B2B;Mail & Services;Commercial;16
+SEO;Mail & Services;Operations;0,333333333
+CF;Mail & Services;Corporate;0,076923077
+SI;Mail & Services;Technology;0,2
+CISO;Mail & Services;CISO;1
+IAD;Mail & Services;Data & AI;1
+GP ECL;Mail & Services;Commercial;16
+ACR;Mail & Services;Corporate;0,076923077
+EDO;Mail & Services;Operations;0,333333333
+SI-OPS;Mail & Services;Technology;0,2
+DNI;Mail & Services;Commercial;16
+AVC;Mail & Services;Corporate;0,076923077
+EM;Mail & Services;Operations;0,333333333
+SI-PRD;Mail & Services;Technology;0,2
+GS;Mail & Services;Commercial;12
+GT;Mail & Services;Corporate;0,076923077
+BCTT;Mail & Services;Technology;0,2
+CSI;Mail & Services;Commercial;10
+GRH;Mail & Services;Corporate;0,076923077
+SI-CRP;Mail & Services;Technology;0,2
+GP B2C;Mail & Services;Commercial;9
+PC;Mail & Services;Corporate;0,076923077
+CTTE;Mail & Services;Commercial;9
+RS;Mail & Services;Corporate;0,076923077
+GPG;Mail & Services;Commercial;9
+CL;Mail & Services;Corporate;0,076923077
+ECM;Mail & Services;Commercial;3
+DPO;Mail & Services;Corporate;0,076923077
+CMP;Mail & Services;Corporate;0,076923077
+ST;Mail & Services;Corporate;0,076923077
+FL;Mail & Services;Corporate;0,076923077
+TF;Mail & Services;Corporate;0,076923077

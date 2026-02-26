@@ -2,11 +2,19 @@ Executar o TOM Demand
 
 #QUICK APPROACH
 python3 tom_demand.py prioritize \
-  --ideas data/input/ideas202602.csv \
+  --ideas data/input/ideas20260224.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
   --next-method wsjf \
   --later-method sainte-lague
+
+python3 tom_demand.py prioritize \
+  --ideas data/input/ideas202602_25.csv \
+  --ra-weights data/input/weights_ra_25.csv \
+  --rs-weights data/input/weights_rs_25.csv \
+  --next-method wsjf \
+  --later-method sainte-lague
+
 
 #DETAIL
 
