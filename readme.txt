@@ -14,6 +14,7 @@ python3 tom_demand.py prioritize \
   --ra-weights data/input/weights_ra_25.csv \
   --rs-weights data/input/weights_rs_25.csv \
   --bg-rs-weights data/input/weights_bg_rs_25.csv \
+  --now-method wsjf \
   --next-method wsjf \
   --later-method sainte-lague
 
