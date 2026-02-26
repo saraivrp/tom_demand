@@ -5,6 +5,7 @@ python3 tom_demand.py prioritize \
   --ideas data/input/ideas20260224.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
+  --bg-rs-weights data/input/weights_bg_rs.csv \
   --next-method wsjf \
   --later-method sainte-lague
 
@@ -12,6 +13,7 @@ python3 tom_demand.py prioritize \
   --ideas data/input/ideas202602_25.csv \
   --ra-weights data/input/weights_ra_25.csv \
   --rs-weights data/input/weights_rs_25.csv \
+  --bg-rs-weights data/input/weights_bg_rs_25.csv \
   --next-method wsjf \
   --later-method sainte-lague
 
@@ -29,13 +31,15 @@ Valide os ficheiros de entrada (usa os exemplos do repositório):
 python3 tom_demand.py validate \
   --ideas data/input/ideas.csv \
   --ra-weights data/input/weights_ra.csv \
-  --rs-weights data/input/weights_rs.csv
+  --rs-weights data/input/weights_rs.csv \
+  --bg-rs-weights data/input/weights_bg_rs.csv
 
 Execute a priorização (método padrão Sainte-Laguë) gerando saídas em data/output:
 python3 tom_demand.py prioritize \
   --ideas data/input/ideas.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
+  --bg-rs-weights data/input/weights_bg_rs.csv \
   --output-dir data/output
 
 Outras opções úteis:
@@ -49,7 +53,8 @@ EXECUTE
 python3 tom_demand.py prioritize \
   --ideas data/input/ideas.csv \
   --ra-weights data/input/weights_ra.csv \
-  --rs-weights data/input/weights_rs.csv
+  --rs-weights data/input/weights_rs.csv \
+  --bg-rs-weights data/input/weights_bg_rs.csv
 
 
 EXECUTE DETAIL
@@ -57,6 +62,7 @@ python3 tom_demand.py prioritize \
   --ideas data/input/ideas202602.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
+  --bg-rs-weights data/input/weights_bg_rs.csv \
   --next-method wsjf \
   --later-method sainte-lague
 
@@ -103,5 +109,6 @@ TEST APIs
   "ideas_path": "data/input/ideas202602.csv",
   "ra_weights_path": "data/input/weights_ra.csv",
   "rs_weights_path": "data/input/weights_rs.csv",
+  "bg_rs_weights_path": "data/input/weights_bg_rs.csv",
   "config_path": "config/config.yaml"
 }

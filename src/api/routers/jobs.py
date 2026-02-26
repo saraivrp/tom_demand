@@ -47,6 +47,7 @@ def submit_prioritize_job(
             ideas=payload.ideas_path,
             ra_weights=payload.ra_weights_path,
             rs_weights=payload.rs_weights_path,
+            bg_rs_weights=payload.bg_rs_weights_path,
             output_dir=payload.output_dir,
             method=payload.method,
             all_methods=payload.all_methods,
@@ -70,6 +71,7 @@ def submit_compare_job(
             ideas=payload.ideas_path,
             ra_weights=payload.ra_weights_path,
             rs_weights=payload.rs_weights_path,
+            bg_rs_weights=payload.bg_rs_weights_path,
             output=payload.output_path,
             top_n=payload.top_n,
         )
@@ -89,6 +91,7 @@ def submit_validate_job(
             ideas=payload.ideas_path,
             ra_weights=payload.ra_weights_path,
             rs_weights=payload.rs_weights_path,
+            bg_rs_weights=payload.bg_rs_weights_path,
         )
 
     return _submit("validate", payload, background_tasks, worker)

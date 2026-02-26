@@ -189,7 +189,7 @@ Starting in version 3.3, the system supports applying **different prioritization
 
 **Feature Overview**:
 * Each queue (NOW, NEXT, LATER) can use a different prioritization algorithm
-* Applies to both Level 2 (Revenue Stream) and Level 3 (Global) prioritization
+* Applies to Level 2A (RA), Level 2B (Budget Group), and Level 3 (Global) prioritization
 * Configured via CLI flags: `--now-method`, `--next-method`, `--later-method`
 
 **Configuration Options**:
@@ -208,6 +208,7 @@ python3 tom_demand.py prioritize \
   --ideas ideias.csv \
   --ra-weights weights_ra.csv \
   --rs-weights weights_rs.csv \
+  --bg-rs-weights weights_bg_rs.csv \
   --now-method wsjf \
   --next-method wsjf \
   --later-method sainte-lague \
@@ -223,7 +224,7 @@ python3 tom_demand.py prioritize \
 * **Strategic Flexibility**: Different optimization strategies per queue
 * **Context-Appropriate**: Match method to queue purpose (economic for development, balanced for planning)
 * **Granular Control**: Override methods at queue level while maintaining global defaults
-* **Backward Compatible**: Optional feature, existing commands work unchanged
+* **Backward Compatible**: Method behavior is preserved; commands now also require BG-by-RS weights input
 
 **Restrictions**:
 * Per-queue flags cannot be combined with `--all-methods` flag (prevents exponential combinations)
@@ -272,7 +273,7 @@ An IDEA represents a development request created by a Requesting Area.
 | Priority_WSJF_Global        | integer | WSJF global rank (sequential: NOW 1-N, NEXT N+1-M, PRODUCTION null)        |
   
 ****3.2 Weight Structures****  
-**Requesting Area Weights (Level 2)**  
+**Requesting Area Weights (Level 2A)**  
 **File**: weights_ra.csv
 ```csv
 RevenueStream;BudgetGroup;RequestingArea;Weight
@@ -289,7 +290,24 @@ Mail;Operations;DIR_Mail_Operations;35
 * RevenueStream: Revenue Stream name
 * BudgetGroup: Budget Group name
 * RequestingArea: Requesting Area identifier
-* Weight: Relative weight (should sum to 100 per RS, or will be normalized)
+* Weight: Relative weight (should sum to 100 per RevenueStream+BudgetGroup, or will be normalized)
+
+**Budget Group Weights by Revenue Stream (Level 2B)**
+**File**: weights_bg_rs.csv
+```csv
+RevenueStream;BudgetGroup;Weight
+eCommerce;Commercial;20
+eCommerce;Technology;20
+eCommerce;Operations;20
+eCommerce;Corporate;20
+eCommerce;CISO;10
+eCommerce;Data & AI;10
+...
+```
+**Columns**:
+* RevenueStream: Revenue Stream name
+* BudgetGroup: Budget Group name
+* Weight: Relative weight (should sum to 100 per RevenueStream, or will be normalized)
 
 **Revenue Stream Weights (Level 3)**
 **File**: weights_rs.csv
@@ -461,7 +479,7 @@ IDEA005;Mobile Payment System;DIR_Payments_Tech;Payments;Technology;In Developme
 **Notes**  
 * This level is performed **outside the system** to be built  
 * The system receives ideias.csv as input  
-## 5.2 Level 2: Prioritization by Revenue Stream  
+## 5.2 Level 2A: Prioritization by Requesting Area within Revenue Stream  
 **Inputs**  
 * ideias.csv (from Level 1)  
 * weights_ra.csv (Requesting Area weights)  
@@ -472,7 +490,7 @@ IDEA005;Mobile Payment System;DIR_Payments_Tech;Payments;Technology;In Developme
     * **Sainte-Laguë**: Use RA weights as "votes"  
     * **D'Hondt**: Use RA weights as "votes"  
     * **WSJF**: Sort by WSJF adjusted by RA weight  
-4. Generate 3 rankings per RS  
+4. Generate RA-based ranking per RS (`Rank_RS`)  
 **Output**  
 **File**: prioritization_rs.csv  
 ```
@@ -493,8 +511,22 @@ Mail,SainteLague,1,IDEA003,Mail Sorting Automation,DIR_Mail_Operations,Operation
 **Validations**  
 * All IDEAs from the RS represented  
 * Sequential rankings without gaps  
-* Weights of RAs sum to 100 per RS (or normalize automatically)  
-## 5.3 Level 3: Global CTT Prioritization (with Queue-Based Ranking v3.1)
+* Weights of RAs sum to 100 per RevenueStream+BudgetGroup (or normalize automatically)
+
+## 5.3 Level 2B: Prioritization by Budget Group within Revenue Stream
+**Inputs**
+* prioritization_rs.csv (from Level 2A)
+* weights_bg_rs.csv (Budget Group weights per Revenue Stream)
+**Process**
+1. Load RS prioritization and BG-by-RS weights
+2. For each Revenue Stream:
+   * **Sainte-Laguë / D'Hondt**: Reallocate sequence across Budget Groups using `weights_bg_rs.csv`
+   * **WSJF**: Keep existing behavior (do not apply BG weighting step)
+3. Update RS ranking (`Rank_RS`) for Level 3 input
+**Validations**
+* Weights of Budget Groups sum to 100 per Revenue Stream (or normalize automatically)
+
+## 5.4 Level 3: Global CTT Prioritization (with Queue-Based Ranking v3.1)
 **Inputs**
 * prioritization_rs.csv (from Level 2)
 * weights_rs.csv (Revenue Stream weights)
@@ -639,8 +671,12 @@ def load_rs_weights(filepath: str) -> pd.DataFrame:
 **2. RA Weights (weights_ra.csv)**:  
 * Combination (RevenueStream, BudgetGroup, RequestingArea) must be unique  
 * Weight: Greater than 0  
-* Sum of weights per RS should equal 100 (or auto-normalize)  
-**3. RS Weights (weights_rs.csv)**:  
+* Sum of weights per (RevenueStream, BudgetGroup) should equal 100 (or auto-normalize)  
+**3. BG/RS Weights (weights_bg_rs.csv)**:
+* Combination (RevenueStream, BudgetGroup) must be unique
+* Weight: Greater than 0
+* Sum of weights per RevenueStream should equal 100 (or auto-normalize)
+**4. RS Weights (weights_rs.csv)**:  
 * RevenueStream: Unique and valid  
 * Weight: Greater than 0  
 * Sum of weights should equal 100 (or auto-normalize)  
@@ -654,6 +690,9 @@ def validate_ideas(df: pd.DataFrame, ra_weights: pd.DataFrame) -> ValidationResu
 
 def validate_ra_weights(df: pd.DataFrame) -> ValidationResult:
     """Validate RA weights dataframe"""
+
+def validate_bg_rs_weights(df: pd.DataFrame) -> ValidationResult:
+    """Validate Budget Group weights by Revenue Stream dataframe"""
 
 def validate_rs_weights(df: pd.DataFrame) -> ValidationResult:
     """Validate RS weights dataframe"""
@@ -672,7 +711,7 @@ def prioritize_level2(
     method: str  # 'sainte-lague' | 'dhondt' | 'wsjf'
 ) -> pd.DataFrame:
     """
-    Prioritize IDEAs by Revenue Stream using specified method.
+    Prioritize IDEAs by Requesting Area inside each Revenue Stream.
     
     Args:
         ideas: DataFrame with IDEAs
@@ -680,7 +719,17 @@ def prioritize_level2(
         method: Prioritization method to use
         
     Returns:
-        DataFrame with prioritized IDEAs per RS and method
+        DataFrame with RA-prioritized IDEAs per RS and method
+    """
+
+def prioritize_level2_budget_groups(
+    rs_prioritized: pd.DataFrame,
+    bg_rs_weights: pd.DataFrame,
+    method: str
+) -> pd.DataFrame:
+    """
+    Re-prioritize IDEAs by Budget Group inside each Revenue Stream.
+    For WSJF, keep existing behavior (no BG weighting step).
     """
 
 def prioritize_level3(
@@ -692,7 +741,7 @@ def prioritize_level3(
     Prioritize IDEAs globally using specified method.
     
     Args:
-        rs_prioritized: DataFrame from Level 2
+        rs_prioritized: DataFrame from Level 2B
         rs_weights: DataFrame with RS weights
         method: Prioritization method to use
         
@@ -986,13 +1035,14 @@ def export_metadata(
 
 ```
 ## 6.3 Command Line Interface (CLI)  
-**Complete Prioritization (Levels 2 and 3)**  
+**Complete Prioritization (Levels 2A, 2B and 3)**  
 ```
 # Execute complete prioritization with default method (Sainte-Laguë)
 python tom_demand.py prioritize \
   --ideas ideias.csv \
   --ra-weights weights_ra.csv \
   --rs-weights weights_rs.csv \
+  --bg-rs-weights weights_bg_rs.csv \
   --output-dir ./output
 
 # Execute with specific method
@@ -1000,6 +1050,7 @@ python tom_demand.py prioritize \
   --ideas ideias.csv \
   --ra-weights weights_ra.csv \
   --rs-weights weights_rs.csv \
+  --bg-rs-weights weights_bg_rs.csv \
   --method dhondt \
   --output-dir ./output
 
@@ -1008,6 +1059,7 @@ python tom_demand.py prioritize \
   --ideas ideias.csv \
   --ra-weights weights_ra.csv \
   --rs-weights weights_rs.csv \
+  --bg-rs-weights weights_bg_rs.csv \
   --all-methods \
   --output-dir ./output
 
@@ -1016,6 +1068,7 @@ python tom_demand.py prioritize \
   --ideas ideias.csv \
   --ra-weights weights_ra.csv \
   --rs-weights weights_rs.csv \
+  --bg-rs-weights weights_bg_rs.csv \
   --now-method wsjf \
   --next-method wsjf \
   --later-method sainte-lague \
@@ -1049,6 +1102,7 @@ python tom_demand.py compare \
   --ideas ideias.csv \
   --ra-weights weights_ra.csv \
   --rs-weights weights_rs.csv \
+  --bg-rs-weights weights_bg_rs.csv \
   --output comparison_report.csv \
   --top-n 50
 
@@ -1059,7 +1113,8 @@ python tom_demand.py compare \
 python tom_demand.py validate \
   --ideas ideias.csv \
   --ra-weights weights_ra.csv \
-  --rs-weights weights_rs.csv
+  --rs-weights weights_rs.csv \
+  --bg-rs-weights weights_bg_rs.csv
 
 ```
 **CLI Parameters**
@@ -1069,6 +1124,7 @@ python tom_demand.py validate \
 | --ideas | string | Required | Path to ideias.csv |
 | --ra-weights | string | Required | Path to weights_ra.csv |
 | --rs-weights | string | Required | Path to weights_rs.csv |
+| --bg-rs-weights | string | Required | Path to weights_bg_rs.csv |
 | --method | string | sainte-lague | Global prioritization method (sainte-lague, dhondt, wsjf) |
 | --all-methods | flag | False | Execute all 3 methods |
 | --now-method | string | None | Method for NOW queue (v3.3) - overrides --method |
@@ -1089,6 +1145,7 @@ python tom_demand.py validate \
 ✓ Validating input files...
   ✓ ideias.csv: 247 IDEAs loaded successfully
   ✓ weights_ra.csv: 18 Requesting Areas loaded
+  ✓ weights_bg_rs.csv: 42 Budget Groups by Revenue Stream loaded
   ✓ weights_rs.csv: 7 Revenue Streams loaded
   ⚠ Normalizing RA weights for eCommerce (sum=98.5 → 100)
 ✓ All validations passed
@@ -1103,7 +1160,7 @@ Summary:
 **Prioritization Execution**:  
 ```
 ✓ Starting prioritization process...
-  ✓ Level 2: Prioritizing by Revenue Stream
+  ✓ Level 2A: Prioritizing by Requesting Area inside Revenue Stream
     - eCommerce: 78 IDEAs prioritized
     - Mail: 54 IDEAs prioritized
     - Fulfilment: 32 IDEAs prioritized
@@ -1111,6 +1168,7 @@ Summary:
     - Payments: 24 IDEAs prioritized
     - Retail & Financial Services: 19 IDEAs prioritized
     - Banco CTT: 12 IDEAs prioritized
+  ✓ Level 2B: Prioritizing by Budget Group inside Revenue Stream
   ✓ Level 3: Global prioritization
     - Method: Sainte-Laguë
     - 247 IDEAs ranked globally
@@ -1195,8 +1253,8 @@ performance:
 1. Each direction prioritizes their IDEAs → ideias_q2_2026.csv  
 2. Portfolio Manager defines RA weights → weights_ra_q2.csv  
 3. CFO defines strategic RS weights → weights_rs_q2.csv  
-4. Execute system: python tom_demand.py prioritize \  --ideas ideias_q2_2026.csv \  --ra-weights weights_ra_q2.csv \  --rs-weights weights_rs_q2.csv \  --all-methods \  --output-dir ./output/q2_2026  
-5.   
+4. Define Budget Group weights by RS → weights_bg_rs_q2.csv
+5. Execute system: `python tom_demand.py prioritize --ideas ideias_q2_2026.csv --ra-weights weights_ra_q2.csv --rs-weights weights_rs_q2.csv --bg-rs-weights weights_bg_rs_q2.csv --all-methods --output-dir ./output/q2_2026`
 6. Analyze demand.csv and decide which method to adopt (default: Sainte-Laguë)  
 7. Communicate prioritization to development teams  
 **Expected Outcomes**:  
@@ -1210,16 +1268,11 @@ performance:
     * weights_rs_balanced.csv (current: eCommerce 25%)  
     * weights_rs_ecommerce_focus.csv (eCommerce 35%)  
     * weights_rs_mail_focus.csv (Mail 30%)  
-2. Execute for each scenario:for scenario in balanced ecommerce_focus mail_focus; do  
-3.   python tom_demand.py prioritize \  
-4.     --ideas ideias.csv \  
-5.     --ra-weights weights_ra.csv \  
-6.     --rs-weights weights_rs_$scenario.csv \  
-7.     --output-dir ./output/scenario_$scenario  
-8. done  
-9.   
-10. Compare top 20 IDEAs in each scenario  
-11. Identify IDEAs sensitive to strategic changes  
+2. Execute for each scenario: `for scenario in balanced ecommerce_focus mail_focus; do`
+3. `python tom_demand.py prioritize --ideas ideias.csv --ra-weights weights_ra.csv --rs-weights weights_rs_$scenario.csv --bg-rs-weights weights_bg_rs.csv --output-dir ./output/scenario_$scenario`
+4. `done`
+5. Compare top 20 IDEAs in each scenario  
+6. Identify IDEAs sensitive to strategic changes  
 **Analysis Output**:  
 
 | IDEA    | Balanced Rank | eComm Focus Rank | Mail Focus Rank | Volatility |
@@ -1275,20 +1328,9 @@ I4,Analytics,RA2,eCommerce,2,6,5,4,80
 1. Update weights_ra.csv:  
     * Increase Data&AI weight from ~15% to ~35% per RS  
     * Rebalance other BG weights proportionally  
-2. Execute prioritization:python tom_demand.py prioritize \  
-3.   --ideas ideias.csv \  
-4.   --ra-weights weights_ra_datai_focus.csv \  
-5.   --rs-weights weights_rs.csv \  
-6.   --method sainte-lague \  
-7.   --output-dir ./output/datai_initiative  
-8.   
-9. Compare with previous prioritization:python tom_demand.py compare \  
-10.   --ideas ideias.csv \  
-11.   --ra-weights weights_ra_previous.csv \  
-12.   --rs-weights weights_rs.csv \  
-13.   --output comparison_before_after.csv  
-14.   
-15. Identify Data&AI IDEAs that moved into top 50  
+2. Execute prioritization: `python tom_demand.py prioritize --ideas ideias.csv --ra-weights weights_ra_datai_focus.csv --rs-weights weights_rs.csv --bg-rs-weights weights_bg_rs.csv --method sainte-lague --output-dir ./output/datai_initiative`
+3. Compare with previous prioritization: `python tom_demand.py compare --ideas ideias.csv --ra-weights weights_ra_previous.csv --rs-weights weights_rs.csv --bg-rs-weights weights_bg_rs.csv --output comparison_before_after.csv`
+4. Identify Data&AI IDEAs that moved into top 50  
 **Expected Impact**:  
 * Data&AI IDEAs rise ~100 positions on average  
 * Some operational IDEAs deferred  
@@ -1691,6 +1733,8 @@ $$WSJF_{final} = WSJF_{adjusted} \times W_{RS}$$
 Where:  
 * $WSJF_{adjusted}$ = Adjusted WSJF from Level 2  
 * $W_{RS}$ = Weight of the Revenue Stream  
+  
+**Note (v3.4)**: WSJF keeps current behavior at Level 2B (Budget Group step), i.e., no additional BG multiplier is applied in the WSJF score path.
 ## Appendix B: Complete Execution Example  
 **Scenario**: Small organization with 6 IDEAs, 2 RAs, 2 RSs  
 **Input Files**:  
@@ -1724,12 +1768,22 @@ RS1,60
 RS2,40
 
 ```
+weights_bg_rs.csv:
+```
+RevenueStream,BudgetGroup,Weight
+RS1,Technology,40
+RS1,Commercial,30
+RS1,Data&AI,30
+RS2,Operations,55
+RS2,Technology,45
+```
 **Execution**:  
 ```
 python tom_demand.py prioritize \
   --ideas ideias.csv \
   --ra-weights weights_ra.csv \
   --rs-weights weights_rs.csv \
+  --bg-rs-weights weights_bg_rs.csv \
   --all-methods \
   --output-dir ./output/example
 
@@ -1807,6 +1861,7 @@ tom_demand/
 │   ├── input/                        # Input files directory
 │   │   ├── ideias.csv
 │   │   ├── weights_ra.csv
+│   │   ├── weights_bg_rs.csv
 │   │   └── weights_rs.csv
 │   └── output/                       # Output files directory
 │       ├── demand.csv

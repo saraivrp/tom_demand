@@ -1,7 +1,7 @@
 """
 Data validation module for TOM Demand Management System.
 
-This module provides comprehensive validation for IDEAS, RA weights, and RS weights.
+This module provides comprehensive validation for IDEAS, RA weights, BG/RS weights, and RS weights.
 """
 
 from typing import Dict, List, Tuple, Optional
@@ -227,12 +227,68 @@ class Validator:
             invalid_values = invalid_bg['BudgetGroup'].unique().tolist()
             errors.append(f"Invalid Budget Group values: {', '.join(str(v) for v in invalid_values)}")
 
+        # Check if weights sum to 100 per (RS, BG) (warning only)
+        grouped = df.groupby(['RevenueStream', 'BudgetGroup'])['Weight'].sum()
+        for (rs, bg), total in grouped.items():
+            if abs(total - 100) > 0.01:  # Allow small floating point errors
+                warnings.append(
+                    f"Revenue Stream '{rs}' / Budget Group '{bg}': weights sum to {total:.2f}, not 100.0"
+                )
+
+        is_valid = len(errors) == 0
+        return ValidationResult(is_valid, errors, warnings)
+
+    def validate_bg_rs_weights(self, df: pd.DataFrame) -> ValidationResult:
+        """
+        Validate Budget Group weights by Revenue Stream dataframe.
+
+        Args:
+            df: DataFrame with BG weights per RS
+
+        Returns:
+            ValidationResult with validation status and messages
+        """
+        errors = []
+        warnings = []
+
+        # Check required columns
+        required_cols = ['RevenueStream', 'BudgetGroup', 'Weight']
+        for col in required_cols:
+            if col not in df.columns:
+                errors.append(f"Missing required column: {col}")
+
+        if errors:
+            return ValidationResult(False, errors, warnings)
+
+        # Check for duplicates
+        duplicates = df.duplicated(subset=['RevenueStream', 'BudgetGroup'])
+        if duplicates.any():
+            dup_rows = df[duplicates][['RevenueStream', 'BudgetGroup']]
+            errors.append(f"Duplicate combinations found: {len(dup_rows)} row(s)")
+
+        # Validate weights are positive
+        if (df['Weight'] <= 0).any():
+            invalid = df[df['Weight'] <= 0]
+            errors.append(f"Found {len(invalid)} weight(s) <= 0")
+
+        # Validate RevenueStream values
+        invalid_rs = df[~df['RevenueStream'].isin(self.revenue_streams)]
+        if not invalid_rs.empty:
+            invalid_values = invalid_rs['RevenueStream'].unique().tolist()
+            errors.append(f"Invalid Revenue Stream values: {', '.join(str(v) for v in invalid_values)}")
+
+        # Validate BudgetGroup values
+        invalid_bg = df[~df['BudgetGroup'].isin(self.budget_groups)]
+        if not invalid_bg.empty:
+            invalid_values = invalid_bg['BudgetGroup'].unique().tolist()
+            errors.append(f"Invalid Budget Group values: {', '.join(str(v) for v in invalid_values)}")
+
         # Check if weights sum to 100 per RS (warning only)
         for rs in df['RevenueStream'].unique():
-            rs_weights = df[df['RevenueStream'] == rs]['Weight'].sum()
-            if abs(rs_weights - 100) > 0.01:  # Allow small floating point errors
+            total = df[df['RevenueStream'] == rs]['Weight'].sum()
+            if abs(total - 100) > 0.01:
                 warnings.append(
-                    f"Revenue Stream '{rs}': weights sum to {rs_weights:.2f}, not 100.0"
+                    f"Revenue Stream '{rs}': BG weights sum to {total:.2f}, not 100.0"
                 )
 
         is_valid = len(errors) == 0

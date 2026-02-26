@@ -35,6 +35,7 @@ def validate_workflow(
             ideas=payload.ideas_path,
             ra_weights=payload.ra_weights_path,
             rs_weights=payload.rs_weights_path,
+            bg_rs_weights=payload.bg_rs_weights_path,
         )
         return ValidateResponse(**result)
     except (FileNotFoundError, DataLoadError) as exc:
@@ -56,6 +57,7 @@ def prioritize_workflow(
             ideas=payload.ideas_path,
             ra_weights=payload.ra_weights_path,
             rs_weights=payload.rs_weights_path,
+            bg_rs_weights=payload.bg_rs_weights_path,
             output_dir=payload.output_dir,
             method=payload.method,
             all_methods=payload.all_methods,
@@ -109,6 +111,7 @@ def compare_workflow(
             ideas=payload.ideas_path,
             ra_weights=payload.ra_weights_path,
             rs_weights=payload.rs_weights_path,
+            bg_rs_weights=payload.bg_rs_weights_path,
             output=payload.output_path,
             top_n=payload.top_n,
         )

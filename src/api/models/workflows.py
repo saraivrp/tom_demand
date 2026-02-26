@@ -9,6 +9,7 @@ class ValidateRequest(BaseModel):
     ideas_path: str
     ra_weights_path: str
     rs_weights_path: str
+    bg_rs_weights_path: str
     config_path: Optional[str] = None
 
 
@@ -23,6 +24,7 @@ class PrioritizeRequest(BaseModel):
     ideas_path: str
     ra_weights_path: str
     rs_weights_path: str
+    bg_rs_weights_path: str
     output_dir: str = "./data/output"
     method: str = "sainte-lague"
     all_methods: bool = False
@@ -65,6 +67,7 @@ class CompareRequest(BaseModel):
     ideas_path: str
     ra_weights_path: str
     rs_weights_path: str
+    bg_rs_weights_path: str
     output_path: str
     top_n: Optional[int] = None
     config_path: Optional[str] = None

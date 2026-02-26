@@ -35,6 +35,7 @@ class DemandService:
         ideas: str,
         ra_weights: str,
         rs_weights: str,
+        bg_rs_weights: str,
         output_dir: str,
         method: str = "sainte-lague",
         all_methods: bool = False,
@@ -55,17 +56,20 @@ class DemandService:
 
         default_method = method.lower() if method else "sainte-lague"
 
-        ideas_df, ra_weights_df, rs_weights_df = self.loader.load_all(ideas, ra_weights, rs_weights)
+        ideas_df, ra_weights_df, rs_weights_df, bg_rs_weights_df = self.loader.load_all(
+            ideas, ra_weights, rs_weights, bg_rs_weights
+        )
 
         if all_methods:
             results = self.prioritizer.prioritize_all_methods_with_queues(
-                ideas_df, ra_weights_df, rs_weights_df
+                ideas_df, ra_weights_df, rs_weights_df, bg_rs_weights_df
             )
         else:
             combined_result = self.prioritizer.prioritize_with_queues(
                 ideas_df,
                 ra_weights_df,
                 rs_weights_df,
+                bg_rs_weights_df,
                 queue_methods=queue_methods,
                 default_method=default_method,
             )
@@ -90,6 +94,7 @@ class DemandService:
                 "ideas": ideas,
                 "ra_weights": ra_weights,
                 "rs_weights": rs_weights,
+                "bg_rs_weights": bg_rs_weights,
             },
             "output_directory": output_dir,
             "methods_executed": list(results.keys()),
@@ -153,19 +158,24 @@ class DemandService:
         ideas: str,
         ra_weights: str,
         rs_weights: str,
+        bg_rs_weights: str,
         output: str,
         top_n: Optional[int] = None,
     ) -> Dict:
         """Compare all methods and export report."""
-        ideas_df, ra_weights_df, rs_weights_df = self.loader.load_all(ideas, ra_weights, rs_weights)
-        results = self.prioritizer.prioritize_all_methods(ideas_df, ra_weights_df, rs_weights_df)
+        ideas_df, ra_weights_df, rs_weights_df, bg_rs_weights_df = self.loader.load_all(
+            ideas, ra_weights, rs_weights, bg_rs_weights
+        )
+        results = self.prioritizer.prioritize_all_methods(
+            ideas_df, ra_weights_df, rs_weights_df, bg_rs_weights_df
+        )
         comparison = self.prioritizer.compare_methods(results, top_n)
         self.exporter.export_comparison_report(comparison, output)
         return {"output": output, "count": len(comparison), "comparison": comparison}
 
-    def validate(self, ideas: str, ra_weights: str, rs_weights: str) -> Dict:
+    def validate(self, ideas: str, ra_weights: str, rs_weights: str, bg_rs_weights: str) -> Dict:
         """Validate all inputs and return summary stats."""
-        ideas_df, _, _ = self.loader.load_all(ideas, ra_weights, rs_weights)
+        ideas_df, _, _, _ = self.loader.load_all(ideas, ra_weights, rs_weights, bg_rs_weights)
         return {
             "ideas_count": len(ideas_df),
             "requesting_areas_count": ideas_df["RequestingArea"].nunique(),
