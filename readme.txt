@@ -10,7 +10,7 @@ python3 tom_demand.py prioritize \
   --later-method sainte-lague
 
 python3 tom_demand.py prioritize \
-  --ideas data/input/ideas202602_25.csv \
+  --ideas data/input/ideas202603.csv \
   --ra-weights data/input/weights_ra_25.csv \
   --rs-weights data/input/weights_rs_25.csv \
   --bg-rs-weights data/input/weights_bg_rs_25.csv \
