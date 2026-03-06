@@ -18,10 +18,10 @@
 137549;Outsystems - Evolução processo de CI/CD;SI;eCommerce;Technology;Pitch;89;;;;;Mail & Services
 137512;Integração - Migração ADO2GitHub - Kafka Conectors;SI;Mail;Technology;Ready for Solution;18;;;;;Mail & Services
 137466;Configuração do pagamento de faturas no Locky;GPG;Payments;Technology;Backlog;15;;;;;Mail & Services
-136994;DSD | Organizar Rota (Zona e Ordenação ) no Mobi;EDO;Mail;Operations;Backlog;6;;;;;Mail & Services
-136987;DSD | Leitura do Correio Azul e Registado no Mobi;EDO;Mail;Operations;Backlog;5;;;;;Mail & Services
-136984;DSD | Atualizar a Informação Ficha de Registo - Sistema Solistic;EDO;Mail;Operations;Backlog;4;;;;;Mail & Services
-136982;DSD | Mobi - Permitir a Leitura do Código Laranja do Correio Azul;EDO;Mail;Operations;Backlog;3;;;;;Mail & Services
+136994;DSD | Organizar Rota (Zona e Ordenação ) no Mobi;EDO;Mail;Operations;Backlog;5;;;;;Mail & Services
+136987;DSD | Leitura do Correio Azul e Registado no Mobi;EDO;Mail;Operations;Backlog;4;;;;;Mail & Services
+136984;DSD | Atualizar a Informação Ficha de Registo - Sistema Solistic;EDO;Mail;Operations;Backlog;3;;;;;Mail & Services
+136982;DSD | Mobi - Permitir a Leitura do Código Laranja do Correio Azul;EDO;Mail;Operations;Backlog;2;;;;;Mail & Services
 136621;Relatórios Mensais para Novo Modelo Operativo - Postos não NAVe;GPG;Payments;Commercial;Backlog;14;;;;;Mail & Services
 136320;Eliminar aplicativo de envio internacional online legado;GP B2B;Mail;Commercial;Backlog;25;3;3;4;2;Mail & Services
 135540;Business Solutions - Recibos Online - Evolutivos 1B 2026 (janeiro e fevereiro);GP B2B;Business Solutions;Commercial;In Approval;27;2;2;2;2;Mail & Services
@@ -44,7 +44,7 @@
 133243;Citrix nas lojas - Análise para Eliminação / substituição;GS;Mail;Commercial;Backlog;25;;;;;Mail & Services
 132957;Github Migration - ParcelInfo;SI;Mail;Technology;Backlog;8;;;;;Mail & Services
 132956;TFS Migration - NAVE;SI;Mail;Technology;Ready for Solution;12;;;;;Mail & Services
-132425;"Disponibilizar o produto Correio Registado internacional no aplicativo  ""Criar envio de Correio ou Expresso""";GP B2B;Mail;Commercial;In Definition;21;3;3;3;2;Mail & Services
+132425;"Disponibilizar o produto Correio Registado internacional no aplicativo ""Criar envio de Correio ou Expresso""";GP B2B;Mail;Commercial;In Definition;21;3;3;3;2;Mail & Services
 132298;Github Migration - Aplicações Canais Digitais;SI;Mail;Technology;In Approval;16;4;3;3;2;Mail & Services
 132278;dotCMS - update da versão;SI;Mail;Technology;High Level Design;85;;;;;Mail & Services
 132222;CCP | Migrate from .Net 8 to .Net 10;SI;Mail;Technology;Backlog;22;;;;;Mail & Services
@@ -61,13 +61,13 @@
 132024;ESW | EQA | Utilização Regular da Automação de QA em Regressões;SI;Mail;Technology;Backlog;78;;;;;Mail & Services
 132023;ESW | EQA |Estabilização de Testes Automáticos Existentes de QA;SI;Mail;Technology;Backlog;77;;;;;Mail & Services
 132021;ESW | EQA | Definição de Checklist Mínimo de QA por Projeto;SI;Mail;Technology;Backlog;76;;;;;Mail & Services
-131995;INT| -  Alarmística MuleSoft;SI;Mail;Technology;Backlog;55;;;;;Mail & Services
-131994;INT| -  Reconstrução dos processos de LOGs do SD mulesoft no ELK coorporativo.;SI;Mail;Technology;Backlog;43;;;;;Mail & Services
-131993;INT| -  Mata Aplicações Wave 1.1X - Solução de Transformação;SI;Mail;Technology;Backlog;49;;;;;Mail & Services
+131995;INT| - Alarmística MuleSoft;SI;Mail;Technology;Backlog;55;;;;;Mail & Services
+131994;INT| - Reconstrução dos processos de LOGs do SD mulesoft no ELK coorporativo.;SI;Mail;Technology;Backlog;43;;;;;Mail & Services
+131993;INT| - Mata Aplicações Wave 1.1X - Solução de Transformação;SI;Mail;Technology;Backlog;49;;;;;Mail & Services
 131992;INT | Mulesoft – Refatorização de Aplicações;SI;Mail;Technology;In Definition;37;;;;;Mail & Services
 131991;INT | Migração da solução da Knowledge Base atual para uma solução Knowledge Base coorporativa;SI;Mail;Technology;Backlog;61;;;;;Mail & Services
 131990;INT| Descontinuar os serviços suportados pelo Biztalk;SI;Mail;Technology;Backlog;71;;;;;Mail & Services
-131989;INT| -  Mata Aplicações Wave 1.1X - Tradutor;SI;Mail;Technology;Backlog;66;;;;;Mail & Services
+131989;INT| - Mata Aplicações Wave 1.1X - Tradutor;SI;Mail;Technology;Backlog;66;;;;;Mail & Services
 131776;NOXUS - Plataforma de IA;PC;Mail;Corporate;Backlog;2;4;2;2;2;Mail & Services
 131734;Controlo de correio JPP;GP B2B;Mail;Commercial;In Definition;1;1;;1;2;Mail & Services
 128060;XRP | Alteração do fluxo de contabilização;RS;Mail;Corporate;Backlog;1;;;;;Mail & Services
@@ -107,11 +107,11 @@
 126576;Plano de formação (global e board);CISO;Mail;CISO;Backlog;2;;;;;Mail & Services
 126575;DLP (Data Loss Prevention) - Wave 2;CISO;Mail;CISO;Backlog;10;;;;;Mail & Services
 126574;DLP (Data Loss Prevention) - Wave 1;CISO;Mail;CISO;Backlog;1;;;;;Mail & Services
-126509;Alargamento Infraestrutura  SI a outros sistemas desenvolvidos por EDO;EDO;Mail;Operations;Backlog;8;;;;;Mail & Services
+126509;Alargamento Infraestrutura SI a outros sistemas desenvolvidos por EDO;EDO;Mail;Operations;Backlog;8;;;;;Mail & Services
 126476;Melhorias nos envios de Carga e Internacional Expresso;GP ECL;eCommerce;Commercial;Ready for Solution;13;;;;;Mail & Services
-126459;Super B2C (App + Área Cliente) |  Incluir publicidade genérica do Banco CTT nos canais digitais dos CTT;DNI;Mail;Commercial;Backlog;6;;;;;Mail & Services
-126458;Super B2C (App + Área Cliente) |  Alterar forma de gerar push notification na App;DNI;Mail;Commercial;In Definition;1;3;;;;Mail & Services
-126423;INTERNACIONAL | IPS  Instalar a versão do package #31 (technical version 13.1.31);SEO;Mail;Operations;In Approval;5;3;2;2;3;Mail & Services
+126459;Super B2C (App + Área Cliente) | Incluir publicidade genérica do Banco CTT nos canais digitais dos CTT;DNI;Mail;Commercial;Backlog;6;;;;;Mail & Services
+126458;Super B2C (App + Área Cliente) | Alterar forma de gerar push notification na App;DNI;Mail;Commercial;In Definition;1;3;;;;Mail & Services
+126423;INTERNACIONAL | IPS Instalar a versão do package #31 (technical version 13.1.31);SEO;Mail;Operations;In Approval;5;3;2;2;3;Mail & Services
 126278;PAI NATAL SOLIDÁRIO;CMP;Mail;Corporate;Backlog;2;2;2;2;3;Mail & Services
 126166;Produto Internacional Expresso | Permitir envio de bens para os EUA segmento ocasional;GP ECL;eCommerce;Commercial;In Definition;10;4;3;3;1;Mail & Services
 126099;Desenvolvimentos Regulamentares (Congresso UPU Dubai + Incremental Riade);GP B2B;Mail;Commercial;In Definition;13;;;;;Mail & Services
@@ -150,7 +150,7 @@
 118750;Validação Automática de Códigos Postais Internacionais;GP ECL;eCommerce;Commercial;Backlog;18;;;;;Mail & Services
 118174;GPB2C | Parceria Unicâmbio - Operacionalização de serviço de cambio;GP B2C;Retail & Financial Services;Commercial;Backlog;1;;;;;Mail & Services
 116662;Aviso de Receção (AR) Digital nos Postos;GP B2B;Mail;Commercial;In Solution;3;5;;;;Mail & Services
-115295;[Nexus] Fase 2 | Âmbito da Fase 2 do Piloto Nexus;EDO;eCommerce;Operations;Discarded;999;;;;;Mail & Services
+115295;[Nexus] Fase 2 | Âmbito da Fase 2 do Piloto Nexus;EDO;eCommerce;Operations;In Definition;6;;;;;Mail & Services
 113960;Informação das vendas por colaborador E nif;GS;Mail;Commercial;Backlog;40;;;;;Mail & Services
 111689;Indicadores para Planeamento e Controlo (transações manuais);GPG;Payments;Commercial;Backlog;8;;;;;Mail & Services
 111495;GT - Portal AON MVP (com SSO);GT;Mail;Corporate;Backlog;2;;;;;Mail & Services
@@ -178,7 +178,7 @@
 93715;Logística - Utilização de Porta Paletes Autónomos;EDO;Fulfilment;Operations;In Solution;12;;;;;Mail & Services
 93166;"Integração Automaise - Novo Voice Bot - Substituir as atuais ""primas""";AVC;eCommerce;Corporate;Backlog;1;5;5;5;3;Mail & Services
 92337;GCA - Aforro upgrade Oracle;GP B2C;Retail & Financial Services;Commercial;Backlog;8;;;;;Mail & Services
-91809;DSD | Criar as Listas de Correio Registado e de EMS em Simultâneo;EDO;Mail;Operations;In Solution;2;;;;;Mail & Services
+91809;DSD | Criar as Listas de Correio Registado e de EMS em Simultâneo;EDO;Mail;Operations;In Solution;1;;;;;Mail & Services
 91539;D. Oferta - atualização base de dados dos empregados CTT em NAVe;GS;Mail;Commercial;Backlog;41;;;;;Mail & Services
 90947;Descontinuação das Guias em Papel e Aplicações Locais – Introdução de um custo adicional;GP B2B;Mail;Commercial;Backlog;26;;;;;Mail & Services
 88857;CORP - Covline - Integração de clientes e contratos via kafka;CF;Mail;Corporate;Backlog;6;;;;;Mail & Services
@@ -204,16 +204,16 @@
 76382;[35908] - Jornada NBO: MOBI;GS;Mail;Commercial;In Definition;20;;;;;Mail & Services
 76303;Correio Registado Self-Service| Envios a partir da SuperApp e Site CTT;GS;Mail;Commercial;Backlog;42;;;;;Mail & Services
 76082;GP B2C – BO Site CTT - Simulador Certificados de Aforro / App CTT – Aforro Digital;GP B2C;Retail & Financial Services;Commercial;Backlog;4;;;;;Mail & Services
-74950;IOP | Instalação e Ativação da Componente Guardian -  Nova Hyper V;SI;Mail;Technology;Backlog;54;;;;;Mail & Services
+74950;IOP | Instalação e Ativação da Componente Guardian - Nova Hyper V;SI;Mail;Technology;Backlog;54;;;;;Mail & Services
 74510;Alteração Talão Vales Postais superiores a 1.000€ - recomendação auditoria REC/ASN:2025-0015;CSI;Mail;Commercial;Backlog;11;;;;;Mail & Services
 71501;Nova Entidade Certificadora (CA) Autoridade Tributária e Aduaneira (AT).;CF;Mail;Corporate;In Definition;13;;;;;Mail & Services
-71332;IOP | Sistemas - Migração -  Nova Farm Hyper V Lisboa - Wave 3;SI;Mail;Technology;Pitch;42;;;;4;Mail & Services
-71073;Lojas com necessidade de 2 máquinas dispensadoras de senhas;BCTT;Mail;Technology;Backlog;5;3;;2;1;Mail & Services
+71332;IOP | Sistemas - Migração - Nova Farm Hyper V Lisboa - Wave 3;SI;Mail;Technology;Pitch;42;;;;4;Mail & Services
+71073;Lojas com necessidade de 2 máquinas dispensadoras de senhas;BCTT;Mail;Technology;Backlog;3;3;;2;1;Mail & Services
 70736;WFA | Incremento 3 | Férias;PC;Mail;Corporate;In Approval;4;;;;;Mail & Services
 70697;"Nexus | Digital Channels | CLIENT PORTAL | ""SUPER PORTAL"" (extra MVP)";DNI;eCommerce;Commercial;Backlog;3;;;;;Mail & Services
 70695;Nexus | Data | Group Data;PC;eCommerce;Corporate;In Definition;8;;;;;Mail & Services
 70559;Controlo dos Subadiantamentos (numerário) – cód. 011 - Auditoria REC/ARC 2024_1399;CSI;Mail;Commercial;Backlog;7;;;;;Mail & Services
-70015;BCTT - renovação de equipamentos lojas especializadas;BCTT;Mail;Technology;Backlog;9;;;;;Mail & Services
+70015;BCTT - renovação de equipamentos lojas especializadas;BCTT;Mail;Technology;Backlog;8;;;;;Mail & Services
 69892;Teleponto / Dol - Registo de situações de doenças;EDO;Mail;Operations;Backlog;10;;;;;Mail & Services
 69406;Nexus | We Bill | Upgrade Convergent Mediations e Charging;SI-CRP;eCommerce;Technology;In Definition;2;;;;;Mail & Services
 69341;Otimização CRB;CF;Mail;Corporate;Backlog;12;;;;;Mail & Services
@@ -224,12 +224,12 @@
 68791;Tratamento de rejeitados no SD - Entrada de pré-aviso pós primeira passagem do objeto na rede de tratamento (BG3);EDO;eCommerce;Operations;In Definition;17;;;;;Mail & Services
 68267;Descontinuar Grafana Dados;PC;Mail;Corporate;Backlog;11;;;;;Mail & Services
 68236;Informação normalizada (Indicadores de Gestão IG) - Fusão relatório 65 no 59 (2º e 3º fase);GP B2B;Mail;Commercial;In Definition;6;;;;;Mail & Services
-67870;BCTT - disponibilização de logs via SFTP;BCTT;Mail;Technology;Backlog;7;;;;;Mail & Services
+67870;BCTT - disponibilização de logs via SFTP;BCTT;Mail;Technology;Backlog;6;;;;;Mail & Services
 65266;Desagregar a Intranet de Outsystems ( Acção Post Mortem - INC1002170);SI;Mail;Technology;Backlog;86;;;;;Mail & Services
 65058;El corte Inglês - Relatorios de Conciliação forma automatica;GS;Mail;Commercial;In Definition;36;;;;;Mail & Services
 63944;solução de atualização de tracking em real time - Cliente Veryfex (Prozis);GS;eCommerce;Commercial;In Definition;21;;;;;Mail & Services
 63424;Revamp ViaCTT – 2ª Fase;GP B2B;Business Solutions;Commercial;In Definition;14;;;;;Mail & Services
-61947;Telemetria -  (Mobi) Descontinuação do Boletim de Veiculo;RS;Mail;Corporate;Backlog;4;;;;;Mail & Services
+61947;Telemetria - (Mobi) Descontinuação do Boletim de Veiculo;RS;Mail;Corporate;Backlog;4;;;;;Mail & Services
 60938;Fornecimentos automáticos de material vendável às lojas;GS;Retail & Financial Services;Commercial;Backlog;32;;;;;Mail & Services
 60599;Nexus | We Care | Customer Support;AVC;eCommerce;Corporate;Backlog;4;5;5;5;5;Mail & Services
 60596;Ligação do AgilePoint à BD do CoE IAP;TF;Mail;Corporate;Backlog;2;;;;;Mail & Services
@@ -239,7 +239,7 @@
 59256;SouCTT - Salary on Demand (Subsidio de Natal) | Paynest;GT;Mail;Corporate;Backlog;3;;;;;Mail & Services
 59177;Faturas PDF | SAP - Incremento 2;CF;Mail;Corporate;Backlog;5;;;;;Mail & Services
 58934;Solução de Gestão de Viagens;RS;Mail;Corporate;In Definition;5;;;;;Mail & Services
-58133;BCTT - extensão do contrato de multifunções a 321 credito;BCTT;Mail;Technology;In Definition;8;;;;;Mail & Services
+58133;BCTT - extensão do contrato de multifunções a 321 credito;BCTT;Mail;Technology;In Definition;7;;;;;Mail & Services
 56652;Coimas - Configuração /Mapeamentos SAP;GPG;Payments;Commercial;In Definition;11;;;;;Mail & Services
 55478;Alteração Ficheiro Pontos CTT - Cliente Nespresso;GS;Mail;Commercial;In Definition;37;;;;;Mail & Services
 55327;XRP | RPA para substituição da integração com BPM;RS;Mail;Corporate;Backlog;6;;;;;Mail & Services
@@ -268,13 +268,13 @@
 48158;IOP | Redução da Obsolescência Protocolos TLS 1.0 & 1.1 WAVE 4 - Servidores Unix;SI;Mail;Technology;Backlog;56;;;;;Mail & Services
 48157;IOP | Redução da Obsolescência Protocolos TLS 1.0 & 1.1 WAVE 3;SI;Mail;Technology;Backlog;59;;;;;Mail & Services
 48156;IOP | Redução da Obsolescência Protocolos TLS 1.0 & 1.1 WAVE 2;SI;Mail;Technology;Backlog;60;;;;;Mail & Services
-46567;A receita dos  Postos  Venda de Selos (PVS);GS;Mail;Commercial;Backlog;43;;;;;Mail & Services
+46567;A receita dos Postos Venda de Selos (PVS);GS;Mail;Commercial;Backlog;43;;;;;Mail & Services
 46558;A receita dos Pontos ctt não NAVe;GS;Mail;Commercial;Backlog;35;;;;;Mail & Services
-44975;Servidor  Decisões: Update automatico para a nova versão ODM;EDO;eCommerce;Operations;Backlog;9;;;;;Mail & Services
+44975;Servidor Decisões: Update automatico para a nova versão ODM;EDO;eCommerce;Operations;Backlog;9;;;;;Mail & Services
 44675;GPB2C | Apartados - Adaptação Tecnologia Locky e Otimização de Recolha de Dados;GP B2C;Retail & Financial Services;Commercial;Backlog;5;;;;;Mail & Services
-44136;Liquidação de  objetos CTT  à cobrança;GS;Mail;Commercial;In Definition;14;;;;;Mail & Services
+44136;Liquidação de objetos CTT à cobrança;GS;Mail;Commercial;In Definition;14;;;;;Mail & Services
 43204;Desmaterialização Documentos Multicare;GS;Retail & Financial Services;Commercial;In Definition;26;;;;;Mail & Services
-42676;Descontinuação do SGCP e GIEP -  Migração de Funcionalidades uma nova aplicação;SI-PRD;Mail;Technology;In Definition;14;;;;;Mail & Services
+42676;Descontinuação do SGCP e GIEP - Migração de Funcionalidades uma nova aplicação;SI-PRD;Mail;Technology;In Definition;14;;;;;Mail & Services
 41221;DART Team - Recomendações CTT;CISO;Mail;CISO;In Definition;3;;;;;Mail & Services
 39126;Novas funcionalidades no PA- AVC;AVC;Mail;Corporate;Backlog;9;3;2;2;3;Mail & Services
 36549;Novo Modelo de Replicação de Dados Contratuais;SI-PRD;Mail;Technology;Backlog;15;;;;;Mail & Services
@@ -293,7 +293,7 @@
 203853;Sites CTT e Payshop | Inclusão dos Agentes Payshop na pesquisa de Pontos de Contacto CTT;GPG;Payments;Commercial;Backlog;12;;;;;Mail & Services
 203114;Analytics - Analise de custo parceiros;PC;eCommerce;Corporate;Backlog;12;;;;;Mail & Services
 203092;PDFs Gerados de Listagens lojas estão alojados nos servidores do Nave;SI-PRD;Mail;Technology;Backlog;17;;;;;Mail & Services
-202075;Mata Aplicações  - Wave 1.3 - HRAccess (Fase 0 - desenho de solução);SI-CRP;Mail;Technology;In Definition;4;;;;;Mail & Services
+202075;Mata Aplicações - Wave 1.3 - HRAccess (Fase 0 - desenho de solução);SI-CRP;Mail;Technology;In Definition;4;;;;;Mail & Services
 201686;Galaxy | Avisados em Mobi - POD - Aumentar o campo assinatura;GS;Mail;Commercial;Backlog;19;;;;;Mail & Services
 199977;Data Hub - Secrets and Authentication;PC;Mail;Corporate;Backlog;19;;;;;Mail & Services
 199976;Data Hub - Monitorização e Backup;PC;Mail;Corporate;Backlog;18;;;;;Mail & Services
@@ -302,7 +302,7 @@
 195972;Integração do ficheiro de pré-aviso do cliente ETCP / MEO com entrega direta em ponto;GS;Mail;Commercial;Backlog;7;;;;;Mail & Services
 194112;Substituição da aplicação de faturação do P&F;SI-PRD;Business Solutions;Technology;In Definition;18;;;;;Mail & Services
 193256;Eliminação da impressão da guia da Loja na aceitação de objetos CTT Expresso (contratual e ocasional);CSI;Mail;Commercial;Backlog;17;;;;;Mail & Services
-193041;BancoCTT - Redução horário Tesouraria | Automatização do horário da senha D;BCTT;Mail;Technology;Backlog;6;;;;;Mail & Services
+193041;BancoCTT - Redução horário Tesouraria | Automatização do horário da senha D;BCTT;Mail;Technology;Backlog;5;;;;;Mail & Services
 192862;Criação Seção dados Complementares;CSI;Mail;Commercial;Backlog;25;;;;;Mail & Services
 192640;IOP | DNS private resolvers - descontinuar bind em 2 vms ubuntu;SI;Mail;Technology;Backlog;64;;;;;Mail & Services
 192060;Despesa Frota e Edificios - Evolutivo;PC;Mail;Corporate;Backlog;17;;;;;Mail & Services
@@ -315,12 +315,12 @@
 189983;Pagamento de Vales Nacionais e Internacionais - Finalização do pagamento apenas após procedimentos de RCTO concluídos;GP B2C;Retail & Financial Services;Commercial;Backlog;7;;;;;Mail & Services
 189783;Melhorias área cliente correio;GP B2B;Mail;Commercial;Backlog;23;;;;;Mail & Services
 189526;GPB2C | Inibição de Pagamentos a Entidades Coletivas Singulares no Nave e no STA;GP B2C;Retail & Financial Services;Commercial;In Definition;11;;;;;Mail & Services
-188749;Automatização Revisão Alertas AML  (Payshop);GPG;Payments;Commercial;Backlog;13;;;;;Mail & Services
+188749;Automatização Revisão Alertas AML (Payshop);GPG;Payments;Commercial;Backlog;13;;;;;Mail & Services
 188737;Nexus | Data | Nexus Data;PC;eCommerce;Corporate;In Definition;9;;;;;Mail & Services
 188477;Amazon - Melhorias ao processo atual;GS;Mail;Commercial;In Definition;27;;;;;Mail & Services
 185996;Apresentação Imagens BOL LCD LOJAS;GS;Retail & Financial Services;Commercial;Backlog;47;;;;;Mail & Services
 185664;PAY - Instrumento Cheques - Incremento I;CSI;Mail;Commercial;In Definition;2;;;;;Mail & Services
-181624;Banco CTT - Alteração Processo Faturação;BCTT;Mail;Technology;Backlog;3;3;;;;Mail & Services
+181624;Banco CTT - Alteração Processo Faturação;BCTT;Mail;Technology;Backlog;2;3;;;;Mail & Services
 181384;PAY - Instrumento Transferências - Alteração Requisitos - Fev;CSI;Mail;Commercial;In Definition;1;;;;;Mail & Services
 180676;IOP | ClearPass - alargar cobertura da solução de Network Access Control;SI;Mail;Technology;Backlog;67;;;;;Mail & Services
 180673;IOP | Segregação da Rede Privada;SI;Mail;Technology;Backlog;69;;;;;Mail & Services
@@ -331,9 +331,9 @@
 177128;IOP | Obsolescência WAVE 1 - Matar/Upgrade SQL Server anterior a 2019;SI;Mail;Technology;Backlog;72;;;;;Mail & Services
 177126;IOP | Obsolescência WAVE 1 - Windows 7 (evoluir para windows 11);SI;Mail;Technology;Backlog;73;;;;;Mail & Services
 177125;IOP | Obsolescência Infraestrutura WAVE 0 - Converter LDAP em LDAPS (ENABLERS);SI;Mail;Technology;Backlog;74;;;;;Mail & Services
-177123;Obsolescência WAVE 0 - Converter LDAP em LDAPS (BCTT);BCTT;Mail;Technology;Backlog;13;;;;;Mail & Services
+177123;Obsolescência WAVE 0 - Converter LDAP em LDAPS (BCTT);BCTT;Mail;Technology;Backlog;12;;;;;Mail & Services
 176414;Iberian - Incremento Visão de tratamento por KG's, Restantes Kpi's;PC;eCommerce;Corporate;Backlog;13;;;;;Mail & Services
-175823;Report automatizado para Crédito Pessoal;BCTT;Mail;Technology;Backlog;11;;;;;Mail & Services
+175823;Report automatizado para Crédito Pessoal;BCTT;Mail;Technology;Backlog;10;;;;;Mail & Services
 174328;Nova plataforma para criar e gerir campanhas de publicidade;GP B2B;Mail;Commercial;Backlog;9;;;;;Mail & Services
 173698;SSM - validação dos dados registados em NAVe, previamente à sua conclusão;CSI;Mail;Commercial;Backlog;5;;;;;Mail & Services
 173452;UPDATE | SOLUÇÃO TRANSFORMAÇÃO | RELATÓRIO SERIAL NUMBER EXPEDIÇÃO;GS;Mail;Commercial;Backlog;50;;;;;Mail & Services
@@ -345,7 +345,7 @@
 173278;Motor de Pesquisa de Varios objetos no SGC;CSI;Mail;Commercial;Backlog;9;;;;;Mail & Services
 173201;IOP | CrushFTP - migração de CentOS para Ubuntu;SI;Mail;Technology;Backlog;44;;;;;Mail & Services
 173104;PAY - Instrumento Transferências - Alteração de requisitos definidos pelo BdP - março;CSI;Mail;Commercial;In Definition;3;;;;;Mail & Services
-172578;Banco CTT - Gestão de Acessos em SAP4Hana;BCTT;Mail;Technology;Backlog;12;;;;;Mail & Services
+172578;Banco CTT - Gestão de Acessos em SAP4Hana;BCTT;Mail;Technology;Backlog;11;;;;;Mail & Services
 169812;Planeamento e Controlo Diário - Conciliação Modelo A;CSI;Mail;Commercial;Backlog;22;;;;;Mail & Services
 168516;Geração de ficheiro excel com dados NEV;GPG;Payments;Commercial;Backlog;1;;;;;Mail & Services
 166289;Workforce Analytics - Incremento Integração Indicadores Espanha;PC;Mail;Corporate;Backlog;16;;;;;Mail & Services
@@ -374,22 +374,22 @@
 120372;POP - Melhorias a OnBoarding de clientes;GPG;Payments;Commercial;Backlog;9;;;;;Mail & Services
 109623;e-SIGN: Nova solução de assinatura digital CTT;TF;Mail;Corporate;High Level Design;1;;;;;Mail & Services
 99517;ECL/PSC - Identificação de giros de distribuição (green delivery);GP ECL;eCommerce;Commercial;Backlog;32;;;;;Mail & Services
-96860;BANCO CTT | Novo design site banco;BCTT;Mail;Technology;Backlog;10;;;;;Mail & Services
-76019;Serviço Conveniência -  Impressão A4 (complemento ao Serviço de Fotocopias);GP B2C;Retail & Financial Services;Commercial;Backlog;9;;;;;Mail & Services
+96860;BANCO CTT | Novo design site banco;BCTT;Mail;Technology;Backlog;9;;;;;Mail & Services
+76019;Serviço Conveniência - Impressão A4 (complemento ao Serviço de Fotocopias);GP B2C;Retail & Financial Services;Commercial;Backlog;9;;;;;Mail & Services
 71425;ECL/GPR - Peso Default por Produto Expresso e Carga;GP ECL;eCommerce;Commercial;Backlog;33;;;;;Mail & Services
 66650;GS B2C - Disponibilização de informação do Data Analytics sobre Sessões NAVe;GS;Mail;Commercial;Backlog;52;;;;;Mail & Services
 51911;MPC | Integração Sprinklr no CRM | Melhorar Integração de mensagens;AVC;Mail;Corporate;In Definition;8;3;2;2;3;Mail & Services
-50493;B2C - Vendas  Expresso por colaborador - CORVENDAS;GS;eCommerce;Commercial;Backlog;54;;;;;Mail & Services
+50493;B2C - Vendas Expresso por colaborador - CORVENDAS;GS;eCommerce;Commercial;Backlog;54;;;;;Mail & Services
 50482;GS B2C - Disponibilização de dados de vendas Filatelia dos canais FIL e DTI;GS;Mail;Commercial;Backlog;55;;;;;Mail & Services
 50095;Criação Portal Parceiro;CSI;Mail;Commercial;Backlog;6;;;;;Mail & Services
 48860;B2C - Dados Vendas Dona Oferta - via Data Analytics;GS;Mail;Commercial;Backlog;56;;;;;Mail & Services
 46750;Atualização Catálogo Produtos e Otimização de Guias de Remessa (Operações de Filatelia);CSI;Mail;Commercial;Backlog;20;;;;;Mail & Services
-43366;GPECL/INT -  Eventos DHL não integrados no T&T CTT;GP ECL;eCommerce;Commercial;Backlog;28;;;;;Mail & Services
+43366;GPECL/INT - Eventos DHL não integrados no T&T CTT;GP ECL;eCommerce;Commercial;Backlog;28;;;;;Mail & Services
 28297;B2C NAVe | GP B2C-Validação da data de Voo com a AT - Subsidio de Mobilidade;GP B2C;Retail & Financial Services;Commercial;Backlog;13;;;;;Mail & Services
 16889;Dona Oferta – Dados de recibo/fatura automáticos;GS;Mail;Commercial;Backlog;53;;;;;Mail & Services
 16508;GP B2C-Automatização da faturação APIN;GP B2C;Retail & Financial Services;Commercial;Backlog;10;;;;;Mail & Services
 10344;Melhorias de funcionamento nos Tablets das Lojas;GS;Mail;Commercial;Backlog;48;;;;;Mail & Services
-139883;[NEXUS] [Fase 2] Decision Server define the exit based on Route;EDO;eCommerce;Operations;In Definition;1;;;;;Mail & Services
+139883;[NEXUS] [Fase 2] Decision Server define the exit based on Route;EDO;eCommerce;Operations;In Definition;7;;;;;Mail & Services
 139708;[NEXUS][PT]- PRODUCTO BANCA;GP ECL;eCommerce;Commercial;Backlog;1;;;;;Mail & Services
 137662;Teste ASC Epic Title (ex initiative);AVC;eCommerce;Corporate;Backlog;11;3;2;2;3;Mail & Services
 140431;Novo Catalogo de Aplicações (Atlas 2.0);SI;Mail;Technology;Backlog;19;;;;;Mail & Services
@@ -405,76 +405,72 @@
 140460;Evolutivos CRM Q2.2026;SI;Mail;Technology;Backlog;68;2;1;1;1;Mail & Services
 140454;Kafka | Self Service;SI;eCommerce;Technology;Backlog;47;;;;;Mail & Services
 139711;[NEXUS][PT]- INTERNACIONAL EUROPA;GP ECL;eCommerce;Commercial;Backlog;4;;;;;Mail & Services
-139710;[NEXUS][PT]-  PRODUCTO INTERNACIONAL;GP ECL;eCommerce;Commercial;Backlog;3;;;;;Mail & Services
-139709;[NEXUS][PT]-  PROD INTERNACIONAL PREMIUM;GP ECL;eCommerce;Commercial;Backlog;5;;;;;Mail & Services
+139710;[NEXUS][PT]- PRODUCTO INTERNACIONAL;GP ECL;eCommerce;Commercial;Backlog;3;;;;;Mail & Services
+139709;[NEXUS][PT]- PROD INTERNACIONAL PREMIUM;GP ECL;eCommerce;Commercial;Backlog;5;;;;;Mail & Services
 139707;[NEXUS][PT]- PRODUCTO CARGA;GP ECL;eCommerce;Commercial;Backlog;2;;;;;Mail & Services
 140528;integração de objetos com destino a Espanha do Cliente NOS;GS;Business Solutions;Commercial;Backlog;11;;;;;Mail & Services
 140516;Criação /Geração de Relatorio Automatico diario Anacom;GS;Mail;Commercial;Backlog;10;;;;;Mail & Services
 140719;Super Portal | Trazer produtos de acesso à rede para envios com contexto;RC;Mail;Commercial;Backlog;1;3;3;5;2;Mail & Services
 140781;Redução de Taxa de Avisados com Melhoria de Dados de Contacto;GP B2B;Mail;Commercial;Backlog;12;;;;;Mail & Services
 140779;Registos com Aviso de Receção E2E em locker;GP B2B;Mail;Commercial;Backlog;16;;;;;Mail & Services
-141295;BCTT Mudança de datacenter Kyndryl;BCTT;Mail;Technology;Backlog;2;;;;;Mail & Services
-85297;"Programa Galaxy - Jornada de envios ""Correio Registado Nacional e Expresso Nacional""";GS;Mail;Commercial;In Acceptance;1001;;;;;Mail & Services
-53918;[Desconexión SGC] Evolución pantalla web Nexus (modulo seguimiento de rutas/ recogidas);COO;eCommerce;Operations;In Acceptance;1002;;;;;eCommerce
-88802;Helena Evolução + Arquitetura de referência para Soluções AI - Incremento 1;AVC;Mail;Corporate;In Acceptance;1003;;;;;Mail & Services
-60535;[WebHook] - Shein ADT - Migración de infraestructura de Shein ADT;CIO;eCommerce;Technology;In Acceptance;1004;;;;;eCommerce
-46806;[Qlik] - APP Contact Center Integrar toda la información de casos de Salesforce;ATC;eCommerce;Corporate;In Acceptance;1005;;;;;eCommerce
-69008;APT | Migração APIs IBM em Mulesoft - Iniciativa 4;SI;Mail;Technology;In Acceptance;1006;;;;;Mail & Services
-129623;SAPSF Evolutivos 01.2026;GRH;Mail;Corporate;In Acceptance;1007;2;4;3;2;Mail & Services
-57319;[Nexus] [We Sell] Carga de clientes de PT en Salesforce Sales;CCO;eCommerce;Commercial;Ready for Acceptance;1008;;;;;eCommerce
-57268;[Nexus Piloto Operacional] Generación y consumo del POD para Fase 2;CMO;eCommerce;Commercial;Ready for Acceptance;1009;;;;;eCommerce
-62247;[Qlik Sense][A-Scan] - Nuevos Filtros;COO;eCommerce;Operations;Ready for Acceptance;1010;;;;;eCommerce
-120277;revamp.EPM - Framework CPM 360 MVP (BCR + PBF);PC;Mail;Corporate;Ready for Acceptance;1011;;;;;Mail & Services
-94146;Validação Antecipada de Objetos a Recolher;GP ECL;Mail;Commercial;Ready for Acceptance;1012;;;;;Mail & Services
-133333;Evolutivos SAP Logística Q1 2026;SEO;Fulfilment;Operations;In Development;1038;3;2;3;3;Mail & Services
-70181;Novo Modelo operativo - Postos CTT não NAVe;GPG;Mail;Commercial;In Development;1021;4;4;3;4;Mail & Services
-201921;Esforço CTT de apoio ao Banco CTT - Segregação de Identidades e Serviços Microsoft 365;BCTT;Mail;Technology;In Development;1023;;;;;Mail & Services
-200523;Site Payshop | Duplicação do Template do Site CTT para Payshop;GPG;Payments;Commercial;In Development;1039;;;;;Mail & Services
-194066;GALAXY (Stream Periféricos)| Aceitação de Novos Códigos de Barras em NAVe (Cobrança Postal);GS;Mail;Commercial;In Development;1022;;;;;Mail & Services
-192929;Postman Digital Brain - Fase 1 & 2;EDO;Mail;Operations;In Development;1014;;;;;Mail & Services
-149884;Aviso de Receção (AR) Digital;GP B2B;Mail;Commercial;In Development;1019;;;;;Mail & Services
-121981;Auditoria 2.0 - Criação de Data Lake para implementação de Auditoria Contínua e Auditoria à Distancia - Entrega R3;ACR;Mail;Corporate;In Development;1040;;;;;Mail & Services
-62519;Los usuarios de las delegaciones no tienen que ver las liquidaciones de LH de los proveedores;COO;eCommerce;Operations;In Development;1013;2;;;2;eCommerce
-61318;[Nexus][Internacional]-[Nuevo Producto ECONOMY]- DHL-PARCEL;CMO;eCommerce;Commercial;In Development;1018;5;;2;4;eCommerce
-60703;[PUDOS] - Incluir selección origen PT en Web Clientes para servicios RDP origen PT con manifiesto en ES;CMO;eCommerce;Commercial;In Development;1027;;;;;eCommerce
-58466;[Web de Clientes][Web de Cambios] - Trazabilidad - Actualización de literales en visión de Web de clientes y Destinatario (Web de cambios);CMO;eCommerce;Commercial;In Development;1020;;;;;eCommerce
-47872;[Internacional]-[Nuevo Producto Low Cost]- SKYNET;CMO;eCommerce;Commercial;In Development;1028;;;;;eCommerce
-43578;[PUDOS] - Venta Internacional en PUDOS;CMO;eCommerce;Commercial;In Development;1032;;;;;eCommerce
-68962;XRP - FASE 2: CTT e novas funcionalidades;RS;Mail;Corporate;In Development;1024;;;;;Mail & Services
-50855;DORA - implementação de remediações (Payshop);CISO;Payments;CISO;In Development;1025;;;;;Mail & Services
-141298;Api descarga Albaran Escaneado Cliente;IDC;eCommerce;Commercial;In Definition;20;;;;;eCommerce
-140672;Plan de Retención de Clientes en Descenso de Actividad;CMO;eCommerce;Commercial;In Definition;134;;;;;eCommerce
-140635;[PUDOS] - Lockers Locky - PT - Recogidas + Detalle de localización de Lockys;CMO;eCommerce;Commercial;In Solution;1;3;3;3;;eCommerce
-140632;[WebHook] - Shein - LastMile - Establecer un criterio que sirva para enviar el valor A-Scan;IDC;eCommerce;Commercial;In Definition;10;;;;;eCommerce
-140627;[PUDOS] Adaptación portal de proveedores para gestión de puntos de red propia;CMO;eCommerce;Commercial;In Definition;135;;;2;3;eCommerce
+136770;GitHub Migration - Aplicações Wave 2;SI-OPS;Mail;Technology;In Development;201;4;3;3;2;Mail & Services
+133333;Evolutivos SAP Logística Q1 2026;SEO;Fulfilment;Operations;In Development;201;3;2;3;3;Mail & Services
+129623;SAPSF Evolutivos 01.2026;GRH;Mail;Corporate;In Acceptance;201;2;4;3;2;Mail & Services
+127822;APT | Migração APIs IBM em Mulesoft - Fase 5/5;SI;Mail;Technology;In Development;201;4;5;3;4;Mail & Services
+126944;GitHub Migration - Aplicações Wave 1;SI-OPS;Mail;Technology;In Development;202;4;3;3;3;Mail & Services
+120533;Auditoria 2.0 - Criação de Data Lake para implementação de Auditoria Contínua e Auditoria à Distancia - Entrega R2;ACR;Mail;Corporate;In Development;201;;;;;Mail & Services
+120528;Auditoria 2.0 - Criação de Data Lake para implementação de Auditoria Contínua e Auditoria à Distancia - Entrega R1;ACR;Mail;Corporate;In Development;202;;;;;Mail & Services
+120277;revamp.EPM - Framework CPM 360 MVP (BCR + PBF);PC;Mail;Corporate;Ready for Acceptance;201;;;;;Mail & Services
+120240;Mata Aplicações - Wave 1.14;SI;Mail;Technology;In Development;202;4;2;2;3;Mail & Services
+110212;DeMinimisEUA - Solução CTT para permitir retomar envios de mercadorias para os EUA;GP B2B;Mail;Commercial;In Development;201;4;;2;4;Mail & Services
+104489;SAPSF - Wave 2 (RECrutamento, ONBoarding);GRH;Mail;Corporate;In Development;202;;;;;Mail & Services
+99804;NOTA (fase 3) Controlo de Fundos de Maneio das Lojas;CF;Retail & Financial Services;Corporate;In Development;201;;;;;Mail & Services
+99510;SAPSF - Solução de Interoperabilidade com a Segurança Social (Regulatório);GRH;Mail;Corporate;In Development;203;3;2;2;1;Mail & Services
+98651;SAPSF - encriptação ficheiros SEPA CTT + CTTE;GRH;Mail;Corporate;In Development;204;2;2;2;1;Mail & Services
+94146;Validação Antecipada de Objetos a Recolher;GP ECL;Mail;Commercial;Ready for Acceptance;201;;;;;Mail & Services
+88802;Helena Evolução + Arquitetura de referência para Soluções AI - Incremento 1;AVC;Mail;Corporate;In Acceptance;201;;;;;Mail & Services
+85297;"Programa Galaxy - Jornada de envios ""Correio Registado Nacional e Expresso Nacional""";GS;Mail;Commercial;In Acceptance;201;;;;;Mail & Services
+70181;Novo Modelo operativo - Postos CTT não NAVe;GPG;Mail;Commercial;In Development;201;4;4;3;4;Mail & Services
+69008;APT | Migração APIs IBM em Mulesoft - Iniciativa 4;SI;Mail;Technology;In Acceptance;203;;;;;Mail & Services
+68962;XRP - FASE 2: CTT e novas funcionalidades;RS;Mail;Corporate;In Development;201;;;;;Mail & Services
+50855;DORA - implementação de remediações (Payshop);CISO;Payments;CISO;In Development;201;;;;;Mail & Services
+50852;SOC - operacionalização do serviço;CISO;Mail;CISO;In Development;202;;;;;Mail & Services
+201921;Esforço CTT de apoio ao Banco CTT - Segregação de Identidades e Serviços Microsoft 365;BCTT;Mail;Technology;In Development;201;;;;;Mail & Services
+200523;Site Payshop | Duplicação do Template do Site CTT para Payshop;GPG;Payments;Commercial;In Development;202;;;;;Mail & Services
+194066;GALAXY (Stream Periféricos)| Aceitação de Novos Códigos de Barras em NAVe (Cobrança Postal);GS;Mail;Commercial;In Development;202;;;;;Mail & Services
+192929;Postman Digital Brain - Fase 1 & 2;EDO;Mail;Operations;In Development;201;;;;;Mail & Services
+149884;Aviso de Receção (AR) Digital;GP B2B;Mail;Commercial;In Development;202;;;;;Mail & Services
+121981;Auditoria 2.0 - Criação de Data Lake para implementação de Auditoria Contínua e Auditoria à Distancia - Entrega R3;ACR;Mail;Corporate;In Development;203;;;;;Mail & Services
+140635;[PUDOS] - Lockers Locky - PT - Recogidas + Detalle de localización de Lockys;CMO;eCommerce;Commercial;In Solution;8;3;3;3;;eCommerce
 140623;[Nexus] - [We Sell] - [Desconexión ORACLE] - Funciones de equipos PREVENDAS;CCO;eCommerce;Commercial;Backlog;8;;;;;eCommerce
 140620;[Nexus] - [We Sell] - [Desconexión ORACLE] - Onboarding Digital;CCO;eCommerce;Commercial;Backlog;9;;;;;eCommerce
-140541;[Nexus] - [We Sell] - [Desconexión ORACLE] - Tareas del equipo BackOffice;CCO;eCommerce;Commercial;In Definition;10;;;;;eCommerce
+140541;[Nexus] - [We Sell] - [Desconexión ORACLE] - Tareas del equipo BackOffice;CCO;eCommerce;Commercial;Backlog;10;;;;;eCommerce
 139907;[Salesforce Sales] - Visualización de Tarifa actual y anterior por cliente.;CCO;eCommerce;Commercial;Backlog;22;;;;;eCommerce
 139789;Mejora portal proveedor;COO;eCommerce;Operations;Backlog;48;2;5;2;2;eCommerce
+139786;Considerar fecha del cambio a vecino en la extracción de estacionados;PRO;eCommerce;Corporate;Backlog;11;;;;;eCommerce
 139670;Restringir la visibilidad usuarios;COO;eCommerce;Operations;Backlog;50;3;2;2;2;eCommerce
-139490;[NEXUS]- PRODUCTO CTT RETORNO;CMO;eCommerce;Commercial;Backlog;136;;;;;eCommerce
-139483;WS - Mejorar Experiencia en PUDO's;CMO;eCommerce;Commercial;In Definition;8;;;;;eCommerce
+139490;[NEXUS]- PRODUCTO CTT RETORNO;CMO;eCommerce;Commercial;Backlog;140;;;;;eCommerce
+139483;WS - Mejorar Experiencia en PUDO's;CMO;eCommerce;Commercial;In Definition;141;;;;;eCommerce
 139449;Mejora control horario y ocultación campos no registrables;COO;eCommerce;Operations;Backlog;51;2;1;2;2;eCommerce
-139346;WS - Mejorar Experiencia en PUDO's;CMO;eCommerce;Commercial;Backlog;133;;;;;eCommerce
-139282;[PUDOS] Recoger y mostrar a destinatarios y repartidores, información adicional de la ubicación y acceso a los Lockys;CMO;eCommerce;Commercial;In Definition;137;;;;;eCommerce
+139346;WS - Mejorar Experiencia en PUDO's;CMO;eCommerce;Commercial;Backlog;7;;;;;eCommerce
+139282;[PUDOS] Recoger y mostrar a destinatarios y repartidores, información adicional de la ubicación y acceso a los Lockys;CMO;eCommerce;Commercial;In Definition;142;;;;;eCommerce
 139048;[Nexus - We Sell] - [Minerva] - Creación del modelo tarifario dentro de Minerva para el servicio de Correo;CCO;eCommerce;Commercial;Backlog;47;;;;;eCommerce
 139047;[Nexus - We Sell] - Onboarding de las Lojas de PT en Proceso Comercial Salesforce;CCO;eCommerce;Commercial;Backlog;48;;;;;eCommerce
-138573;[PUDOS]-[QLIK] App/Hoja de analítica de incidencias en PUDOs;CMO;eCommerce;Commercial;In Definition;138;;;;;eCommerce
-138420;[PUDOS] Reservas y aceptación de envíos a PUDO - Verificar si el punto está activado/desactivado por PUDOS para dar el OK;CMO;eCommerce;Commercial;In Definition;139;;;;;eCommerce
-138350;[NEXUS]-[OOH] - LMS Integration;CMO;eCommerce;Commercial;High Level Design;12;;;;;eCommerce
-138308;[Notificaciones] -Fake Delivery - Actualización de campos de PDA y notificación de entrega;CMO;eCommerce;Commercial;In Solution;10;;;;;eCommerce
-138224;[NEXUS] Servicio de Intentos de entrega Flexible;CMO;eCommerce;Commercial;Backlog;140;;;;;eCommerce
+138573;[PUDOS]-[QLIK] App/Hoja de analítica de incidencias en PUDOs;CMO;eCommerce;Commercial;In Definition;143;;;;;eCommerce
+138420;[PUDOS] Reservas y aceptación de envíos a PUDO - Verificar si el punto está activado/desactivado por PUDOS para dar el OK;CMO;eCommerce;Commercial;In Definition;144;;;;;eCommerce
+138350;[NEXUS]-[OOH] - LMS Integration;CMO;eCommerce;Commercial;High Level Design;10;;;;;eCommerce
+138308;[Notificaciones] -Fake Delivery - Actualización de campos de PDA y notificación de entrega;CMO;eCommerce;Commercial;In Solution;6;;;;;eCommerce
+138224;[NEXUS] Servicio de Intentos de entrega Flexible;CMO;eCommerce;Commercial;Backlog;131;;;;;eCommerce
 138211;INTEGRACIÓN BEWOR;COO;eCommerce;Operations;Backlog;52;;;;;eCommerce
-138044;[NexIA] - Shipping Simulator - Evolución;CMO;eCommerce;Commercial;Backlog;141;;;;;eCommerce
+138044;[NexIA] - Shipping Simulator - Evolución;CMO;eCommerce;Commercial;Backlog;146;;;;;eCommerce
 137457;ENVIOS CARGO-DESTINO PT;CFO;eCommerce;Corporate;Backlog;71;;;;;eCommerce
 137343;Mapper - Personalizacion para clientes que trabajan con Amazon , TikTok y Temu;IDC;eCommerce;Commercial;In Definition;60;;;;;eCommerce
-137246;[PUDOS] - Tools for managing own network;CMO;eCommerce;Commercial;Backlog;142;5;;;4;eCommerce
+137246;[PUDOS] - Tools for managing own network;CMO;eCommerce;Commercial;Backlog;147;5;;;4;eCommerce
 137212;"API PUDO - Consulta de informacion de punto por el codigo de punto ""organic point code""";IDC;eCommerce;Commercial;In Definition;61;;;;;eCommerce
-137068;End point to get Georeferences from listed addresses;CMO;eCommerce;Commercial;In Definition;96;3;2;1;1;eCommerce
+137068;End point to get Georeferences from listed addresses;CMO;eCommerce;Commercial;In Definition;148;3;2;1;1;eCommerce
 136973;[Salesforce Sales] - Incorporación de nuevos Subsegmentos SME;CCO;eCommerce;Commercial;Backlog;39;;;;;eCommerce
-136610;[Notificaciones] - Customer Communications Management basado en la funcionalidad actual;CMO;eCommerce;Commercial;In Definition;97;3;;2;1;eCommerce
-136346;Enlace para usuario en selección PUDO para RDP a través de Web Cliente;CMO;eCommerce;Commercial;Backlog;98;;;;;eCommerce
+136610;[Notificaciones] - Customer Communications Management basado en la funcionalidad actual;CMO;eCommerce;Commercial;In Definition;95;3;;2;1;eCommerce
+136346;Enlace para usuario en selección PUDO para RDP a través de Web Cliente;CMO;eCommerce;Commercial;Backlog;96;;;;;eCommerce
 136235;DHL Parcel - Webhook- Evento Recogida de Caducado en Pudo y Falso Entregado;IDC;eCommerce;Commercial;In Definition;5;;;;;eCommerce
 136234;WANB - Webhook;IDC;eCommerce;Commercial;In Definition;54;;;;;eCommerce
 136233;Integracion Clientes Salesforce - Generacion automatica de claves de cognito para integracion Mapper;IDC;eCommerce;Commercial;In Definition;13;;;;;eCommerce
@@ -483,42 +479,42 @@
 136173;Api Solicitud de Recogidas (sin envio asociado);IDC;eCommerce;Commercial;In Definition;57;;;;;eCommerce
 136127;Reactivar recursos al iniciar la ruta (Vehículos-Conductores);COO;eCommerce;Operations;In Definition;41;2;2;1;1;eCommerce
 136116;Mapper - uso de codigos de cliente y credenciales Cloud;IDC;eCommerce;Commercial;In Definition;8;;;;;eCommerce
-135956;[WebHook] - Temu;IDC;eCommerce;Commercial;In Definition;58;3;;;;eCommerce
+135956;TEMU - WebHook;IDC;eCommerce;Commercial;In Definition;58;3;;;;eCommerce
 135612;"Mejora de visualización en PDA last-mail envíos balanceados por SENDA ""LIBRA""";COO;eCommerce;Operations;Backlog;42;;;;;eCommerce
-135524;[web clientes]  Incluir formato Excel y CSV en suscripción de informes;CMO;eCommerce;Commercial;Backlog;99;;;;;eCommerce
+135524;[web clientes] Incluir formato Excel y CSV en suscripción de informes;CMO;eCommerce;Commercial;Backlog;97;;;;;eCommerce
 135447;Carga de direcciones en el historial;COO;eCommerce;Operations;Backlog;53;;;;;eCommerce
-135345;[Web de clientes] - Seguimiento - Geoposición V2 - Comparar destino con geoposición de entrega;CMO;eCommerce;Commercial;Backlog;100;;;;;eCommerce
+135345;[Web de clientes] - Seguimiento - Geoposición V2 - Comparar destino con geoposición de entrega;CMO;eCommerce;Commercial;Backlog;98;;;;;eCommerce
 135153;Mejora creación servicios esporádicos;COO;eCommerce;Operations;In Definition;43;3;1;1;2;eCommerce
-135097;"[Internacional]-Notificación por Incidencia ""Falta de documentación""";CMO;eCommerce;Commercial;Backlog;101;;;;;eCommerce
+135097;"[Internacional]-Notificación por Incidencia ""Falta de documentación""";CMO;eCommerce;Commercial;Backlog;99;;;;;eCommerce
 135029;[Salesforce Sales] - Brokers y MBE: Permitir generación de usuarios web;CCO;eCommerce;Commercial;Backlog;40;3;5;5;5;eCommerce
-134746;[PUDOS] - Destacar Locky en localizador de pudos;CMO;eCommerce;Commercial;Backlog;102;;;;;eCommerce
+134746;[PUDOS] - Destacar Locky en localizador de pudos;CMO;eCommerce;Commercial;Backlog;100;;;;;eCommerce
 134702;P&L Ibérica e información de gestión;CFO;eCommerce;Corporate;In Solution;4;;;;;eCommerce
-134614;CONTRATO ON LINE;CMO;eCommerce;Commercial;Backlog;103;;;;;eCommerce
-134613;[Web publica] - Ajustes Locky en visión destinatario de web pública;CMO;eCommerce;Commercial;Backlog;104;;;;;eCommerce
-134602;[Web de cliente] - Seguimiento - Utilizar en filtro y listado de envío la fecha registrada en la variable shipping_date;CMO;eCommerce;Commercial;Backlog;105;;;;;eCommerce
+134614;CONTRATO ON LINE;CMO;eCommerce;Commercial;Backlog;101;;;;;eCommerce
+134613;[Web publica] - Ajustes Locky en visión destinatario de web pública;CMO;eCommerce;Commercial;Backlog;102;;;;;eCommerce
+134602;[Web de cliente] - Seguimiento - Utilizar en filtro y listado de envío la fecha registrada en la variable shipping_date;CMO;eCommerce;Commercial;Backlog;103;;;;;eCommerce
 134467;Portal de Proveedores - Implementar recálculo automático de liquidaciones Linehaul de rutas esporádicas;COO;eCommerce;Operations;In Definition;44;3;2;1;1;eCommerce
-133992;[Web de clientes] - Agenda - Incluir campo provincia en fichero de carga masiva de agenda;CMO;eCommerce;Commercial;Backlog;106;;;;;eCommerce
-133988;[Web de clientes] - Seguimiento - Incidencias gestionables muestra mensaje erróneo;CMO;eCommerce;Commercial;Backlog;107;;;;;eCommerce
-133834;[Nexus-MVP] [Web de Clientes] Traducción al Inglés y Portugués;CMO;eCommerce;Commercial;Pitch;108;;;;;eCommerce
+133992;[Web de clientes] - Agenda - Incluir campo provincia en fichero de carga masiva de agenda;CMO;eCommerce;Commercial;Backlog;104;;;;;eCommerce
+133988;[Web de clientes] - Seguimiento - Incidencias gestionables muestra mensaje erróneo;CMO;eCommerce;Commercial;Backlog;105;;;;;eCommerce
+133834;[Nexus-MVP] [Web de Clientes] Traducción al Inglés y Portugués;CMO;eCommerce;Commercial;Pitch;106;;;;;eCommerce
 133185;Sistema de seguimiento de rutas de arrastre - v2;COO;eCommerce;Operations;Backlog;45;;;;;eCommerce
 132736;[Internacional] - Manifiesto de envíos internacionales de explotación con aduanas por métodos de Integración Clientes;IDC;eCommerce;Commercial;In Definition;59;;;;;eCommerce
-132537;[Qlik] - Creación de un nueva dimensión Tipo Comercial Histórico;CCO;eCommerce;Commercial;Ready for Approval;7;3;;2;;eCommerce
+132537;[Qlik] - Creación de un nueva dimensión Tipo Comercial Histórico;CCO;eCommerce;Commercial;High Level Design;7;3;;2;;eCommerce
 132534;[Qlik] - Gestión de oportunidades - Hito semanal por comercial disponible;CCO;eCommerce;Commercial;Pitch;3;2;;;;eCommerce
-66400;[Salesforce] Notificación automática cambio de comercial;CMO;eCommerce;Commercial;Backlog;109;;;;;eCommerce
-66371;[PUDOS][PDA]-Evitar falsos entregados desde PDA repartidor;CMO;eCommerce;Commercial;Backlog;110;;;;;eCommerce
+66400;[Salesforce] Notificación automática cambio de comercial;CMO;eCommerce;Commercial;Backlog;107;;;;;eCommerce
+66371;[PUDOS][PDA]-Evitar falsos entregados desde PDA repartidor;CMO;eCommerce;Commercial;Backlog;108;;;;;eCommerce
 66282;Plantilla modificacion de clientes sap hanna;CFO;eCommerce;Corporate;Backlog;67;;;;;eCommerce
-66213;"[Web de clientes][Desktop] - Seguimiento - Ocultar botón de ""Estados"" / Alert de filtros";CMO;eCommerce;Commercial;Backlog;111;;;;;eCommerce
-66183;[Web de clientes][Mobile] - Mi cuenta + Ayuda y soporte;CMO;eCommerce;Commercial;Backlog;112;;;;;eCommerce
-66165;[Web de clientes][Mobile] - Agenda;CMO;eCommerce;Commercial;Backlog;113;;;;;eCommerce
-66163;[Web de clientes][Mobile] - Seguimiento de envíos;CMO;eCommerce;Commercial;Backlog;114;;;;;eCommerce
-66161;[Web de clientes][Mobile] - Burger Menu + Actualización de página de inicio;CMO;eCommerce;Commercial;Backlog;115;;;;;eCommerce
-66141;[Web de clientes][Mobile] - Solicitud de envío;CMO;eCommerce;Commercial;Backlog;116;;;;;eCommerce
-66118;[Web Pública] - Formulario y email Pagina Red PUDOS;CMO;eCommerce;Commercial;Backlog;117;;;;;eCommerce
+66213;"[Web de clientes][Desktop] - Seguimiento - Ocultar botón de ""Estados"" / Alert de filtros";CMO;eCommerce;Commercial;Backlog;109;;;;;eCommerce
+66183;[Web de clientes][Mobile] - Mi cuenta + Ayuda y soporte;CMO;eCommerce;Commercial;Backlog;110;;;;;eCommerce
+66165;[Web de clientes][Mobile] - Agenda;CMO;eCommerce;Commercial;Backlog;111;;;;;eCommerce
+66163;[Web de clientes][Mobile] - Seguimiento de envíos;CMO;eCommerce;Commercial;Backlog;112;;;;;eCommerce
+66161;[Web de clientes][Mobile] - Burger Menu + Actualización de página de inicio;CMO;eCommerce;Commercial;Backlog;113;;;;;eCommerce
+66141;[Web de clientes][Mobile] - Solicitud de envío;CMO;eCommerce;Commercial;Backlog;115;;;;;eCommerce
+66118;[Web Pública] - Formulario y email Pagina Red PUDOS;CMO;eCommerce;Commercial;Backlog;116;;;;;eCommerce
 66112;[ESTADOS] - Mostrar a clientes el mismo evento/estado sucesivo ocurrido en dias distintos;IDC;eCommerce;Commercial;Backlog;17;;;;;eCommerce
-66062;[Web de Clientes] - Suscripción de informes - Reporte con la información de envíos de los últimos 30 días naturales - Ordenar reporte;CMO;eCommerce;Commercial;Backlog;118;;;;;eCommerce
+66062;[Web de Clientes] - Suscripción de informes - Reporte con la información de envíos de los últimos 30 días naturales - Ordenar reporte;CMO;eCommerce;Commercial;Backlog;117;;;;;eCommerce
 65926;Evolución portal de LastMile V.2;COO;eCommerce;Operations;Backlog;46;;;;;eCommerce
 65922;Evolución portal de Arrastres V.2;COO;eCommerce;Operations;Backlog;39;;;;;eCommerce
-65866;[PUDOS] - Automatización del tratamiento de incidencias de PUDOS cerrados;CMO;eCommerce;Commercial;Backlog;32;;;;;eCommerce
+65866;[PUDOS] - Automatización del tratamiento de incidencias de PUDOS cerrados;CMO;eCommerce;Commercial;Backlog;30;;;;;eCommerce
 65865;[FR y BR] - Tarifas y Ofertas;CMO;eCommerce;Commercial;Backlog;119;;;;;eCommerce
 65864;[FR y BR] - Campo departamento y facturación;CMO;eCommerce;Commercial;Backlog;120;;;;;eCommerce
 65861;[Desconexión SGC]: Brókers y Franquicias: Modulo distribución de Franquicias;COO;eCommerce;Operations;Backlog;26;;;;;eCommerce
@@ -526,7 +522,7 @@
 65859;[Desconexión SGC]: Creación y mantenimiento de CO's;COO;eCommerce;Operations;Backlog;16;;;;;eCommerce
 65858;[Desconexión SGC]: Canarias;COO;eCommerce;Operations;Backlog;18;;;;;eCommerce
 65857;[Desconexión SGC]: Internacional;COO;eCommerce;Operations;Backlog;29;;;;;eCommerce
-65856;[Desconexión SGC]: Brókers  Franquicias: Gestión de adeudos y garantías;COO;eCommerce;Operations;Backlog;24;;;;;eCommerce
+65856;[Desconexión SGC]: Brókers Franquicias: Gestión de adeudos y garantías;COO;eCommerce;Operations;Backlog;24;;;;;eCommerce
 65828;Nuevo entorno de desarrollo para microservicios;CIO;eCommerce;Technology;In Definition;69;;;;;eCommerce
 65806;[Nexus Piloto Operacional] Puesta en marcha Fase 2 del Piloto Operacional con el flujo de envíos PT-PT;COO;eCommerce;Operations;Ready for Development;9;;;;;eCommerce
 65798;Exponer dato de código de recogida propia;PRO;eCommerce;Corporate;Backlog;10;;;;;eCommerce
@@ -535,10 +531,10 @@
 65737;Herramienta de Verificación de Pagos (Área de Ingresos);CFO;eCommerce;Corporate;High Level Design;2;;;;;eCommerce
 65568;[PUDOS] - Herramienta para orden de recogidas en PUDOS;CMO;eCommerce;Commercial;High Level Design;9;;;;;eCommerce
 65512;Migración SGC - Estacionados a Nexus;COO;eCommerce;Operations;Backlog;25;;;;;eCommerce
-65505;[NEXUS] [Desconexión SGC - FR y BR]  [Web de clientes] Configuración - Administración, gestión de usuarios y centros de FRANQUICIAS y BROKERS (settings);CMO;eCommerce;Commercial;In Solution;13;4;;2;3;eCommerce
+65505;[NEXUS] [Desconexión SGC - FR y BR] [Web de clientes] Configuración - Administración, gestión de usuarios y centros de FRANQUICIAS y BROKERS (settings);CMO;eCommerce;Commercial;In Solution;11;4;;2;3;eCommerce
 65407;[WEB CLIENTE] Configuración visibilidad web a nivel CENTRO;CMO;eCommerce;Commercial;Backlog;121;;;;;eCommerce
 65352;[PUDOS] - Mejora Pudo Manager;CMO;eCommerce;Commercial;Backlog;122;;;;;eCommerce
-65302;Envíos Amazon destino Braga solo manifestados para entrar en senda;COO;eCommerce;Operations;Ready for Development;8;;;;;eCommerce
+65302;Envíos Amazon destino Braga solo manifestados para entrar en senda;COO;eCommerce;Operations;In Approval;8;;;;;eCommerce
 65260;Visualización de kilómetros en Qlik;PRO;eCommerce;Corporate;Backlog;4;;;;;eCommerce
 65257;KPIs de Prevención de Riesgos Laborales de CTT Express;PRO;eCommerce;Corporate;Ready for Solution;3;;;;;eCommerce
 65198;Crear entornos no productivos;CIO;eCommerce;Technology;In Definition;4;;;;;eCommerce
@@ -547,12 +543,12 @@
 65000;ECCS por peso Informado;CFO;eCommerce;Corporate;Backlog;5;;;;;eCommerce
 64785;[Salesforce] - Información de campos en los casos del Plan de acompañamiento;IDC;eCommerce;Commercial;Backlog;52;;;;;eCommerce
 64718;[Bitácora] - Bitacora Management que permita implementar los procesos actuales de configuración en Bitácora;CIO;eCommerce;Technology;In Definition;57;;;;;eCommerce
-64579;[Web Pública 2.0] - Web Pública 2.0 Fase II - V2;CMO;eCommerce;Commercial;Ready for Solution;28;;;;;eCommerce
+64579;[Web Pública 2.0] - Web Pública 2.0 Fase II - V2;CMO;eCommerce;Commercial;Ready for Solution;25;;;;;eCommerce
 64410;Implantación con empresa externa de software para la medición de la Huella de Carbono;PRO;eCommerce;Corporate;Backlog;5;;;;;eCommerce
-64248;[Web pública 2.0] - Seguimiento de envíos - Acciones según número de intentos de entrega  - Dynamic Cases;CMO;eCommerce;Commercial;Backlog;94;;;;;eCommerce
+64248;[Web pública 2.0] - Seguimiento de envíos - Acciones según número de intentos de entrega - Dynamic Cases;CMO;eCommerce;Commercial;Backlog;93;;;;;eCommerce
 64193;Herramienta Soporte ADT en Nexia;IDC;eCommerce;Commercial;In Definition;49;;;;;eCommerce
 64115;SLA Sábados y Domingos;ATC;eCommerce;Corporate;Backlog;18;;;;;eCommerce
-64102;[Web de Cambios] - Mantener el idioma configurado por defecto en web de cambio;CMO;eCommerce;Commercial;Backlog;93;;;;;eCommerce
+64102;[Web de Cambios] - Mantener el idioma configurado por defecto en web de cambio;CMO;eCommerce;Commercial;Backlog;92;;;;;eCommerce
 64075;[Mulesoft] - [Api Integrations Clientes] : Disponer de los client_id que invocan a los endpoint de integraciones;IDC;eCommerce;Commercial;Backlog;7;;;;;eCommerce
 64010;[API GET TRACKING BY DATES] - WEB TRACKING - Añadir código envío devolución - API Rest, capa User Experience;IDC;eCommerce;Commercial;Backlog;48;;;;;eCommerce
 64002;[SGC] - Lógica de aplicación de perfil tarifario a nuevos centros en SGC;CCO;eCommerce;Commercial;Pitch;4;;;;;eCommerce
@@ -561,24 +557,24 @@
 63932;Prestashop- Habilitar adicionales identificación en destino y verificacion destinatario;IDC;eCommerce;Commercial;Backlog;46;;;;;eCommerce
 63799;Portal de Proveedores - Poder ordenar Control Horario por cualquier columna;COO;eCommerce;Operations;Backlog;34;;1;;1;eCommerce
 63768;[Nexus Piloto Operacional] [We Serve] Incremento de envíos en Piloto y despliegue Nexus;COO;eCommerce;Operations;In Solution;11;;;;;eCommerce
-63762;[Web de Clientes] - Vulnerabilidad crítica web clientes y  Revisión de la web antigua;CIO;eCommerce;Technology;In Definition;63;;;;;eCommerce
-63750;[PUDOS] - Gestión de saturación en puntos Collectt;CMO;eCommerce;Commercial;Backlog;91;;;;;eCommerce
+63762;[Web de Clientes] - Vulnerabilidad crítica web clientes y Revisión de la web antigua;CIO;eCommerce;Technology;In Definition;63;;;;;eCommerce
+63750;[PUDOS] - Gestión de saturación en puntos Collectt;CMO;eCommerce;Commercial;Backlog;90;;;;;eCommerce
 63723;[Minerva] - Cambiar método de autenticación en Minerva;CIO;eCommerce;Technology;In Definition;14;;;;;eCommerce
 63696;Query direcciones de recogida portal del proveedor;CFO;eCommerce;Corporate;In Definition;68;;;;;eCommerce
 63645;Definición de la estrategia de preparación de entornos de prueba de aplicaciones;CIO;eCommerce;Technology;Backlog;56;;;;;eCommerce
-63592;[NEXUS]-[OOH] - MVP;CMO;eCommerce;Commercial;Backlog;143;;;;;eCommerce
-63578;[Salesforce] - Nueva landing captación SEM conectada con el CRM y Pardot;CMO;eCommerce;Commercial;Ready for Solution;95;;;;;eCommerce
+63592;[NEXUS]-[OOH] - MVP;CMO;eCommerce;Commercial;Backlog;133;;;;;eCommerce
+63578;[Salesforce] - Nueva landing captación SEM conectada con el CRM y Pardot;CMO;eCommerce;Commercial;Ready for Solution;94;;;;;eCommerce
 63574;[Web pública Nexus] - Imágenes alojadas en DOT (ex Wordpress) estudiar alojarlas en AWS;CIO;eCommerce;Technology;Backlog;55;;;;;eCommerce
 63457;"Cierre administrativo automático - ""Evitar pasar a Entregado Administrativo envíos que tienen un estado entregado y posteriormente se abre una caso en Salesforce y cambia a otro estado""";ATC;eCommerce;Corporate;Ready for Solution;8;;;;;eCommerce
 63429;[Salesforce - Minerva] Datos de la oferta Minerva en objeto Oferta;CCO;eCommerce;Commercial;In Definition;13;;;;;eCommerce
 63428;Notificaciones AWS para migraciones de lambdas de python 3.9 a 3.12;CIO;eCommerce;Technology;Backlog;62;;;;;eCommerce
-130826;[Salesforce] - Información de la actividad del cliente en Cuenta en Sales (a partir de Qlik);CCO;eCommerce;Commercial;Backlog;24;;;;;eCommerce
-63422;[PUDOS]-Nueva colección en Nexia. Acceso datos de DB manifest;CMO;eCommerce;Commercial;Backlog;35;;;;;eCommerce
+63424000;[Salesforce] - Información de la actividad del cliente en Cuenta en Sales (a partir de Qlik);CCO;eCommerce;Commercial;Backlog;24;;;;;eCommerce
+63422;[PUDOS]-Nueva colección en Nexia. Acceso datos de DB manifest;CMO;eCommerce;Commercial;Backlog;33;;;;;eCommerce
 63389;[Internacional]- Actualización Web- Módulo Aduana;CMO;eCommerce;Commercial;In Definition;123;;;;;eCommerce
 63361;Revisión del PRN actual;CIO;eCommerce;Technology;Backlog;61;;;;;eCommerce
 63296;Acciones para evitar la duplicidad de recogidas de clientes v2;COO;eCommerce;Operations;In Approval;7;;;;;eCommerce
 63279;Manifest-file: Admitir carga fichero Standar Cloud sin los campos de shipping_code e item_codes rellenos (mismo comportamiento que api de experiencia de clientes);IDC;eCommerce;Commercial;In Definition;53;;;;;eCommerce
-63262;[Web de clientes] - Crear función JS que devuelva el ID de los usuarios;CMO;eCommerce;Commercial;Backlog;40;;;;;eCommerce
+63262;[Web de clientes] - Crear función JS que devuelva el ID de los usuarios;CMO;eCommerce;Commercial;Backlog;38;;;;;eCommerce
 63250;[Salesforce Sales - SGC ] - Evitar actualizaciones en SGC en los registros de franquicias;CCO;eCommerce;Commercial;Backlog;21;;;;;eCommerce
 63179;MongoDB - Recopilación de usuarios y reset de contraseñas;CIO;eCommerce;Technology;Backlog;60;;;;;eCommerce
 63175;Actualización Plan C;COO;eCommerce;Operations;Ready for Solution;47;;;;;eCommerce
@@ -589,8 +585,8 @@
 62945;[Integración de Clientes] Tik Tok - Bloqueo del dato publicado de peso y medidas después del estado definitivo.;CCO;eCommerce;Commercial;In Definition;5;;;;;eCommerce
 62882;cambios masivos de estados;COO;eCommerce;Operations;Backlog;28;;;;;eCommerce
 62846;Evolución verificación periodos + (pesos y medidas) V2;CFO;eCommerce;Corporate;Backlog;66;;;;;eCommerce
-62833;[NEXUS] – Normalización, almacenamiento y gestión de consentimientos (GDPR) en los activos digitales;CMO;eCommerce;Commercial;Pitch;55;;;;;eCommerce
-62731;[PUDOS] [Web clientes] - Añadir campo nombre rtt en RDP;CMO;eCommerce;Commercial;Backlog;46;;;;;eCommerce
+62833;[NEXUS] – Normalización, almacenamiento y gestión de consentimientos (GDPR) en los activos digitales;CMO;eCommerce;Commercial;Pitch;53;;;;;eCommerce
+62731;[PUDOS] [Web clientes] - Añadir campo nombre rtt en RDP;CMO;eCommerce;Commercial;Backlog;44;;;;;eCommerce
 62641;Optimización del CAU mediante herramientas de autodiagnóstico para operativas críticas;CIO;eCommerce;Technology;Backlog;58;;;;;eCommerce
 62466;Integración con CACESA para la sustitución de ADYCO (30-nov);COO;eCommerce;Operations;Ready for Solution;27;;;;;eCommerce
 62456;Creación Arquetipo .net;CIO;eCommerce;Technology;Ready for Solution;36;;;;;eCommerce
@@ -599,7 +595,7 @@
 62285;Migrar clusters de Mongo a MultiAZ;CIO;eCommerce;Technology;Backlog;64;;;;;eCommerce
 62205;Control de envios duplicados: validacion SINONIMO BULTO / REFERENCIA CLIENTE;IDC;eCommerce;Commercial;In Definition;9;;;;;eCommerce
 62187;[Salesforce] - Usuario / Origen de una acción sobre un envío en la trazabilidad desde ATC;ATC;eCommerce;Corporate;Ready for Solution;10;;;;;eCommerce
-62062;[Web de Clientes] - Visualizar costes de los servicios adicionales en la web de clientes;CMO;eCommerce;Commercial;Backlog;47;;;;;eCommerce
+62062;[Web de Clientes] - Visualizar costes de los servicios adicionales en la web de clientes;CMO;eCommerce;Commercial;Backlog;45;;;;;eCommerce
 62059;Cyber - Securización de los accesos a webcliente.cttexpress.com y api.cttexpress.com;CIO;eCommerce;Technology;Backlog;66;;;;;eCommerce
 61995;Migración Infraestructura de Web Corporativa de AckStorm a Ctt Express;CIO;eCommerce;Technology;Backlog;17;;;;;eCommerce
 61994;Migración Infraestructura GIT => GitHub , Arquetipo .net;CIO;eCommerce;Technology;Backlog;16;;;;;eCommerce
@@ -610,124 +606,124 @@
 61988;Definición Arquitectura .Net Ibérico;CIO;eCommerce;Technology;Backlog;7;;;;;eCommerce
 61986;API Clientes - Authorization;CIO;eCommerce;Technology;Backlog;5;;;;;eCommerce
 61984;Migración Microservicios a SLA nuevo;CIO;eCommerce;Technology;In Definition;54;;;;;eCommerce
-61968;Portal Proveedores Linehaul - Habilitar cancelación de ruta;COO;eCommerce;Operations;In Solution;33;2;2;2;2;eCommerce
+61968;Portal Proveedores Linehaul - Habilitar cancelamiento de ruta;COO;eCommerce;Operations;Ready for Solution;33;;;;;eCommerce
 61906;[ESTADOS VISIBLES] Endpoint Client Experience API REST GET TRACKING - TIK TOK - estados no devueltos - Copy;IDC;eCommerce;Commercial;Backlog;22;;;;;eCommerce
 61841;SGC - Anulación eventos PT;CFO;eCommerce;Corporate;Backlog;65;;;;;eCommerce
 61798;Creación Estados Aduanas, visibilidad y reporte a clientes;PRO;eCommerce;Corporate;Pitch;2;;;;;eCommerce
 61789;Diseñar Flujos de trabajo IA - .Net;CIO;eCommerce;Technology;Backlog;52;;;;;eCommerce
 61754;[Web de Clientes] - Seguimiento de Envío - Posibilidad de descargar el albarán asociado al envío;CMO;eCommerce;Commercial;Ready for Solution;124;;;;;eCommerce
-61744;[Nexus] - Información Pública de los Clientes - visión de información de clientes a destinatarios;CMO;eCommerce;Commercial;In Definition;90;;;;;eCommerce
-61734;[Minerva] - Habilitar Minerva para el uso por parte de los Broker / Franquicias (Operativa + Modelo tarifario);CMO;eCommerce;Commercial;In Definition;34;;;;;eCommerce
+61744;[Nexus] - Información Pública de los Clientes - visión de información de clientes a destinatarios;CMO;eCommerce;Commercial;In Definition;87;;;;;eCommerce
+61734;[Minerva] - Habilitar Minerva para el uso por parte de los Broker / Franquicias (Operativa + Modelo tarifario);CMO;eCommerce;Commercial;In Definition;32;;;;;eCommerce
 61721;Migracion Hosting aplicacion Shopify a servidores CTT;IDC;eCommerce;Commercial;In Definition;19;;;;;eCommerce
 61633;[Nexus] - We Sell (Lead to Contract) 2.0;CCO;eCommerce;Commercial;In Definition;11;;;;;eCommerce
 61629;Desconectar servidor SFTP SGC;CIO;eCommerce;Technology;Backlog;51;;;;;eCommerce
 61617;Incluir en nexia opciones multi-idioma;CIO;eCommerce;Technology;Backlog;50;;;;;eCommerce
-61393;[PUDOS] - Notificaciones de RDP origen PT;CMO;eCommerce;Commercial;Backlog;69;;;;;eCommerce
-61365;[PUDOS] - [Salesforce-Dynamic Case] - EL botón de reenvío de pin debe reconocer que el envío tiene estado 2310 no que está en estado 2310;CMO;eCommerce;Commercial;Backlog;89;;;;;eCommerce
+61393;[PUDOS] - Notificaciones de RDP origen PT;CMO;eCommerce;Commercial;Backlog;67;;;;;eCommerce
+61365;[PUDOS] - [Salesforce-Dynamic Case] - EL botón de reenvío de pin debe reconocer que el envío tiene estado 2310 no que está en estado 2310;CMO;eCommerce;Commercial;Backlog;88;;;;;eCommerce
 61337;[Web Pública] [CIBERSEGURIDAD] - Migración de infraestructura de MiddleWare de PhP;CIO;eCommerce;Technology;In Definition;6;;;;;eCommerce
 61292;[WebHook] - ZooPlus - Transmisión de estados en mensaje estándar;IDC;eCommerce;Commercial;In Definition;6;;;;;eCommerce
 61260;[WebHook] - Cacesa;IDC;eCommerce;Commercial;In Definition;14;;;;;eCommerce
 61207;[Salesforce Sales] - Multi oportunidad en Cuentas;CCO;eCommerce;Commercial;High Level Design;2;;;;;eCommerce
-61203;[PUDOS] - Pantallas Nexia consulta estados de proveedor;CMO;eCommerce;Commercial;Backlog;86;;;;;eCommerce
+61203;[PUDOS] - Pantallas Nexia consulta estados de proveedor;CMO;eCommerce;Commercial;Backlog;84;;;;;eCommerce
 61101;Creación arquetipo desarrollo React;CIO;eCommerce;Technology;Backlog;49;;;;;eCommerce
-61096;[Web de Clientes] - Anulación de recogidas;CMO;eCommerce;Commercial;Backlog;87;;;;;eCommerce
+61096;[Web de Clientes] - Anulación de recogidas;CMO;eCommerce;Commercial;Backlog;85;;;;;eCommerce
 61010;[ID LOGISTICS] Estados De Portugal no visibles en SGC/API REST y URL web en España (envíos origen ES, destino PT);IDC;eCommerce;Commercial;Backlog;42;;;;;eCommerce
 60855;Identificacion Clientes y Metodos de integracion que usan [Objetos con origen en España sin Cp7];IDC;eCommerce;Commercial;Backlog;45;;;;;eCommerce
 60817;Mejorar el algoritmo de aproximación de calculo de CP/Poblacion de manifiestos [Objetos con origen en España sin Cp7];IDC;eCommerce;Commercial;In Definition;3;;;;;eCommerce
-60729;[web clientes] Modulo aduanas: Andorra;CMO;eCommerce;Commercial;In Definition;85;;;;;eCommerce
-60722;[Notificaciones] - Facturación - Modificar contenido del Email Factura a clientes;CMO;eCommerce;Commercial;Backlog;84;;;;;eCommerce
+60729;[web clientes] Modulo aduanas: Andorra;CMO;eCommerce;Commercial;In Definition;83;;;;;eCommerce
+60722;[Notificaciones] - Facturación - Modificar contenido del Email Factura a clientes;CMO;eCommerce;Commercial;Backlog;82;;;;;eCommerce
 60649;Automatizar la carga del maestro de CP7 de Portugal [Objetos con origen en España sin Cp7];IDC;eCommerce;Commercial;In Solution;1;;;;;eCommerce
 60531;[Web de Clientes] - Desconexión Web-Tracking;CIO;eCommerce;Technology;In Solution;11;;;;;eCommerce
 60381;Incluir fichero con versionado sobre histórico de cambios (novedades y fixes) en todos los modulos;IDC;eCommerce;Commercial;In Definition;50;;;;;eCommerce
 60294;Maestro festivos provinciales en cálculos de fechas de compromiso;ATC;eCommerce;Corporate;Ready for Solution;20;;;;;eCommerce
-60289;[Web de Clientes] - Incluir tooltip en el botón de añadir NUEVO bulto para envíos a Puntos;CMO;eCommerce;Commercial;Backlog;83;;;;;eCommerce
-60003;[Web de Clientes] [Qlik] -  Medición volumen de envíos y facturación Web Clientes Cloud (Canal Importación masiva y grabación manual).;CMO;eCommerce;Commercial;Backlog;82;;;;;eCommerce
+60289;[Web de Clientes] - Incluir tooltip en el botón de añadir NUEVO bulto para envíos a Puntos;CMO;eCommerce;Commercial;Backlog;81;;;;;eCommerce
+60003;[Web de Clientes] [Qlik] - Medición volumen de envíos y facturación Web Clientes Cloud (Canal Importación masiva y grabación manual).;CMO;eCommerce;Commercial;Backlog;80;;;;;eCommerce
 59700;[Nexus] - We Sell (Lead to Contract) - Signaturit en portugués;CCO;eCommerce;Commercial;In Definition;16;;;;;eCommerce
 59669;[User Endpoint API REST GET TRACKING] Añadir organic_point_code cuando estados 2300 / 2310;IDC;eCommerce;Commercial;Backlog;12;;;;;eCommerce
 59553;Cuadro de mando reputación CTT;COM;eCommerce;Corporate;Backlog;1;;;;;eCommerce
-59462;[Qlik & Salesforce] - Alarmas Comercial 02- Cumplimiento del Comprometido Cierre Tareas;CMO;eCommerce;Commercial;In Definition;36;;;;;eCommerce
+59462;[Qlik & Salesforce] - Alarmas Comercial 02- Cumplimiento del Comprometido Cierre Tareas;CMO;eCommerce;Commercial;In Definition;34;;;;;eCommerce
 59457;Creación de interfaz en nexia para crear incidencias;CIO;eCommerce;Technology;In Definition;10;;;;;eCommerce
 59404;[Tech] [Desconexión SGC] Desconexión API WebTracking a Item-history (bitacora);CIO;eCommerce;Technology;Ready for Solution;41;;;;;eCommerce
 59403;[Tech] API de common-edge Refactor;CIO;eCommerce;Technology;Backlog;28;;;;;eCommerce
 59334;crear indice atlas search;CIO;eCommerce;Technology;Backlog;45;;;;;eCommerce
 59333;crear plantilla de colecciones de mongodb;CIO;eCommerce;Technology;Backlog;44;;;;;eCommerce
-59315;[CELERITAS] - Inhibir notificaciones a dtt en envíos Celeritas Cliente;CMO;eCommerce;Commercial;Backlog;88;;;;;eCommerce
-59266;[PUDOS] [MONGO] - Información completa de incidencias en colección Pickups;CMO;eCommerce;Commercial;Backlog;33;;;;;eCommerce
+59315;[CELERITAS] - Inhibir notificaciones a dtt en envíos Celeritas Cliente;CMO;eCommerce;Commercial;Backlog;86;;;;;eCommerce
+59266;[PUDOS] [MONGO] - Información completa de incidencias en colección Pickups;CMO;eCommerce;Commercial;Backlog;31;;;;;eCommerce
 59163;[PUDOS]-Modificación plantilla de factura en VDP relacionado con 58594;CFO;eCommerce;Corporate;Backlog;25;;;;;eCommerce
 59126;Actualización de maestro de códigos postales PT en nexus;CIO;eCommerce;Technology;Backlog;34;;;;;eCommerce
-59039;[PRODUCTO]  [Web de Clientes] - Aranceles aduaneros Canarias;CMO;eCommerce;Commercial;Backlog;81;;;;;eCommerce
+59039;[PRODUCTO] [Web de Clientes] - Aranceles aduaneros Canarias;CMO;eCommerce;Commercial;Backlog;79;;;;;eCommerce
 59011;Odoo - Implementación remitente personalizado;IDC;eCommerce;Commercial;Backlog;44;;;;;eCommerce
 58980;[WebHook] - Indtex - Migracion de SGC a Cloud;IDC;eCommerce;Commercial;In Definition;23;;;;;eCommerce
-130472;[Minerva] - Modificar la plantilla de respuesta de Signaturit cuando se firma un contrato;CMO;eCommerce;Commercial;Backlog;67;;;;;eCommerce
+58934000;[Minerva] - Modificar la plantilla de respuesta de Signaturit cuando se firma un contrato;CMO;eCommerce;Commercial;Backlog;65;;;;;eCommerce
 58802;Cierre diario de recogidas;ATC;eCommerce;Corporate;Backlog;25;;;;;eCommerce
-58727;[PUDOS] [Web Pública] - Orientar venta directa (añadir literales);CMO;eCommerce;Commercial;Backlog;79;;;;;eCommerce
-58528;[Web de Clientes] - Seguimiento - Añadir HORA junto a la FECHA;CMO;eCommerce;Commercial;Backlog;80;;;;;eCommerce
-58518;[Producto] - Incorporar Validación DNI / PIN  (Servicio actual);CMO;eCommerce;Commercial;In Definition;71;;;;;eCommerce
-58487;[Web de clientes] - Setting: Configurar envío predeterminado;CMO;eCommerce;Commercial;Backlog;70;;;;;eCommerce
-58472;[Nexus-MVP] [Web de Clientes] Gestión Consumibles;CMO;eCommerce;Commercial;Pitch;24;;;;;eCommerce
+58727;[PUDOS] [Web Pública] - Orientar venta directa (añadir literales);CMO;eCommerce;Commercial;Backlog;77;;;;;eCommerce
+58528;[Web de Clientes] - Seguimiento - Añadir HORA junto a la FECHA;CMO;eCommerce;Commercial;Backlog;78;;;;;eCommerce
+58518;[Producto] - Incorporar Validación DNI / PIN (Servicio actual);CMO;eCommerce;Commercial;In Definition;69;;;;;eCommerce
+58487;[Web de clientes] - Setting: Configurar envío predeterminado;CMO;eCommerce;Commercial;Backlog;68;;;;;eCommerce
+58472;[Nexus-MVP] [Web de Clientes] Gestión Consumibles;CMO;eCommerce;Commercial;Pitch;21;;;;;eCommerce
 58417;[Minerva] - Interfaz de generación de ofertas de Minerva en portugués;CCO;eCommerce;Commercial;In Solution;12;;;;;eCommerce
-58393;[Web  de Clientes] - Comportamiento recogidas en grabación masiva;CMO;eCommerce;Commercial;Backlog;92;;;;;eCommerce
-58380;[Web de clientes] - Seguimiento 2.0 - Rediseño de la sección de seguimiento;CMO;eCommerce;Commercial;Backlog;45;;;;;eCommerce
-58287;[Salesforce Sales] - Configuración campos/variables y GRP en Pardot;CMO;eCommerce;Commercial;Backlog;53;;;;;eCommerce
+58393;[Web de Clientes] - Comportamiento recogidas en grabación masiva;CMO;eCommerce;Commercial;Backlog;91;;;;;eCommerce
+58380;[Web de clientes] - Seguimiento 2.0 - Rediseño de la sección de seguimiento;CMO;eCommerce;Commercial;Backlog;43;;;;;eCommerce
+58287;[Salesforce Sales] - Configuración campos/variables y GRP en Pardot;CMO;eCommerce;Commercial;Backlog;51;;;;;eCommerce
 58269;Autodocumentacion Integración Mulesoft con IA;CIO;eCommerce;Technology;Backlog;48;;;;;eCommerce
-58264;[Nexus P&S] -Portfolio Ibérico Ecommerce : Upload the proposal and pricing in Salesforce and Minerva;CMO;eCommerce;Commercial;In Solution;16;;;;;eCommerce
+58264;[Nexus P&S] -Portfolio Ibérico Ecommerce : Upload the proposal and pricing in Salesforce and Minerva;CMO;eCommerce;Commercial;In Solution;14;;;;;eCommerce
 58180;[PET-3-] [Item-Status-v2] - Es necesario propagar la localización GPS de los eventos en los cambios de estado de item y envío;CIO;eCommerce;Technology;Ready for Solution;25;;;;;eCommerce
-58143;[Nexus-MVP] [Web de Clientes]  Visualización Indicadores y KPIs en web de clientes en base a la app de Qlik;CMO;eCommerce;Commercial;Pitch;23;;;;;eCommerce
+58143;[Nexus-MVP] [Web de Clientes] Visualización Indicadores y KPIs en web de clientes en base a la app de Qlik;CMO;eCommerce;Commercial;Pitch;20;;;;;eCommerce
 57915;"[Desconexión SGC] - Creación nuevo estado ""No realizado""";ATC;eCommerce;Corporate;In Solution;2;;;;;eCommerce
 57776;[Minerva] - Evaluación de la oferta en Minerva;CCO;eCommerce;Commercial;Backlog;31;;;;;eCommerce
 57765;[Qlik] - Evaluador de ofertas en Qlik;CCO;eCommerce;Commercial;Backlog;28;;;;;eCommerce
-57596;[PUDOS] - Descuento comercial RDP;CMO;eCommerce;Commercial;Backlog;64;;;;;eCommerce
-57552;[Web de Clientes] - Grabación masiva de envíos (carga de fichero) - v2;CMO;eCommerce;Commercial;In Solution;20;;;;;eCommerce
+57596;[PUDOS] - Descuento comercial RDP;CMO;eCommerce;Commercial;Backlog;62;;;;;eCommerce
+57552;[Web de Clientes] - Grabación masiva de envíos (carga de fichero) - v2;CMO;eCommerce;Commercial;In Solution;16;;;;;eCommerce
 57434;[WebHook] - Mediapost - Transmisión de estados en mensaje NO estándar;IDC;eCommerce;Commercial;Pitch;2;3;;;;eCommerce
 57409;Creación de Interfaz de usuario para simular la creación y ciclo de vida de envío;CIO;eCommerce;Technology;Backlog;20;;;;;eCommerce
 57310;[Salesforce Sales] - Contemplar los puntos de servicio a nivel master;CCO;eCommerce;Commercial;Ready for Solution;27;;;;;eCommerce
 57283;[Nexus Rollout] [We Bill] Estrategia de facturación de clientes ES y PT;CFO;eCommerce;Corporate;Backlog;22;;;;;eCommerce
 57275;Seguimiento & Control de IT - Formación - Vacaciones - Otros;CIO;eCommerce;Technology;Backlog;72;;;;;eCommerce
-57238;[CIBER]  - Eliminación del acceso público de los ficheros de agencias y canalizaciones en transfer.cttexpress.com;CIO;eCommerce;Technology;Backlog;27;;;;;eCommerce
+57238;[CIBER] - Eliminación del acceso público de los ficheros de agencias y canalizaciones en transfer.cttexpress.com;CIO;eCommerce;Technology;Backlog;27;;;;;eCommerce
 57152;Cliente EXPOLLUM - Transmisión selectiva Mapper;IDC;eCommerce;Commercial;In Definition;11;;;;;eCommerce
 57115;[ERROR 500 MS Manifest] YDH - TIK TOK;IDC;eCommerce;Commercial;Backlog;20;;;;;eCommerce
 57023;ELKAR - Actualización de bultos/kilos en expedición mediante carga de fichero;IDC;eCommerce;Commercial;Backlog;51;;;;;eCommerce
 57021;[CANCEL SHIPMENT - Falta check ccc] URL Management rpc-cancel;IDC;eCommerce;Commercial;Backlog;31;;;;;eCommerce
-56929;[Web de clientes] - Funcionalidad de gestionar y visualizar el seguimiento de los Retornados;CMO;eCommerce;Commercial;Ready for Solution;48;;;;;eCommerce
+56929;[Web de clientes] - Funcionalidad de gestionar y visualizar el seguimiento de los Retornados;CMO;eCommerce;Commercial;Ready for Solution;46;;;;;eCommerce
 56901;Analisis protocolos MCP para integración de clientes;CIO;eCommerce;Technology;Backlog;47;;;;;eCommerce
 56900;Diseñar flujos de Trabajo IA - React;CIO;eCommerce;Technology;Backlog;46;;;;;eCommerce
-56880;[Minerva]- Modelo Tarifario Densidades Zoning Actual;CMO;eCommerce;Commercial;In Definition;25;;;;;eCommerce
-56874;[PUDOS] - [Notificaciones] - N3.1 Entrega en PUDOS mostrar variable pudo address;CMO;eCommerce;Commercial;Backlog;76;;;;;eCommerce
-56840;[Nuevo Producto]-[Minerva]-Producto 48h a Islas Canarias;CMO;eCommerce;Commercial;Ready for Development;7;;;;;eCommerce
-56826;[Nexus]-[Minerva]- Modelo Tarifario Densidades+Zona;CMO;eCommerce;Commercial;Backlog;75;;;;;eCommerce
-56821;[Desconexión SGC] [Web de Clientes] - Descarga de seguimiento y en descarga masiva: Incluir más campos: Peso Facturado V2;CMO;eCommerce;Commercial;In Definition;30;;;;;eCommerce
+56880;[Minerva]- Modelo Tarifario Densidades Zoning Actual;CMO;eCommerce;Commercial;In Definition;22;;;;;eCommerce
+56874;[PUDOS] - [Notificaciones] - N3.1 Entrega en PUDOS mostrar variable pudo address;CMO;eCommerce;Commercial;Backlog;74;;;;;eCommerce
+56840;[Nuevo Producto]-[Minerva]-Producto 48h a Islas Canarias;CMO;eCommerce;Commercial;Ready for Development;134;;;;;eCommerce
+56826;[Nexus]-[Minerva]- Modelo Tarifario Densidades+Zona;CMO;eCommerce;Commercial;Backlog;73;;;;;eCommerce
+56821;[Desconexión SGC] [Web de Clientes] - Descarga de seguimiento y en descarga masiva: Incluir más campos: Peso Facturado V2;CMO;eCommerce;Commercial;In Definition;28;;;;;eCommerce
 56782;[Desconexión SGC] - Migración exportación estados e informes a Cloud;IDC;eCommerce;Commercial;Backlog;43;;;;;eCommerce
 56625;Informes Personalizados Finanzas en SharePoint;CFO;eCommerce;Corporate;Ready for Solution;69;;;;;eCommerce
 56551;[Desconexión SGC] [Salesforce Service] - Gestión de casos: modificaciones tipos de servicio;ATC;eCommerce;Corporate;Backlog;24;;;;;eCommerce
 56222;Nueva funcionalidad SGC: Nuevas opciones de cambios masivos;CFO;eCommerce;Corporate;Backlog;26;;;;;eCommerce
-56100;[Web publica] - Permitir a los destinatarios buscar un envío por número de etiqueta de enlace asociada en el localizador;CMO;eCommerce;Commercial;Backlog;63;;;;;eCommerce
+56100;[Web publica] - Permitir a los destinatarios buscar un envío por número de etiqueta de enlace asociada en el localizador;CMO;eCommerce;Commercial;Backlog;61;;;;;eCommerce
 55776;Restricción de Login en APP de Planta;COO;eCommerce;Operations;Backlog;32;;;;;eCommerce
-55732;Crear LOG  reglas de pago clientes SGC;CFO;eCommerce;Corporate;Backlog;60;;;;;eCommerce
-55715;[Web de clientes] - Retorno en seguimiento - Mostrar por fecha de grabación y no de servicio;CMO;eCommerce;Commercial;Backlog;77;;;;;eCommerce
-55712;[Nexus] [Producto] - Entregas Comerciales (Red Shopping);CMO;eCommerce;Commercial;Ready for Solution;19;;;;;eCommerce
+55732;Crear LOG reglas de pago clientes SGC;CFO;eCommerce;Corporate;Backlog;60;;;;;eCommerce
+55715;[Web de clientes] - Retorno en seguimiento - Mostrar por fecha de grabación y no de servicio;CMO;eCommerce;Commercial;Backlog;75;;;;;eCommerce
+55712;[Nexus] [Producto] - Entregas Comerciales (Red Shopping);CMO;eCommerce;Commercial;Ready for Solution;16;;;;;eCommerce
 55564;[Qlik] - Nuevos KPIS en Analítica Comercial;CCO;eCommerce;Commercial;Backlog;25;;;;;eCommerce
 55559;[WebHook] - Factor Libre 4096600005 solo entorno de test;IDC;eCommerce;Commercial;Backlog;21;;;;;eCommerce
 55474;[Desconexión SGC] [Salesforce Service] - Abonos, Siniestros e indemnizaciones;ATC;eCommerce;Corporate;In Definition;3;;;;;eCommerce
 55200;[Salesforce Sales] - Clonar cliente de PRODUCCION en UAT;IDC;eCommerce;Commercial;Ready for Solution;34;;;;;eCommerce
-55104;[Web de Clientes] - Minerva Ratings - Visualización incorrecta de tarifa del cliente 00052;CMO;eCommerce;Commercial;Backlog;73;;;;;eCommerce
+55104;[Web de Clientes] - Minerva Ratings - Visualización incorrecta de tarifa del cliente 00052;CMO;eCommerce;Commercial;Backlog;71;;;;;eCommerce
 55058;[Salesforce] - Datos de comisionista en Cuenta en el CRM;CCO;eCommerce;Commercial;High Level Design;35;;;;1;eCommerce
-54990;[Web de Clientes] - Minerva Ratings - Actualizar el perfil tarifario de clientes al estándar de 1-20 envíos comprometidos para que visualice su tarifa en la web;CMO;eCommerce;Commercial;Backlog;72;;;;;eCommerce
-54986;[PUDOS] - Mecanismo de diferenciación de recogidas en los COs. Recogidas vs. RDP;CMO;eCommerce;Commercial;Backlog;60;;;;;eCommerce
+54990;[Web de Clientes] - Minerva Ratings - Actualizar el perfil tarifario de clientes al estándar de 1-20 envíos comprometidos para que visualice su tarifa en la web;CMO;eCommerce;Commercial;Backlog;70;;;;;eCommerce
+54986;[PUDOS] - Mecanismo de diferenciación de recogidas en los COs. Recogidas vs. RDP;CMO;eCommerce;Commercial;Backlog;58;;;;;eCommerce
 54777;[Salesforce Sales] - Notificaciones del Plan de Acompañamiento automáticas;CCO;eCommerce;Commercial;Backlog;41;;;;;eCommerce
 54720;[Salesforce Sales] - Completar campo Estado / provincia;CCO;eCommerce;Commercial;Backlog;36;;;;;eCommerce
 54464;[Salesforce Sales] - Campo Centro Operativo de clientes que cuelgan de Agencias Virtuales (Amazon, ICP, Inditex....);CCO;eCommerce;Commercial;Backlog;30;;;;;eCommerce
-54317;[Desconexión SGC] [ FR y BR Web de clientes] - Proyecto Cloud (borrador);CMO;eCommerce;Commercial;Backlog;42;;;;;eCommerce
-54275;[PUDOS] - Envíos Punto-Punto;CMO;eCommerce;Commercial;Backlog;61;;;;;eCommerce
+54317;[Desconexión SGC] [ FR y BR Web de clientes] - Proyecto Cloud (borrador);CMO;eCommerce;Commercial;Backlog;40;;;;;eCommerce
+54275;[PUDOS] - Envíos Punto-Punto;CMO;eCommerce;Commercial;Backlog;59;;;;;eCommerce
 54222;Ficheros DataTrans sin CP origen;IDC;eCommerce;Commercial;Backlog;15;;;;;eCommerce
-54192;[Web clientes - Mapper] - Evolución completa de grabación masiva en Cloud;CMO;eCommerce;Commercial;Backlog;65;;;;;eCommerce
+54192;[Web clientes - Mapper] - Evolución completa de grabación masiva en Cloud;CMO;eCommerce;Commercial;Backlog;63;;;;;eCommerce
 54189;Migración a Cloud ficheros IDL e Inditex;IDC;eCommerce;Commercial;In Definition;4;;;;;eCommerce
 54162;[Desconexión SGC] Cambio Maestro de canalizaciones en COs;CIO;eCommerce;Technology;In Definition;38;;;;;eCommerce
 54066;[Desconexión SGC] Lecturas de stock sobre Contenedores;COO;eCommerce;Operations;Backlog;31;;;;;eCommerce
 53788;Integración Clientes;CIO;eCommerce;Technology;Backlog;67;;;;;eCommerce
 53473;Manifest errores de carga en códigos postales.;IDC;eCommerce;Commercial;Backlog;16;;;;;eCommerce
-53215;[PUDOS] -Planilla de selección de puntos según criterio del cliente;CMO;eCommerce;Commercial;Backlog;38;;;;;eCommerce
+53215;[PUDOS] -Planilla de selección de puntos según criterio del cliente;CMO;eCommerce;Commercial;Backlog;36;;;;;eCommerce
 53166;[Desconexión SGC] [WebHook] - Monitorización WebHooks clientes;IDC;eCommerce;Commercial;Backlog;30;;;;;eCommerce
-53144;[PUDOS] - Automatización de comunicación de eventos de Celeritas - CTT;CMO;eCommerce;Commercial;Backlog;58;;;;;eCommerce
+53144;[PUDOS] - Automatización de comunicación de eventos de Celeritas - CTT;CMO;eCommerce;Commercial;Backlog;56;;;;;eCommerce
 52992;[Desconexión SGC] Migración exportación de informes de SGC a Cloud;CIO;eCommerce;Technology;Backlog;42;;;;;eCommerce
 52728;BITACORA - Cambiar delivery_comments de lugar;IDC;eCommerce;Commercial;Backlog;26;;;;;eCommerce
 52691;PMO - Seguimiento y Control de Proyectos;CIO;eCommerce;Technology;Backlog;71;;;;;eCommerce
@@ -735,7 +731,7 @@
 52607;[Desconexión SGC] [PUDOS] - Migración de funcionalidades de SGC al Cloud;CIO;eCommerce;Technology;Backlog;26;;;;;eCommerce
 52579;Manifest - Estandarización de formato DNI en envíoscon adicional RID: Transformación automática a mayúsculas;IDC;eCommerce;Commercial;Backlog;38;;;;;eCommerce
 52556;[QLIK] Incorporación de datos adicionales en BI (Income Tracking App);CFO;eCommerce;Corporate;Backlog;29;;;;;eCommerce
-52527;[Web de Clientes] - Estados - Seguimiento - Error con los envíos  al filtrar por fechas de grabación;CMO;eCommerce;Commercial;In Definition;74;;;;;eCommerce
+52527;[Web de Clientes] - Estados - Seguimiento - Error con los envíos al filtrar por fechas de grabación;CMO;eCommerce;Commercial;In Definition;72;;;;;eCommerce
 52452;[Desconexión SGC] Grabación manual de envíos;COO;eCommerce;Operations;Backlog;21;;;;;eCommerce
 52450;[Desconexión SGC] Reetiquetado;COO;eCommerce;Operations;In Definition;23;;;;;eCommerce
 52449;[Desconexión SGC] Cierre diario: Escaneo de documentación;COO;eCommerce;Operations;Backlog;20;;;;;eCommerce
@@ -744,14 +740,14 @@
 52441;[Desconexión SGC] Cierre diario: Recogidas;COO;eCommerce;Operations;Backlog;19;;;;;eCommerce
 52408;Cambio en la Lógica de generación de OBX en Cainiao;CFO;eCommerce;Corporate;Backlog;28;;;;;eCommerce
 52306;"KPI ""Días backlog envíos"" en app de análisis de calidad del reparto";ATC;eCommerce;Corporate;In Definition;19;;;;;eCommerce
-52298;[Nexus] [Notificaciones]  Whatsapp desde Marketing Cloud Engagement de Salesforce - Envío WP para el envío de notificaciones con incidencia;CMO;eCommerce;Commercial;Ready for Solution;15;;;;;eCommerce
-52204;[PUDOS] - Check para permitir a cliente elegir si dtt recibe notificaciones del estado del envío;CMO;eCommerce;Commercial;Backlog;59;;;;;eCommerce
+52298;[Nexus] [Notificaciones] Whatsapp desde Marketing Cloud Engagement de Salesforce - Envío WP para el envío de notificaciones con incidencia;CMO;eCommerce;Commercial;Ready for Solution;13;;;;;eCommerce
+52204;[PUDOS] - Check para permitir a cliente elegir si dtt recibe notificaciones del estado del envío;CMO;eCommerce;Commercial;Backlog;57;;;;;eCommerce
 52049;[Auditoria PT] Pruebas sobre calidad de datos declarados por clientes con facturación basada en el peso y/o las medidas declaradas;PRO;eCommerce;Corporate;Backlog;7;;;;;eCommerce
 52046;[Auditoria PT] Implementar pruebas preventivas para identificar errores en la parametrización de las reglas de peso;CIO;eCommerce;Technology;Backlog;31;;;;;eCommerce
 52039;[Auditoria PT] Garantizar ejecución de fase de pruebas antes y después de implantar nuevos desarrollos;CIO;eCommerce;Technology;Backlog;30;;;;;eCommerce
-52038;"[Desconexión SGC] [Auditoria PT]  Controles para garantizar la integración correcta de la información entre microservicio ""Manifiestos"" y SGC";CIO;eCommerce;Technology;Backlog;43;;;;;eCommerce
+52038;"[Desconexión SGC] [Auditoria PT] Controles para garantizar la integración correcta de la información entre microservicio ""Manifiestos"" y SGC";CIO;eCommerce;Technology;Backlog;43;;;;;eCommerce
 52036;[Auditoria PT] Controles periódicos que garanticen la selección de lecturas óptimas para facturación;CIO;eCommerce;Technology;Backlog;18;;;;;eCommerce
-52035;[Auditoria PT]  Seguimiento de los cambios realizados manualmente o mediante automatización y control/aprobación de los mismos;CFO;eCommerce;Corporate;Backlog;64;;;;;eCommerce
+52035;[Auditoria PT] Seguimiento de los cambios realizados manualmente o mediante automatización y control/aprobación de los mismos;CFO;eCommerce;Corporate;Backlog;64;;;;;eCommerce
 52034;[Auditoria PT] Evaluar la implementación de una reclasificación automática de los servicios declarados incorrectamente por el cliente;CFO;eCommerce;Corporate;Backlog;63;;;;;eCommerce
 52032;[Auditoria PT] Control de revisiones de alteraciones manuales;CFO;eCommerce;Corporate;Backlog;62;;;;;eCommerce
 52025;[Auditoria PT] Consulta del historial de los datos de los objetos que han sido alterados manualmente o corregidos por la automatización;CFO;eCommerce;Corporate;Backlog;61;;;;;eCommerce
@@ -766,25 +762,25 @@
 50818;[Desconexión SGC] Gestión de Incidencias y Soluciones;COO;eCommerce;Operations;In Definition;15;;;;;eCommerce
 50627;[Minerva] - Campos requeridos en contrato con firma digital por Signaturit;CCO;eCommerce;Commercial;Backlog;26;;;;;eCommerce
 50425;Reconciliación bancaria de Cobros por tarjeta y Bizum;CFO;eCommerce;Corporate;High Level Design;1;;;;;eCommerce
-50399;[PUDOS] - Mejora servicio VDP;CMO;eCommerce;Commercial;Backlog;62;;;;;eCommerce
+50399;[PUDOS] - Mejora servicio VDP;CMO;eCommerce;Commercial;Backlog;60;;;;;eCommerce
 50323;Creación de un entorno específico para el Sistema de Gestión de Calidad y Sostenibilidad;PRO;eCommerce;Corporate;Backlog;9;;;;;eCommerce
 50204;[Portal del Proveedor] Nuevas funcionalidades - Bloqueo Repartidor Seguridad;ATC;eCommerce;Corporate;In Definition;13;;;;;eCommerce
 50054;Cálculo de la franja horaria de entrega y elaboración de los KPIS de seguimiento;COO;eCommerce;Operations;Ready for Solution;10;;;;;eCommerce
-50029;[PUDOS] - Creación de alarma ante la falta de recepción de órdenes de recogidas de caducados Celeritas;CMO;eCommerce;Commercial;Backlog;66;;;;;eCommerce
-49975;[Internacional] - Informar a FedEx del valor asegurado del envío;CMO;eCommerce;Commercial;In Definition;43;;;;;eCommerce
+50029;[PUDOS] - Creación de alarma ante la falta de recepción de órdenes de recogidas de caducados Celeritas;CMO;eCommerce;Commercial;Backlog;64;;;;;eCommerce
+49975;[Internacional] - Informar a FedEx del valor asegurado del envío;CMO;eCommerce;Commercial;In Definition;41;;;;;eCommerce
 49943;[Nexus-MVP] [Web de Clientes] - Recogidas - Resolución Incidencia en la recogida causa ajena: permitir al cliente solicitar una nueva recogida;CMO;eCommerce;Commercial;Backlog;125;;;;;eCommerce
 49850;[PUDOS] - Internalización de la gestión de envíos en punto Celeritas;CMO;eCommerce;Commercial;Backlog;126;;;;;eCommerce
-49778;[Nexus - MVP] [PUDOS] - Desvío a PUDO al vuelo en incidencia;CMO;eCommerce;Commercial;Backlog;41;;;;;eCommerce
-49640;[Web de Clientes] - Reportes: Suscripción Informes incidencias con disponibilidad a demanda;CMO;eCommerce;Commercial;In Definition;57;;;;;eCommerce
-49432;[Nexus] [Notificaciones] - Notificaciones ibericas;CMO;eCommerce;Commercial;Ready for Solution;26;3;;2;2;eCommerce
+49778;[Nexus - MVP] [PUDOS] - Desvío a PUDO al vuelo en incidencia;CMO;eCommerce;Commercial;Backlog;39;;;;;eCommerce
+49640;[Web de Clientes] - Reportes: Suscripción Informes incidencias con disponibilidad a demanda;CMO;eCommerce;Commercial;In Definition;55;;;;;eCommerce
+49432;[Nexus] [Notificaciones] - Notificaciones ibericas;CMO;eCommerce;Commercial;Ready for Solution;23;3;;2;2;eCommerce
 49370;Sistema de seguimiento de rutas de arrastre - Implementación de eCMR;COO;eCommerce;Operations;In Solution;12;3;4;4;4;eCommerce
-49250;[Procesos] - Reenvío notificaciones envíos en incidencia estacionados;CMO;eCommerce;Commercial;In Definition;49;;;;;eCommerce
+49250;[Procesos] - Reenvío notificaciones envíos en incidencia estacionados;CMO;eCommerce;Commercial;In Definition;47;;;;;eCommerce
 49214;[Qlik Sense] Mapa de Red;ATC;eCommerce;Corporate;In Definition;17;;;;;eCommerce
 49095;[Desconexión SGC] [Salesforce Service] - Creación de flujos de trabajo entre Salesforce-Service y Nexia;ATC;eCommerce;Corporate;In Solution;5;;;;;eCommerce
 49082;[Qlik] - Incluir ECCS en Analítica Comercial;CCO;eCommerce;Commercial;In Definition;14;;;;;eCommerce
 49078;[Minerva] - Impresión del contrato en función de la etapa de la opp;CCO;eCommerce;Commercial;Backlog;23;;;;;eCommerce
 49015;Publicar en Mule para Integrations recipient_available_actions;IDC;eCommerce;Commercial;In Definition;35;;;;;eCommerce
-49004;[PUDOS] [Web de Clientes] - EDP y RDP: Tarificación por bonificación de servicios 24H y 48H;CMO;eCommerce;Commercial;In Definition;54;;;;;eCommerce
+49004;[PUDOS] [Web de Clientes] - EDP y RDP: Tarificación por bonificación de servicios 24H y 48H;CMO;eCommerce;Commercial;In Definition;52;;;;;eCommerce
 48908;[Integración] - Publicar landing page para gestionar Devoluciones por parte de los Destinatarios - (MAS DEPORTE);IDC;eCommerce;Commercial;In Definition;28;;;;;eCommerce
 48741;[Salesforce] - Automatismo de asignación de casos a gestora de ingresos;CCO;eCommerce;Commercial;Backlog;34;;;;;eCommerce
 48629;[Desconexión SGC] [Nexia] - Consulta masiva de envíos y acciones sobre los resultados + export/import en Excel;ATC;eCommerce;Corporate;In Definition;4;;;;;eCommerce
@@ -794,37 +790,37 @@
 48388;Fichero interfase IGIC SGC-SAP;CFO;eCommerce;Corporate;Ready for Solution;16;;;;;eCommerce
 48131;"Habilitar registro de incidencias ""Llegada por error"" y ""Mercancía no enlazada"" a través del código de barras del sinónimo.";CIO;eCommerce;Technology;Ready for Solution;37;;;;;eCommerce
 48122;Trazabilidad;PRO;eCommerce;Corporate;In Definition;1;;;;;eCommerce
-48027;[NEXUS] [Web de clientes]- Configuración - Administración, gestión de usuarios y centros de Clientes de Venta directa (settings);CMO;eCommerce;Commercial;Ready for Solution;14;;;;;eCommerce
-47879;[NEXUS] [Web de cambios] - Transformación web de cambios - Rediseño y tecnología React;CMO;eCommerce;Commercial;Pitch;44;;;;;eCommerce
+48027;[NEXUS] [Web de clientes]- Configuración - Administración, gestión de usuarios y centros de Clientes de Venta directa (settings);CMO;eCommerce;Commercial;Ready for Solution;12;;;;;eCommerce
+47879;[NEXUS] [Web de cambios] - Transformación web de cambios - Rediseño y tecnología React;CMO;eCommerce;Commercial;Pitch;42;;;;;eCommerce
 47877;API'S para clientes Tipos Servicio Disponibles (Integración de Clientes);IDC;eCommerce;Commercial;In Definition;32;;;;;eCommerce
 47733;[Containerization] FASE2: Producir en package_event;CIO;eCommerce;Technology;In Definition;24;;;;;eCommerce
 47557;[Salesforce Service] - Reglas de cierre y respuesta automática de casos de envíos estacionados o ubicados;ATC;eCommerce;Corporate;In Definition;15;;;;;eCommerce
 47352;[Minerva] - Servicios adicionales gestionables por el equipo Comercial en la creación de una oferta;CCO;eCommerce;Commercial;Backlog;20;;;;;eCommerce
-47341;[Producto] -  Código promocional;CMO;eCommerce;Commercial;Backlog;127;;;;;eCommerce
+47341;[Producto] - Código promocional;CMO;eCommerce;Commercial;Backlog;114;;;;;eCommerce
 47268;Mapper: Posibilidad de indicar la ruta de instalación.;IDC;eCommerce;Commercial;Backlog;25;;;;;eCommerce
 47194;[SGC] Actualizar protocolo de comunicaciones TLS;CIO;eCommerce;Technology;Ready for Solution;39;;;;;eCommerce
-47102;Qlik para comerciales;CMO;eCommerce;Commercial;In Definition;37;;;;;eCommerce
+47102;Qlik para comerciales;CMO;eCommerce;Commercial;In Definition;35;;;;;eCommerce
 46973;[Desconexión SGC] Evolutivo - Quitar topics SGC (control point, ship-v1,..);CIO;eCommerce;Technology;Ready for Solution;35;;;;;eCommerce
 46968;[Desconexión SGC] PDA Planta-Dependencias PDA planta de SGC;CIO;eCommerce;Technology;In Definition;19;;;;;eCommerce
 46956;[Seguridad] PDA Planta (TO)/Gestión de Planta/ Auditoría de seguridad/Control de conductores;ATC;eCommerce;Corporate;Ready for Solution;6;;;;;eCommerce
-46944;[Nexus] [Producto] - Devolución Fácil /Easy Return (implantar el modelo de PT para las devoluciones);CMO;eCommerce;Commercial;Ready for Solution;22;;;;;eCommerce
-46938;[PUDOS] - Filtrado - Depuración en envíos a dirección PUDO sin PER;CMO;eCommerce;Commercial;Backlog;52;;;;;eCommerce
-46937;[PUDOS] - Herramienta de seguimiento de recogidas infructuosas de caducados;CMO;eCommerce;Commercial;Backlog;51;;;;;eCommerce
-46924;[Producto] - Devoluciones anticipadas: Solicitud de Devolución de Envíos al vuelo;CMO;eCommerce;Commercial;In Definition;29;;;;;eCommerce
-46923;[PUDOS] - Resolución incidencias de Puntos CTT Express;CMO;eCommerce;Commercial;In Definition;128;;;;;eCommerce
-46916;[Nexus] [Producto] - Pack Express;CMO;eCommerce;Commercial;Ready for Solution;18;;;;;eCommerce
-46913;[Qlik] - Tasa de Retención & Churn Rate (Qlik: Automatizar el modelo);CMO;eCommerce;Commercial;In Definition;39;;;;;eCommerce
-46911;[PUDOS] - Automatización de la facturación cruzada con las redes de puntos.;CMO;eCommerce;Commercial;Backlog;68;;;;;eCommerce
-46909;[Nexus] [Web de Clientes] - Recogida Flexible Grabación de envíos: Permitir recogida a la carta;CMO;eCommerce;Commercial;Backlog;78;;;;;eCommerce
-46856;Cambio de API para disponer de la información de valor y peso a declarar ante la aduana por parte del Cliente  (TC);CIO;eCommerce;Technology;Backlog;70;;;;;eCommerce
+46944;[Nexus] [Producto] - Devolución Fácil /Easy Return (implantar el modelo de PT para las devoluciones);CMO;eCommerce;Commercial;Ready for Solution;18;;;;;eCommerce
+46938;[PUDOS] - Filtrado - Depuración en envíos a dirección PUDO sin PER;CMO;eCommerce;Commercial;Backlog;50;;;;;eCommerce
+46937;[PUDOS] - Herramienta de seguimiento de recogidas infructuosas de caducados;CMO;eCommerce;Commercial;Backlog;49;;;;;eCommerce
+46924;[Producto] - Devoluciones anticipadas: Solicitud de Devolución de Envíos al vuelo;CMO;eCommerce;Commercial;In Definition;26;;;;;eCommerce
+46923;[PUDOS] - Resolución incidencias de Puntos CTT Express;CMO;eCommerce;Commercial;In Definition;127;;;;;eCommerce
+46916;[Nexus] [Producto] - Pack Express;CMO;eCommerce;Commercial;Ready for Solution;15;;;;;eCommerce
+46913;[Qlik] - Tasa de Retención & Churn Rate (Qlik: Automatizar el modelo);CMO;eCommerce;Commercial;In Definition;37;;;;;eCommerce
+46911;[PUDOS] - Automatización de la facturación cruzada con las redes de puntos.;CMO;eCommerce;Commercial;Backlog;66;;;;;eCommerce
+46909;[Nexus] [Web de Clientes] - Recogida Flexible Grabación de envíos: Permitir recogida a la carta;CMO;eCommerce;Commercial;Backlog;76;;;;;eCommerce
+46856;Cambio de API para disponer de la información de valor y peso a declarar ante la aduana por parte del Cliente (TC);CIO;eCommerce;Technology;Backlog;70;;;;;eCommerce
 46855;Nueva estrategia de integración de Clientes (TC);CCO;eCommerce;Commercial;Backlog;42;;;;;eCommerce
 46845;Conexión de eventos estados PT-ES/Transición de estados con eventos PT;ATC;eCommerce;Corporate;Backlog;26;;;;;eCommerce
 46844;Revisión feedback a Clientes conectados a SGC (legacy);CCO;eCommerce;Commercial;Backlog;43;;;;;eCommerce
-46838;Desarrollo Nuevas funcionalidades/Venta (TP);CMO;eCommerce;Commercial;Backlog;129;;;;;eCommerce
-46837;Implementación de la red Locky (TP);CMO;eCommerce;Commercial;Backlog;130;;;;;eCommerce
+46838;Desarrollo Nuevas funcionalidades/Venta (TP);CMO;eCommerce;Commercial;Backlog;128;;;;;eCommerce
+46837;Implementación de la red Locky (TP);CMO;eCommerce;Commercial;Backlog;129;;;;;eCommerce
 46829;PDA Planta (TO)/Gestión de Planta/Mejoras pendientes/Solventar error de contenerización y doble registro;COO;eCommerce;Operations;In Definition;36;;;;;eCommerce
 46827;PDA Planta (TO)/Gestión de Planta/Gestión FIFO en San fernando;COO;eCommerce;Operations;In Definition;35;;;;;eCommerce
-46818;Servicios Preferentes/Revisión del cálculo de compromiso (TP);CMO;eCommerce;Commercial;In Definition;131;;;;;eCommerce
+46818;Servicios Preferentes/Revisión del cálculo de compromiso (TP);CMO;eCommerce;Commercial;In Definition;130;;;;;eCommerce
 46817;Aplicación de reglas en registros de peso y volumen (TC);CFO;eCommerce;Corporate;In Definition;70;;;;;eCommerce
 46807;[Desconexión SGC] [Salesforce Service] - Migración del Almacén regulador​ de SGC;ATC;eCommerce;Corporate;Backlog;12;;;;;eCommerce
 46800;[Mejora Calidad Servicio] - PDA - Envios Multibulto (aplicar logica de causa propia - ajena) (TO);ATC;eCommerce;Corporate;In Definition;9;;;;;eCommerce
@@ -846,14 +842,13 @@
 46216;[Salesforce Sales] - Modificar el CIF de un centro relacionado cuando se modifique un Prospecto;CCO;eCommerce;Commercial;Backlog;38;;;;;eCommerce
 46164;[Salesforce]​ - Reexpedir -recanalizar- y destruir un envío por parte del equipo de ATC;ATC;eCommerce;Corporate;In Definition;21;;;;;eCommerce
 45965;[Salesforce Integración Clientes] - Nueva lógica creación de implementaciones;IDC;eCommerce;Commercial;Ready for Solution;39;;;;;eCommerce
-45893;[Nexus]-[Minerva]- CTT 14h MINERVA Óptica (Nuevo producto comercial);CMO;eCommerce;Commercial;Ready for Solution;31;;;;;eCommerce
+45893;[Nexus]-[Minerva]- CTT 14h MINERVA Óptica (Nuevo producto comercial);CMO;eCommerce;Commercial;Ready for Solution;29;;;;;eCommerce
 45892;[Minerva] - Dispersiones estándar de ofertas de tipo B y C;CCO;eCommerce;Commercial;Ready for Solution;29;;;;;eCommerce
-45758;[Qlik] - CANDIDATES MANAGEMENT (Crear un modelo para medir las campañas de MK);CMO;eCommerce;Commercial;Backlog;50;;;;;eCommerce
-45725;[Evolutivos SGC Finanzas]  Historificación datos de facturación perdidos tras ataque informático (PENDIENTE SOLUCIÓN DE IT YA PRESENTADA);CFO;eCommerce;Corporate;Backlog;35;;;;;eCommerce
+45758;[Qlik] - CANDIDATES MANAGEMENT (Crear un modelo para medir las campañas de MK);CMO;eCommerce;Commercial;Backlog;48;;;;;eCommerce
+45725;[Evolutivos SGC Finanzas] Historificación datos de facturación perdidos tras ataque informático (PENDIENTE SOLUCIÓN DE IT YA PRESENTADA);CFO;eCommerce;Corporate;Backlog;35;;;;;eCommerce
 45298;[Evolutivos Minerva] Zonificacion PT detallada (combinaciones PTC-PTI/PTI-PTI) (Valorar por MKT);CFO;eCommerce;Corporate;Backlog;19;;;;;eCommerce
 44547;Seguimiento de envíos por Api Devolución retornado reexpedido y recogidas;IDC;eCommerce;Commercial;In Definition;29;;;;;eCommerce
 44497;Qlik - Analítica Comercial - Clientes Activos;CCO;eCommerce;Commercial;In Definition;18;;;;;eCommerce
-44475;[PUDOs] - [QLIK] Nueva App Pudo Sales;CMO;eCommerce;Commercial;Backlog;17;;;;;eCommerce
 44473;[Qlik] - Nprinting - Informe efectividad de red;ATC;eCommerce;Corporate;In Definition;23;;;;;eCommerce
 44470;Qlik - Estado de Venta;CCO;eCommerce;Commercial;In Definition;17;;;;;eCommerce
 44446;[Desconexión SGC] Qlik - Migración App Territory P&L - Cloud;CIO;eCommerce;Technology;In Definition;33;;;;;eCommerce
@@ -865,27 +860,27 @@
 44047;[Desconexión SGC] [Salesforce] - Gestión de las canalizaciones por el equipo de Operaciones desde Salesforce;COO;eCommerce;Operations;In Definition;22;;;;;eCommerce
 44020;[Salesforce] - Automatización de tarifas (en función de envíos comprometidos y rentabilidad de la cuenta);CCO;eCommerce;Commercial;Ready for Solution;33;;;;;eCommerce
 43648;Estabilidad​ - Migración Conflluent​;CIO;eCommerce;Technology;Backlog;40;;;;;eCommerce
-43598;[PUDOS] - Entregas y Recogidas Directas en PUDO - Tránsitos ES-ES y ES-PT - Integración bidireccional de Pudos ES-PT, PT-ES;CMO;eCommerce;Commercial;Backlog;56;;;;;eCommerce
+43598;[PUDOS] - Entregas y Recogidas Directas en PUDO - Tránsitos ES-ES y ES-PT - Integración bidireccional de Pudos ES-PT, PT-ES;CMO;eCommerce;Commercial;Backlog;54;;;;;eCommerce
 43586;[Minerva] - Permitir a ciertos perfiles Comerciales descargar los contratos en Word;CCO;eCommerce;Commercial;In Definition;15;;;;;eCommerce
-43583;[Nexus] [Producto] - OTP entrega segura;CMO;eCommerce;Commercial;Ready for Solution;21;;;;;eCommerce
+43583;[Nexus] [Producto] - OTP entrega segura;CMO;eCommerce;Commercial;Ready for Solution;17;;;;;eCommerce
 43558;[SAP] Migración SAP;CFO;eCommerce;Corporate;Backlog;58;;;;;eCommerce
 43557;[Evolutivos SGC Finanzas] Evolutivos SGC Finanzas - Adeudos ECCS a SGC+ automatizados y diarios;CFO;eCommerce;Corporate;Pitch;15;;;;;eCommerce
 43556;[SGC] - Funcionalidad de asignación de gestora en Salesforce;CFO;eCommerce;Corporate;Ready for Solution;10;;;;;eCommerce
 43555;Web Clientes​ - Detalles Excel con y sin Densidades (Español-Ingles), Personalizables por el propio cliente en PortalCliente y en Finanzas;CFO;eCommerce;Corporate;Backlog;21;;;;;eCommerce
 43553;[Compras] Implantación e-Compras - Nueva Web venta material clientes (proyecto de finanzas 2023);CFO;eCommerce;Corporate;Backlog;48;;;;;eCommerce
 43552;[Evolutivos Minerva] Tarifas unicas por grupos de varios clientes (multicuentas asociadas incluso en diferentes CO's) (Validar por Herramientas Comerciales);CFO;eCommerce;Corporate;Backlog;20;;;;;eCommerce
-43551;[Evolutivos Salesforce]  Asignacion de tarifas por cliente master - Salesforce/Minerva (posibilidad de clientes centro con tarifas diferentes) (Validar por Herramientas Comerciales);CFO;eCommerce;Corporate;Backlog;50;;;;;eCommerce
+43551;[Evolutivos Salesforce] Asignacion de tarifas por cliente master - Salesforce/Minerva (posibilidad de clientes centro con tarifas diferentes) (Validar por Herramientas Comerciales);CFO;eCommerce;Corporate;Backlog;50;;;;;eCommerce
 43549;[Evolutivos SGC Finanzas] Asignar de manera masiva el cliente master al campo grupo de procesamiento en Modulo de facturacion;CFO;eCommerce;Corporate;Ready for Solution;12;;;;;eCommerce
-43547;[Evolutivos SGC]  Recuperar Doble click en grid inferior valoracion de servicios, no abre las tablas como antes para editar y cambios, (pérdida esta funcionalidad importante);CFO;eCommerce;Corporate;Backlog;39;;;;;eCommerce
+43547;[Evolutivos SGC] Recuperar Doble click en grid inferior valoracion de servicios, no abre las tablas como antes para editar y cambios, (pérdida esta funcionalidad importante);CFO;eCommerce;Corporate;Backlog;39;;;;;eCommerce
 43546;[Evolutivos SGC Finanzas] Generacion de documentos por master + grupo procesamiento (filtro);CFO;eCommerce;Corporate;Backlog;17;;;;;eCommerce
 43545;[Evolutivos SGC] Adeudos manuales o automáticos, (relacionado con trabajo de auditoria interna de ES ya informada en 2022) (Validar por Procesos);CFO;eCommerce;Corporate;Backlog;37;;;;;eCommerce
-43544;[Evolutivos SGC Finanzas]  Alarma-86 Engaño Cod. Postales (solicitado tambien a traves de BI para buscar automatización);CFO;eCommerce;Corporate;Backlog;30;;;;;eCommerce
+43544;[Evolutivos SGC Finanzas] Alarma-86 Engaño Cod. Postales (solicitado tambien a traves de BI para buscar automatización);CFO;eCommerce;Corporate;Backlog;30;;;;;eCommerce
 43543;[Evolutivos SGC] Cambio de agencia de cargo en un envío / Utilizacion de agencia de facturacion, (pérdida de funcionalidad);CFO;eCommerce;Corporate;Backlog;38;;;;;eCommerce
 43542;"[Evolutivos SGC] Recuperar Acceso a modificacion de tarifas y configuracion del ""Microservicio"" (pérdida de funcionalidad importante)";CFO;eCommerce;Corporate;Backlog;40;;;;;eCommerce
 43541;[Evolutivos SGC Finanzas] Inclusión del Cliente Máster en todos los módulos de SGC ahora no lo están (esta ligado con el anterior);CFO;eCommerce;Corporate;Backlog;31;;;;;eCommerce
-43540;[Evolutivos SGC]  Aplicación de la densidad cuando el CP no existe, confirmar IT si todo el proceso esta acabado (Incidencia);CFO;eCommerce;Corporate;Backlog;42;;;;;eCommerce
+43540;[Evolutivos SGC] Aplicación de la densidad cuando el CP no existe, confirmar IT si todo el proceso esta acabado (Incidencia);CFO;eCommerce;Corporate;Backlog;42;;;;;eCommerce
 43538;[Evolutivos SGC Finanzas] Validación de país y CP en manifiestos;CFO;eCommerce;Corporate;In Solution;6;;;;;eCommerce
-43537;"[Evolutivos SGC Finanzas]  Funcionalidad ""Redireccionar servicios"" en Valoracion de servicios funciona parcialmente";CFO;eCommerce;Corporate;Backlog;14;;;;;eCommerce
+43537;"[Evolutivos SGC Finanzas] Funcionalidad ""Redireccionar servicios"" en Valoracion de servicios funciona parcialmente";CFO;eCommerce;Corporate;Backlog;14;;;;;eCommerce
 43536;[Evolutivos SGC] Acceso a tabla de retasados (NO las muestra si hay varias por validez en gestion de tablas) + Acceso Retasados microservicios (revisar Juancho);CFO;eCommerce;Corporate;Backlog;44;;;;;eCommerce
 43535;[Evolutivos SGC] Cambio de código de Cliente al rectificar un servicio, confirmar IT si todo el proceso esta acabado (Incidencia);CFO;eCommerce;Corporate;Backlog;49;;;;;eCommerce
 43534;[Evolutivos SGC] Aplicar correctamente los impuestos en función de la combinación artículo-zona, Solicitud de 2015 potenciales problemas fiscales;CFO;eCommerce;Corporate;Backlog;51;;;;;eCommerce
@@ -904,7 +899,7 @@
 43514;[Evolutivos Salesforce] Alarma-77 Clientes reactivados (clientes que se dan de alta sin control);CFO;eCommerce;Corporate;Backlog;34;;;;;eCommerce
 43513;[Desconexión SGC] [Evolutivos SGC Finanzas] Automatización proceso gestión documental siniestros;CFO;eCommerce;Corporate;Backlog;11;;;;;eCommerce
 43511;Portal Proveedores - Facturacion a/de proveedores fuera de SAP, necesidad de adaptar el modulo de proveedores;CFO;eCommerce;Corporate;Backlog;36;;;;;eCommerce
-43509;[Producto] - Modelo Tarifario/Operativa Broker + TOF (Minerva C);CMO;eCommerce;Commercial;In Definition;27;;;;;eCommerce
+43509;[Producto] - Modelo Tarifario/Operativa Broker + TOF (Minerva C);CMO;eCommerce;Commercial;In Definition;24;;;;;eCommerce
 43505;[Alarmas Finanzas] Alarma-55 Envíos pendientes de valorizar o sin facturar del mes anterior;CFO;eCommerce;Corporate;Backlog;47;;;;;eCommerce
 43504;[Alarmas Finanzas] Alarma-56 Envíos abonados más de una vez;CFO;eCommerce;Corporate;Backlog;46;;;;;eCommerce
 43503;[Alarmas Finanzas] Alarma-75 Comprobar envíos en agencias desactivadas;CFO;eCommerce;Corporate;Backlog;45;;;;;eCommerce
@@ -913,15 +908,16 @@
 43500;"[Alarmas Finanzas] Alarma-45 Reporte/Alerta de servicios antes del cierre ""Keysoft""";CFO;eCommerce;Corporate;Backlog;43;;;;;eCommerce
 43499;"[Alarmas Finanzas] Alarma-85 Clientes con cambio tarifas ""a medio mes"", si no avisan facturamos mal si hay retroactividad";CFO;eCommerce;Corporate;Backlog;33;;;;;eCommerce
 38972;API'S para clientes Routing y Canalizaciones (Integración de Clientes);IDC;eCommerce;Commercial;In Definition;33;;;;;eCommerce
-104489;SAPSF - Wave 2 (RECrutamento, ONBoarding);GRH;Mail;Corporate;In Development;1026;;;;;Mail & Services
-110212;DeMinimisEUA - Solução CTT para permitir retomar envios de mercadorias para os EUA;GP B2B;Mail;Commercial;In Development;1015;4;;2;4;Mail & Services
-99804;NOTA (fase 3) Controlo de Fundos de Maneio das Lojas;CF;Retail & Financial Services;Corporate;In Development;1029;;;;;Mail & Services
-120528;Auditoria 2.0 - Criação de Data Lake para implementação de Auditoria Contínua e Auditoria à Distancia - Entrega R1;ACR;Mail;Corporate;In Development;1030;;;;;Mail & Services
-120533;Auditoria 2.0 - Criação de Data Lake para implementação de Auditoria Contínua e Auditoria à Distancia - Entrega R2;ACR;Mail;Corporate;In Development;1031;;;;;Mail & Services
-127822;APT | Migração APIs IBM em Mulesoft - Fase 5/5;SI;Mail;Technology;In Development;1016;4;5;3;4;Mail & Services
-120240;Mata Aplicações - Wave 1.14;SI;Mail;Technology;In Development;1033;4;2;2;3;Mail & Services
-98651;SAPSF - encriptação ficheiros SEPA CTT + CTTE;GRH;Mail;Corporate;In Development;1034;2;2;2;1;Mail & Services
-99510;SAPSF -  Solução de Interoperabilidade com a Segurança Social (Regulatório);GRH;Mail;Corporate;In Development;1035;3;2;2;1;Mail & Services
-50852;SOC  - operacionalização do serviço;CISO;Mail;CISO;In Development;1017;;;;;Mail & Services
-126944;GitHub Migration - Aplicações Wave 1;SI-OPS;Mail;Technology;In Development;1036;4;3;3;3;Mail & Services
-136770;GitHub Migration - Aplicações Wave 2;SI-OPS;Mail;Technology;In Development;1037;4;3;3;2;Mail & Services
+140070;[PEPE] Pago rápido de reembolsos;CFO;eCommerce;Corporate;In Development;201;;;;;eCommerce
+62519;Los usuarios de las delegaciones no tienen que ver las liquidaciones de LH de los proveedores;COO;eCommerce;Operations;In Development;4;2;;;2;eCommerce
+62247;[Qlik Sense][A-Scan] - Nuevos Filtros;COO;eCommerce;Operations;Ready for Acceptance;40;;;;;eCommerce
+61318;[Nexus][Internacional]-[Nuevo Producto ECONOMY]- DHL-PARCEL;CMO;eCommerce;Commercial;In Development;3;5;;2;4;eCommerce
+60703;[PUDOS] - Incluir selección origen PT en Web Clientes para servicios RDP origen PT con manifiesto en ES;CMO;eCommerce;Commercial;In Development;19;;;;;eCommerce
+60535;[WebHook] - Shein ADT - Migración de infraestructura de Shein ADT;CIO;eCommerce;Technology;In Acceptance;1;;;;;eCommerce
+58466;[Web de Clientes][Web de Cambios] - Trazabilidad - Actualización de literales en visión de Web de clientes y Destinatario (Web de cambios);CMO;eCommerce;Commercial;In Development;2;;;;;eCommerce
+57319;[Nexus] [We Sell] Carga de clientes de PT en Salesforce Sales;CCO;eCommerce;Commercial;Ready for Acceptance;1;;;;;eCommerce
+57268;[Nexus Piloto Operacional] [We Care] Generación y consumo del POD para Fase 2;CMO;eCommerce;Commercial;Ready for Acceptance;4;;;;;eCommerce
+53918;[Desconexión SGC] Evolución pantalla web Nexus (modulo seguimiento de rutas/ recogidas);COO;eCommerce;Operations;In Acceptance;1;;;;;eCommerce
+47872;[Internacional]-[Nuevo Producto Low Cost]- SKYNET;CMO;eCommerce;Commercial;In Development;5;;;;;eCommerce
+46806;[Qlik] - APP Contact Center Integrar toda la información de casos de Salesforce;ATC;eCommerce;Corporate;In Acceptance;1;;;;;eCommerce
+43578;[PUDOS] - Venta Internacional en PUDOS;CMO;eCommerce;Commercial;In Development;1;;;;;eCommerce
