@@ -22,7 +22,7 @@ def test_workflow_validate_and_prioritize():
     validate_resp = client.post(
         "/api/v1/workflows/validate",
         json={
-            "ideas_path": "data/input/ideas20260224.csv",
+            "ideas_path": "data/input/ideas202603.csv",
             "ra_weights_path": "data/input/weights_ra.csv",
             "rs_weights_path": "data/input/weights_rs.csv",
             "bg_rs_weights_path": "data/input/weights_bg_rs.csv",
@@ -35,7 +35,7 @@ def test_workflow_validate_and_prioritize():
     prioritize_resp = client.post(
         "/api/v1/workflows/prioritize",
         json={
-            "ideas_path": "data/input/ideas20260224.csv",
+            "ideas_path": "data/input/ideas202603.csv",
             "ra_weights_path": "data/input/weights_ra.csv",
             "rs_weights_path": "data/input/weights_rs.csv",
             "bg_rs_weights_path": "data/input/weights_bg_rs.csv",
@@ -51,7 +51,7 @@ def test_workflow_validate_and_prioritize():
 
 def test_reference_data_upsert_and_list(tmp_path: Path):
     ideas_copy = tmp_path / "ideas.csv"
-    shutil.copy("data/input/ideas20260224.csv", ideas_copy)
+    shutil.copy("data/input/ideas202603.csv", ideas_copy)
 
     client = TestClient(app)
 
@@ -102,7 +102,7 @@ def test_jobs_and_auth_enforcement(monkeypatch):
     denied = client.post(
         "/api/v1/workflows/prioritize",
         json={
-            "ideas_path": "data/input/ideas20260224.csv",
+            "ideas_path": "data/input/ideas202603.csv",
             "ra_weights_path": "data/input/weights_ra.csv",
             "rs_weights_path": "data/input/weights_rs.csv",
             "bg_rs_weights_path": "data/input/weights_bg_rs.csv",
@@ -115,7 +115,7 @@ def test_jobs_and_auth_enforcement(monkeypatch):
     submit = client.post(
         "/api/v1/jobs/workflows/validate",
         json={
-            "ideas_path": "data/input/ideas20260224.csv",
+            "ideas_path": "data/input/ideas202603.csv",
             "ra_weights_path": "data/input/weights_ra.csv",
             "rs_weights_path": "data/input/weights_rs.csv",
             "bg_rs_weights_path": "data/input/weights_bg_rs.csv",

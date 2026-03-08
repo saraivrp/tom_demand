@@ -146,8 +146,13 @@ class DemandService:
         method: str = "sainte-lague",
     ) -> Dict:
         """Execute Level 3 prioritization only."""
-        csv_delimiter, decimal_separator = self._resolve_locale_settings()
-        rs_df = pd.read_csv(rs_prioritized, sep=csv_delimiter, decimal=decimal_separator)
+        csv_delimiter, decimal_separator, csv_encoding = self._resolve_locale_settings()
+        rs_df = pd.read_csv(
+            rs_prioritized,
+            sep=csv_delimiter,
+            decimal=decimal_separator,
+            encoding=csv_encoding,
+        )
         rs_weights_df = self.loader.load_rs_weights(rs_weights)
         result = self.prioritizer.prioritize_level3(rs_df, rs_weights_df, method)
         self.exporter.export_demand(result, output)
@@ -183,7 +188,7 @@ class DemandService:
             "average_size": ideas_df["Size"].mean(),
         }
 
-    def _resolve_locale_settings(self) -> tuple[str, str]:
+    def _resolve_locale_settings(self) -> tuple[str, str, str]:
         """Read locale CSV settings from configuration."""
         config_path = self.config
         if config_path is None:
@@ -194,4 +199,8 @@ class DemandService:
             cfg = yaml.safe_load(cfg_file)
 
         locale = cfg.get("locale", {})
-        return locale.get("csv_delimiter", ";"), locale.get("decimal_separator", ",")
+        return (
+            locale.get("csv_delimiter", ";"),
+            locale.get("decimal_separator", ","),
+            locale.get("csv_encoding", "utf-8-sig"),
+        )

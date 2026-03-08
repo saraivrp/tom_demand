@@ -118,6 +118,7 @@ locale:
   csv_delimiter: ";"          # Semicolon for European CSV format
   decimal_separator: ","      # Comma for decimal separator (e.g., 1,23)
   thousands_separator: "."    # Dot for thousands separator (e.g., 1.000,45)
+  csv_encoding: "utf-8-sig"   # UTF-8 with BOM for Excel compatibility
 
 # Logging
 logging:

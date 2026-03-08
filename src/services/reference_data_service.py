@@ -20,6 +20,7 @@ class ReferenceDataService:
         locale = cfg.get("locale", {})
         self.csv_delimiter = locale.get("csv_delimiter", ";")
         self.decimal_separator = locale.get("decimal_separator", ",")
+        self.csv_encoding = locale.get("csv_encoding", "utf-8-sig")
 
     def read_rows(self, path: str, limit: Optional[int] = None, offset: int = 0) -> Dict:
         df = self._read_csv(path)
@@ -131,7 +132,12 @@ class ReferenceDataService:
     def _read_csv(self, path: str) -> pd.DataFrame:
         if not os.path.exists(path):
             raise FileNotFoundError(f"File not found: {path}")
-        return pd.read_csv(path, sep=self.csv_delimiter, decimal=self.decimal_separator)
+        return pd.read_csv(
+            path,
+            sep=self.csv_delimiter,
+            decimal=self.decimal_separator,
+            encoding=self.csv_encoding,
+        )
 
     def _write_csv_atomic(self, df: pd.DataFrame, path: str) -> None:
         directory = os.path.dirname(path) or "."
@@ -144,6 +150,7 @@ class ReferenceDataService:
                 index=False,
                 sep=self.csv_delimiter,
                 decimal=self.decimal_separator,
+                encoding=self.csv_encoding,
             )
             os.replace(temp_path, path)
         finally:

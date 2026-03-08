@@ -36,6 +36,7 @@ class Exporter:
         self.locale = self.config.get('locale', {})
         self.csv_delimiter = self.locale.get('csv_delimiter', ';')
         self.decimal_separator = self.locale.get('decimal_separator', ',')
+        self.csv_encoding = self.locale.get('csv_encoding', 'utf-8-sig')
 
     def export_rs_prioritization(
         self,
@@ -75,7 +76,13 @@ class Exporter:
         os.makedirs(os.path.dirname(filepath), exist_ok=True)
 
         # Export to CSV with European format
-        output_df.to_csv(filepath, index=False, sep=self.csv_delimiter, decimal=self.decimal_separator)
+        output_df.to_csv(
+            filepath,
+            index=False,
+            sep=self.csv_delimiter,
+            decimal=self.decimal_separator,
+            encoding=self.csv_encoding,
+        )
         print(f"    ✓ Exported to {filepath}")
 
     def export_demand(
@@ -128,7 +135,13 @@ class Exporter:
         os.makedirs(os.path.dirname(filepath), exist_ok=True)
 
         # Export to CSV with European format
-        output_df.to_csv(filepath, index=False, sep=self.csv_delimiter, decimal=self.decimal_separator)
+        output_df.to_csv(
+            filepath,
+            index=False,
+            sep=self.csv_delimiter,
+            decimal=self.decimal_separator,
+            encoding=self.csv_encoding,
+        )
         print(f"    ✓ Exported to {filepath}")
 
     def export_comparison_report(
@@ -153,7 +166,13 @@ class Exporter:
             data[col] = data[col].round(precision)
 
         # Export to CSV with European format
-        data.to_csv(filepath, index=False, sep=self.csv_delimiter, decimal=self.decimal_separator)
+        data.to_csv(
+            filepath,
+            index=False,
+            sep=self.csv_delimiter,
+            decimal=self.decimal_separator,
+            encoding=self.csv_encoding,
+        )
         print(f"    ✓ Comparison report exported to {filepath}")
 
     def export_metadata(

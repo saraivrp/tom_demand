@@ -42,6 +42,7 @@ class Loader:
         self.locale = self.config.get('locale', {})
         self.csv_delimiter = self.locale.get('csv_delimiter', ';')
         self.decimal_separator = self.locale.get('decimal_separator', ',')
+        self.csv_encoding = self.locale.get('csv_encoding', 'utf-8-sig')
 
     def _determine_queue(self, micro_phase: str) -> str:
         """
@@ -76,7 +77,12 @@ class Loader:
             raise FileNotFoundError(f"File not found: {filepath}")
 
         try:
-            df = pd.read_csv(filepath, sep=self.csv_delimiter, decimal=self.decimal_separator)
+            df = pd.read_csv(
+                filepath,
+                sep=self.csv_delimiter,
+                decimal=self.decimal_separator,
+                encoding=self.csv_encoding,
+            )
         except Exception as e:
             raise DataLoadError(f"Failed to read CSV file: {str(e)}")
 
@@ -196,7 +202,12 @@ class Loader:
             raise FileNotFoundError(f"File not found: {filepath}")
 
         try:
-            df = pd.read_csv(filepath, sep=self.csv_delimiter, decimal=self.decimal_separator)
+            df = pd.read_csv(
+                filepath,
+                sep=self.csv_delimiter,
+                decimal=self.decimal_separator,
+                encoding=self.csv_encoding,
+            )
         except Exception as e:
             raise DataLoadError(f"Failed to read CSV file: {str(e)}")
 
@@ -246,7 +257,12 @@ class Loader:
             raise FileNotFoundError(f"File not found: {filepath}")
 
         try:
-            df = pd.read_csv(filepath, sep=self.csv_delimiter, decimal=self.decimal_separator)
+            df = pd.read_csv(
+                filepath,
+                sep=self.csv_delimiter,
+                decimal=self.decimal_separator,
+                encoding=self.csv_encoding,
+            )
         except Exception as e:
             raise DataLoadError(f"Failed to read CSV file: {str(e)}")
 
@@ -296,7 +312,12 @@ class Loader:
             raise FileNotFoundError(f"File not found: {filepath}")
 
         try:
-            df = pd.read_csv(filepath, sep=self.csv_delimiter, decimal=self.decimal_separator)
+            df = pd.read_csv(
+                filepath,
+                sep=self.csv_delimiter,
+                decimal=self.decimal_separator,
+                encoding=self.csv_encoding,
+            )
         except Exception as e:
             raise DataLoadError(f"Failed to read CSV file: {str(e)}")
 
