@@ -6,17 +6,17 @@
 139615;Automatização da alocação das recolhas (Correio Registado Locker);SEO;Mail;Operations;Backlog;1;;;;;Mail & Services
 139369;Aviso de Entrega Digital;GP B2B;Mail;Commercial;Backlog;7;;;;;Mail & Services
 139342;SLA - Migração para GitHub;SI-OPS;Mail;Technology;Ready for Solution;4;4;3;3;3;Mail & Services
-139339;Mata Aplicações Wave 1.16;SI;Mail;Technology;In Definition;26;4;1;2;3;Mail & Services
-139303;Observabilidade | Uniformização da alarmística nos clusters do IDP;SI;Mail;Technology;Ready for Approval;25;2;1;2;1;Mail & Services
-138855;Redução de Custos em Cloud;SI;Mail;Technology;In Definition;17;;;;;Mail & Services
+50994;APT | Mata Aplicações - Wave 1.13;SI;Mail;Technology;Backlog;100;;;;;Mail & Services
+141797;PoC Modernização Tecnológica com AI;SI;Mail;Technology;Backlog;2;;;;;Mail & Services
+135517;Renovação Infoblox - Grid, DNS, DHCP, NTP e IPAM;SI;Mail;Technology;Backlog;1;;;;;Mail & Services
 138585;Mapear Contatos de Remetente p/ contactos CTT | Objetos DHL (Internacional Expresso);GP ECL;eCommerce;Commercial;In Definition;8;1;1;1;2;Mail & Services
 138559;Postman Digital Brain - Fase 3;EDO;Mail;Operations;Backlog;19;;;;;Mail & Services
 138419;Envios OLX | Retirar Certificado de Aceitação;GP ECL;eCommerce;Commercial;Backlog;12;3;1;1;;Mail & Services
-138084;Fábrica OutSystems | Melhorias à plataforma - JAN, FEV MAR 2026;SI;eCommerce;Technology;Pitch;82;;;;;Mail & Services
-137572;Criação de WAF para Infraestrutura de OutSystems;SI;eCommerce;Technology;In Definition;83;;;;;Mail & Services
-137551;Quick Wins - Super App B2C;SI;eCommerce;Technology;In Definition;87;;;;;Mail & Services
-137549;Outsystems - Evolução processo de CI/CD;SI;eCommerce;Technology;Pitch;89;;;;;Mail & Services
-137512;Integração - Migração ADO2GitHub - Kafka Conectors;SI;Mail;Technology;Ready for Solution;18;;;;;Mail & Services
+125543;ODIN | Iberian Observability Stack;SI;eCommerce;Technology;Ready for Approval;3;3;1;1;2;Mail & Services
+96332;CCP | OTP | Rebuild application in the current tech stack;SI;eCommerce;Technology;High Level Design;4;;;;;Mail & Services
+134357;Github Migration - Ecossistema Expresso ADO2Github;SI;Mail;Technology;In Approval;5;4;3;3;2;Mail & Services
+126586;Renovação core LAN Porto;SI;Mail;Technology;In Solution;6;5;2;2;3;Mail & Services
+180670;INT | IBM Sterling File Gateway - implementar balanceamento;SI;Mail;Technology;In Solution;7;;;;;Mail & Services
 137466;Configuração do pagamento de faturas no Locky;GPG;Payments;Technology;Backlog;15;;;;;Mail & Services
 136994;DSD | Organizar Rota (Zona e Ordenação ) no Mobi;EDO;Mail;Operations;Backlog;6;;;;;Mail & Services
 136987;DSD | Leitura do Correio Azul e Registado no Mobi;EDO;Mail;Operations;Backlog;5;;;;;Mail & Services
@@ -28,54 +28,54 @@
 135537;Business Solutions - STICO - Evolutivos 1B 2026 (janeiro e fevereiro);GP B2B;Business Solutions;Commercial;In Approval;28;3;2;2;2;Mail & Services
 135529;Business Solutions - P&F - Evolutivos 1B 2026 (janeiro e fevereiro);GP B2B;Business Solutions;Commercial;In Approval;29;3;2;2;2;Mail & Services
 135525;Business Solutions - Evolutivos 1B 2026 (janeiro e fevereiro);GP B2B;Business Solutions;Commercial;In Approval;30;3;2;3;2;Mail & Services
-135517;Renovação Infoblox - Grid, DNS, DHCP, NTP e IPAM;SI;Mail;Technology;Backlog;2;;;;;Mail & Services
+132957;Github Migration - ParcelInfo;SI;Mail;Technology;Backlog;8;;;;;Mail & Services
 135317;SAPSF - GoFluent;GT;Mail;Corporate;In Definition;1;2;2;1;2;Mail & Services
 135288;Desenvolvimentos CNE no âmbito do Correio Inteligente;GP B2B;Business Solutions;Commercial;In Definition;4;;;;;Mail & Services
-135004;ESW | Criação de novo agente AI para validação de código obsoleto;SI;Mail;Technology;In Approval;81;3;4;1;1;Mail & Services
+127624;Implementação QuickWins MagicBeans;SI;Mail;Technology;Backlog;9;;;;;Mail & Services
 134997;Correio Inteligente - Alarmística;GP B2B;Business Solutions;Commercial;In Definition;2;;;;;Mail & Services
 134943;STICO - Migração de Pipelines ADO2Github;GP B2B;Mail;Commercial;High Level Design;5;4;;3;3;Mail & Services
 134832;Eliminação TLS 1.0 - Comunicação info T&T com MEO;SI-OPS;eCommerce;Technology;In Definition;6;;3;4;2;Mail & Services
 134801;Amazon | Serviço POD (Prova de Entrega);GP ECL;eCommerce;Commercial;Backlog;19;;;;;Mail & Services
 134587;BCTT - Relatório Sendgrid;BCTT;Mail;Technology;High Level Design;1;3;;2;1;Mail & Services
-134357;Github Migration - Ecossistema Expresso ADO2Github;SI;Mail;Technology;In Approval;5;4;3;3;2;Mail & Services
+132061;Migração ADO2GitHub - Pipeline ODM;SI;Mail;Technology;Ready for Solution;10;2;4;4;1;Mail & Services
 133856;Teste Silvia (temporario);TF;eCommerce;Corporate;Backlog;3;1;;;;Mail & Services
 133470;Correio Inteligente - FTP para P&F;GP B2B;Business Solutions;Commercial;Backlog;8;;;;;Mail & Services
 133251;Evolutivas SAP - Mapeamentos contabilisticos & testes;GPG;Payments;Commercial;Ready for Development;17;5;2;1;2;Mail & Services
 133243;Citrix nas lojas - Análise para Eliminação / substituição;GS;Mail;Commercial;Backlog;25;;;;;Mail & Services
-132957;Github Migration - ParcelInfo;SI;Mail;Technology;Backlog;8;;;;;Mail & Services
+132218;CCP | Notifications | Refactor application to meet CCP patterns;SI;Mail;Technology;Backlog;11;3;2;1;1;Mail & Services
 132956;TFS Migration - NAVE;SI;Mail;Technology;Ready for Solution;12;;;;;Mail & Services
 132425;"Disponibilizar o produto Correio Registado internacional no aplicativo  ""Criar envio de Correio ou Expresso""";GP B2B;Mail;Commercial;In Definition;21;3;3;3;2;Mail & Services
+127626;Expurgo automatic sharepoint e Team;SI;Mail;Technology;Backlog;13;;;;;Mail & Services
+124021;ODIN | Separação dos clusters ODIN (IDP) por unidade de negócio;SI;Mail;Technology;High Level Design;14;;;;;Mail & Services
+98564;CCP | Commercial Catalog | Synchronization with SAP;SI;Mail;Technology;Backlog;15;;;;;Mail & Services
 132298;Github Migration - Aplicações Canais Digitais;SI;Mail;Technology;In Approval;16;4;3;3;2;Mail & Services
-132278;dotCMS - update da versão;SI;Mail;Technology;High Level Design;85;;;;;Mail & Services
+138855;Redução de Custos em Cloud;SI;Mail;Technology;In Definition;17;;;;;Mail & Services
+137512;Integração - Migração ADO2GitHub - Kafka Conectors;SI;Mail;Technology;Ready for Solution;18;;;;;Mail & Services
+140431;Novo Catalogo de Aplicações (Atlas 2.0);SI;Mail;Technology;Backlog;19;;;;;Mail & Services
+126585;Renovação Firewalls Perímetro - CheckPoint;SI;Mail;Technology;In Definition;20;5;2;5;2;Mail & Services
+132060;Migração ADO2GitHub - Pipelines CRM;SI;Mail;Technology;Ready for Solution;21;2;3;3;1;Mail & Services
 132222;CCP | Migrate from .Net 8 to .Net 10;SI;Mail;Technology;Backlog;22;;;;;Mail & Services
 132220;ESW | Create code reviewer AI agent;SI;Mail;Technology;Backlog;23;;;;;Mail & Services
+126584;Reducing the rollout of Praas printers:;SI;Mail;Technology;Backlog;24;;;;;Mail & Services
+139303;Observabilidade | Uniformização da alarmística nos clusters do IDP;SI;Mail;Technology;Ready for Approval;25;2;1;2;1;Mail & Services
+139339;Mata Aplicações Wave 1.16;SI;Mail;Technology;In Definition;26;4;1;2;3;Mail & Services
 132219;CCP | Configure alerts for all CCP applications;SI;Mail;Technology;Backlog;27;3;2;2;2;Mail & Services
-132218;CCP | Notifications | Refactor application to meet CCP patterns;SI;Mail;Technology;Backlog;11;3;2;1;1;Mail & Services
-132063;ODM - Uniformização Ambiente Produtivo;SI;Mail;Technology;Backlog;51;3;2;2;1;Mail & Services
-132062;BPM - Upgrade WebSphere;SI;Mail;Technology;Pitch;45;3;2;2;1;Mail & Services
-132061;Migração ADO2GitHub - Pipeline ODM;SI;Mail;Technology;Ready for Solution;10;2;4;4;1;Mail & Services
-132060;Migração ADO2GitHub - Pipelines CRM;SI;Mail;Technology;Ready for Solution;21;2;3;3;1;Mail & Services
+126583;Eliminate 50% of O365 Copilot licences;SI;Mail;Technology;In Definition;28;;;;;Mail & Services
+140483;INT | - Evolutivo Mulesoft - Março e Abril;SI;Mail;Technology;In Definition;29;2;1;1;1;Mail & Services
+49513;APT | Mata Aplicações Wave 1.12 - GCC;SI;Mail;Technology;Backlog;30;;;;;Mail & Services
+126581;Downgrade 1.200 / 4.186 Microsoft O365 E5 licences (local) to O365 F3 (web) [1/2 year];SI;Mail;Technology;In Definition;31;;;;;Mail & Services
 132059;Mata Aplicações - Wave 1.15 - CRM Oracle Sales;SI;Mail;Technology;Backlog;32;3;3;3;3;Mail & Services
-132058;Evolutivos CRM Q1.2026;SI;Mail;Technology;Pitch;63;2;;1;1;Mail & Services
-132054;Observability | Notifications | Alarmistic association to Teams / Squads;SI;Mail;Technology;Backlog;41;5;2;1;1;Mail & Services
-132024;ESW | EQA | Utilização Regular da Automação de QA em Regressões;SI;Mail;Technology;Backlog;78;;;;;Mail & Services
-132023;ESW | EQA |Estabilização de Testes Automáticos Existentes de QA;SI;Mail;Technology;Backlog;77;;;;;Mail & Services
-132021;ESW | EQA | Definição de Checklist Mínimo de QA por Projeto;SI;Mail;Technology;Backlog;76;;;;;Mail & Services
-131995;INT| -  Alarmística MuleSoft;SI;Mail;Technology;Backlog;55;;;;;Mail & Services
-131994;INT| -  Reconstrução dos processos de LOGs do SD mulesoft no ELK coorporativo.;SI;Mail;Technology;Backlog;43;;;;;Mail & Services
-131993;INT| -  Mata Aplicações Wave 1.1X - Solução de Transformação;SI;Mail;Technology;Backlog;49;;;;;Mail & Services
-131992;INT | Mulesoft – Refatorização de Aplicações;SI;Mail;Technology;In Definition;37;;;;;Mail & Services
-131991;INT | Migração da solução da Knowledge Base atual para uma solução Knowledge Base coorporativa;SI;Mail;Technology;Backlog;61;;;;;Mail & Services
-131990;INT| Descontinuar os serviços suportados pelo Biztalk;SI;Mail;Technology;Backlog;71;;;;;Mail & Services
-131989;INT| -  Mata Aplicações Wave 1.1X - Tradutor;SI;Mail;Technology;Backlog;66;;;;;Mail & Services
+96334;ESW | Github | Allow Github Actions to access resources inside CTT internal network;SI;Mail;Technology;Backlog;33;;;;;Mail & Services
+125545;Observability | Alarm Catalog for self provision in applications;SI;Mail;Technology;Backlog;34;5;2;1;;Mail & Services
+106746;ESW | Sonar | Connect Github based applications to Sonar;SI;Mail;Technology;Backlog;35;;;;;Mail & Services
 131776;NOXUS - Plataforma de IA;PC;Mail;Corporate;Backlog;2;4;2;2;2;Mail & Services
 131734;Controlo de correio JPP;GP B2B;Mail;Commercial;In Definition;1;1;;1;2;Mail & Services
 128060;XRP | Alteração do fluxo de contabilização;RS;Mail;Corporate;Backlog;1;;;;;Mail & Services
 128057;XRP | Refaturação entre empresas;RS;Mail;Corporate;Backlog;2;;;;;Mail & Services
-127817;PTF | ODIN | Muticloud;SI;Mail;Technology;Backlog;53;5;1;1;2;Mail & Services
-127626;Expurgo automatic sharepoint e Team;SI;Mail;Technology;Backlog;13;;;;;Mail & Services
-127624;Implementação QuickWins MagicBeans;SI;Mail;Technology;Backlog;9;;;;;Mail & Services
-127619;Configuration Profiles Endpoint;SI;Mail;Technology;In Definition;46;;;;;Mail & Services
+126579;Reformulação do serviço AOS;SI;Mail;Technology;Backlog;36;;;;;Mail & Services
+131992;INT | Mulesoft – Refatorização de Aplicações;SI;Mail;Technology;In Definition;37;;;;;Mail & Services
+126578;Reformulação do serviço HDDTM;SI;Mail;Technology;Backlog;38;;;;;Mail & Services
+140470;Mata Aplicações - Wave 1.15 - CRM Oracle Sales (Fase 1 - Execução);SI;Mail;Technology;Backlog;39;;;;;Mail & Services
 127396;Evolutivos Nave Janeiro e Fevereiro 2026;GS;Mail;Commercial;In Approval;22;;;;;Mail & Services
 127257;Aviso de Receção (AR) Digital | Envios SuperPortal, Prestadores e Super App;GP B2B;Mail;Commercial;Backlog;22;;;;;Mail & Services
 127256;Correio Registado Self-Service| Envios a partir do SuperPortal;GP B2B;Mail;Commercial;Backlog;20;;;;;Mail & Services
@@ -94,16 +94,16 @@
 126644;GENAI- Rossum;CF;Mail;Corporate;In Solution;1;4;2;1;1;Mail & Services
 126643;Faturas PDF | SuperApp - Faturação Portagens;CF;Mail;Corporate;Backlog;4;3;3;4;1;Mail & Services
 126641;GENAI-NBanks;CF;Mail;Corporate;Ready for Solution;2;4;2;2;2;Mail & Services
-126588;Renovação ativos rede Datacenter CTT Express (Lisboa e Barcelona);SI;Mail;Technology;Backlog;48;;;;;Mail & Services
-126586;Renovação core LAN Porto;SI;Mail;Technology;In Solution;6;5;2;2;3;Mail & Services
-126585;Renovação Firewalls Perímetro - CheckPoint;SI;Mail;Technology;In Definition;20;5;2;5;2;Mail & Services
-126584;Reducing the rollout of Praas printers:;SI;Mail;Technology;Backlog;24;;;;;Mail & Services
-126583;Eliminate 50% of O365 Copilot licences;SI;Mail;Technology;In Definition;28;;;;;Mail & Services
-126581;Downgrade 1.200 / 4.186 Microsoft O365 E5 licences (local) to O365 F3 (web) [1/2 year];SI;Mail;Technology;In Definition;31;;;;;Mail & Services
-126580;Estudo para levantamento e alternativa ao MUS (Microsoft);SI;Mail;Technology;In Definition;50;;;;;Mail & Services
-126579;Reformulação do serviço AOS;SI;Mail;Technology;Backlog;36;;;;;Mail & Services
-126578;Reformulação do serviço HDDTM;SI;Mail;Technology;Backlog;38;;;;;Mail & Services
 126577;Renovaçao dos contratos de outsouricng COM;SI;Mail;Technology;In Definition;40;;;;;Mail & Services
+132054;Observability | Notifications | Alarmistic association to Teams / Squads;SI;Mail;Technology;Backlog;41;5;2;1;1;Mail & Services
+71332;IOP | Sistemas - Migração -  Nova Farm Hyper V Lisboa - Wave 3;SI;Mail;Technology;Pitch;42;;;;4;Mail & Services
+131994;INT| -  Reconstrução dos processos de LOGs do SD mulesoft no ELK coorporativo.;SI;Mail;Technology;Backlog;43;;;;;Mail & Services
+173201;IOP | CrushFTP - migração de CentOS para Ubuntu;SI;Mail;Technology;Backlog;44;;;;;Mail & Services
+132062;BPM - Upgrade WebSphere;SI;Mail;Technology;Pitch;45;3;2;2;1;Mail & Services
+127619;Configuration Profiles Endpoint;SI;Mail;Technology;In Definition;46;;;;;Mail & Services
+140454;Kafka | Self Service;SI;eCommerce;Technology;Backlog;47;;;;;Mail & Services
+126588;Renovação ativos rede Datacenter CTT Express (Lisboa e Barcelona);SI;Mail;Technology;Backlog;48;;;;;Mail & Services
+131993;INT| -  Mata Aplicações Wave 1.1X - Solução de Transformação;SI;Mail;Technology;Backlog;49;;;;;Mail & Services
 126576;Plano de formação (global e board);CISO;Mail;CISO;Backlog;2;;;;;Mail & Services
 126575;DLP (Data Loss Prevention) - Wave 2;CISO;Mail;CISO;Backlog;10;;;;;Mail & Services
 126574;DLP (Data Loss Prevention) - Wave 1;CISO;Mail;CISO;Backlog;1;;;;;Mail & Services
@@ -124,17 +124,17 @@
 125912;Serviço de envio de emails sediado na europa;GP B2B;Business Solutions;Commercial;Backlog;10;2;2;3;2;Mail & Services
 125766;Evolutivas SAP FI Q1 2026;CF;Mail;Corporate;High Level Design;7;1;1;1;1;Mail & Services
 125697;DeMinimis EUA - Solução para retomar os envios de Bens para os EUA para os clientes não contratuais;GP B2B;Mail;Commercial;In Definition;15;3;3;3;3;Mail & Services
-125694;ESW | Integração de Crashlytics nas aplicações mobile;SI;Mail;Technology;In Definition;84;;;;;Mail & Services
-125693;Upgrade servidores OutSystems para Windows Server 2022;SI;Mail;Technology;In Approval;80;3;4;4;1;Mail & Services
-125692;Upgrade plataforma OutSystems para versão 11.40.0;SI;Mail;Technology;In Approval;79;3;4;4;1;Mail & Services
-125545;Observability | Alarm Catalog for self provision in applications;SI;Mail;Technology;Backlog;34;5;2;1;;Mail & Services
-125543;ODIN | Iberian Observability Stack;SI;eCommerce;Technology;Ready for Approval;3;3;1;1;2;Mail & Services
+126580;Estudo para levantamento e alternativa ao MUS (Microsoft);SI;Mail;Technology;In Definition;50;;;;;Mail & Services
+132063;ODM - Uniformização Ambiente Produtivo;SI;Mail;Technology;Backlog;51;3;2;2;1;Mail & Services
+95633;Assinaturas de autenticidade emails;SI;Mail;Technology;Backlog;52;;;;;Mail & Services
+127817;PTF | ODIN | Muticloud;SI;Mail;Technology;Backlog;53;5;1;1;2;Mail & Services
+74950;IOP | Instalação e Ativação da Componente Guardian -  Nova Hyper V;SI;Mail;Technology;Backlog;54;;;;;Mail & Services
 125275;Modernização do Processo de Devolução – Fim dos Carimbos usados no CDP;EDO;Mail;Operations;Backlog;11;;;;;Mail & Services
 125218;revamp.EPM - Framework CPM 360 Full Scope (Non Core);PC;Mail;Corporate;Ready for Solution;3;;;;;Mail & Services
 124619;Envios Online & Super APP | Serviço de Ponto de Entrega;GP ECL;eCommerce;Commercial;Backlog;14;;;;;Mail & Services
 124599;Plataforma de Gestão Documental IGCP;GP B2C;Retail & Financial Services;Commercial;In Definition;3;;;;;Mail & Services
 124133;Incremento ao processo de pagamento de faturas a fornecedores;CF;Mail;Corporate;Backlog;8;;;;;Mail & Services
-124021;ODIN | Separação dos clusters ODIN (IDP) por unidade de negócio;SI;Mail;Technology;High Level Design;14;;;;;Mail & Services
+131995;INT| -  Alarmística MuleSoft;SI;Mail;Technology;Backlog;55;;;;;Mail & Services
 124000;Milytech| Alteração à extração de dados de envios;GP ECL;eCommerce;Commercial;Backlog;21;;;;;Mail & Services
 123999;Interconnect Common Return Platform | Upgrade p/ V2 (CRP2);GP ECL;eCommerce;Commercial;In Definition;24;;;;;Mail & Services
 123649;Entrega em pontos para a cainiao;GS;eCommerce;Commercial;In Approval;1;3;2;4;2;Mail & Services
@@ -157,7 +157,7 @@
 108370;Campanha para envios internacionais_PCR_4T2025;GP B2B;Mail;Commercial;Backlog;18;;;;;Mail & Services
 107975;Descontinuação do winreg;SI-PRD;Mail;Technology;Backlog;7;;;;;Mail & Services
 107435;Novo Aceitação imediata de objetos expresso em lockerProjeto;GS;eCommerce;Commercial;Backlog;8;;;;;Mail & Services
-106746;ESW | Sonar | Connect Github based applications to Sonar;SI;Mail;Technology;Backlog;35;;;;;Mail & Services
+48158;IOP | Redução da Obsolescência Protocolos TLS 1.0 & 1.1 WAVE 4 - Servidores Unix;SI;Mail;Technology;Backlog;56;;;;;Mail & Services
 105944;Expresso Internacional Premium | Disponibilização do produto no segmento ocasional;GP ECL;eCommerce;Commercial;In Definition;9;;;;;Mail & Services
 105938;Notificações Expresso | Aceitação no PUDO (Pedido ZALANDO);GP ECL;eCommerce;Commercial;Backlog;34;;;;;Mail & Services
 105685;IA & Automação Corporate;SI-CRP;Mail;Technology;Backlog;3;;;;;Mail & Services
@@ -167,11 +167,11 @@
 100094;SRP - Descontinuação FTP;SI-PRD;eCommerce;Technology;Backlog;9;;;;;Mail & Services
 100093;TTEVOB - Descontinuação FTP;SI-PRD;eCommerce;Technology;Backlog;10;;;;;Mail & Services
 100092;PEF - Descontinuação da utilização do FTP;SI-PRD;Business Solutions;Technology;Backlog;11;;;;;Mail & Services
-98564;CCP | Commercial Catalog | Synchronization with SAP;SI;Mail;Technology;Backlog;15;;;;;Mail & Services
-96334;ESW | Github | Allow Github Actions to access resources inside CTT internal network;SI;Mail;Technology;Backlog;33;;;;;Mail & Services
-96332;CCP | OTP | Rebuild application in the current tech stack;SI;eCommerce;Technology;High Level Design;4;;;;;Mail & Services
+158454;APT | IBM ODM | configurar HTTPS;SI;Mail;Technology;Backlog;57;;;;;Mail & Services
+50641;APT | ODIN | Self Service;SI;Mail;Technology;Backlog;58;;;;;Mail & Services
+48157;IOP | Redução da Obsolescência Protocolos TLS 1.0 & 1.1 WAVE 3;SI;Mail;Technology;Backlog;59;;;;;Mail & Services
 95774;Alterações nos Relatórios do DEM para pagamentos MB WAY;GPG;Payments;Commercial;In Definition;5;;;;;Mail & Services
-95633;Assinaturas de autenticidade emails;SI;Mail;Technology;Backlog;52;;;;;Mail & Services
+48156;IOP | Redução da Obsolescência Protocolos TLS 1.0 & 1.1 WAVE 2;SI;Mail;Technology;Backlog;60;;;;;Mail & Services
 94915;Agentes Payshop - criação de base de dados certificada com ligação a ferramenta de edição/consulta;CSI;Mail;Commercial;Backlog;19;;;;;Mail & Services
 94489;Faturação Agentes Payshop - automatização e integração processo CTT;CSI;Mail;Commercial;Backlog;18;;;;;Mail & Services
 94164;Reconfiguração de Zonas de Taxação | Produtos Internacionais Expresso;GP ECL;eCommerce;Commercial;Backlog;23;;;;;Mail & Services
@@ -204,10 +204,10 @@
 76382;[35908] - Jornada NBO: MOBI;GS;Mail;Commercial;In Definition;20;;;;;Mail & Services
 76303;Correio Registado Self-Service| Envios a partir da SuperApp e Site CTT;GS;Mail;Commercial;Backlog;42;;;;;Mail & Services
 76082;GP B2C – BO Site CTT - Simulador Certificados de Aforro / App CTT – Aforro Digital;GP B2C;Retail & Financial Services;Commercial;Backlog;4;;;;;Mail & Services
-74950;IOP | Instalação e Ativação da Componente Guardian -  Nova Hyper V;SI;Mail;Technology;Backlog;54;;;;;Mail & Services
+131991;INT | Migração da solução da Knowledge Base atual para uma solução Knowledge Base coorporativa;SI;Mail;Technology;Backlog;61;;;;;Mail & Services
 74510;Alteração Talão Vales Postais superiores a 1.000€ - recomendação auditoria REC/ASN:2025-0015;CSI;Mail;Commercial;Backlog;11;;;;;Mail & Services
 71501;Nova Entidade Certificadora (CA) Autoridade Tributária e Aduaneira (AT).;CF;Mail;Corporate;In Definition;13;;;;;Mail & Services
-71332;IOP | Sistemas - Migração -  Nova Farm Hyper V Lisboa - Wave 3;SI;Mail;Technology;Pitch;42;;;;4;Mail & Services
+35914;IOP | Evolução da Private Key Infrastructure (PKI) dos CTT;SI;Mail;Technology;Backlog;62;;;;;Mail & Services
 71073;Lojas com necessidade de 2 máquinas dispensadoras de senhas;BCTT;Mail;Technology;Backlog;5;3;;2;1;Mail & Services
 70736;WFA | Incremento 3 | Férias;PC;Mail;Corporate;In Approval;4;;;;;Mail & Services
 70697;"Nexus | Digital Channels | CLIENT PORTAL | ""SUPER PORTAL"" (extra MVP)";DNI;eCommerce;Commercial;Backlog;3;;;;;Mail & Services
@@ -218,14 +218,14 @@
 69406;Nexus | We Bill | Upgrade Convergent Mediations e Charging;SI-CRP;eCommerce;Technology;In Definition;2;;;;;Mail & Services
 69341;Otimização CRB;CF;Mail;Corporate;Backlog;12;;;;;Mail & Services
 69337;Confirming 2.0;CF;eCommerce;Corporate;Backlog;11;;;;;Mail & Services
-69196;MACC: DC Lisboa - Jouney to Azure cloud;SI;Mail;Technology;Backlog;75;;;;;Mail & Services
+132058;Evolutivos CRM Q1.2026;SI;Mail;Technology;Pitch;63;2;;1;1;Mail & Services
 68919;Máquina vending machines: Associação de Receita, Faturação e gestão de stock;GS;Retail & Financial Services;Commercial;In Definition;31;;;;;Mail & Services
 68794;Tratamento de rejeitados no SD - Eliminar pré-avisos com CP ficticios (BG4);EDO;eCommerce;Operations;In Definition;13;;;;;Mail & Services
 68791;Tratamento de rejeitados no SD - Entrada de pré-aviso pós primeira passagem do objeto na rede de tratamento (BG3);EDO;eCommerce;Operations;In Definition;17;;;;;Mail & Services
 68267;Descontinuar Grafana Dados;PC;Mail;Corporate;Backlog;11;;;;;Mail & Services
 68236;Informação normalizada (Indicadores de Gestão IG) - Fusão relatório 65 no 59 (2º e 3º fase);GP B2B;Mail;Commercial;In Definition;6;;;;;Mail & Services
 67870;BCTT - disponibilização de logs via SFTP;BCTT;Mail;Technology;Backlog;7;;;;;Mail & Services
-65266;Desagregar a Intranet de Outsystems ( Acção Post Mortem - INC1002170);SI;Mail;Technology;Backlog;86;;;;;Mail & Services
+192640;IOP | DNS private resolvers - descontinuar bind em 2 vms ubuntu;SI;Mail;Technology;Backlog;64;;;;;Mail & Services
 65058;El corte Inglês - Relatorios de Conciliação forma automatica;GS;Mail;Commercial;In Definition;36;;;;;Mail & Services
 63944;solução de atualização de tracking em real time - Cliente Veryfex (Prozis);GS;eCommerce;Commercial;In Definition;21;;;;;Mail & Services
 63424;Revamp ViaCTT – 2ª Fase;GP B2B;Business Solutions;Commercial;In Definition;14;;;;;Mail & Services
@@ -251,23 +251,23 @@
 51052;NIS2 - Implementação de remediações (PT) - Gestão de Ativos;CISO;Mail;CISO;Backlog;7;;;;;Mail & Services
 51051;NIS2 - Implementação de remediações (PT) - Segurança da Supply Chain;CISO;Mail;CISO;Backlog;8;;;;;Mail & Services
 51049;Definição de Política de Gestão de Risco Cyber;CISO;Mail;CISO;Backlog;6;;;;;Mail & Services
-50994;APT | Mata Aplicações - Wave 1.13;SI;Mail;Technology;Backlog;1;;;;;Mail & Services
+192033;IOP | Internet - visibilidade sobre utilização e qualidade do serviço;SI;Mail;Technology;Backlog;65;;;;;Mail & Services
 50856;Definição de modelo de governo para gestão de segurança da informação, compliance e gestão de risco;CISO;Mail;CISO;Backlog;5;;;;;Mail & Services
 50849;Cyber attack simulation Table-top;CISO;Mail;CISO;Backlog;4;;;;;Mail & Services
 50788;CESOP - Reporte Regulatório AT;CF;Mail;Corporate;Backlog;9;;;;;Mail & Services
 50738;Piloto para experimentar o SW do BCE na loja;GS;Mail;Commercial;Backlog;29;;;;;Mail & Services
-50641;APT | ODIN | Self Service;SI;Mail;Technology;Backlog;58;;;;;Mail & Services
+131989;INT| -  Mata Aplicações Wave 1.1X - Tradutor;SI;Mail;Technology;Backlog;66;;;;;Mail & Services
 50544;Avaliação de Novo Software de Contact Center;AVC;Mail;Corporate;Backlog;10;3;2;2;3;Mail & Services
 50206;Tradução do Site e da App;GS;Mail;Commercial;Backlog;38;;;;;Mail & Services
-49513;APT | Mata Aplicações Wave 1.12 - GCC;SI;Mail;Technology;Backlog;30;;;;;Mail & Services
+180676;IOP | ClearPass - alargar cobertura da solução de Network Access Control;SI;Mail;Technology;Backlog;67;;;;;Mail & Services
 49198;Descontinuação do express2me para a super app;SI-PRD;Mail;Technology;Backlog;12;;;;;Mail & Services
 49197;Migrar os documentos do viactt para Filenet;SI-PRD;Business Solutions;Commercial;Ready for Solution;13;5;;;;Mail & Services
 48991;CCT 3.0 - powered by AI;DNI;Mail;Commercial;Backlog;5;;;;;Mail & Services
 48989;Evolução Pesquisa Pontos de Contacto CTT;CMP;Mail;Corporate;Backlog;1;;;;;Mail & Services
 48167;GPB2C | Via Verde – Repositório de informação;GP B2C;Retail & Financial Services;Commercial;Backlog;6;;;;;Mail & Services
-48158;IOP | Redução da Obsolescência Protocolos TLS 1.0 & 1.1 WAVE 4 - Servidores Unix;SI;Mail;Technology;Backlog;56;;;;;Mail & Services
-48157;IOP | Redução da Obsolescência Protocolos TLS 1.0 & 1.1 WAVE 3;SI;Mail;Technology;Backlog;59;;;;;Mail & Services
-48156;IOP | Redução da Obsolescência Protocolos TLS 1.0 & 1.1 WAVE 2;SI;Mail;Technology;Backlog;60;;;;;Mail & Services
+140460;Evolutivos CRM Q2.2026;SI;Mail;Technology;Backlog;68;2;1;1;1;Mail & Services
+180673;IOP | Segregação da Rede Privada;SI;Mail;Technology;Backlog;69;;;;;Mail & Services
+177129;IOP | Obsolescência WAVE 2 - Matar/Upgrade Oracle DB, IBM DB2 para ultimas versões suportadas (mínimo n-1);SI;Mail;Technology;Backlog;70;;;;;Mail & Services
 46567;A receita dos  Postos  Venda de Selos (PVS);GS;Mail;Commercial;Backlog;43;;;;;Mail & Services
 46558;A receita dos Pontos ctt não NAVe;GS;Mail;Commercial;Backlog;35;;;;;Mail & Services
 44975;Servidor  Decisões: Update automatico para a nova versão ODM;EDO;eCommerce;Operations;Backlog;9;;;;;Mail & Services
@@ -280,7 +280,7 @@
 36549;Novo Modelo de Replicação de Dados Contratuais;SI-PRD;Mail;Technology;Backlog;15;;;;;Mail & Services
 36274;Correção Mapeamento informático - metadados Vales Pagos internacionais;CSI;Mail;Commercial;In Definition;13;;;;;Mail & Services
 36196;Redução do número de sms enviados aos clientes;SI-PRD;eCommerce;Technology;Backlog;16;;;;;Mail & Services
-35914;IOP | Evolução da Private Key Infrastructure (PKI) dos CTT;SI;Mail;Technology;Backlog;62;;;;;Mail & Services
+131990;INT| Descontinuar os serviços suportados pelo Biztalk;SI;Mail;Technology;Backlog;71;;;;;Mail & Services
 35445;Data Governance - Reference Data Management - MVP;PC;Mail;Corporate;High Level Design;6;;;;;Mail & Services
 207256;Alteração Canal Produtos Pagamentos B2C;GS;Payments;Commercial;Backlog;44;;;;;Mail & Services
 206177;Galaxy | Avisados em Mobi - Indicadores de Loja (Modelo 415);GS;Mail;Commercial;Backlog;18;;;;;Mail & Services
@@ -304,10 +304,10 @@
 193256;Eliminação da impressão da guia da Loja na aceitação de objetos CTT Expresso (contratual e ocasional);CSI;Mail;Commercial;Backlog;17;;;;;Mail & Services
 193041;BancoCTT - Redução horário Tesouraria | Automatização do horário da senha D;BCTT;Mail;Technology;Backlog;6;;;;;Mail & Services
 192862;Criação Seção dados Complementares;CSI;Mail;Commercial;Backlog;25;;;;;Mail & Services
-192640;IOP | DNS private resolvers - descontinuar bind em 2 vms ubuntu;SI;Mail;Technology;Backlog;64;;;;;Mail & Services
+177128;IOP | Obsolescência WAVE 1 - Matar/Upgrade SQL Server anterior a 2019;SI;Mail;Technology;Backlog;72;;;;;Mail & Services
 192060;Despesa Frota e Edificios - Evolutivo;PC;Mail;Corporate;Backlog;17;;;;;Mail & Services
 192059;Implementação do software da Western Union (WUPOS) em NAVe e integração com todos os sistemas centrais;GP B2C;Retail & Financial Services;Commercial;In Definition;2;;;;;Mail & Services
-192033;IOP | Internet - visibilidade sobre utilização e qualidade do serviço;SI;Mail;Technology;Backlog;65;;;;;Mail & Services
+177126;IOP | Obsolescência WAVE 1 - Windows 7 (evoluir para windows 11);SI;Mail;Technology;Backlog;73;;;;;Mail & Services
 192027;Comunicações - Wifi 321 Crédito - Porto;BCTT;Mail;Technology;Backlog;4;;;;;Mail & Services
 190603;Formulário Criar Envio de Correio Internacional | Supressão do Serviço Especial de Cobrança no Correio Registado para o âmbito Internacional;GS;Mail;Commercial;Backlog;51;;;;;Mail & Services
 190399;Descontinuação do PIPOLI;SI-PRD;Business Solutions;Technology;Backlog;19;;;;;Mail & Services
@@ -322,15 +322,15 @@
 185664;PAY - Instrumento Cheques - Incremento I;CSI;Mail;Commercial;In Definition;2;;;;;Mail & Services
 181624;Banco CTT - Alteração Processo Faturação;BCTT;Mail;Technology;Backlog;3;3;;;;Mail & Services
 181384;PAY - Instrumento Transferências - Alteração Requisitos - Fev;CSI;Mail;Commercial;In Definition;1;;;;;Mail & Services
-180676;IOP | ClearPass - alargar cobertura da solução de Network Access Control;SI;Mail;Technology;Backlog;67;;;;;Mail & Services
-180673;IOP | Segregação da Rede Privada;SI;Mail;Technology;Backlog;69;;;;;Mail & Services
-180670;INT | IBM Sterling File Gateway - implementar balanceamento;SI;Mail;Technology;In Solution;7;;;;;Mail & Services
+177125;IOP | Obsolescência Infraestrutura WAVE 0 - Converter LDAP em LDAPS (ENABLERS);SI;Mail;Technology;Backlog;74;;;;;Mail & Services
+69196;MACC: DC Lisboa - Jouney to Azure cloud;SI;Mail;Technology;Backlog;75;;;;;Mail & Services
+132021;ESW | EQA | Definição de Checklist Mínimo de QA por Projeto;SI;Mail;Technology;Backlog;76;;;;;Mail & Services
 178627;GPECL/DIS - Notificações Sábado e Domingo // alteração do processo de indicação da data de entrega;GP ECL;eCommerce;Commercial;Backlog;27;;;;;Mail & Services
 177539;Evolução tecnológica do PIAO;SI-PRD;Business Solutions;Technology;Backlog;20;;;;;Mail & Services
-177129;IOP | Obsolescência WAVE 2 - Matar/Upgrade Oracle DB, IBM DB2 para ultimas versões suportadas (mínimo n-1);SI;Mail;Technology;Backlog;70;;;;;Mail & Services
-177128;IOP | Obsolescência WAVE 1 - Matar/Upgrade SQL Server anterior a 2019;SI;Mail;Technology;Backlog;72;;;;;Mail & Services
-177126;IOP | Obsolescência WAVE 1 - Windows 7 (evoluir para windows 11);SI;Mail;Technology;Backlog;73;;;;;Mail & Services
-177125;IOP | Obsolescência Infraestrutura WAVE 0 - Converter LDAP em LDAPS (ENABLERS);SI;Mail;Technology;Backlog;74;;;;;Mail & Services
+132023;ESW | EQA |Estabilização de Testes Automáticos Existentes de QA;SI;Mail;Technology;Backlog;77;;;;;Mail & Services
+132024;ESW | EQA | Utilização Regular da Automação de QA em Regressões;SI;Mail;Technology;Backlog;78;;;;;Mail & Services
+125692;Upgrade plataforma OutSystems para versão 11.40.0;SI;Mail;Technology;In Approval;79;3;4;4;1;Mail & Services
+125693;Upgrade servidores OutSystems para Windows Server 2022;SI;Mail;Technology;In Approval;80;3;4;4;1;Mail & Services
 177123;Obsolescência WAVE 0 - Converter LDAP em LDAPS (BCTT);BCTT;Mail;Technology;Backlog;13;;;;;Mail & Services
 176414;Iberian - Incremento Visão de tratamento por KG's, Restantes Kpi's;PC;eCommerce;Corporate;Backlog;13;;;;;Mail & Services
 175823;Report automatizado para Crédito Pessoal;BCTT;Mail;Technology;Backlog;11;;;;;Mail & Services
@@ -343,7 +343,7 @@
 173281;Motor de Pesquisa de Varios objetos no S&V;CSI;Mail;Commercial;Backlog;16;;;;;Mail & Services
 173279;Motor de Pesquisa de Varios objetos no T&T;CSI;Mail;Commercial;Backlog;15;;;;;Mail & Services
 173278;Motor de Pesquisa de Varios objetos no SGC;CSI;Mail;Commercial;Backlog;9;;;;;Mail & Services
-173201;IOP | CrushFTP - migração de CentOS para Ubuntu;SI;Mail;Technology;Backlog;44;;;;;Mail & Services
+135004;ESW | Criação de novo agente AI para validação de código obsoleto;SI;Mail;Technology;In Approval;81;3;4;1;1;Mail & Services
 173104;PAY - Instrumento Transferências - Alteração de requisitos definidos pelo BdP - março;CSI;Mail;Commercial;In Definition;3;;;;;Mail & Services
 172578;Banco CTT - Gestão de Acessos em SAP4Hana;BCTT;Mail;Technology;Backlog;12;;;;;Mail & Services
 169812;Planeamento e Controlo Diário - Conciliação Modelo A;CSI;Mail;Commercial;Backlog;22;;;;;Mail & Services
@@ -353,7 +353,7 @@
 160300;Incusão de informação da “Faturação prevista” e “Tráfego previsto nos Relatorios;GS;Mail;Commercial;Backlog;60;;;;;Mail & Services
 160028;BFT - Faturas com 4 casas decimais;CSI;Mail;Commercial;Backlog;24;;;;;Mail & Services
 159032;Aplicação OPL6 compromete a segurança do ecossistema CTT,;GS;Mail;Commercial;Backlog;49;;;;;Mail & Services
-158454;APT | IBM ODM | configurar HTTPS;SI;Mail;Technology;Backlog;57;;;;;Mail & Services
+138084;Fábrica OutSystems | Melhorias à plataforma - JAN, FEV MAR 2026;SI;eCommerce;Technology;Pitch;82;;;;;Mail & Services
 157527;Nova Oferta produtos Untracked e Tracked Simples - melhoria de informação site TT 2023 07 24;GP ECL;eCommerce;Commercial;Backlog;29;;;;;Mail & Services
 156771;GPB2C | Subsidio Social de Mobilidade - Recomendações de Auditoria (Nº 21001/23);GP B2C;Retail & Financial Services;Commercial;Backlog;12;;;;;Mail & Services
 155973;Relatorio SAP Hana - Clientes com Fatura Eletronica;GS;eCommerce;Commercial;Backlog;62;;;;;Mail & Services
@@ -392,18 +392,18 @@
 139883;[NEXUS] [Fase 2] Decision Server define the exit based on Route;EDO;eCommerce;Operations;In Definition;1;;;;;Mail & Services
 139708;[NEXUS][PT]- PRODUCTO BANCA;GP ECL;eCommerce;Commercial;Backlog;1;;;;;Mail & Services
 137662;Teste ASC Epic Title (ex initiative);AVC;eCommerce;Corporate;Backlog;11;3;2;2;3;Mail & Services
-140431;Novo Catalogo de Aplicações (Atlas 2.0);SI;Mail;Technology;Backlog;19;;;;;Mail & Services
+137572;Criação de WAF para Infraestrutura de OutSystems;SI;eCommerce;Technology;In Definition;83;;;;;Mail & Services
 140430;Packs de Envio – Evolução Integrada do Serviço;GP B2B;Mail;Commercial;Backlog;11;;;;;Mail & Services
 140414;Corporate Sites - Evolutivas - MAR e ABR 2026;DNI;Mail;Commercial;Backlog;8;;;;;Mail & Services
 140404;Ecossistema B2C – Evolutiva - MAR e ABR 2026;DNI;eCommerce;Commercial;Backlog;9;3;2;1;3;Mail & Services
 140378;Dados Operações Online;SEO;eCommerce;Operations;Backlog;3;;;;;Mail & Services
 140332;Conta CTT | Revamp da Conta CTT;DNI;eCommerce;Commercial;Backlog;4;3;;;4;Mail & Services
 140323;Migration of J1CPTA - Data flows towards IPMX -NGIPMX-716 NGIPMX-699 NGIPMX-601;SI-OPS;Mail;Operations;In Definition;2;2;4;3;3;Mail & Services
-140483;INT | - Evolutivo Mulesoft - Março e Abril;SI;Mail;Technology;In Definition;29;2;1;1;1;Mail & Services
-140470;Mata Aplicações - Wave 1.15 - CRM Oracle Sales (Fase 1 - Execução);SI;Mail;Technology;Backlog;39;;;;;Mail & Services
+125694;ESW | Integração de Crashlytics nas aplicações mobile;SI;Mail;Technology;In Definition;84;;;;;Mail & Services
+132278;dotCMS - update da versão;SI;Mail;Technology;High Level Design;85;;;;;Mail & Services
+65266;Desagregar a Intranet de Outsystems ( Acção Post Mortem - INC1002170);SI;Mail;Technology;Backlog;86;;;;;Mail & Services
+137551;Quick Wins - Super App B2C;SI;eCommerce;Technology;In Definition;87;;;;;Mail & Services
 140465;CoE OutSystems | Upgrade de MABS 11.2 para MABS 12;SI;eCommerce;Technology;Backlog;88;;;;;Mail & Services
-140460;Evolutivos CRM Q2.2026;SI;Mail;Technology;Backlog;68;2;1;1;1;Mail & Services
-140454;Kafka | Self Service;SI;eCommerce;Technology;Backlog;47;;;;;Mail & Services
 139711;[NEXUS][PT]- INTERNACIONAL EUROPA;GP ECL;eCommerce;Commercial;Backlog;4;;;;;Mail & Services
 139710;[NEXUS][PT]-  PRODUCTO INTERNACIONAL;GP ECL;eCommerce;Commercial;Backlog;3;;;;;Mail & Services
 139709;[NEXUS][PT]-  PROD INTERNACIONAL PREMIUM;GP ECL;eCommerce;Commercial;Backlog;5;;;;;Mail & Services
@@ -419,7 +419,7 @@
 88802;Helena Evolução + Arquitetura de referência para Soluções AI - Incremento 1;AVC;Mail;Corporate;In Acceptance;1003;;;;;Mail & Services
 60535;[WebHook] - Shein ADT - Migración de infraestructura de Shein ADT;CIO;eCommerce;Technology;In Acceptance;1004;;;;;eCommerce
 46806;[Qlik] - APP Contact Center Integrar toda la información de casos de Salesforce;ATC;eCommerce;Corporate;In Acceptance;1005;;;;;eCommerce
-69008;APT | Migração APIs IBM em Mulesoft - Iniciativa 4;SI;Mail;Technology;In Acceptance;1006;;;;;Mail & Services
+137549;Outsystems - Evolução processo de CI/CD;SI;eCommerce;Technology;Pitch;89;;;;;Mail & Services
 129623;SAPSF Evolutivos 01.2026;GRH;Mail;Corporate;In Acceptance;1007;2;4;3;2;Mail & Services
 57319;[Nexus] [We Sell] Carga de clientes de PT en Salesforce Sales;CCO;eCommerce;Commercial;Ready for Acceptance;1008;;;;;eCommerce
 57268;[Nexus Piloto Operacional] Generación y consumo del POD para Fase 2;CMO;eCommerce;Commercial;Ready for Acceptance;1009;;;;;eCommerce
@@ -918,10 +918,11 @@
 99804;NOTA (fase 3) Controlo de Fundos de Maneio das Lojas;CF;Retail & Financial Services;Corporate;In Development;1029;;;;;Mail & Services
 120528;Auditoria 2.0 - Criação de Data Lake para implementação de Auditoria Contínua e Auditoria à Distancia - Entrega R1;ACR;Mail;Corporate;In Development;1030;;;;;Mail & Services
 120533;Auditoria 2.0 - Criação de Data Lake para implementação de Auditoria Contínua e Auditoria à Distancia - Entrega R2;ACR;Mail;Corporate;In Development;1031;;;;;Mail & Services
+69008;APT | Migração APIs IBM em Mulesoft - Iniciativa 4;SI;Mail;Technology;In Acceptance;1006;;;;;Mail & Services
 127822;APT | Migração APIs IBM em Mulesoft - Fase 5/5;SI;Mail;Technology;In Development;1016;4;5;3;4;Mail & Services
-120240;Mata Aplicações - Wave 1.14;SI;Mail;Technology;In Development;1033;4;2;2;3;Mail & Services
 98651;SAPSF - encriptação ficheiros SEPA CTT + CTTE;GRH;Mail;Corporate;In Development;1034;2;2;2;1;Mail & Services
 99510;SAPSF -  Solução de Interoperabilidade com a Segurança Social (Regulatório);GRH;Mail;Corporate;In Development;1035;3;2;2;1;Mail & Services
 50852;SOC  - operacionalização do serviço;CISO;Mail;CISO;In Development;1017;;;;;Mail & Services
 126944;GitHub Migration - Aplicações Wave 1;SI-OPS;Mail;Technology;In Development;1036;4;3;3;3;Mail & Services
 136770;GitHub Migration - Aplicações Wave 2;SI-OPS;Mail;Technology;In Development;1037;4;3;3;2;Mail & Services
+120240;Mata Aplicações - Wave 1.14;SI;Mail;Technology;In Development;1033;4;2;2;3;Mail & Services

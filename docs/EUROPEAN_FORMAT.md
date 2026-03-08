@@ -141,7 +141,7 @@ To verify the European format is working correctly:
 ```bash
 # Run prioritization
 python3 tom_demand.py prioritize \
-  --ideas data/input/ideias.csv \
+  --ideas data/input/ideas202603.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
   --bg-rs-weights data/input/weights_bg_rs.csv \

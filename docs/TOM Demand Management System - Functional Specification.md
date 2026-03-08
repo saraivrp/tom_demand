@@ -4,7 +4,7 @@
 ## Document Information
 **Document**: TOM Demand Management System - Functional Specification
 **Version**: 3.3.0
-**Date**: January 25, 2026
+**Date**: March 6, 2026
 **Author**: Lean Portfolio Management Specialist
 **Status**: Final - Production System
 **Change Log**:
@@ -532,13 +532,15 @@ Mail,SainteLague,1,IDEA003,Mail Sorting Automation,DIR_Mail_Operations,Operation
 * weights_rs.csv (Revenue Stream weights)
 **Process**
 1. Load RS prioritization and RS weights
-2. **Determine Queue** for each IDEA based on MicroPhase (v3.1):
+2. **Determine Queue** for each IDEA based on MicroPhase (v3.2):
    * NOW queue: Development phases (In Development, Ready for Acceptance, In Acceptance, Selected for Production)
-   * NEXT queue: Planning phases (Need + Solution phases)
+   * NEXT queue: Execution-ready phase (Ready for Execution)
+   * LATER queue: Planning phases — Need + Solution (Backlog, In Definition, Pitch, Ready for Solution, High Level Design, Ready for Approval, In Approval)
    * PRODUCTION queue: Production phases (In Rollout, In Production)
 3. For each method (Sainte-Laguë, D'Hondt, WSJF):
    * **Process NOW queue first** → Ranks 1 to N (highest priority)
-   * **Process NEXT queue second** → Ranks N+1 to M (lower priority)
+   * **Process NEXT queue second** → Ranks N+1 to M
+   * **Process LATER queue third** → Ranks M+1 to P (lower priority)
    * **Process PRODUCTION queue** → No ranking (null)
 4. Consolidate results with sequential global ranking
 
@@ -563,14 +565,16 @@ PRODUCTION;sainte-lague;;IDEA012;Banco CTT Mobile App;DIR_Banco_Tech;Banco CTT;T
 **Validations**
 * NOW queue: Global rankings sequential (1 to N) per method
 * NEXT queue: Global rankings sequential (N+1 to M) per method
+* LATER queue: Global rankings sequential (M+1 to P) per method
 * PRODUCTION queue: No ranking (GlobalRank is null)
 * All IDEAs represented in each method
 * Weights of RS sum to 100 (or normalize automatically)
 
-**Sequential Ranking Logic (v3.1)**
-* Development work (NOW) always ranks higher than planning work (NEXT)
+**Sequential Ranking Logic (v3.2)**
+* Development work (NOW) always ranks higher than execution-ready work (NEXT)
+* Execution-ready work (NEXT) always ranks higher than planning work (LATER)
 * Within each queue, standard prioritization algorithms apply
-* PRODUCTION items are tracked but not prioritized  
+* PRODUCTION items are tracked but not prioritized
   
 ## 6. Functional Specification  
 ## 6.1 System Architecture  
@@ -1657,19 +1661,19 @@ def prioritize_level2(
 * ✅ Windows executable build script
 * ✅ Interactive CLI prompts
 
-## Phase 4: Integration and Analytics (Future)
+## Phase 4: Integration and Analytics (Partially Complete)
 **Objectives**: External integrations and reporting
 **Deliverables**:
-* 🔄 REST API for integration
+* ✅ REST API for integration (FastAPI, async jobs, role-based auth, audit logging — v3.3)
+* ✅ Web dashboard — React 19 + Vite SPA, early stage — v3.3
 * 🔄 Webhook support for automated triggers
 * 🔄 Jira/Azure DevOps integration
-* 🔄 Dashboard for visualization (optional)
-* 🔄 Capacity planning report
+* 🔄 Capacity planning reports
 * 🔄 Historical trend analysis
 
 **Legend**:
 * ✅ Included in v3.3.0
-* 🔄 Planned for v4.0  
+* 🔄 Planned for future release
   
 ## 11. Glossary  
 
@@ -1837,29 +1841,44 @@ WSJF,6,I4,Sorting,RA3,RS2,0.083
 ## Appendix C: Project Structure
 ```
 tom_demand/
-├── src/                              # Source code (2,104 lines total)
-│   ├── __init__.py                   (9 lines)
-│   ├── loader.py                     (318 lines) - Data loading and validation
-│   ├── validator.py                  (311 lines) - Centralized validation engine
-│   ├── prioritizer.py                (401 lines) - Main prioritization logic
+├── src/                              # Source code (~3,570 lines total)
+│   ├── loader.py                     (379 lines) - Data loading and validation
+│   ├── validator.py                  (373 lines) - Centralized validation engine
+│   ├── prioritizer.py                (501 lines) - Main prioritization logic
 │   ├── algorithms/
-│   │   ├── __init__.py               (9 lines)
-│   │   ├── sainte_lague.py           (157 lines) - Sainte-Laguë implementation
-│   │   ├── dhondt.py                 (152 lines) - D'Hondt implementation
+│   │   ├── sainte_lague.py           (163 lines) - Sainte-Laguë implementation
+│   │   ├── dhondt.py                 (158 lines) - D'Hondt implementation
 │   │   └── wsjf.py                   (104 lines) - WSJF implementation
-│   ├── exporter.py                   (231 lines) - CSV/JSON export functions
-│   ├── cli.py                        (364 lines) - Command-line interface
+│   ├── api/                          # FastAPI REST layer
+│   │   ├── main.py                   - App factory, middleware, router registration
+│   │   ├── auth.py                   - API key + role-based authentication
+│   │   ├── audit.py                  - Audit logging middleware
+│   │   ├── jobs.py                   - Async job management
+│   │   ├── errors.py                 - Custom exception handlers
+│   │   ├── routers/                  - Endpoint groups
+│   │   │   ├── workflows.py
+│   │   │   ├── reference_data.py
+│   │   │   ├── system.py
+│   │   │   └── jobs.py
+│   │   └── models/                   - Pydantic request/response schemas
+│   ├── services/                     # Service orchestration layer
+│   │   ├── demand_service.py         (197 lines) - Shared pipeline (CLI + API)
+│   │   └── reference_data_service.py (156 lines) - IDEAS/weight file management
+│   ├── exporter.py                   (237 lines) - CSV/JSON export functions
+│   ├── cli.py                        (271 lines) - Command-line interface
 │   └── utils.py                      (48 lines) - Helper functions
 │
+├── frontend/                         # React 19 + Vite SPA (early stage)
+│
 ├── tests/
-│   └── __init__.py
+│   └── test_api_endpoints.py
 │
 ├── config/
-│   └── config.yaml                   (128 lines) - Configuration settings
+│   └── config.yaml                   (133 lines) - Configuration settings
 │
 ├── data/
 │   ├── input/                        # Input files directory
-│   │   ├── ideias.csv
+│   │   ├── ideas<YYYYMM>.csv         (e.g. ideas202603.csv)
 │   │   ├── weights_ra.csv
 │   │   ├── weights_bg_rs.csv
 │   │   └── weights_rs.csv
@@ -1867,14 +1886,16 @@ tom_demand/
 │       ├── demand.csv
 │       ├── demand_*.csv
 │       ├── prioritization_rs_*.csv
-│       └── metadata.json
+│       ├── metadata.json
+│       └── api_audit.jsonl           - API audit log
 │
 ├── docs/
 │   ├── TOM Demand Management System - Functional Specification.md
 │   ├── PROJECT_SUMMARY.md
-│   └── EUROPEAN_FORMAT.md
+│   ├── EUROPEAN_FORMAT.md
+│   └── RUNBOOK.md
 │
-├── tom_demand.py                     (16 lines) - Main entry point
+├── tom_demand.py                     (15 lines) - Main entry point
 ├── build_windows.bat                 # Windows executable build script
 ├── requirements.txt                  # Python dependencies
 ├── README.md                         # Project overview
@@ -1939,6 +1960,7 @@ mypy>=0.910
 | 3.2     | 2026-01-05 | LPM Specialist | Added four-queue system (NOW/NEXT/LATER/PRODUCTION)              |
 | 3.3     | 2026-01-05 | LPM Specialist | Added per-queue prioritization methods (CLI flags per queue)     |
 | 3.3.0   | 2026-01-25 | LPM Specialist | Documentation update - aligned with production codebase v3.3.0   |
+| 3.3.1   | 2026-03-06 | LPM Specialist | Updated §5.4 to 4-queue model (LATER queue), Phase 4 REST API marked complete, Appendix C line counts and structure refreshed |
   
 **Approval**:  
 * Portfolio Manager: _________________ Date: _______  

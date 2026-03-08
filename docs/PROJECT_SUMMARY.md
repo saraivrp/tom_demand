@@ -13,9 +13,9 @@ A complete demand prioritization system for CTT implementing three proportional 
 - WSJF (Weighted Shortest Job First)
 
 ### Code Statistics
-- **Core CLI/algorithm modules**: ~2,100 lines (11 modules)
-- **API + service layer**: ~1,200+ additional lines
-- **Total Python codebase**: ~3,300+ lines
+- **Core CLI/algorithm modules**: ~2,250 lines (10 modules)
+- **API + service layer**: ~1,320+ additional lines
+- **Total Python codebase**: ~3,570+ lines
 - Well-structured, modular architecture
 - Comprehensive validation and error handling
 - Full CLI interface with 5 commands
@@ -116,7 +116,7 @@ Comprehensive YAML configuration ([config/config.yaml](config/config.yaml)):
 ### 7. Example Data ✅
 
 Input files (naming convention: `ideas<YYYYMM>.csv`):
-- `data/input/ideas202602.csv` - 50+ sample IDEAs
+- `data/input/ideas202603.csv` - 50+ sample IDEAs
 - `data/input/weights_ra.csv` - RA weights across 7 RSs
 - `data/input/weights_rs.csv` - 7 RS strategic weights
 
@@ -137,9 +137,10 @@ Input files (naming convention: `ideas<YYYYMM>.csv`):
 ```bash
 # Validation test
 python3 tom_demand.py validate \
-  --ideas data/input/ideias.csv \
+  --ideas data/input/ideas202603.csv \
   --ra-weights data/input/weights_ra.csv \
-  --rs-weights data/input/weights_rs.csv
+  --rs-weights data/input/weights_rs.csv \
+  --bg-rs-weights data/input/weights_bg_rs.csv
 
 ✓ All validations passed
 ```
@@ -147,9 +148,10 @@ python3 tom_demand.py validate \
 ```bash
 # Full prioritization test
 python3 tom_demand.py prioritize \
-  --ideas data/input/ideias.csv \
+  --ideas data/input/ideas202603.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
+  --bg-rs-weights data/input/weights_bg_rs.csv \
   --all-methods \
   --output-dir data/output
 
@@ -229,14 +231,14 @@ All output files generated successfully:
 
 ```
 tom_demand/
-├── tom_demand.py                 (Main entry point, 16 lines)
+├── tom_demand.py                 (Main entry point, 15 lines)
 ├── requirements.txt
 ├── config/
-│   └── config.yaml               (128 lines)
+│   └── config.yaml               (133 lines)
 ├── src/
 │   ├── algorithms/
-│   │   ├── sainte_lague.py       (157 lines)
-│   │   ├── dhondt.py             (152 lines)
+│   │   ├── sainte_lague.py       (163 lines)
+│   │   ├── dhondt.py             (158 lines)
 │   │   └── wsjf.py               (104 lines)
 │   ├── api/                      (FastAPI REST layer)
 │   │   ├── main.py
@@ -247,22 +249,23 @@ tom_demand/
 │   │   ├── routers/
 │   │   └── models/
 │   ├── services/
-│   │   ├── demand_service.py
-│   │   └── reference_data_service.py
-│   ├── validator.py              (311 lines)
-│   ├── loader.py                 (318 lines)
-│   ├── prioritizer.py            (401 lines)
-│   ├── exporter.py               (231 lines)
+│   │   ├── demand_service.py     (197 lines)
+│   │   └── reference_data_service.py (156 lines)
+│   ├── validator.py              (373 lines)
+│   ├── loader.py                 (379 lines)
+│   ├── prioritizer.py            (501 lines)
+│   ├── exporter.py               (237 lines)
 │   ├── utils.py                  (48 lines)
-│   └── cli.py                    (364 lines)
+│   └── cli.py                    (271 lines)
 ├── frontend/                     (React 19 + Vite SPA)
 ├── tests/
 │   └── test_api_endpoints.py
 ├── data/
 │   ├── input/
-│   │   ├── ideas<YYYYMM>.csv     (e.g. ideas202602.csv)
+│   │   ├── ideas<YYYYMM>.csv     (e.g. ideas202603.csv)
 │   │   ├── weights_ra.csv
-│   │   └── weights_rs.csv
+│   │   ├── weights_rs.csv
+│   │   └── weights_bg_rs.csv
 │   └── output/
 │       ├── demand.csv
 │       ├── demand_*.csv
@@ -339,7 +342,7 @@ The system is ready for use in CTT's portfolio management process.
 ---
 
 **Version**: 3.3.0
-**Date**: February 24, 2026
+**Date**: March 6, 2026
 **Status**: Production Ready
 **Latest Updates**:
 - **v3.3**: Per-queue prioritization methods, FastAPI REST layer, async jobs, role-based auth, audit logging, React frontend

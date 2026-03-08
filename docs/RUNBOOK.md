@@ -20,6 +20,11 @@ npm install
 npm run dev
 ```
 
+3. Docker Compose (API + Frontend together):
+```bash
+docker compose up --build
+```
+
 ## Auth Configuration
 
 Environment variables:
