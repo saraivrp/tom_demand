@@ -338,10 +338,19 @@ class Prioritizer:
 
                     # Add IDEA details from first method
                     if 'Name' not in row:
-                        row['Name'] = idea_row.iloc[0]['Name']
-                        row['RevenueStream'] = idea_row.iloc[0]['RevenueStream']
-                        row['RequestingArea'] = idea_row.iloc[0]['RequestingArea']
-                        row['WSJF_Score'] = idea_row.iloc[0].get('WSJF_Score', 0)
+                        detail_columns = [
+                            'Name',
+                            'RevenueStream',
+                            'RequestingArea',
+                            'BudgetGroup',
+                            'MicroPhase',
+                            'PriorityRA',
+                            'Queue',
+                            'WSJF_Score',
+                        ]
+                        for col in detail_columns:
+                            if col in idea_row.columns:
+                                row[col] = idea_row.iloc[0][col]
 
             comparison_data.append(row)
 
@@ -352,10 +361,25 @@ class Prioritizer:
         if rank_columns:
             comparison_df['rank_variance'] = comparison_df[rank_columns].std(axis=1)
 
-        # Sort by average rank
+        # Calculate average rank for analysis
         if rank_columns:
             comparison_df['avg_rank'] = comparison_df[rank_columns].mean(axis=1)
-            comparison_df.sort_values('avg_rank', inplace=True)
+
+        # Sort deterministically by method ranks for easier side-by-side inspection.
+        # Primary order follows method execution order.
+        sort_columns = []
+        for method in ['sainte-lague', 'dhondt', 'wsjf']:
+            method_rank_col = f'{method}_rank'
+            if method_rank_col in comparison_df.columns:
+                sort_columns.append(method_rank_col)
+
+        if sort_columns:
+            if 'avg_rank' in comparison_df.columns:
+                sort_columns.append('avg_rank')
+            sort_columns.append('ID')
+            comparison_df.sort_values(sort_columns, inplace=True, kind='mergesort')
+        elif 'avg_rank' in comparison_df.columns:
+            comparison_df.sort_values(['avg_rank', 'ID'], inplace=True, kind='mergesort')
 
         if top_n:
             comparison_df = comparison_df.head(top_n)

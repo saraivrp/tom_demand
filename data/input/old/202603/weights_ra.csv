@@ -1,0 +1,78 @@
+﻿RequestingArea;RevenueStream;BudgetGroup;Weight
+COO;eCommerce;Operations;50
+CMO;eCommerce;Commercial;33,4
+ATC;eCommerce;Corporate;40
+CCO;eCommerce;Commercial;33,3
+IDC;eCommerce;Commercial;33,3
+CFO;eCommerce;Corporate;40
+CIO;eCommerce;Technology;100
+PRO;eCommerce;Corporate;10
+CHR;eCommerce;Corporate;5
+COM;eCommerce;Corporate;5
+GP ECL;eCommerce;Commercial;1E-10
+CISO;eCommerce;CISO;100
+IAD;eCommerce;Data & AI;100
+GS;eCommerce;Commercial;1E-10
+EDO;eCommerce;Operations;49
+ACR;eCommerce;Corporate;1E-10
+SI;eCommerce;Technology;1E-10
+SEO;eCommerce;Operations;1E-10
+CF;eCommerce;Corporate;1E-10
+SI-OPS;eCommerce;Technology;1E-10
+BCTT;eCommerce;Technology;1E-10
+SI-PRD;eCommerce;Technology;1E-10
+AVC;eCommerce;Corporate;1E-10
+EM;eCommerce;Operations;1
+DNI;eCommerce;Commercial;1E-10
+SI-CRP;eCommerce;Technology;1E-10
+CSI;eCommerce;Commercial;1E-10
+GP B2B;eCommerce;Commercial;1E-10
+DPO;eCommerce;Corporate;1E-10
+GP B2C;eCommerce;Commercial;1E-10
+GT;eCommerce;Corporate;1E-10
+GPG;eCommerce;Commercial;1E-10
+GRH;eCommerce;Corporate;1E-10
+ECM;eCommerce;Commercial;1E-10
+PC;eCommerce;Corporate;1E-10
+RS;eCommerce;Corporate;1E-10
+ST;eCommerce;Corporate;1E-10
+CL;eCommerce;Corporate;1E-10
+CMP;eCommerce;Corporate;1E-10
+FL;eCommerce;Corporate;1E-10
+TF;eCommerce;Corporate;1E-10
+CTTE;eCommerce;Commercial;1E-10
+GP B2B;Mail & Services;Commercial;16
+GP ECL;Mail & Services;Commercial;16
+DNI;Mail & Services;Commercial;16
+GS;Mail & Services;Commercial;12
+CSI;Mail & Services;Commercial;10
+GP B2C;Mail & Services;Commercial;9
+CTTE;Mail & Services;Commercial;9
+GPG;Mail & Services;Commercial;9
+ECM;Mail & Services;Commercial;3
+SEO;Mail & Services;Operations;35
+EDO;Mail & Services;Operations;35
+EM;Mail & Services;Operations;30
+ACR;Mail & Services;Corporate;6,666666667
+CF;Mail & Services;Corporate;6,666666667
+RS;Mail & Services;Corporate;6,666666667
+AVC;Mail & Services;Corporate;6,666666667
+GRH;Mail & Services;Corporate;6,666666667
+GT;Mail & Services;Corporate;6,666666667
+CL;Mail & Services;Corporate;6,666666667
+PC;Mail & Services;Corporate;6,666666667
+DPO;Mail & Services;Corporate;6,666666667
+CMP;Mail & Services;Corporate;6,666666667
+ST;Mail & Services;Corporate;6,666666667
+FL;Mail & Services;Corporate;4,444444445
+NSP;Mail & Services;Corporate;6,666666667
+TF;Mail & Services;Corporate;6,666666667
+SSJ;Mail & Services;Corporate;4,444444445
+RC;Mail & Services;Corporate;4,444444445
+SI;Mail & Services;Technology;40
+BCTT;Mail & Services;Technology;15
+SI-PRD;Mail & Services;Technology;15
+SI-OPS;Mail & Services;Technology;15
+SI-CRP;Mail & Services;Technology;15
+IAD;Mail & Services;Data & AI;100
+CISO;Mail & Services;CISO;100

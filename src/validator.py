@@ -210,9 +210,13 @@ class Validator:
             dup_rows = df[duplicates][['RevenueStream', 'BudgetGroup', 'RequestingArea']]
             errors.append(f"Duplicate combinations found: {len(dup_rows)} row(s)")
 
+        weight_series = self._validate_weight_column(df, errors)
+        if weight_series is None:
+            return ValidationResult(False, errors, warnings)
+
         # Validate weights are positive
-        if (df['Weight'] <= 0).any():
-            invalid = df[df['Weight'] <= 0]
+        if (weight_series <= 0).any():
+            invalid = df[weight_series <= 0]
             errors.append(f"Found {len(invalid)} weight(s) <= 0")
 
         # Validate RevenueStream values
@@ -228,7 +232,7 @@ class Validator:
             errors.append(f"Invalid Budget Group values: {', '.join(str(v) for v in invalid_values)}")
 
         # Check if weights sum to 100 per (RS, BG) (warning only)
-        grouped = df.groupby(['RevenueStream', 'BudgetGroup'])['Weight'].sum()
+        grouped = weight_series.groupby([df['RevenueStream'], df['BudgetGroup']]).sum()
         for (rs, bg), total in grouped.items():
             if abs(total - 100) > 0.01:  # Allow small floating point errors
                 warnings.append(
@@ -266,9 +270,13 @@ class Validator:
             dup_rows = df[duplicates][['RevenueStream', 'BudgetGroup']]
             errors.append(f"Duplicate combinations found: {len(dup_rows)} row(s)")
 
+        weight_series = self._validate_weight_column(df, errors)
+        if weight_series is None:
+            return ValidationResult(False, errors, warnings)
+
         # Validate weights are positive
-        if (df['Weight'] <= 0).any():
-            invalid = df[df['Weight'] <= 0]
+        if (weight_series <= 0).any():
+            invalid = df[weight_series <= 0]
             errors.append(f"Found {len(invalid)} weight(s) <= 0")
 
         # Validate RevenueStream values
@@ -285,7 +293,7 @@ class Validator:
 
         # Check if weights sum to 100 per RS (warning only)
         for rs in df['RevenueStream'].unique():
-            total = df[df['RevenueStream'] == rs]['Weight'].sum()
+            total = weight_series[df['RevenueStream'] == rs].sum()
             if abs(total - 100) > 0.01:
                 warnings.append(
                     f"Revenue Stream '{rs}': BG weights sum to {total:.2f}, not 100.0"
@@ -321,9 +329,13 @@ class Validator:
             duplicates = df[df['RevenueStream'].duplicated()]['RevenueStream'].tolist()
             errors.append(f"Duplicate Revenue Streams: {', '.join(str(v) for v in duplicates)}")
 
+        weight_series = self._validate_weight_column(df, errors)
+        if weight_series is None:
+            return ValidationResult(False, errors, warnings)
+
         # Validate weights are positive
-        if (df['Weight'] <= 0).any():
-            invalid = df[df['Weight'] <= 0]
+        if (weight_series <= 0).any():
+            invalid = df[weight_series <= 0]
             errors.append(f"Found {len(invalid)} weight(s) <= 0")
 
         # Validate RevenueStream values
@@ -333,12 +345,40 @@ class Validator:
             errors.append(f"Invalid Revenue Stream values: {', '.join(str(v) for v in invalid_values)}")
 
         # Check if weights sum to 100 (warning only)
-        total_weight = df['Weight'].sum()
+        total_weight = weight_series.sum()
         if abs(total_weight - 100) > 0.01:
             warnings.append(f"Weights sum to {total_weight:.2f}, not 100.0")
 
         is_valid = len(errors) == 0
         return ValidationResult(is_valid, errors, warnings)
+
+    def _validate_weight_column(self, df: pd.DataFrame, errors: List[str]) -> Optional[pd.Series]:
+        """
+        Parse and validate Weight as numeric values.
+
+        Returns:
+            Numeric weight series when valid, otherwise None (and appends errors).
+        """
+        weight_raw = df['Weight'].astype(str).str.strip()
+        weight_normalized = weight_raw.str.replace(',', '.', regex=False)
+        weight_series = pd.to_numeric(weight_normalized, errors='coerce')
+
+        invalid_mask = weight_series.isna()
+        if invalid_mask.any():
+            invalid_values = (
+                weight_raw[invalid_mask]
+                .dropna()
+                .unique()
+                .tolist()
+            )
+            sample = ", ".join(str(v) for v in invalid_values[:5])
+            errors.append(
+                f"Found {invalid_mask.sum()} non-numeric Weight value(s)"
+                + (f" (examples: {sample})" if sample else "")
+            )
+            return None
+
+        return weight_series
 
     def normalize_weights(self, df: pd.DataFrame, group_by: Optional[List[str]] = None) -> pd.DataFrame:
         """

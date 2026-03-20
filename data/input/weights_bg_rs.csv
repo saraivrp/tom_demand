@@ -1,13 +1,13 @@
 RevenueStream;BudgetGroup;Weight
-eCommerce;Commercial;25
-eCommerce;Operations;25
-eCommerce;Corporate;20
+eCommerce;Operations;30
+eCommerce;Commercial;30
+eCommerce;Corporate;10
 eCommerce;Technology;20
-eCommerce;CISO;5
 eCommerce;Data & AI;5
-Mail & Services;Commercial;25
-Mail & Services;Operations;25
+eCommerce;CISO;5
+Mail & Services;Commercial;30
+Mail & Services;Operations;20
 Mail & Services;Corporate;20
 Mail & Services;Technology;20
-Mail & Services;CISO;5
 Mail & Services;Data & AI;5
+Mail & Services;CISO;5

@@ -1,55 +1,45 @@
 ﻿RequestingArea;RevenueStream;BudgetGroup;Weight
-COO;eCommerce;Operations;50
-CMO;eCommerce;Commercial;33,4
-ATC;eCommerce;Corporate;40
-CCO;eCommerce;Commercial;33,3
-IDC;eCommerce;Commercial;33,3
+COO;eCommerce;Operations;40
+Commercial-Product;eCommerce;Commercial;40
 CFO;eCommerce;Corporate;40
-CIO;eCommerce;Technology;100
-PRO;eCommerce;Corporate;10
-CHR;eCommerce;Corporate;5
-COM;eCommerce;Corporate;5
-GP ECL;eCommerce;Commercial;1E-10
+Technology-CIO;eCommerce;Technology;60
+Commercial-Segment;eCommerce;Commercial;30
+EDO;eCommerce;Operations;35
+Commercial-CustomerIntegration;eCommerce;Commercial;15
+DataAI-IAD;eCommerce;Data & AI;100
+Commercial-CustomerSupport;eCommerce;Commercial;15
+CHR;eCommerce;Corporate;2
+Technology-Business;eCommerce;Technology;40
+SEO;eCommerce;Operations;20
+PRO;eCommerce;Corporate;2
 CISO;eCommerce;CISO;100
-IAD;eCommerce;Data & AI;100
-GS;eCommerce;Commercial;1E-10
-EDO;eCommerce;Operations;49
-ACR;eCommerce;Corporate;1E-10
-SI;eCommerce;Technology;1E-10
-SEO;eCommerce;Operations;1E-10
-CF;eCommerce;Corporate;1E-10
-SI-OPS;eCommerce;Technology;1E-10
-BCTT;eCommerce;Technology;1E-10
-SI-PRD;eCommerce;Technology;1E-10
-AVC;eCommerce;Corporate;1E-10
-EM;eCommerce;Operations;1
-DNI;eCommerce;Commercial;1E-10
-SI-CRP;eCommerce;Technology;1E-10
-CSI;eCommerce;Commercial;1E-10
-GP B2B;eCommerce;Commercial;1E-10
-DPO;eCommerce;Corporate;1E-10
-GP B2C;eCommerce;Commercial;1E-10
-GT;eCommerce;Corporate;1E-10
-GPG;eCommerce;Commercial;1E-10
-GRH;eCommerce;Corporate;1E-10
-ECM;eCommerce;Commercial;1E-10
-PC;eCommerce;Corporate;1E-10
-RS;eCommerce;Corporate;1E-10
-ST;eCommerce;Corporate;1E-10
-CL;eCommerce;Corporate;1E-10
-CMP;eCommerce;Corporate;1E-10
-FL;eCommerce;Corporate;1E-10
-TF;eCommerce;Corporate;1E-10
-CTTE;eCommerce;Commercial;1E-10
-GP B2B;Mail & Services;Commercial;16
-GP ECL;Mail & Services;Commercial;16
-DNI;Mail & Services;Commercial;16
-GS;Mail & Services;Commercial;12
-CSI;Mail & Services;Commercial;10
-GP B2C;Mail & Services;Commercial;9
-CTTE;Mail & Services;Commercial;9
-GPG;Mail & Services;Commercial;9
-ECM;Mail & Services;Commercial;3
+COM;eCommerce;Corporate;2
+AVC;eCommerce;Corporate;2
+CF;eCommerce;Corporate;28
+CL;eCommerce;Corporate;2
+CMP;eCommerce;Corporate;2
+DPO;eCommerce;Corporate;2
+ACR;eCommerce;Corporate;2
+GRH;eCommerce;Corporate;2
+GT;eCommerce;Corporate;2
+PC;eCommerce;Corporate;2
+RC;eCommerce;Corporate;2
+RS;eCommerce;Corporate;2
+SSJ;eCommerce;Corporate;2
+ST;eCommerce;Corporate;2
+TF;eCommerce;Corporate;2
+EM;eCommerce;Operations;5
+Corporate-CentralFunctions;eCommerce;Corporate;0,000001
+Corporate-HumanResources;eCommerce;Corporate;0,000001
+Corporate-PlanningFinance;eCommerce;Corporate;0,000001
+Operations-Execution;eCommerce;Operations;0,000001
+Operations-Planning;eCommerce;Operations;0,000001
+FL;eCommerce;Corporate;0,000001
+Commercial-Product B2B;Mail & Services;Commercial;35
+Commercial-Digital;Mail & Services;Commercial;18
+Commercial-Segment;Mail & Services;Commercial;15
+Commercial-Product B2C;Mail & Services;Commercial;18
+Commercial-Payments;Mail & Services;Commercial;5
 SEO;Mail & Services;Operations;35
 EDO;Mail & Services;Operations;35
 EM;Mail & Services;Operations;30
@@ -57,6 +47,7 @@ ACR;Mail & Services;Corporate;6,666666667
 CF;Mail & Services;Corporate;6,666666667
 RS;Mail & Services;Corporate;6,666666667
 AVC;Mail & Services;Corporate;6,666666667
+Commercial-Customer Support;Mail & Services;Commercial;9
 GRH;Mail & Services;Corporate;6,666666667
 GT;Mail & Services;Corporate;6,666666667
 CL;Mail & Services;Corporate;6,666666667
@@ -76,3 +67,12 @@ SI-OPS;Mail & Services;Technology;15
 SI-CRP;Mail & Services;Technology;15
 IAD;Mail & Services;Data & AI;100
 CISO;Mail & Services;CISO;100
+GP B2B;Mail & Services;Commercial;0,000001
+GP ECL;Mail & Services;Commercial;0,000001
+DNI;Mail & Services;Commercial;0,000001
+GS;Mail & Services;Commercial;0,000001
+CSI;Mail & Services;Commercial;0,000001
+GP B2C;Mail & Services;Commercial;0,000001
+CTTE;Mail & Services;Commercial;0,000001
+GPG;Mail & Services;Commercial;0,000001
+ECM;Mail & Services;Commercial;0,000001

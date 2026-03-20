@@ -224,7 +224,7 @@ def compare(ideas, ra_weights, rs_weights, bg_rs_weights, output, top_n, config)
 
         comparison = result['comparison']
         if top_n is None or top_n > 10:
-            click.echo("\nTop 10 IDEAs (by average rank):")
+            click.echo("\nTop 10 IDEAs (sorted by method ranks):")
             click.echo(comparison.head(10).to_string(index=False))
 
     except Exception as e:

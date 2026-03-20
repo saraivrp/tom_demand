@@ -171,7 +171,9 @@ class DemandService:
         ideas_df, ra_weights_df, rs_weights_df, bg_rs_weights_df = self.loader.load_all(
             ideas, ra_weights, rs_weights, bg_rs_weights
         )
-        results = self.prioritizer.prioritize_all_methods(
+        # Use the same queue-based flow as full prioritization exports so
+        # method ranks in compare.csv match demand_<method>.csv files.
+        results = self.prioritizer.prioritize_all_methods_with_queues(
             ideas_df, ra_weights_df, rs_weights_df, bg_rs_weights_df
         )
         comparison = self.prioritizer.compare_methods(results, top_n)
