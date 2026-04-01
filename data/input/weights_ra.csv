@@ -2,14 +2,15 @@
 COO;eCommerce;Operations;40
 Commercial-Product;eCommerce;Commercial;40
 CFO;eCommerce;Corporate;40
-Technology-CIO;eCommerce;Technology;60
+Technology-CIO;eCommerce;Technology;40
 Commercial-Segment;eCommerce;Commercial;30
 EDO;eCommerce;Operations;35
 Commercial-CustomerIntegration;eCommerce;Commercial;15
 DataAI-IAD;eCommerce;Data & AI;100
 Commercial-CustomerSupport;eCommerce;Commercial;15
 CHR;eCommerce;Corporate;2
-Technology-Business;eCommerce;Technology;40
+Technology-Business;eCommerce;Technology;30
+Technology-Corporate;eCommerce;Technology;30
 SEO;eCommerce;Operations;20
 PRO;eCommerce;Corporate;2
 CISO;eCommerce;CISO;100
@@ -43,28 +44,27 @@ Commercial-Payments;Mail & Services;Commercial;5
 SEO;Mail & Services;Operations;35
 EDO;Mail & Services;Operations;35
 EM;Mail & Services;Operations;30
-ACR;Mail & Services;Corporate;6,666666667
-CF;Mail & Services;Corporate;6,666666667
-RS;Mail & Services;Corporate;6,666666667
-AVC;Mail & Services;Corporate;6,666666667
+ACR;Mail & Services;Corporate;10
+CF;Mail & Services;Corporate;24
+RS;Mail & Services;Corporate;4
+AVC;Mail & Services;Corporate;10
 Commercial-Customer Support;Mail & Services;Commercial;9
-GRH;Mail & Services;Corporate;6,666666667
-GT;Mail & Services;Corporate;6,666666667
-CL;Mail & Services;Corporate;6,666666667
-PC;Mail & Services;Corporate;6,666666667
-DPO;Mail & Services;Corporate;6,666666667
-CMP;Mail & Services;Corporate;6,666666667
-ST;Mail & Services;Corporate;6,666666667
-FL;Mail & Services;Corporate;4,444444445
-NSP;Mail & Services;Corporate;6,666666667
-TF;Mail & Services;Corporate;6,666666667
-SSJ;Mail & Services;Corporate;4,444444445
-RC;Mail & Services;Corporate;4,444444445
-SI;Mail & Services;Technology;40
-BCTT;Mail & Services;Technology;15
-SI-PRD;Mail & Services;Technology;15
-SI-OPS;Mail & Services;Technology;15
-SI-CRP;Mail & Services;Technology;15
+GRH;Mail & Services;Corporate;4
+GT;Mail & Services;Corporate;4
+CL;Mail & Services;Corporate;4
+PC;Mail & Services;Corporate;8
+DPO;Mail & Services;Corporate;4
+CMP;Mail & Services;Corporate;4
+ST;Mail & Services;Corporate;4
+FL;Mail & Services;Corporate;4
+NSP;Mail & Services;Corporate;4
+TF;Mail & Services;Corporate;4
+SSJ;Mail & Services;Corporate;4
+RC;Mail & Services;Corporate;4
+Technology;Mail & Services;Technology;40
+BCTT;Mail & Services;Technology;20
+Technology-Business;Mail & Services;Technology;20
+Technology-Corporate;Mail & Services;Technology;20
 IAD;Mail & Services;Data & AI;100
 CISO;Mail & Services;CISO;100
 GP B2B;Mail & Services;Commercial;0,000001

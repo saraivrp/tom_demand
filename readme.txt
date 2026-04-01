@@ -1,5 +1,15 @@
 Executar o TOM Demand
 
+# EXEC MONTHLY PRIO
+python3 tom_demand.py prioritize \
+  --ideas data/input/ideas202604.csv \
+  --ra-weights data/input/weights_ra.csv \
+  --rs-weights data/input/weights_rs.csv \
+  --bg-rs-weights data/input/weights_bg_rs.csv \
+  --now-method sainte-lague \
+  --next-method sainte-lague \
+  --later-method sainte-lague
+
 #QUICK APPROACH
 
 python3 tom_demand.py prioritize \
@@ -10,14 +20,6 @@ python3 tom_demand.py prioritize \
   --next-method wsjf \
   --later-method sainte-lague
 
-python3 tom_demand.py prioritize \
-  --ideas data/input/ideas202604.csv \
-  --ra-weights data/input/weights_ra.csv \
-  --rs-weights data/input/weights_rs.csv \
-  --bg-rs-weights data/input/weights_bg_rs.csv \
-  --now-method sainte-lague \
-  --next-method sainte-lague \
-  --later-method sainte-lague
 
 
 

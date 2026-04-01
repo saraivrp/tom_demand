@@ -19,6 +19,18 @@ class DataLoadError(Exception):
 class Loader:
     """Load and validate input data for TOM Demand System."""
 
+    DEFAULT_COLUMN_ALIASES = {
+        'Revenue': 'RevenueStream',
+        'Requesting': 'RequestingArea',
+        'St Budget': 'BudgetGroup',
+        'Gro Micro': 'MicroPhase',
+        'Microphase': 'MicroPhase',
+        'Micro Phase': 'MicroPhase',
+        'Phas Priority': 'PriorityRA',
+        'RA Value': 'Value',
+        'RA_Value': 'Value',
+    }
+
     def __init__(self, config_path: Optional[str] = None):
         """
         Initialize loader with configuration.
@@ -37,6 +49,11 @@ class Loader:
         self.validator = Validator(config_path)
         self.defaults = self.config['defaults']
         self.queues = self.config.get('queues', {})
+        config_aliases = self.config.get('input', {}).get('column_aliases', {})
+        self.column_aliases = {
+            **self.DEFAULT_COLUMN_ALIASES,
+            **config_aliases,
+        }
 
         # Get locale settings for European CSV format
         self.locale = self.config.get('locale', {})
@@ -86,19 +103,8 @@ class Loader:
         except Exception as e:
             raise DataLoadError(f"Failed to read CSV file: {str(e)}")
 
-        # Normalize column names - map common variations to standard names
-        column_mapping = {
-            'Revenue': 'RevenueStream',
-            'Requesting': 'RequestingArea',
-            'St Budget': 'BudgetGroup',
-            'Gro Micro': 'MicroPhase',
-            'Phas Priority': 'PriorityRA',
-            'RA Value': 'Value',
-            'RA_Value': 'Value'
-        }
-        
-        # Apply column mapping
-        for old_name, new_name in column_mapping.items():
+        # Normalize column names using configurable aliases
+        for old_name, new_name in self.column_aliases.items():
             if old_name in df.columns and new_name not in df.columns:
                 df.rename(columns={old_name: new_name}, inplace=True)
 
@@ -107,6 +113,8 @@ class Loader:
         for col in text_columns:
             if col in df.columns:
                 df[col] = df[col].astype(str)
+                # Normalize incidental spaces from Excel exports/user edits
+                df[col] = df[col].str.strip()
                 # Replace 'nan' string with pandas NaN for proper handling
                 df[col] = df[col].replace('nan', pd.NA)
                 # Also handle empty strings
