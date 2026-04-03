@@ -112,6 +112,7 @@ queues:
     micro_phases:
       - In Rollout/Warranty
       - In Production
+      - Closed
       - Discarded
       - Descoped
       - Ready to Archive

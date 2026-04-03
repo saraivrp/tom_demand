@@ -8,7 +8,10 @@ from typing import Optional
 import pandas as pd
 import yaml
 import os
-from validator import Validator, ValidationResult
+try:
+    from .validator import Validator, ValidationResult
+except ImportError:
+    from validator import Validator, ValidationResult
 
 
 class DataLoadError(Exception):

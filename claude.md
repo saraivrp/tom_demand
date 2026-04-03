@@ -1,357 +1,67 @@
-# Claude Code Guidelines for TOM Demand Management System
+# TOM Demand Management System
 
-## Project Overview
+Demand prioritization system for CTT (Portuguese Post). Python 3.9+, CLI-first, with a FastAPI REST layer and early-stage React frontend.
 
-This is the **TOM Demand Management System v3.3** - a production-ready demand prioritization system for CTT (Portuguese Post) that implements three proportional allocation algorithms: Sainte-Laguë, D'Hondt, and WSJF.
+## CRITICAL: European CSV Format
 
-**Status**: ✅ Production Ready (February 2026)
+All CSV files use **semicolon (`;`) delimiter**, comma decimal (`0,088`), dot thousands (`1.000,45`).
+Configured in `config/config.yaml`. See `docs/EUROPEAN_FORMAT.md`.
 
-## Key Project Characteristics
+**Never use comma as delimiter. Never switch to US format.**
 
-### 1. European/Iberian Standards
-- **CSV Format**: Semicolon (`;`) delimiter, NOT comma
-- **Decimal Separator**: Comma (`,`) e.g., `0,088`
-- **Thousands Separator**: Dot (`.`) e.g., `1.000,45`
-- **Metric System**: All measurements in metric units
-- **Date Format**: DD/MM/YYYY or ISO 8601
+## Architecture
 
-⚠️ **CRITICAL**: When reading or writing CSV files, always use European format as configured in [config/config.yaml](config/config.yaml). See [docs/EUROPEAN_FORMAT.md](docs/EUROPEAN_FORMAT.md) for details.
+- `tom_demand.py` — CLI entry point (adds `src/` to path)
+- `src/algorithms/` — Sainte-Laguë, D'Hondt, WSJF implementations
+- `src/api/` — FastAPI layer; auth **disabled by default** (`AUTH_ENABLED=true` to enable)
+- `src/services/` — orchestration pipeline used by both CLI and API
+- `src/validator.py`, `src/loader.py`, `src/prioritizer.py`, `src/exporter.py` — core pipeline
+- `config/config.yaml` — all configuration (Revenue Streams, defaults, format settings)
 
-### 2. Codebase Architecture
+## Queue-Based Prioritization
 
-```
-tom_demand.py                    # Entry point — adds src/ to path, invokes CLI
-requirements.txt                 # All Python dependencies
-config/
-└── config.yaml                  # Centralized configuration
-src/
-├── algorithms/                  # Prioritization algorithms
-│   ├── sainte_lague.py          # Odd divisor allocation (157 lines)
-│   ├── dhondt.py                # Natural divisor allocation (152 lines)
-│   └── wsjf.py                  # Economic optimization (104 lines)
-├── api/                         # FastAPI REST layer
-│   ├── main.py                  # App factory, middleware, router registration
-│   ├── auth.py                  # API key + role-based authentication
-│   ├── audit.py                 # Audit logging middleware
-│   ├── jobs.py                  # Async job management
-│   ├── errors.py                # Custom exception handlers
-│   ├── routers/                 # Endpoint groups
-│   │   ├── workflows.py         # validate / prioritize / compare endpoints
-│   │   ├── reference_data.py    # IDEAS and weights CRUD
-│   │   ├── system.py            # Health checks, version info
-│   │   └── jobs.py              # Job status endpoints
-│   └── models/                  # Pydantic request/response schemas
-├── services/                    # Service orchestration layer
-│   ├── demand_service.py        # Coordinates loader → prioritizer → exporter
-│   └── reference_data_service.py
-├── validator.py                 # Centralized validation logic (311 lines)
-├── loader.py                    # Data ingestion with validation (318 lines)
-├── prioritizer.py               # Orchestration and coordination (401 lines)
-├── exporter.py                  # Result formatting and output (231 lines)
-├── cli.py                       # Command-line interface (364 lines)
-└── utils.py                     # Shared utilities (48 lines)
-frontend/                        # React 19 + Vite SPA (early stage)
-├── package.json
-└── src/
-tests/
-└── test_api_endpoints.py        # API integration tests
-```
+IDEAs ranked within sequential queues determined by `MicroPhase`:
 
-**Core Python**: ~2,100 lines (CLI + algorithms + loader/validator/exporter)
-**Full codebase**: ~3,300+ lines including API and service layers
+1. **NOW** (active development) → ranks 1–N
+2. **NEXT** (ready for development) → ranks N+1–M
+3. **LATER** (planning phases) → ranks M+1–P
+4. **PRODUCTION** (deployed) → no rank
 
-**Interfaces**:
-- **CLI**: `python3 tom_demand.py <command>` — primary production interface
-- **REST API**: `uvicorn src.api.main:app` — programmatic/integration access
-- **Frontend**: `cd frontend && npm run dev` — web UI (early stage)
+Per-queue method flags: `--now-method`, `--next-method`, `--later-method`.
+**Cannot be combined with `--all-methods`** (raises UsageError).
 
-### 3. Queue-Based Prioritization (v3.2)
+## Domain Glossary
 
-The system supports **sequential queue-based ranking** that separates IDEAs by their lifecycle phase:
+- **IDEA**: demand item to prioritize
+- **RA**: Requesting Area (submitting department)
+- **RS**: Revenue Stream (business area)
+- **BG**: Budget Group
+- **WSJF**: (Value + Urgency + Risk Reduction) / Job Size
 
-**Queue Priority Order** (most important to least important):
-1. **NOW Queue** (Development phase) → **Ranks 1-N** (highest priority)
-   - In Development → Ready for Acceptance → In Acceptance → Selected for Production
-   - These are active development items that should be prioritized first
+## Known Behaviors
 
-2. **NEXT Queue** (Ready for Development) → **Ranks N+1-M** (next in line)
-   - Ready for Development
-   - Solution is fully defined and approved, ready to start development
+- `PriorityRA == 999`: IDEA silently excluded (disabled marker) — intentional, not configurable
+- `Weight == 999` in `weights_ra.csv`: entire RA and its IDEAs excluded with a warning
+- Ideas files follow `ideas<YYYYMM>.csv` naming — always passed explicitly, never hardcoded
+- Modules use `try/except` import fallbacks for CLI vs API invocation — don't restructure imports without testing both modes
+- Output uses `print()` throughout — intentional for CLI UX, do not replace with logging
 
-3. **LATER Queue** (Planning phases) → **Ranks M+1-P** (future work)
-   - Need: Backlog → In Definition → Pitch → Ready for Solution
-   - Solution: In Solution → High Level Design → Ready for Approval → In Approval
-   - These are items still in planning/design stages
+## Commands
 
-4. **PRODUCTION Queue** → **No ranking** (already deployed)
-   - In Rollout → In Production
-   - No prioritization needed, just tracked
-
-**How It Works:**
-- IDEAs are automatically assigned to queues based on their `MicroPhase` field
-- NOW items get ranks 1 to N, NEXT items get ranks N+1 to M, LATER items get ranks M+1 to P, PRODUCTION items have null rank
-- Sequential ranking ensures: development > execution-ready > planning > production (tracking only)
-- This allows prioritization of solution-defined work separately from early planning work
-
-### 4. Per-Queue Prioritization Methods (v3.3)
-
-Each queue can use a different prioritization method:
-
-**CLI Flags**:
-- `--now-method [sainte-lague|dhondt|wsjf]` - Method for NOW queue
-- `--next-method [sainte-lague|dhondt|wsjf]` - Method for NEXT queue
-- `--later-method [sainte-lague|dhondt|wsjf]` - Method for LATER queue
-
-**Precedence**:
-1. Per-queue flags override global `--method`
-2. Global `--method` applies to unconfigured queues
-3. Default `sainte-lague` used if neither specified
-
-**Example**:
 ```bash
-python3 tom_demand.py prioritize \
-  --ideas data/input/ideias.csv \
-  --ra-weights data/input/weights_ra.csv \
-  --rs-weights data/input/weights_rs.csv \
-  --now-method wsjf \
-  --next-method wsjf \
-  --later-method sainte-lague \
-  --output-dir data/output
-```
-
-**Important**: Per-queue flags cannot be used with `--all-methods` (will raise UsageError)
-
-### 5. Core Modules
-
-#### Validation ([src/validator.py](src/validator.py))
-- Validates IDEAS with required/optional attributes including MicroPhase
-- Validates RA and RS weights with referential integrity
-- Auto-normalizes weights
-- Provides clear, actionable error messages
-
-#### Data Loading ([src/loader.py](src/loader.py))
-- Loads IDEAs from CSV with default values
-- Determines Queue from MicroPhase automatically
-- Loads and validates RA/RS weights
-- Cross-validation between files
-- Integrated validation engine
-
-#### Algorithms ([src/algorithms/](src/algorithms/))
-- **Sainte-Laguë**: Balanced allocation (odd divisor: 1, 3, 5, 7...)
-- **D'Hondt**: Strategic focus (natural divisor: 1, 2, 3, 4...)
-- **WSJF**: Economic optimization ((Value + Urgency + Risk) / Size)
-
-#### Prioritizer ([src/prioritizer.py](src/prioritizer.py))
-- Coordinates Level 2 (Revenue Stream) prioritization
-- Coordinates Level 3 (Global) prioritization
-- Executes multiple methods for comparison
-- **Note**: IDEAs with `PriorityRA == 999` are silently filtered out (treated as "disabled"). IDEAs from RAs with `Weight == 999` in weights_ra.csv are also excluded.
-
-#### Exporter ([src/exporter.py](src/exporter.py))
-- Exports Level 2 results: `prioritization_rs.csv`
-- Exports Level 3 results: `demand.csv`
-- Exports comparison reports
-- Exports execution metadata (JSON)
-
-#### Service Layer ([src/services/](src/services/))
-- `demand_service.py` — orchestrates loader → prioritizer → exporter pipeline; used by both CLI and API
-- `reference_data_service.py` — manages IDEAS and weight file access for the API layer
-
-#### API Layer ([src/api/](src/api/))
-- FastAPI app with CORS, audit logging, optional authentication (`AUTH_ENABLED` env var)
-- Async job support for long-running prioritizations
-- OpenAPI docs available at `/docs` when running
-- Authentication is **disabled by default** — set `AUTH_ENABLED=true` to enable
-
-## Development Guidelines
-
-### When Making Changes
-
-1. **Read Before Modifying**: Always read files before suggesting modifications
-2. **Preserve European Format**: Maintain semicolon delimiters and comma decimals in CSV operations
-3. **Type Hints**: All functions should have proper type hints
-4. **Docstrings**: Follow existing docstring patterns
-5. **Error Handling**: Provide clear, actionable error messages
-6. **Validation**: Use the validation engine for data integrity checks
-
-### Code Style
-
-- **Python Version**: 3.9+
-- **Type Hints**: Throughout codebase
-- **Imports**: Standard library → Third-party → Local modules
-- **Line Length**: Reasonable (no strict limit, but keep it readable)
-- **Naming**:
-  - Functions/variables: `snake_case`
-  - Classes: `PascalCase`
-  - Constants: `UPPER_SNAKE_CASE`
-
-### Testing & Validation
-
-Always test changes with the example data. The current ideas file follows the naming pattern `ideas<YYYYMM>.csv`:
-```bash
-# Validation
+# Validate
 python3 tom_demand.py validate \
   --ideas data/input/ideas202602.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv
 
-# Full prioritization
+# Prioritize (all methods)
 python3 tom_demand.py prioritize \
   --ideas data/input/ideas202602.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
-  --all-methods \
-  --output-dir data/output
+  --all-methods --output-dir data/output
 
-# Run API tests
+# API tests
 pytest tests/
 ```
-
-## Configuration
-
-All configuration is centralized in [config/config.yaml](config/config.yaml):
-- Revenue Streams and Budget Groups
-- Default values for IDEA attributes
-- Validation ranges
-- European format settings
-- Output formatting
-- Logging configuration
-
-**When modifying**: Always validate YAML syntax and maintain backward compatibility.
-
-## File References
-
-When referencing code locations in responses, use this format:
-- Files: [validator.py](src/validator.py)
-- Specific lines: [validator.py:150](src/validator.py#L150)
-- Line ranges: [validator.py:100-120](src/validator.py#L100-L120)
-
-## Common Tasks
-
-### Adding a New Validation Rule
-1. Edit [src/validator.py](src/validator.py)
-2. Add rule to appropriate validation method
-3. Test with example data
-4. Update error messages for clarity
-
-### Adding a New Algorithm
-1. Create new file in [src/algorithms/](src/algorithms/)
-2. Implement required interface (see existing algorithms)
-3. Add to [src/prioritizer.py](src/prioritizer.py)
-4. Update CLI in [src/cli.py](src/cli.py)
-5. Test with all methods
-
-### Modifying CSV Output
-1. Edit [src/exporter.py](src/exporter.py)
-2. Maintain European format (semicolon delimiter, comma decimal)
-3. Update metadata export if needed
-4. Verify output with example data
-
-### Changing Configuration
-1. Edit [config/config.yaml](config/config.yaml)
-2. Update loader/validator if structure changes
-3. Test with validation command
-4. Document changes if significant
-
-## Documentation Files
-
-- [README.md](README.md) - Quick start and overview
-- [USAGE_GUIDE.md](USAGE_GUIDE.md) - Detailed usage instructions
-- [EXEMPLOS_USO.md](EXEMPLOS_USO.md) - Usage examples in Portuguese (for Windows executable)
-- [CHANGELOG_v3.3.md](CHANGELOG_v3.3.md) - Version 3.3 release notes
-- [docs/PROJECT_SUMMARY.md](docs/PROJECT_SUMMARY.md) - Implementation status and features
-- [docs/EUROPEAN_FORMAT.md](docs/EUROPEAN_FORMAT.md) - European format details
-- [docs/RUNBOOK.md](docs/RUNBOOK.md) - Operations runbook
-- [docs/TOM Demand Management System - Functional Specification.md](docs/TOM%20Demand%20Management%20System%20-%20Functional%20Specification.md) - Complete specification v3.0
-
-## What NOT to Do
-
-- ❌ Don't change CSV format to US format (comma delimiter)
-- ❌ Don't break backward compatibility without explicit approval
-- ❌ Don't add dependencies without checking requirements.txt
-- ❌ Don't modify core algorithms without understanding the mathematical basis
-- ❌ Don't skip validation when loading data
-- ❌ Don't add features from "Next Steps" section without explicit request
-- ❌ Don't create new documentation files unless explicitly requested
-- ❌ Don't enable API authentication without explicit instruction (`AUTH_ENABLED` defaults to false)
-- ❌ Don't replace `print()` output with logging silently — existing CLI UX depends on it
-
-## Dependencies
-
-Current dependencies (see [requirements.txt](requirements.txt)):
-
-**Core**:
-- pandas >= 1.3.0
-- numpy >= 1.21.0
-- pyyaml >= 5.4.0
-- click >= 8.0.0
-- colorama >= 0.4.4
-- tqdm >= 4.62.0
-
-**API**:
-- fastapi >= 0.110.0
-- uvicorn >= 0.27.0
-- python-multipart >= 0.0.9
-
-**Testing & Quality**:
-- pytest >= 6.2.5
-- pytest-cov >= 3.0.0
-- pytest-mock >= 3.6.1
-- black >= 21.9b0
-- flake8 >= 4.0.1
-- mypy >= 0.910
-
-## Git Workflow
-
-- **Main Branch**: `main` (use for PRs)
-- **Current Branch**: Check git status
-- Follow standard commit message conventions
-- Include co-authorship footer when requested
-
-## Questions to Ask Before Starting
-
-For non-trivial changes, clarify:
-1. Does this change affect the European format?
-2. Will this impact existing CSV files or workflows?
-3. Should this be configurable via config.yaml?
-4. Does this require updating documentation?
-5. Should all three algorithms support this change?
-
-## Context and Domain
-
-**Domain**: Portfolio management and demand prioritization for CTT (Portuguese postal service)
-
-**Key Concepts**:
-- **IDEA**: An initiative/demand item to be prioritized
-- **RA**: Requesting Area (department submitting the IDEA)
-- **RS**: Revenue Stream (business area)
-- **BG**: Budget Group (for constraint management)
-- **Level 1**: RA-level prioritization
-- **Level 2**: RS-level prioritization (within Revenue Stream)
-- **Level 3**: Global prioritization (across all Revenue Streams)
-- **WSJF**: (Value + Urgency + Risk Reduction) / Job Size
-
-## Success Criteria
-
-Code changes should:
-✓ Maintain European format compliance
-✓ Pass validation with example data
-✓ Include proper type hints and docstrings
-✓ Provide clear error messages
-✓ Follow existing architectural patterns
-✓ Be tested with actual prioritization runs
-✓ Preserve backward compatibility (unless explicitly approved)
-
-## Known Behaviors
-
-- **PriorityRA == 999**: IDEAs with this value are filtered out by the prioritizer (treated as disabled). This is intentional but not configurable via config.yaml.
-- **Weight == 999**: RAs with this weight in weights_ra.csv are excluded from prioritization entirely. Their IDEAs are skipped with a warning.
-- **Ideas file naming**: Input ideas files follow the pattern `ideas<YYYYMM>.csv` (e.g., `ideas202602.csv`). The filename is passed explicitly at runtime — no hardcoded default.
-- **Import path handling**: Modules use try/except import fallbacks to support both CLI invocation (`python3 tom_demand.py`) and API import (`from src.xxx import ...`). This is intentional but fragile — don't restructure imports without testing both modes.
-- **No logging framework**: Output uses `print()` throughout. This is intentional for CLI UX. The API layer may add structured logging separately.
-
----
-
-**Version**: 3.3.0
-**Last Updated**: February 24, 2026
-**Status**: Production System - Handle with Care

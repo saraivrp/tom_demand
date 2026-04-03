@@ -34,9 +34,10 @@ def cli():
 @click.option('--now-method', type=click.Choice(['sainte-lague', 'dhondt', 'wsjf'], case_sensitive=False), help='Prioritization method for NOW queue')
 @click.option('--next-method', type=click.Choice(['sainte-lague', 'dhondt', 'wsjf'], case_sensitive=False), help='Prioritization method for NEXT queue')
 @click.option('--later-method', type=click.Choice(['sainte-lague', 'dhondt', 'wsjf'], case_sensitive=False), help='Prioritization method for LATER queue')
+@click.option('--include-discarded', is_flag=True, default=False, help='Export discarded IDEAs to discarded_ideas.csv')
 @click.option('--output-dir', default='./data/output', help='Output directory')
 @click.option('--config', type=click.Path(exists=True), help='Configuration file path')
-def prioritize(ideas, ra_weights, rs_weights, bg_rs_weights, method, all_methods, now_method, next_method, later_method, output_dir, config):
+def prioritize(ideas, ra_weights, rs_weights, bg_rs_weights, method, all_methods, now_method, next_method, later_method, include_discarded, output_dir, config):
     """
     Execute complete prioritization (Levels 2 and 3).
 
@@ -105,6 +106,7 @@ def prioritize(ideas, ra_weights, rs_weights, bg_rs_weights, method, all_methods
             now_method=now_method,
             next_method=next_method,
             later_method=later_method,
+            include_discarded=include_discarded,
         )
 
         click.echo("✓ Prioritization complete")
@@ -114,14 +116,29 @@ def prioritize(ideas, ra_weights, rs_weights, bg_rs_weights, method, all_methods
         click.echo(f"  - Total IDEAs: {run_result['ideas_count']}")
         click.echo(f"  - Requesting Areas: {run_result['requesting_areas_count']}")
         click.echo(f"  - Revenue Streams: {run_result['revenue_streams_count']}")
+        click.echo(f"  - Final generated rows: {run_result.get('generated_rows', 'N/A')}")
+        click.echo(f"  - Discarded rows: {run_result.get('discarded_rows', 'N/A')}")
+
+        discarded_reasons = run_result.get('discarded_reasons') or {}
+        if discarded_reasons:
+            click.echo("Discarded reasons:")
+            for reason, count in discarded_reasons.items():
+                click.echo(f"  - {reason}: {count}")
         click.echo()
 
-        if run_result['queue_counts']:
-            click.echo("Queue Distribution:")
+        if run_result.get('queue_counts'):
+            click.echo("Queue Distribution (input / raw):")
             for queue_name in ['NOW', 'NEXT', 'LATER', 'PRODUCTION']:
                 key = f"{queue_name.lower()}_queue"
                 if run_result['queue_counts'].get(key, 0) > 0:
                     click.echo(f"  - {queue_name}: {run_result['queue_counts'][key]} IDEAs")
+
+        if run_result.get('final_queue_counts'):
+            click.echo("Queue Distribution (after prioritization):")
+            for queue_name in ['NOW', 'NEXT', 'LATER', 'PRODUCTION']:
+                key = f"{queue_name.lower()}_queue"
+                if run_result['final_queue_counts'].get(key, 0) > 0:
+                    click.echo(f"  - {queue_name}: {run_result['final_queue_counts'][key]} IDEAs")
             click.echo()
 
         click.echo(f"Execution time: {run_result['elapsed_time']:.2f} seconds")

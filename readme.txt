@@ -8,7 +8,17 @@ python3 tom_demand.py prioritize \
   --bg-rs-weights data/input/weights_bg_rs.csv \
   --now-method sainte-lague \
   --next-method sainte-lague \
-  --later-method sainte-lague
+  --later-method sainte-lague \
+  --include-discarded
+
+# EXEC MONTHLY COMPARE
+  python3 tom_demand.py compare \
+  --ideas data/input/ideas202604.csv \
+  --ra-weights data/input/weights_ra.csv \
+  --rs-weights data/input/weights_rs.csv \
+  --bg-rs-weights data/input/weights_bg_rs.csv \
+  --output data/output/compare.csv
+  
 
 #QUICK APPROACH
 
@@ -24,7 +34,7 @@ python3 tom_demand.py prioritize \
 
 
 python3 tom_demand.py prioritize \
-  --ideas data/input/ideas202603.csv \
+  --ideas data/input/ideas202604.csv \
   --ra-weights data/input/weights_ra.csv \
   --rs-weights data/input/weights_rs.csv \
   --bg-rs-weights data/input/weights_bg_rs.csv \

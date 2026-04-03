@@ -9,9 +9,14 @@ from typing import Dict, List, Optional
 import pandas as pd
 import yaml
 import os
-from algorithms.sainte_lague import sainte_lague_allocate
-from algorithms.dhondt import dhondt_allocate
-from algorithms.wsjf import wsjf_prioritize, calculate_wsjf
+try:
+    from .algorithms.sainte_lague import sainte_lague_allocate
+    from .algorithms.dhondt import dhondt_allocate
+    from .algorithms.wsjf import wsjf_prioritize, calculate_wsjf
+except ImportError:
+    from algorithms.sainte_lague import sainte_lague_allocate
+    from algorithms.dhondt import dhondt_allocate
+    from algorithms.wsjf import wsjf_prioritize, calculate_wsjf
 
 
 class Prioritizer:
@@ -55,12 +60,11 @@ class Prioritizer:
         if method not in ['sainte-lague', 'dhondt', 'wsjf']:
             raise ValueError(f"Invalid method: {method}. Must be 'sainte-lague', 'dhondt', or 'wsjf'")
 
-        # Calculate WSJF scores for all IDEAs
+        # Calculate WSJF scores for all IDEAs (vectorized)
         ideas_copy = ideas.copy()
-        ideas_copy['WSJF_Score'] = ideas_copy.apply(
-            lambda row: calculate_wsjf(row.to_dict()),
-            axis=1
-        )
+        ideas_copy['WSJF_Score'] = (
+            ideas_copy['Value'] + ideas_copy['Urgency'] + ideas_copy['Risk']
+        ) / ideas_copy['Size']
 
         all_results = []
 
@@ -91,19 +95,17 @@ class Prioritizer:
             # Filter out IDEAs from RAs that don't have weights
             rs_ideas_filtered = rs_ideas[rs_ideas['RequestingArea'].isin(entities)].copy()
 
-            # Filter out IDEAs from RAs that have weights equals to 999 
-            # (SARAIVA - IGNORAR IDEAS DE RAs COM PESO 999, POIS SÃO USADOS pelas RAs QUE NÃO DEVEM SER CONSIDERADAS NA PRIORITIZAÇÃO)
-            print(f"    ⚠ Filtering out IDEAs from RAs with weight 999 for Revenue Stream '{rs}'") 
-            #ideas_999 = rs_ideas_filtered[rs_ideas_filtered['PriorityRA'] == 999].copy()
-            #print(f"      Ideas with weight 999: {len(ideas_999)} of total {len(rs_ideas)} in this RS")
-
-            rs_ideas_filtered = rs_ideas_filtered[rs_ideas_filtered['PriorityRA'] != 999]
-
-            # Check if any IDEAs were excluded
-            excluded_count = len(rs_ideas) - len(rs_ideas_filtered)
-            if excluded_count > 0:
+            # Check if any IDEAs were excluded due to missing RA weights
+            ra_excluded_count = len(rs_ideas) - len(rs_ideas_filtered)
+            if ra_excluded_count > 0:
                 excluded_ras = rs_ideas[~rs_ideas['RequestingArea'].isin(entities)]['RequestingArea'].unique()
-                print(f"    ⚠ Warning: {excluded_count} IDEAs excluded from '{rs}' (no weights for RAs: {', '.join(excluded_ras)})")
+                print(f"    ⚠ Warning: {ra_excluded_count} IDEAs excluded from '{rs}' (no weights for RAs: {', '.join(excluded_ras)})")
+
+            # Filter out IDEAs with PriorityRA == 999 (disabled marker)
+            ideas_999_count = (rs_ideas_filtered['PriorityRA'] == 999).sum()
+            rs_ideas_filtered = rs_ideas_filtered[rs_ideas_filtered['PriorityRA'] != 999]
+            if ideas_999_count > 0:
+                print(f"    ⚠ {ideas_999_count} IDEA(s) with PriorityRA=999 excluded from '{rs}'")
 
             # Skip if no valid IDEAs remain after filtering
             if len(rs_ideas_filtered) == 0:
@@ -320,37 +322,34 @@ class Prioritizer:
         """
         comparison_data = []
 
+        # Build indexed lookups to avoid O(N²) scanning
+        level3_by_id = {
+            method: method_results['level3'].set_index('ID')
+            for method, method_results in results.items()
+        }
+
         # Get all unique IDEA IDs
         idea_ids = set()
         for method_results in results.values():
             idea_ids.update(method_results['level3']['ID'].tolist())
 
+        detail_columns = ['Name', 'RevenueStream', 'RequestingArea', 'BudgetGroup',
+                          'MicroPhase', 'PriorityRA', 'Queue', 'WSJF_Score']
+
         for idea_id in idea_ids:
             row = {'ID': idea_id}
 
-            for method, method_results in results.items():
-                level3_df = method_results['level3']
-                idea_row = level3_df[level3_df['ID'] == idea_id]
+            for method, indexed_df in level3_by_id.items():
+                if idea_id not in indexed_df.index:
+                    continue
+                idea_row = indexed_df.loc[idea_id]
+                row[f'{method}_rank'] = idea_row['GlobalRank']
 
-                if not idea_row.empty:
-                    rank = idea_row.iloc[0]['GlobalRank']
-                    row[f'{method}_rank'] = rank
-
-                    # Add IDEA details from first method
-                    if 'Name' not in row:
-                        detail_columns = [
-                            'Name',
-                            'RevenueStream',
-                            'RequestingArea',
-                            'BudgetGroup',
-                            'MicroPhase',
-                            'PriorityRA',
-                            'Queue',
-                            'WSJF_Score',
-                        ]
-                        for col in detail_columns:
-                            if col in idea_row.columns:
-                                row[col] = idea_row.iloc[0][col]
+                # Add IDEA details from first method that has this idea
+                if 'Name' not in row:
+                    for col in detail_columns:
+                        if col in indexed_df.columns:
+                            row[col] = idea_row[col]
 
             comparison_data.append(row)
 

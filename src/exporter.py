@@ -189,7 +189,7 @@ class Exporter:
         """
         metadata = {
             'execution_timestamp': datetime.now().strftime(self.output_config['date_format']),
-            'system_version': '3.0.0',
+            'system_version': '3.3.0',
             **execution_params
         }
 
@@ -253,5 +253,39 @@ class Exporter:
 
         print("✓ All results exported successfully\n")
 
-        print("top 10 rows of combined demand file:")
-        print(combined_demand.head(10))
+    def export_discarded(
+        self,
+        data: pd.DataFrame,
+        output_dir: str,
+    ) -> None:
+        """
+        Export discarded IDEAs with reasons to CSV.
+
+        Args:
+            data: DataFrame with discarded ideas and discard_reason
+            output_dir: directory where file will be written
+        """
+        output_df = data.copy()
+
+        # Ensure discard reason exists
+        if 'discard_reason' not in output_df.columns:
+            output_df['discard_reason'] = 'unknown'
+
+        # Keep key columns plus reason
+        output_columns = [
+            'ID', 'Name', 'RevenueStream', 'RequestingArea', 'BudgetGroup',
+            'MicroPhase', 'Queue', 'PriorityRA', 'Value', 'Urgency', 'Risk', 'Size', 'discard_reason'
+        ]
+        available_columns = [c for c in output_columns if c in output_df.columns]
+        output_df = output_df[available_columns]
+
+        os.makedirs(output_dir, exist_ok=True)
+        discarded_path = os.path.join(output_dir, 'discarded_ideas.csv')
+        output_df.to_csv(
+            discarded_path,
+            index=False,
+            sep=self.csv_delimiter,
+            decimal=self.decimal_separator,
+            encoding=self.csv_encoding,
+        )
+        print(f"    ✓ Discarded IDEAs exported to {discarded_path}")

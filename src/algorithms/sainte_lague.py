@@ -6,7 +6,8 @@ which tends to favor balanced distribution across all entities.
 """
 
 from typing import Dict, List
-import pandas as pd
+
+from ._base import group_items_by_entity, has_remaining_items, get_next_item
 
 
 def sainte_lague_allocate(
@@ -42,16 +43,17 @@ def sainte_lague_allocate(
     # Initialize seat counters
     seats = {entity: 0 for entity in entities}
     allocation = []
+    allocated_ids: set = set()
 
     # Group items by entity and sort by internal priority
-    items_by_entity = _group_items_by_entity(items, level)
+    items_by_entity = group_items_by_entity(items, level)
 
     # Allocate each position
     for position in range(1, len(items) + 1):
         # Calculate quotients for each entity
         quotients = {}
         for entity in entities:
-            if _has_remaining_items(entity, items_by_entity, allocation):
+            if has_remaining_items(entity, items_by_entity, allocated_ids):
                 # Sainte-Laguë formula: Weight / (2 * Seats + 1)
                 quotients[entity] = weights[entity] / (2 * seats[entity] + 1)
             else:
@@ -61,103 +63,15 @@ def sainte_lague_allocate(
         selected_entity = max(quotients, key=quotients.get)
 
         # Get next unallocated item from selected entity
-        next_item = _get_next_item(selected_entity, items_by_entity, allocation)
+        next_item = get_next_item(selected_entity, items_by_entity, allocated_ids)
 
         # Assign rank and method
         next_item['Rank'] = position
         next_item['Method'] = 'SainteLague'
         allocation.append(next_item)
+        allocated_ids.add(next_item['ID'])
 
         # Increment seat counter for selected entity
         seats[selected_entity] += 1
 
     return allocation
-
-
-
-
-
-def _group_items_by_entity(items: List[Dict], level: str) -> Dict[str, List[Dict]]:
-    """
-    Group items by entity (RA or RS) sorted by internal priority.
-
-    Args:
-        items: List of items to group
-        level: 'RS' (group by RequestingArea), 'BudgetGroup' (group by BudgetGroup),
-            or 'Global' (group by RevenueStream)
-
-    Returns:
-        Dictionary mapping entity to sorted list of items
-    """
-    grouped = {}
-    if level == 'RS':
-        entity_key = 'RequestingArea'
-    elif level == 'BudgetGroup':
-        entity_key = 'BudgetGroup'
-    else:
-        entity_key = 'RevenueStream'
-
-    for item in items:
-        entity = item[entity_key]
-        if entity not in grouped:
-            grouped[entity] = []
-        grouped[entity].append(item)
-
-    # Sort items within each entity by internal priority
-    if level == 'RS':
-        # Sort by PriorityRA
-        for entity in grouped:
-            grouped[entity].sort(key=lambda x: x['PriorityRA'])
-    else:
-        # Sort by RS-level rank (used by BudgetGroup and Global steps)
-        for entity in grouped:
-            grouped[entity].sort(key=lambda x: x['Rank_RS'])
-
-    return grouped
-
-
-def _has_remaining_items(entity: str, items_by_entity: Dict, allocation: List) -> bool:
-    """
-    Check if entity has items not yet allocated.
-
-    Args:
-        entity: Entity identifier
-        items_by_entity: Dictionary of items grouped by entity
-        allocation: List of already allocated items
-
-    Returns:
-        True if entity has remaining items, False otherwise
-    """
-    if entity not in items_by_entity:
-        return False
-
-    allocated_ids = {item['ID'] for item in allocation}
-    entity_items = items_by_entity[entity]
-
-    for item in entity_items:
-        if item['ID'] not in allocated_ids:
-            return True
-
-    return False
-
-
-def _get_next_item(entity: str, items_by_entity: Dict, allocation: List) -> Dict:
-    """
-    Get next unallocated item from entity.
-
-    Args:
-        entity: Entity identifier
-        items_by_entity: Dictionary of items grouped by entity
-        allocation: List of already allocated items
-
-    Returns:
-        Next item to allocate (as a copy)
-    """
-    allocated_ids = {item['ID'] for item in allocation}
-    entity_items = items_by_entity[entity]
-
-    for item in entity_items:
-        if item['ID'] not in allocated_ids:
-            return item.copy()
-
-    raise ValueError(f"No remaining items for entity {entity}")
