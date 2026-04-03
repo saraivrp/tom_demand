@@ -123,12 +123,12 @@ Input files (naming convention: `ideas<YYYYMM>.csv`):
 ### 8. Documentation ✅
 
 - [README.md](../README.md) - Project overview and quick start
-- [USAGE_GUIDE.md](../USAGE_GUIDE.md) - Detailed usage instructions
+- [docs/guides/USER_GUIDE.md](guides/USER_GUIDE.md) - Detailed usage instructions
 - [EXEMPLOS_USO.md](../EXEMPLOS_USO.md) - Portuguese usage examples for Windows executable
-- [CHANGELOG_v3.3.md](../CHANGELOG_v3.3.md) - Version 3.3 release notes
+- [docs/CHANGELOG.md](CHANGELOG.md) - Release notes
 - [TOM Demand Management System - Functional Specification.md](TOM%20Demand%20Management%20System%20-%20Functional%20Specification.md) - Complete specification
-- [EUROPEAN_FORMAT.md](EUROPEAN_FORMAT.md) - European CSV format details
-- [RUNBOOK.md](RUNBOOK.md) - API/web operations runbook
+- [docs/reference/EUROPEAN_FORMAT.md](reference/EUROPEAN_FORMAT.md) - European CSV format details
+- [docs/deployment/DEPLOYMENT.md](deployment/DEPLOYMENT.md) - API/web deployment and operations
 
 ## Testing & Validation
 
@@ -273,15 +273,25 @@ tom_demand/
 │       ├── metadata.json
 │       └── api_audit.jsonl       (API audit log)
 ├── docs/
+│   ├── architecture/
+│   │   └── ARCHITECTURE.md
+│   ├── api/
+│   │   └── API_REFERENCE.md
+│   ├── deployment/
+│   │   └── DEPLOYMENT.md
+│   ├── guides/
+│   │   ├── USER_GUIDE.md
+│   │   └── DEVELOPMENT.md
+│   ├── reference/
+│   │   ├── ALGORITHMS.md
+│   │   └── EUROPEAN_FORMAT.md
+│   ├── CHANGELOG.md
+│   ├── PLAN.md
 │   ├── PROJECT_SUMMARY.md
-│   ├── EUROPEAN_FORMAT.md
-│   ├── RUNBOOK.md
 │   └── TOM Demand Management System - Functional Specification.md
 ├── build_windows.bat             (Windows executable build script)
 ├── README.md
-├── USAGE_GUIDE.md
-├── EXEMPLOS_USO.md               (Portuguese usage examples)
-└── CHANGELOG_v3.3.md
+└── EXEMPLOS_USO.md               (Portuguese usage examples)
 ```
 
 ## How to Use
