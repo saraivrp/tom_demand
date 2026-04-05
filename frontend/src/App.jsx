@@ -17,7 +17,7 @@ export default function App() {
     configPath: ''
   })
   const [paths, setPaths] = useState({
-    ideas: 'data/input/ideas.csv',
+    ideas: 'data/input/ideas202604.csv',
     ra: 'data/input/weights_ra.csv',
     rs: 'data/input/weights_rs.csv'
   })
@@ -35,7 +35,14 @@ export default function App() {
           </div>
         </header>
 
-        {activeTab === 'crud' ? <CrudView api={api} configPath={settings.configPath} /> : null}
+        {activeTab === 'crud' ? (
+          <CrudView
+            api={api}
+            configPath={settings.configPath}
+            paths={paths}
+            onPathsChange={setPaths}
+          />
+        ) : null}
         {activeTab === 'entities' ? <EntitiesView api={api} paths={paths} configPath={settings.configPath} /> : null}
         {activeTab === 'workflows' ? <WorkflowsView api={api} paths={paths} configPath={settings.configPath} /> : null}
         {activeTab === 'jobs' ? <JobsView api={api} paths={paths} configPath={settings.configPath} /> : null}

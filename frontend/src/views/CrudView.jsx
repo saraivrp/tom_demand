@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import Card from '../components/Card'
 import DataTable from '../components/DataTable'
@@ -6,14 +6,14 @@ import { Field, SelectField, TextAreaField } from '../components/Field'
 import { pretty } from '../api'
 
 const DATASETS = {
-  ideas: { endpoint: '/api/v1/reference-data/ideas', defaultPath: 'data/input/ideas.csv', keyColumn: 'ID' },
-  ra: { endpoint: '/api/v1/reference-data/ra-weights', defaultPath: 'data/input/weights_ra.csv', keyColumn: 'RequestingArea' },
-  rs: { endpoint: '/api/v1/reference-data/rs-weights', defaultPath: 'data/input/weights_rs.csv', keyColumn: 'RevenueStream' }
+  ideas: { endpoint: '/api/v1/reference-data/ideas', keyColumn: 'ID' },
+  ra: { endpoint: '/api/v1/reference-data/ra-weights', keyColumn: 'RequestingArea' },
+  rs: { endpoint: '/api/v1/reference-data/rs-weights', keyColumn: 'RevenueStream' }
 }
 
-export default function CrudView({ api, configPath }) {
+export default function CrudView({ api, configPath, paths, onPathsChange }) {
   const [dataset, setDataset] = useState('ideas')
-  const [path, setPath] = useState(DATASETS.ideas.defaultPath)
+  const [path, setPath] = useState(paths.ideas)
   const [limit, setLimit] = useState('50')
   const [offset, setOffset] = useState('0')
   const [rows, setRows] = useState([])
@@ -27,12 +27,21 @@ export default function CrudView({ api, configPath }) {
 
   const datasetOptions = useMemo(() => Object.keys(DATASETS), [])
 
+  useEffect(() => {
+    setPath(paths[dataset])
+  }, [dataset, paths])
+
   function onDatasetChange(next) {
     setDataset(next)
-    setPath(DATASETS[next].defaultPath)
+    setPath(paths[next])
     setKeyColumn(DATASETS[next].keyColumn)
     setRows([])
     setTotal(0)
+  }
+
+  function onPathChange(nextPath) {
+    setPath(nextPath)
+    onPathsChange({ ...paths, [dataset]: nextPath })
   }
 
   async function loadRows() {
@@ -118,7 +127,7 @@ export default function CrudView({ api, configPath }) {
       <Card title="CSV CRUD" subtitle="Read, upsert, delete, and overwrite rows for ideas/RA/RS datasets.">
         <div className="grid two">
           <SelectField label="Dataset" value={dataset} onChange={onDatasetChange} options={datasetOptions} />
-          <Field label="CSV Path" value={path} onChange={setPath} />
+          <Field label="CSV Path" value={path} onChange={onPathChange} />
         </div>
         <p className="note">Config Path: {configPath || '(none)'}</p>
         <div className="grid three">

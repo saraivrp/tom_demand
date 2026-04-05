@@ -14,13 +14,26 @@ export function createApiClient(config) {
       headers['Content-Type'] = 'application/json'
     }
 
-    const response = await fetch(`${baseUrl}${path}`, {
-      ...options,
-      headers
-    })
+    let response
+    try {
+      response = await fetch(`${baseUrl}${path}`, {
+        ...options,
+        headers
+      })
+    } catch (error) {
+      const reason = error instanceof Error ? error.message : String(error)
+      throw new Error(`Network error calling ${baseUrl}${path}: ${reason}`)
+    }
 
     const text = await response.text()
-    const payload = text ? JSON.parse(text) : {}
+    let payload = {}
+    if (text) {
+      try {
+        payload = JSON.parse(text)
+      } catch {
+        payload = { detail: text }
+      }
+    }
 
     if (!response.ok) {
       const detail = payload?.detail || text || 'Unknown error'
